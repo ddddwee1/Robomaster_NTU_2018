@@ -49,6 +49,7 @@ def build_graph():
 
 class data_reader():
 	def __init__(self):
+		# read data. The images are resized to 256x256. Modify the changes for the coordinates as well, in line 74.
 		print('Reading data...')
 		data = []
 		f = open('annot_reform2.txt')
@@ -74,6 +75,7 @@ class data_reader():
 		self.data = data
 
 	def get_conf_mtx(self,inp):
+		# get confidence matrix
 		conf_res = np.zeros([16,16,1])
 		for i in range(len(inp)):
 			x = inp[i][0]
@@ -84,6 +86,7 @@ class data_reader():
 		return conf_res
 
 	def get_bbox_mtx(self,inp):
+		# get the bounding box matrix. Four channels stand for 'x, y, width, height'
 		bbox_res = np.zeros([16,16,4],dtype=np.float32)
 		for i in range(len(inp)):
 			x = inp[i][0]
@@ -100,11 +103,12 @@ class data_reader():
 		return bbox_res
 
 	def random_trans_img(self,img,lmk):
+		# randomly shift and scalling the image
 		while True:
 			scale = np.random.rand()
-			# scale = 0.85 + scale/4
+			scale = 0.85 + scale/4
 			# print(scale)
-			scale = 1.0
+			# scale = 1.0
 			lmk = np.float32(lmk).copy()
 			lmk = lmk * scale
 			scale_hw = int(256*scale)
@@ -173,10 +177,15 @@ with tf.Session() as sess:
 
 		if iteration%10==0:
 			print('Iter:',iteration,'\tLoss_b:',b_loss,'\tLoss_c:',c_loss)
+			# --- uncomment this to show the training examples -----
 			# print(c.max())
 			# img = img_batch[0].astype(np.uint8)
 			# draw(img,c[0],b[0])
+			# ----------------------end-----------------------------
+
+			# ----- unblock here to show the ground truth ----------
 			# draw(img_batch[0],conf_batch[0],bias_batch[0])
+			# ----------------------end-----------------------------
  
 		if iteration%5000==0 and iteration!=0:
 			saver.save(sess,'./model/'+str(iteration)+'.ckpt')
