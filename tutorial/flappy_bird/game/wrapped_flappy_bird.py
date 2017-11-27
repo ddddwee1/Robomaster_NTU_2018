@@ -7,7 +7,7 @@ import pygame.surfarray as surfarray
 from pygame.locals import *
 from itertools import cycle
 
-FPS = 30
+FPS = 120
 SCREENWIDTH  = 288
 SCREENHEIGHT = 512
 
