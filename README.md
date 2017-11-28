@@ -8,7 +8,7 @@ As we are going to implement computer vision and deep learning techniques in sys
 
 The marked items are finished topics and unmarked ones are still in progress or in plan.
 
-#### The tutorials on deep learning basics:
+### The tutorials on deep learning basics:
 
 - [x] Tensorflow and [sul](https://github.com/ddddwee1/sul)
 
@@ -18,7 +18,7 @@ The marked items are finished topics and unmarked ones are still in progress or 
 
 - [x] Convolutional Network
 
-#### The tutorials on computer vision:
+### The tutorials on computer vision:
 
 - [x] Classification with CNN
 
@@ -28,7 +28,7 @@ The marked items are finished topics and unmarked ones are still in progress or 
 
 - [ ] Optimization on networks
 
-#### The tutorials on reinforcement learning:
+### The tutorials on reinforcement learning:
 
 - [ ] Value and policy learning
 
@@ -36,7 +36,7 @@ The marked items are finished topics and unmarked ones are still in progress or 
 
 - [ ] Tricks on game state search
 
-#### The tutorials on data analysis:
+### The tutorials on data analysis:
 
 - [ ] Data properties and concepts on feature domain.
 
@@ -44,7 +44,7 @@ The marked items are finished topics and unmarked ones are still in progress or 
 
 - [ ] Pre and post process of collected data.
 
-#### ROS tutorial:
+### ROS tutorial:
 
 - [ ] ROS tutorial
 
