@@ -30,7 +30,7 @@ The marked items are finished topics and unmarked ones are still in progress or 
 
 ### The tutorials on reinforcement learning:
 
-- [ ] Value and policy learning
+- [ ] Value and policy
 
 - [ ] Q learning and Deep Q learning
 
