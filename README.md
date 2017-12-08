@@ -54,8 +54,6 @@ The marked items are finished topics and unmarked ones are still in progress or 
 
 - [ ] Hit area (board) detection 
 
-- [ ] Basic operation based on traiditional image processing
-
 - [ ] High-level assist operation
 
 - [ ] More functions if needed 
