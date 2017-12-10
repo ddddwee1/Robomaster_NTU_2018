@@ -24,17 +24,17 @@ The marked items are finished topics and unmarked ones are still in progress or 
 
 - [x] Object detection with CNN
 
-- [ ] Object Detection with FCN (Fully Convolutional Network)
+- [x] Object Detection with FCN (Fully Convolutional Network)
 
-- [ ] Optimization on networks
+- [x] Optimization on networks
 
 ### The tutorials on reinforcement learning:
 
-- [ ] Value and policy
+- [x] Value and policy
 
-- [ ] Q learning and Deep Q learning
+- [x] Q learning and Deep Q learning
 
-- [ ] Tricks on game state search
+- [x] Tricks on game state search
 
 ### The tutorials on data analysis:
 
@@ -56,5 +56,4 @@ The marked items are finished topics and unmarked ones are still in progress or 
 
 - [ ] High-level assist operation
 
-- [ ] More functions if needed 
-
+#### We will add more functions if needed 
