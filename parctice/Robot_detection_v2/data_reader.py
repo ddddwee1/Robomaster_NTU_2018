@@ -4,12 +4,12 @@ import model as M
 import random
 import cv2
 class data_reader():
-	def __init__(self):
+	def __init__(self,fname):
 		a = 240	# length of the image
 		b = 180	# width of the image
 		print('Reading data...')
 		data = []
-		f = open('annot_reform2.txt')
+		f = open(fname)
 		for i in f:
 			if 'nan' in i:
 				continue
