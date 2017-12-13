@@ -47,7 +47,7 @@ def train_RBN(imgholder,biasholder,confholder,bias_loss,conf_loss,train_step,con
 			if iteration%5000==0 and iteration!=0:
 				saver.save(sess,'./model/'+str(iteration)+'.ckpt')
 
-def train_veri(feature,c,b,imgholder,biasholder,confholder,cropholder,conf,bias,veri_biasholder,veri_confholder,veri_conf_loss,veri_bias_loss,veri_train_step)
+def train_veri(feature,imgholder,biasholder,confholder,cropholder,conf,bias,veri_biasholder,veri_confholder,veri_conf_loss,veri_bias_loss,veri_train_step)
 
 	MAXITER = 50000*2
 	BSIZE = 32
