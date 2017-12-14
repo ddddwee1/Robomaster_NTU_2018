@@ -19,7 +19,7 @@ def train_verification(imgholder, croppedholder, veri_conf_holder, veri_conf_los
 			
 			# Running the RPN with the original images
 			feeddict = {imgholder:img_batch}
-			c, b, f = sess.run([conf, bias, feature_map], feed_dict=feeddict)
+			c, b, f, acc = sess.run([conf, bias, feature_map, accuracy], feed_dict=feeddict)
 			
 			# Cropped the feature maps and get the confidence label
 			croppedFMs, labelConf = multipleFeatureMap(f, b, c, bias_batch, BSIZE)
@@ -29,7 +29,7 @@ def train_verification(imgholder, croppedholder, veri_conf_holder, veri_conf_los
 			sess.run([veri_conf_loss, verfication_train_step, veri_conf], feed_dict=feeddict_veri)
 			
 			if iteration%10==0
-				print('Iter:',iteration,'\tLoss:',veri_conf_loss)		
+				print('Iter:',iteration,'\tLoss:',veri_conf_loss, '\tAccuracy : ', acc)		
 				# print(c.max())
 				# draw(img_batch[0],conf_batch[0],bias_batch[0],wait=5)
 	 
