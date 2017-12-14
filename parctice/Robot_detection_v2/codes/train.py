@@ -24,9 +24,10 @@ def train_RPN(imgholder,biasholder,confholder,maskholder,bias_loss,conf_loss,tra
 	MAXITER = 50000*2
 	BSIZE = 32
 	with tf.Session() as sess:
-		M.loadSess('./model/',sess,init=True)
+		M.loadSess('',sess,init=True)
+		M.loadSess('./model/',sess,init=True,var_list=M.get_trainable_vars('mainModel'))
 		saver = tf.train.Saver()
-		reader = data_reader('merge.txt')
+		reader = data_reader('train_list.txt')
 		print('Reading finish')
 		for iteration in range(MAXITER):
 			train_batch = reader.next_train_batch(BSIZE)

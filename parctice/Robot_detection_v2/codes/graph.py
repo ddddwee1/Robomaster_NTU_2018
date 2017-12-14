@@ -30,4 +30,4 @@ def build_graph(test=False):
 	train_step = tf.train.AdamOptimizer(0.0001).minimize(bias_loss+conf_loss)
 	veri_train_step = tf.train.AdamOptimizer(0.0001).minimize(veri_conf_loss)
 
-	return [imgholder,bias_holder, conf_holder,maskholder], [croppedholder, veri_conf_holder], [bias_loss, conf_loss], [veri_conf_loss], [train_step, veri_train_step], [conf, bias] , [veri_conf], feature_map
+	return [imgholder,bias_holder, conf_holder,maskholder], [croppedholder, veri_conf_holder], [bias_loss, conf_loss], [veri_conf_loss], [train_step, veri_train_step], [conf, bias] , veri_conf, feature_map

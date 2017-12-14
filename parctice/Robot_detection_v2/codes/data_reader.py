@@ -127,3 +127,28 @@ class data_reader():
 #				print(0, end=" ")
 #		print()
 #	print("\n")
+
+class data_reader_test():
+	def __init__(self,fname):
+		a = 1280	# width of the image
+		b = 720	# height of the image
+		print('Reading data...')
+		data = []
+		cnt = 0
+		f = cv2.VideoCapture(fname)
+		while (f.isOpened()):
+			cnt += 1
+			if cnt%100==0:
+				print(cnt)
+			ret, frame = f.read()
+			if frame is None:
+				break
+			frame = cv2.resize(frame,(256,256))
+			data.append(frame)
+		self.data = data
+
+	def next_img(self,iter):
+		return [self.data[iter]]
+
+	def get_iter(self):
+		return len(self.data)
