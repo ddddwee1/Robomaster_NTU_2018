@@ -38,11 +38,11 @@ The marked items are finished topics and unmarked ones are still in progress or 
 
 ### The tutorials on data analysis:
 
-- [ ] Data properties and concepts on feature domain.
+- [x] Data properties and concepts on feature domain.
 
-- [ ] Data collection and augmentation.
+- [x] Data collection and augmentation.
 
-- [ ] Pre and post process of collected data.
+- [x] Pre and post process of collected data.
 
 ### ROS tutorial:
 
