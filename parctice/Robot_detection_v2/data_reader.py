@@ -3,6 +3,7 @@ import numpy as np
 import model as M 
 import random
 import cv2
+
 class data_reader():
 	def __init__(self,fname):
 		a = 240	# length of the image
@@ -115,3 +116,31 @@ class data_reader():
 #				print(0, end=" ")
 #		print()
 #	print("\n")
+
+class data_reader_test():
+	def __init__(self,fname):
+		a = 240	# length of the image
+		b = 180	# width of the image
+		print('Reading data...')
+		data = []
+		f = open(fname)
+		for i in f:
+			if 'nan' in i:
+				continue
+			i = i.strip()
+			i = i.split('\t')
+			img = cv2.imread(i[0])
+			print(i[0])
+			img = cv2.resize(img,(256,256))
+			i = i[1:]
+			i = [float(k) for k in i]
+			if i[0]>=a:
+				i[0] = a-1
+			if i[1]>=b:
+				i[1] = b-1
+			if i[2]>=a:
+				i[2] = a-1
+			if i[3]>=b:
+				i[3] = b-1
+			data.append([img,[[float(i[0])*256/a,float(i[1])*256/b,float(i[2])*128/a,float(i[3])*128/b]]])
+		self.data = data

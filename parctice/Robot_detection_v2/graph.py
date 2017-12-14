@@ -1,7 +1,7 @@
 import tensorflow as tf 
 from net_parts import verify_net, RPN
 
-def build_graph():
+def build_graph(test=False):
 	with tf.name_scope('imgholder'): # The placeholder is just a holder and doesn't contains the actual data.
 		imgholder = tf.placeholder(tf.float32,[None,256,256,3]) # The 3 is color channels
 	with tf.name_scope('bias_holder'):
@@ -15,7 +15,7 @@ def build_graph():
 	with tf.name_scope('veri_bias_holder'):
 		veri_bias_holder = tf.placeholder(tf.float32, [None,4]) # The veri output numbers,x,y,w,h
 
-	feature_map,conf, bias = RPN(imgholder)
+	feature_map,conf, bias = RPN(imgholder,test)
 	 # = RPN_VER(feature_map)
 	
 	# cropped_map = fmCrop(feature_map)

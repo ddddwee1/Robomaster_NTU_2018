@@ -15,5 +15,3 @@ def get_iou(inp1,inp2):
 	# print(total)
 	# print(overlap/total)
 	return overlap/total
-
-get_iou([10,10,3,3],[10,10,1,4])

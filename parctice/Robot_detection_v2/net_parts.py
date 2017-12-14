@@ -18,11 +18,12 @@ def verify_net(inp):
 		veri_conf= mod.fcLayer(1)  # [Layer, Shape]
 	return veri_conf[0],veri_bias[0] 
 
-def RPN(inp):
+def RPN(inp,test=False):
 	with tf.variable_scope('mainModel'):
-		inp = tf.scan(lambda _,y:tf.image.random_brightness(y,20),inp,initializer=tf.constant(0.0,shape=[256,256,3]))
-		inp = tf.scan(lambda _,y:tf.image.random_contrast(y,0.5,2),inp,initializer=tf.constant(0.0,shape=[256,256,3]))
-		inp = tf.scan(lambda _,y:tf.image.random_saturation(y,0.5,2),inp,initializer=tf.constant(0.0,shape=[256,256,3]))
+		if not test:
+			inp = tf.scan(lambda _,y:tf.image.random_brightness(y,20),inp,initializer=tf.constant(0.0,shape=[256,256,3]))
+			inp = tf.scan(lambda _,y:tf.image.random_contrast(y,0.5,2),inp,initializer=tf.constant(0.0,shape=[256,256,3]))
+			inp = tf.scan(lambda _,y:tf.image.random_saturation(y,0.5,2),inp,initializer=tf.constant(0.0,shape=[256,256,3]))
 		mod = M.Model(inp,[None,256,256,3])
 		mod.convLayer(5,16,stride=2,activation=M.PARAM_RELU)#128_2x2
 		mod.convLayer(4,32,stride=2,activation=M.PARAM_RELU)#64_4x4
