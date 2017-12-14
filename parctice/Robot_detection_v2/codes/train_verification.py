@@ -30,11 +30,13 @@ def train_verification(imgholder, croppedholder, veri_conf_holder, veri_conf_los
 			
 			if iteration%10==0
 				print('Iter:',iteration,'\tLoss:',veri_conf_loss, '\tAccuracy : ', acc)		
-				# print(c.max())
-				# draw(img_batch[0],conf_batch[0],bias_batch[0],wait=5)
+
+				img = img_batch[0].astype(np.uint8)
+				draw(img,c[0],b[0],wait=5)
+
 	 
 			if iteration%5000==0 and iteration!=0:
-		saver.save(sess,'./model/'+str(iteration)+'.ckpt')
+			saver.save(sess,'./model/'+str(iteration)+'.ckpt')
 
 RPNholders, veriholders, RPNlosses, verilosses, train_steps, RPNcb, veri_confidence, feature_map = graph.build_graph()
 train_RPN(RPNholders[0], veriholders[0], veriholders[1], verilosses[0], train_steps[1], RPNcb[0], RPNcb[1], veri_confidence, feature_map)
