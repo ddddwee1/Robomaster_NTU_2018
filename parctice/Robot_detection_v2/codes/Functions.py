@@ -49,15 +49,27 @@ def computeTrueConf(rpnBias, trueBias):
 	iou = get_iou(rpnBias, trueBias)
 	return (iou > 0.5) 
 
-def fmcrop(featureMaps, rpnBias, rpnConf, trueBias):
+def biasToCenter(bias):
+	"""
+	Converting the x,y bias from the coordinate of the bottom right to the coordinate of the center
+	"""
+	x,y,w,h = bias[0],bias[1],bias[2],bias[3]
+	bias[0] = int(x - w/2)
+	bias[1] = int(y - h/2) 
+	return bias_br 	
+	
+def fmcrop(featureMaps, rpnBias, rpnConf, trueBias, pickedAmount):
 	"""	
 	This is a function that takes the feature map, proposed bias, proposed confidence, and the label to get the cropped feature map, scaled bias, and confidence. So, from the proposed confidence obtained in RPN, the top topAmount will be used. The feature map will be cropped based on the proposed biased. Then the cropped image will be checked if an object is within that cropped image based on the ground truth.
 	"""	
 	# Initialize the constant information of the input and output
-	pickedAmount = 5 # The amount of picked proposed region	
 	featureMapsSize = (16,16,256) 
 	outputFMsSize = (pickedAmount,3,3,featureMapsSize[2])
 	scaledBiasSize = (pickedAmount, 4)
+	
+	# Convert the bias from the bottom right to the center of the bounding rectangle
+	rpnBias = biasToCenter(rpnBias)
+	trueBias = biasToCenter(trueBias)
 
 	# Picked the top <pickedAmount> based on the rpnConf 
 	pickedFlattenIndex = np.argsort(rpnConf,None)[:pickedAmount]
@@ -76,3 +88,16 @@ def fmcrop(featureMaps, rpnBias, rpnConf, trueBias):
 		trueConf[ctr] = computeTrueConf(rpnBias[outIdx,innIdx], trueBias)
 	return croppedFMs, scaledBias, trueConf
 
+def multipleFeatureMap(featureMaps, rpnBias, rpnConf, trueBias, batchNo):
+	"""
+	This function serves to take individual image from a batch of images	
+	"""
+	pickedAmount = 5 # The amount of picked proposed region	
+	outputFMs = np.zeros((batchNo*pickedAmount, 3, 3, 256))
+	outputConf = np.zeros((batchNo*pickedAmount))
+	for ctr in range(batchNo):
+		singleFM, _, singleTrueConf = fmcrop(featureMaps[ctr], rpnBias[ctr], rpnConf[ctr], trueBias[ctr], pickedAmount)
+		for i in range(pickedAmount):
+			outputFMs[ctr*pickedAmount + i] = singleFM[i]
+			outputConf[ctr*pickedAmount + i] = outputConf[i]
+	return outputFMs, outputConf
