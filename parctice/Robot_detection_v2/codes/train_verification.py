@@ -1,6 +1,23 @@
 import tensorflow as tf
 import graph
 
+def draw(img,c,b,wait=0):
+	# print(c.shape)
+	# print(b.shape)
+	# print(c.max())
+	for i in range(16):
+		for j in range(16):
+			if c[i][j][0]>0:
+				x = int(b[i][j][0])+j*16+8
+				y = int(b[i][j][1])+i*16+8
+				w = int(b[i][j][2])
+				h = int(b[i][j][3])
+				# print(b[i][j])
+				# cv2.circle(img,(x,y),5,(0,0,255),-1)
+				cv2.rectangle(img,(x-w,y-h),(x+w,y+h),(0,255,0),2)
+	cv2.imshow('img',img)
+	cv2.waitKey(wait)
+
 def train_verification(imgholder, croppedholder, veri_conf_holder, veri_conf_loss, verfication_train_step, conf, bias, veri_conf, feature_map)
 
 	MAXITER = 50000*2
