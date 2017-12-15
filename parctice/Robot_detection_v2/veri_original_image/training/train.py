@@ -44,10 +44,10 @@ def crop_original(img,bias_mtx,conf_mtx,c,b):
 		x = x-w                              #x-coord of center of a the object center wrt to original image(256x256)
 		y = y-h                              #y-coord of center of a the object center wrt to original image(256x256)
 #		print('x:',x,'\ty:',y,'\tw:',w,'\th:',h)
-		x_low = x-w
-		x_high = x+w
-		y_low = y-h
-		y_high = y+h
+		x_low = x-w-10
+		x_high = x+w+10
+		y_low = y-h-10
+		y_high = y+h+10
 		if x_low<0:
 			x_low=0
 		elif x_high>255:
@@ -62,14 +62,18 @@ def crop_original(img,bias_mtx,conf_mtx,c,b):
 
 		# labelling:
 
-		inp1 = [int(b[i][j][0]), int(b[i][j][1]), w, h]
+		inp1 = [x, y, w, h]
 		for r in range(16):
 			for c in range(16):
 				if conf_mtx[r][c][0] == 1:
-					inp2 = bias_mtx[r][c]
+					inp2 = bias_mtx[r][c].copy()
+					# print("r:", r, "\tc:", c, "\t", inp2)
+					inp2[0] = inp2[0]+c*16+8-inp2[2]
+					inp2[1] = inp2[1]+r*16+8-inp2[3]
 					break
+
 		iou = F.get_iou(inp1, inp2)
-#		print("inp1:", inp1, "\tinp2:", inp2, "\tiou", iou)
+		# print("inp1:", inp1, "\tinp2:", inp2, "\tiou", iou)
 		if iou > 0.5:
 			label = 1
 		else:
@@ -104,9 +108,9 @@ def train_RPN(imgholder,biasholder,confholder,maskholder,bias_loss,conf_loss,tra
 				saver.save(sess,'./model/'+str(iteration)+'.ckpt')
 
 def train_veri(imgholder,conf,bias,croppedholder,veri_conf_holder,veri_conf_loss,veri_train_step,veri_conf,veri_accuracy):
-	MAXITER = 50000*2
+	MAXITER = 50000
 #	MAXITER = 1
-	BSIZE = 8
+	BSIZE = 40
 	with tf.Session() as sess:
 		M.loadSess('./model_VERI/',sess,init=True)
 		M.loadSess(modpath='./model_RPN/20000.ckpt',sess=sess,var_list=M.get_trainable_vars('mainModel'))
@@ -133,15 +137,15 @@ def train_veri(imgholder,conf,bias,croppedholder,veri_conf_holder,veri_conf_loss
 			feeddict2 = {croppedholder:cropped_batch, veri_conf_holder:veri_conf_batch}
 			loss, _, acc = sess.run([veri_conf_loss, veri_train_step, veri_accuracy], feed_dict=feeddict2)
 			#Testing cropping
-#			for i in range(len(cropped_batch)):
-#				img = cropped_batch[i].astype(np.uint8)
-#				print("label:\t", veri_conf_batch[i])
-#				cv2.imshow('img',img)
-#				cv2.waitKey(10)
-#				inp=input()
+			# for i in range(len(cropped_batch)):
+			# 	img = cropped_batch[i].astype(np.uint8)
+			# 	print("label:\t", veri_conf_batch[i])
+			# 	cv2.imshow('img',img)
+			# 	cv2.waitKey(10)
+			# 	inp=input()
 			if iteration%10==0:
 				print('Iter:',iteration,'\tLoss:',loss,'\taccuracy:',acc)		
-			if iteration%5000==0 and iteration!=0:
+			if iteration%1000==0 and iteration!=0:
 				saver.save(sess,'./model_VERI/'+str(iteration)+'.ckpt')
 
 
