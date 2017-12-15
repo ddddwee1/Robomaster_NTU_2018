@@ -29,7 +29,7 @@ def build_graph(test=False):
 	veri_conf_loss = tf.reduce_mean(tf.nn.sigmoid_cross_entropy_with_logits(logits=veri_conf,labels=veri_conf_holder))
 	
 	train_step = tf.train.AdamOptimizer(0.0001).minimize(bias_loss+conf_loss)
-	veri_train_step = tf.train.AdamOptimizer(0.0001).minimize(veri_conf_loss)
+	veri_train_step = tf.train.AdamOptimizer(0.001).minimize(veri_conf_loss)
 
 #	veri_accuracy = M.accuracy(veri_conf, tf.argmax(veri_conf_holder,1))
 	correct_pred = tf.equal(tf.round(tf.sigmoid(veri_conf)), tf.round(veri_conf_holder))

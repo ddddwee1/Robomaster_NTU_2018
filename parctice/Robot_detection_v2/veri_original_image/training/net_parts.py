@@ -11,11 +11,14 @@ def verify_net(inp,test):
 			inp = tf.scan(lambda _,y:tf.image.random_contrast(y,0.5,2),inp,initializer=tf.constant(0.0,shape=[32,32,3]))
 			inp = tf.scan(lambda _,y:tf.image.random_saturation(y,0.5,2),inp,initializer=tf.constant(0.0,shape=[32,32,3]))
 		mod = M.Model(inp,[None,32,32,3])
-		mod.convLayer(5,16,stride=2,activation=M.PARAM_MFM)		#32_8x8
-		mod.convLayer(3,64,stride=2,activation=M.PARAM_RELU)	#16_16x16
-		mod.convLayer(3,128,stride=2,activation=M.PARAM_RELU)	#8_16x16	
+		mod.convLayer(5,16,stride=1,activation=M.PARAM_RELU)		#32_8x8
+		mod.maxpoolLayer(2)
+		mod.convLayer(5,64,stride=1,activation=M.PARAM_RELU)	#16_16x16
+		mod.maxpoolLayer(2)
+		mod.convLayer(3,128,stride=1,activation=M.PARAM_RELU)	#8_16x16	
+		mod.maxpoolLayer(2)
 		mod.flatten()
-		mod.fcLayer(50,activation=M.PARAM_RELU)
+		mod.fcLayer(300,activation=M.PARAM_RELU)
 		mod.fcLayer(1)		
 		return mod.get_current_layer()
 

@@ -44,10 +44,10 @@ def crop_original(img,bias_mtx,conf_mtx,c,b):
 		x = x-w                              #x-coord of center of a the object center wrt to original image(256x256)
 		y = y-h                              #y-coord of center of a the object center wrt to original image(256x256)
 #		print('x:',x,'\ty:',y,'\tw:',w,'\th:',h)
-		x_low = x-w-10
-		x_high = x+w+10
-		y_low = y-h-10
-		y_high = y+h+10
+		x_low = x-w
+		x_high = x+w
+		y_low = y-h
+		y_high = y+h
 		if x_low<0:
 			x_low=0
 		elif x_high>255:
@@ -74,7 +74,7 @@ def crop_original(img,bias_mtx,conf_mtx,c,b):
 
 		iou = F.get_iou(inp1, inp2)
 		# print("inp1:", inp1, "\tinp2:", inp2, "\tiou", iou)
-		if iou > 0.5:
+		if iou > 0.3:
 			label = 1
 		else:
 			label = 0
@@ -133,7 +133,9 @@ def train_veri(imgholder,conf,bias,croppedholder,veri_conf_holder,veri_conf_loss
 				for j in range(len(labels)):
 					cropped_batch.append(croppedImages[j])
 					veri_conf_batch.append([labels[j]])
-
+			# truenums = [item[0] for item in veri_conf_batch]
+			# truenums = sum(truenums)
+			# print(truenums/200)
 			feeddict2 = {croppedholder:cropped_batch, veri_conf_holder:veri_conf_batch}
 			loss, _, acc = sess.run([veri_conf_loss, veri_train_step, veri_accuracy], feed_dict=feeddict2)
 			#Testing cropping
