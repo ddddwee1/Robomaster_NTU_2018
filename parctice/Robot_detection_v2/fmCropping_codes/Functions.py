@@ -124,8 +124,14 @@ def crop_and_resize(featureMaps, bias, index, croppedMapsSize):
 	tly = math.floor((y - s/2) / featureMaps.shape[0])
 
 	# Get the bottom-right coordinate
-	brx = tlx + math.ceil(s / featureMaps.shape[1]) - 1
-	bry = tly + math.ceil(s / featureMaps.shape[0]) - 1
+	brx = math.floor((x + s/2) / featureMaps.shape[1])
+	bry = math.floor((y + s/2) / featureMaps.shape[0])
+
+	# The next two line is the wrong way to calculate the coordinate of the
+	# bottom-right coordinate
+	# brx = tlx + math.ceil(s / featureMaps.shape[1]) - 1
+	# bry = tly + math.ceil(s / featureMaps.shape[0]) - 1
+
 
 	# Some shifting if one of the coordinates of the cropping square is
 	# beyond the bounds

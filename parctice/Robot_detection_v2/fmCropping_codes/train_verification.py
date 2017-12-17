@@ -11,18 +11,16 @@ def draw(img, coor, c, wait=0):
 	# print(b.shape)
 	# print(c.max())
 	for k in range(5):
-		for i in range(16):
-			for j in range(16):
-				tlx = coor[k][0][0]*16
-				tly = coor[k][0][1]*16
-				brx = (coor[k][1][0]+1)*16
-				bry = (coor[k][1][1]+1)*16
-				if c[k][0] > 0:
-					# print(b[i][j])
-					# cv2.circle(img,(x,y),5,(0,0,255),-1)
-					cv2.rectangle(img,(tlx,tly),(brx,bry),(0,255,0),2)
-				else:
-					cv2.rectangle(img,(tlx,tly),(brx,bry),(255,255,0),1)
+		tlx = coor[k][0][0]*16
+		tly = coor[k][0][1]*16
+		brx = (coor[k][1][0]+1)*16
+		bry = (coor[k][1][1]+1)*16
+		if c[k][0] > 0.9:
+			# print(b[i][j])
+			# cv2.circle(img,(x,y),5,(0,0,255),-1)
+			cv2.rectangle(img,(tlx,tly),(brx,bry),(0,255,0),2)
+		else:
+			cv2.rectangle(img,(tlx,tly),(brx,bry),(255,255,0),1)
 	cv2.imshow('img',img)
 	cv2.waitKey(wait)
 
