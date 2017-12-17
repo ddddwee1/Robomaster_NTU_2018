@@ -46,13 +46,13 @@ The marked items are finished topics and unmarked ones are still in progress or 
 
 ### ROS tutorial:
 
-- [ ] ROS tutorial
+- [x] ROS tutorial
 
 ## Practice 
 
 - [ ] Handwritten digits recognition in real world. 
 
-- [ ] Hit area (board) detection 
+- [x] Hit area (board) detection 
 
 - [ ] High-level assist operation
 
