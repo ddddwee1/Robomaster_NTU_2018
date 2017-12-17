@@ -62,7 +62,7 @@ def crop_original(img,bias_mtx,conf_mtx,c,b):
 
 		# labelling:
 
-		inp1 = [x, y, w, h]
+		inp1 = [x, y, 2w, 2h]
 		for r in range(16):
 			for c in range(16):
 				if conf_mtx[r][c][0] == 1:
@@ -71,7 +71,8 @@ def crop_original(img,bias_mtx,conf_mtx,c,b):
 					inp2[0] = inp2[0]+c*16+8-inp2[2]
 					inp2[1] = inp2[1]+r*16+8-inp2[3]
 					break
-
+		inp2[2] = inp2[2]*2
+		inp2[3] = inp2[3]*2
 		iou = F.get_iou(inp1, inp2)
 		# print("inp1:", inp1, "\tinp2:", inp2, "\tiou", iou)
 		if iou > 0.3:
