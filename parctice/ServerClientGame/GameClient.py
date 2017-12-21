@@ -11,6 +11,9 @@ import time, random
 # Setting up the port
 Port, HostIP = 27400, "172.22.145.241"
 
+HostIP = input("Please input the Host/Server IP Address : ")
+Port = int(input("Please input the game's port on the Host/Server :"))
+
 # Connecting to server
 with socket(AF_INET, SOCK_STREAM) as soc:
     soc.connect((HostIP, Port))
@@ -40,11 +43,11 @@ with socket(AF_INET, SOCK_STREAM) as soc:
 
     # --- Create the sprites
     if playerID == 1:
-        player = SpritesClass.Player(50,450,1)
-        enemy = SpritesClass.Player(450,50,2)
+        player = SpritesClass.Player(50,250,270,1)
+        enemy = SpritesClass.Player(450,250,90,2)
     else:
-        enemy = SpritesClass.Player(50,450,1)
-        player = SpritesClass.Player(450,50,2)
+        enemy = SpritesClass.Player(50,250,270,1)
+        player = SpritesClass.Player(450,250,90,2)
     playerList.append(player)
     playerList.append(enemy)
 
@@ -60,7 +63,7 @@ with socket(AF_INET, SOCK_STREAM) as soc:
     print("Waiting for the server to start the game")
     soc.send((5).to_bytes(1, byteorder='big'))
     ready = soc.recv(1024)
-
+    print("Game Starting...")
     # -------- Main Program Loop -----------
     while not done:
         # --- Input Processing
@@ -127,6 +130,7 @@ with socket(AF_INET, SOCK_STREAM) as soc:
         display.drawAllPlayers(playerList)
         display.drawAllBullets(bulletList)
         display.maskFOV(player)
+        display.drawLaserSight(player)
         display.drawPlayer(player)
 
         # Go ahead and update the screen with what is drawn.

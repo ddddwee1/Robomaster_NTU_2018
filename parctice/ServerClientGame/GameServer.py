@@ -12,6 +12,8 @@ import datetime
 # Setting up the port
 Port, HostIP = 27400, ""
 
+Port = int(input("Please input the port for this game : "))
+
 with socket(AF_INET, SOCK_STREAM) as soc:
     soc.bind((HostIP, Port))
     soc.listen(100)
@@ -56,8 +58,8 @@ with socket(AF_INET, SOCK_STREAM) as soc:
             bulletList = SpritesClass.BulletList()
 
             # --- Create the sprites
-            player1 = SpritesClass.Player(50,450,1)
-            player2 = SpritesClass.Player(450,50,2)
+            player1 = SpritesClass.Player(50,250,270,1)
+            player2 = SpritesClass.Player(450,250,90,2)
             playerList.append(player1)
             playerList.append(player2)
 

@@ -47,7 +47,6 @@ class Display:
                 self.drawPlayer(player)
 
     def maskFOV(self, player):
-
         pos = player.getPosition()
         rot = player.getRotation()
         dx = 0
@@ -90,3 +89,12 @@ class Display:
         else:
             pointList.append((lx, ly))
             pygame.draw.polygon(self._screen, (0,0,0), pointList)
+
+    def drawLaserSight(self, player):
+        spos = player.getPosition()
+        prot = player.getRotation()
+        lineV = [math.sin(math.radians(prot)), -math.cos(math.radians(prot))]
+        lineV[0] = math.sqrt(self._width**2 + self._height**2) * lineV[0]
+        lineV[1] = math.sqrt(self._width**2 + self._height**2) * lineV[1]
+        epos = (spos[0]+lineV[0], spos[1]+lineV[1])
+        pygame.draw.line(self._screen, (255,0,0), spos, epos)

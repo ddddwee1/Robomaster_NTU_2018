@@ -6,7 +6,7 @@ class Player():
     """
     This is the player class
     """
-    def __init__(self, x, y, plyId):
+    def __init__(self, x, y, rot, plyId):
         """
         Set up the player on creation
         """
@@ -21,7 +21,7 @@ class Player():
         # Define the initial position of the player
         self._x = x
         self._y = y
-        self._rot = 0 # 0 degree is facing upward
+        self._rot = rot # 0 degree is facing upward
         self._radius = 10
 
         self._dx = 0
