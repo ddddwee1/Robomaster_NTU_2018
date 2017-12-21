@@ -128,8 +128,6 @@ with socket(AF_INET, SOCK_STREAM) as soc:
         display.drawAllBullets(bulletList)
         display.maskFOV(player)
         display.drawPlayer(player)
-        if player.getId() == 2:
-            pygame.transform.rotate(screen, 180)
 
         # Go ahead and update the screen with what is drawn.
         pygame.display.flip()
