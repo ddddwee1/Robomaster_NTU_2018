@@ -2,7 +2,7 @@ import pygame
 import Functions
 import math
 
-class Player(pygame.sprite.Sprite):
+class Player():
     """
     This is the player class
     """
@@ -16,7 +16,7 @@ class Player(pygame.sprite.Sprite):
         # Define the speed parameters of the players
         self._fbSpeed = 2 # Forward/Backward Speed in pixels/frame
         self._lrSpeed = 1 # Left/Right Speed in pixels/frame
-        self._rotSpeed = 3 # In degrees/frame
+        self._rotSpeed = 1 # In degrees/frame
 
         # Define the initial position of the player
         self._x = x

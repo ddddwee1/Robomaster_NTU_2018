@@ -9,7 +9,7 @@ from socket import *
 import time, random
 
 # Setting up the port
-Port, HostIP = 27400, "192.168.0.181"
+Port, HostIP = 27400, "172.22.145.241"
 
 # Connecting to server
 with socket(AF_INET, SOCK_STREAM) as soc:
@@ -128,6 +128,8 @@ with socket(AF_INET, SOCK_STREAM) as soc:
         display.drawAllBullets(bulletList)
         display.maskFOV(player)
         display.drawPlayer(player)
+        if player.getId() == 2:
+            pygame.transform.rotate(screen, 180)
 
         # Go ahead and update the screen with what is drawn.
         pygame.display.flip()
