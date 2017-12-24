@@ -4,7 +4,7 @@ import numpy as np
 import net_parts as net
 
 def build_graph1():
-	env_holder = tf.placeholder(tf.float32,[None,4])
+	env_holder = tf.placeholder(tf.float32,[None,10])
 	Q_holder = tf.placeholder(tf.float32,[None,1])
 	act_holder = tf.placeholder(tf.float32,[None,10])
 
@@ -17,10 +17,10 @@ def build_graph1():
 
 	lb0,lb1,lb2,lb3 = net.grouping(act_holder)
 
-	loss_a_0 = tf.nn.softmax_cross_entropy_with_logits(logits=gp0,labels=lb0)
-	loss_a_1 = tf.nn.softmax_cross_entropy_with_logits(logits=gp1,labels=lb1)
-	loss_a_2 = tf.nn.softmax_cross_entropy_with_logits(logits=gp2,labels=lb2)
-	loss_a_3 = tf.nn.sigmoid_cross_entropy_with_logits(logits=gp3,labels=lb3)
+	loss_a_0 = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(logits=gp0,labels=lb0))
+	loss_a_1 = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(logits=gp1,labels=lb1))
+	loss_a_2 = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(logits=gp2,labels=lb2))
+	loss_a_3 = tf.reduce_mean(tf.nn.sigmoid_cross_entropy_with_logits(logits=gp3,labels=lb3))
 
 	act_loss = loss_a_0+loss_a_1+loss_a_2+loss_a_3
 
@@ -38,7 +38,7 @@ def build_graph1():
 
 
 def build_graph2():
-	env_holder = tf.placeholder(tf.float32,[None,4])
+	env_holder = tf.placeholder(tf.float32,[None,10])
 	Q_holder = tf.placeholder(tf.float32,[None,1])
 
 	action = net.build_actor(env_holder,'actor1')

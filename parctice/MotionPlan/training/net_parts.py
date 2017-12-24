@@ -2,10 +2,9 @@ import tensorflow as tf
 import model as M 
 import numpy as np 
 
-
 def build_actor(inp,scope):
 	with tf.variable_scope(scope):
-		mod = M.Model(inp,[None,4])
+		mod = M.Model(inp,[None,10])
 		mod.fcLayer(30,activation=M.PARAM_LRELU)
 		mod.fcLayer(40,activation=M.PARAM_LRELU)
 		mod.fcLayer(10)
@@ -13,9 +12,9 @@ def build_actor(inp,scope):
 
 def build_crit(inp_act,inp_env,scope):
 	with tf.variable_scope(scope):
-		mod = M.Model(inp,[None,10])
+		mod = M.Model(inp_act,[None,10])
 		mod.fcLayer(5)
-		mod.concat_to_current(inp_env,axis=1)
+		mod.concat_to_current([inp_env,[None,10]],axis=1)
 		mod.fcLayer(30,activation=M.PARAM_LRELU)
 		mod.fcLayer(30,activation=M.PARAM_LRELU)
 		mod.fcLayer(1)
