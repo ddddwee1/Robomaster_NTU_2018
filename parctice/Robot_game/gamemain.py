@@ -2,27 +2,46 @@ import pygame
 from pygame.locals import *
 import Display
 import SpritesClass
+import numpy as np 
 
 pygame.init()
 
 display = Display.Display('games')
 screen = display.getScreen()
 
-playerList = SpritesClass.PlayerList()
-bulletList = SpritesClass.BulletList()
+def reset():
+	global playerList,bulletList
+	playerList = SpritesClass.PlayerList()
+	bulletList = SpritesClass.BulletList()
 
-player1 = SpritesClass.Player(50,250,180,1)
-player2 = SpritesClass.Player(450,250,180,2)
+	player1 = SpritesClass.Player(250,250,0,1)
+	player2 = SpritesClass.Player(450,300,180,2)
 
-playerList.append(player1)
-playerList.append(player2)
+	playerList.append(player1)
+	playerList.append(player2)
 
+
+reset()
 done = False
 end = False
 
 FPSCLOCK = pygame.time.Clock()
 
 def get_next_frame(act):
+
+	action = np.argmax(act)
+
+	reward = 0
+
+	# if action==0:
+	# 	act = [0,0,0,0,0,1,0,0]
+	# elif action==1:
+	# 	act = [0,0,0,0,0,0,1,0]
+	# elif action==2:
+	# 	act = [0,0,0,0,0,0,0,1]
+	# 	reward = -0.1
+	# else:
+	# 	act = [0,0,0,0,0,0,0,0]
 
 	if act[7]==1:
 		bulletList.append(SpritesClass.Bullet(playerList.getList()[0]))
@@ -40,23 +59,8 @@ def get_next_frame(act):
 					dx = abs(bullet1.getPosition()[0] - player1.getPosition()[0])
 					dy = abs(bullet1.getPosition()[1] - player1.getPosition()[1])
 					if dx**2 + dy**2 < (bullet1.getRadius() + player1.getRadius())**2:
-						print("Player ", player1.getId(), " got Hit!")
-						bulletList.remove(bullet1)
-						player1.getHit()
-						if player1.isDead():
-							done = True
-							end = True
-							winner = bullet1.getShooter().getId()
-						reward[player1.getId() - 1] -= 1.05
-						reward[bullet1.getShooter().getId() - 1] += 1
+						reward = 1.0
 
-			for bullet2 in bulletList.getList():
-				if bullet2 != bullet1:
-					dx = abs(bullet1.getPosition()[0] - bullet2.getPosition()[0])
-					dy = abs(bullet1.getPosition()[1] - bullet2.getPosition()[1])
-					if dx**2 + dy**2 < (bullet1.getRadius() + bullet2.getRadius())**2:
-						bulletList.remove(bullet1)
-						bulletList.remove(bullet2)
 	if playerList.getList() != 0:
 		for player1 in playerList.getList():
 			for player2 in playerList.getList():
@@ -68,8 +72,12 @@ def get_next_frame(act):
 						player2.cancelUpdate()
 
 	screen.fill((255,255,255))
+	player1 = playerList.getList()[0]
+	player2 = playerList.getList()[1]
 	display.drawAllPlayers(playerList)
 	display.drawAllBullets(bulletList)
+	display.drawLaserSight(player1)
+	display.drawLaserSight(player2)
 
 	pos0 = player1.getPosition()
 	pos1 = player2.getPosition()
@@ -79,5 +87,6 @@ def get_next_frame(act):
 
 	pygame.display.flip()
 	FPSCLOCK.tick(1)
+	print(player1.getRotation())
 
-	return [dx,dy]
+	return [dx,dy],reward
