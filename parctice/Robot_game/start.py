@@ -62,7 +62,7 @@ class population():
 		ang, dis,reward = gamemain.get_next_frame(do_nothing[0])
 		reward_ttl = 0
 		for _ in range(1000):
-			act = sess.run(self.net,feed_dict={self,inpholder:[[ang,dis]]})
+			act = sess.run(self.net,feed_dict={self.inpholder:[[ang,dis]]})
 			ang, dis, reward = gamemain.get_next_frame(act[0])
 			reward_ttl += reward
 		return reward_ttl

@@ -20,6 +20,10 @@ def reset():
 	playerList.append(player1)
 	playerList.append(player2)
 
+def cart2pol(x, y):
+    rho = np.sqrt(x**2 + y**2)
+    phi = np.arctan2(y, x)
+    return rho, phi
 
 reset()
 done = False
@@ -33,15 +37,15 @@ def get_next_frame(act):
 
 	reward = 0
 
-	# if action==0:
-	# 	act = [0,0,0,0,0,1,0,0]
-	# elif action==1:
-	# 	act = [0,0,0,0,0,0,1,0]
-	# elif action==2:
-	# 	act = [0,0,0,0,0,0,0,1]
-	# 	reward = -0.1
-	# else:
-	# 	act = [0,0,0,0,0,0,0,0]
+	if action==0:
+		act = [0,0,0,0,0,1,0,0]
+	elif action==1:
+		act = [0,0,0,0,0,0,1,0]
+	elif action==2:
+		act = [0,0,0,0,0,0,0,1]
+		reward = -0.1
+	else:
+		act = [0,0,0,0,0,0,0,0]
 
 	if act[7]==1:
 		bulletList.append(SpritesClass.Bullet(playerList.getList()[0]))
@@ -85,8 +89,10 @@ def get_next_frame(act):
 	dx = pos1[0]-pos0[0]
 	dy = pos1[1]-pos0[1]
 
-	pygame.display.flip()
-	FPSCLOCK.tick(1)
-	print(player1.getRotation())
+	r, rad = cart2pol(dx,dy)
 
-	return [dx,dy],reward
+	pygame.display.flip()
+	FPSCLOCK.tick(100)
+	# print(player1.getRotation())
+
+	return r,rad,reward

@@ -7,7 +7,7 @@ def turret():
 	inpholder = tf.placeholder(tf.float32,[None,2])
 	mod = M.Model(inpholder,[None,2])
 	mod.fcLayer(10,activation=M.PARAM_RELU)
-	mod.fcLayer(3)
+	mod.fcLayer(4)
 	# w_hid = M.get_trainable_vars()[0]
 	# b_hid = M.get_trainable_vars()[1]
 	# w_out = M.get_trainable_vars()[2]
