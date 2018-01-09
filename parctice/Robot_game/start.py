@@ -2,6 +2,7 @@ import gamemain
 import net
 import tensorflow as tf
 import numpy as np 
+import random
 
 # gamemain.get_next_frame([0,0,0,0,0,0,0,1])
 
@@ -32,7 +33,7 @@ class population():
 		top2 = []
 		for i in range(len(rank)):
 			if rank[i]==0 or rank[i]==1:
-				top3.append(self.pop[i])
+				top2.append(self.pop[i])
 
 		# Generate next generation
 		nextpop = []
@@ -72,9 +73,10 @@ class population():
 		for i in range(len(self.pop)):
 			reward = self.test_one(i)
 			a.append(reward)
+			print(reward)
 		a = np.array(a)
 		a_arg = np.argsort(-a)
-		rank = np.zeros([1,len(a)])
+		rank = np.zeros(len(a))
 		for i in range(len(a_arg)):
 			rank[a_arg[i]] = i
 		return rank,a.max()

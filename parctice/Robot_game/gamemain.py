@@ -89,10 +89,15 @@ def get_next_frame(act):
 	dx = pos1[0]-pos0[0]
 	dy = pos1[1]-pos0[1]
 
-	r, rad = cart2pol(dx,dy)
+	r, rad = cart2pol(-dy,dx)
+
+	reward = reward + (0.01 - 0.01*abs(rad-player1.getRotation()*np.pi/180.))
 
 	pygame.display.flip()
 	FPSCLOCK.tick(100)
 	# print(player1.getRotation())
+	# print(reward)
+	# print(player1.getRotation()*np.pi/180.)
+	# print(rad)
 
 	return r,rad,reward

@@ -18,25 +18,40 @@ def turret():
 
 
 def mutate(a,rate):
-	r,c = a.shape
-	b = a.copy()
-	for i in r:
-		for j in c:
+	if len(a.shape)==1:
+		r=a.shape[0]
+		b=a.copy()
+		for i in range(r):
 			if random.random()<rate:
-				b[i,j] = a[i,j] * (np.power(random.random()-0.5,random.random()*3-1.5))
+				b[i]=a[i] * (np.power(random.random()-0.5,random.random()*3-1.5))
+
+	else:
+		r,c = a.shape
+		b = a.copy()
+		for i in range(r):
+			for j in range(c):
+				if random.random()<rate:
+					b[i,j] = a[i,j] * (np.power(random.random()-0.5,random.random()*3-1.5))
 	return b
 
 def mutate_all(a,rate):
 	res = []
 	for i in a:
-		res.append(mutate(a,rate))
+		res.append(mutate(i,rate))
 	return res
 
 def cross(a,b,rate):
-	r,c = a.shape
+	if len(a.shape)==1:
+		r=a.shape[0]
+		c=a.copy()
+		for i in range(r):
+			if random.random()<rate:
+				c[i]=b[i]
+		return c
+	r,col = a.shape
 	c = a.copy()
-	for i in r:
-		for j in c:
+	for i in range(r):
+		for j in range(col):
 			if random.random()<rate:
 				c[i,j] = b[i,j]
 	return c
