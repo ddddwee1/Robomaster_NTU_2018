@@ -12,7 +12,7 @@ import datetime
 # Setting up the port
 Port, HostIP = 27400, ""
 
-Port = int(input("Please input the port for this game : "))
+# Port = int(input("Please input the port for this game : "))
 
 with socket(AF_INET, SOCK_STREAM) as soc:
     soc.bind((HostIP, Port))

@@ -21,6 +21,8 @@ rand_rate = 0.7
 BSIZE = 64
 # Explore and training
 frame_count = 0
+var = 3
+episode = 0
 
 sess = tf.Session()
 saver = tf.train.Saver()
@@ -29,36 +31,39 @@ sess.run(init_assign)
 
 # init frame
 do_nothing = np.float32([0,-0.8])
-r,rad,reward = gamemain.get_next_frame(do_nothing)
+r,rad,reward,terminated = gamemain.get_next_frame(do_nothing)
 env0 = [r,rad]
 act = sess.run(action,feed_dict={holders[0]:[env0]})
-r,rad,reward = gamemain.get_next_frame(act[0])
+r,rad,reward,terminated = gamemain.get_next_frame(act[0])
 env1 = [r,rad]
-memory.push([env0,env1,act[0],[reward]])
+memory.push([env0,env1,act[0],[reward],[terminated]])
 env0 = env1
 
 while True:
-	
-	if random.random()<rand_rate:
-		act = [random.random()*2-1, random.random()*2-1]
-	else:
-		act = sess.run(action,feed_dict={holders[0]:[env0]})
-		act = act[0]
-		# print('Act:',act[0])
-	r,rad,reward = gamemain.get_next_frame(act)
+	act = sess.run(action,feed_dict={holders[0]:[env0]})
+	act = act[0]
+	act = np.random.normal(act,var)
+	act = np.clip(act,-1.,1.)
+	r,rad,reward,terminated = gamemain.get_next_frame(act)
 	env1 = [r,rad]
-	memory.push([env0,env1,act,[reward]])
-	env0 = env1
+	memory.push([env0,env1,act,[reward],[terminated]])
+	if terminated==1:
+		gamemain.reset()
+		r,rad,reward,terminated = gamemain.get_next_frame(do_nothing)
+		env0 = [r,rad]
+		var = var*0.7
+		episode += 1
+	else:
+		env0 = env1
 	frame_count += 1
-	if frame_count>EXPLORE:
-		if frame_count<EXPLORE+TRAINING:
-			rand_rate -= (INIT_RAND - FINAL_RAND) / TRAINING
+	if episode>=2:
 		train_batch = memory.next_batch(BSIZE)
 		s0_batch = [i[0] for i in train_batch]
 		s1_batch = [i[1] for i in train_batch]
 		a_batch = [i[2] for i in train_batch]
 		rw_batch = [i[3] for i in train_batch]
-		feed_d = {holders[0]:s0_batch,holders[1]:s1_batch,holders[2]:rw_batch,holders[3]:a_batch}
+		t_batch = [i[4] for i in train_batch]
+		feed_d = {holders[0]:s0_batch,holders[1]:s1_batch,holders[2]:rw_batch,holders[3]:a_batch,holders[4]:t_batch}
 		c_loss, a_loss, _,_ = sess.run(losses+train_steps,feed_dict=feed_d)
 		if frame_count%1000==0:
 			sess.run(assign)
@@ -66,11 +71,5 @@ while True:
 
 		if frame_count%5000==0:
 			saver.save(sess,'./model/%d.ckpt'%(frame_count))
-	if frame_count%100==0:
-		if frame_count>EXPLORE:
-			print('Frame:%d\tC_Loss:%.4f\tA_Loss:%.4f\tEpsilon:%.4f'%(frame_count,c_loss,a_loss,rand_rate))
-		else:
-			print('frame:%d'%(frame_count))
-
-	if frame_count>2*TRAINING:
-		break
+		if frame_count%100==0:
+			print('Frame:%d\tC_Loss:%.4f\tA_Loss:%.4f\tEpsilon:%.4f'%(frame_count,c_loss,a_loss,var))

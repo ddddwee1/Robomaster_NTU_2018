@@ -33,6 +33,7 @@ FPSCLOCK = pygame.time.Clock()
 
 def get_next_frame(act):
 	reward = 0
+	term = 0
 
 	if act[0]<-0.5:
 		action = [0,0,0,0,0,1,0,0]
@@ -43,8 +44,9 @@ def get_next_frame(act):
 
 
 
-	# if act[1]>0:
-	# 	action[-1] = 1
+	if act[1]>0:
+		action[-1] = 1
+		reward -= 3.
 
 	if action[7]==1:
 		bulletList.append(SpritesClass.Bullet(playerList.getList()[0]))
@@ -63,7 +65,8 @@ def get_next_frame(act):
 					dy = abs(bullet1.getPosition()[1] - player1.getPosition()[1])
 					if dx**2 + dy**2 < (bullet1.getRadius() + player1.getRadius())**2:
 						print('Hit ')
-						# reward += 10.0
+						reward += 100.0
+						term = 1
 
 	if playerList.getList() != 0:
 		for player1 in playerList.getList():
@@ -101,7 +104,7 @@ def get_next_frame(act):
 	reward = reward + (1. - abs(rdis))
 	reward = reward*10
 	reward = reward//5
-	reward = - reward
+	# reward = - reward
 
 	pygame.display.flip()
 	FPSCLOCK.tick(100)
@@ -112,4 +115,4 @@ def get_next_frame(act):
 	# print(player1.getRotation()*np.pi/180.)
 	# print(rad)
 
-	return r/300,rdis,reward
+	return r/300,rdis,reward,term

@@ -9,10 +9,10 @@ from socket import *
 import time, random
 
 # Setting up the port
-Port, HostIP = 27400, "172.22.145.241"
+Port, HostIP = 27400, "192.168.1.101"
 
-HostIP = input("Please input the Host/Server IP Address : ")
-Port = int(input("Please input the game's port on the Host/Server :"))
+# HostIP = input("Please input the Host/Server IP Address : ")
+# Port = int(input("Please input the game's port on the Host/Server :"))
 
 # Connecting to server
 with socket(AF_INET, SOCK_STREAM) as soc:
