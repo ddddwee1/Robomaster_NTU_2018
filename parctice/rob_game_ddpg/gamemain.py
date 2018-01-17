@@ -3,19 +3,30 @@ from pygame.locals import *
 import Display
 import SpritesClass
 import numpy as np 
+import random
 
 pygame.init()
 
 display = Display.Display('games')
 screen = display.getScreen()
 
+life = 30
+
 def reset():
-	global playerList,bulletList
+	global playerList,bulletList,life
+	life = 30
 	playerList = SpritesClass.PlayerList()
 	bulletList = SpritesClass.BulletList()
 
+	x = random.randint(50,350)
+	y = random.randint(50,350)
+	if x>200:
+		x += 100
+	if y>200:
+		y+=100
+
 	player1 = SpritesClass.Player(250,250,0,1)
-	player2 = SpritesClass.Player(450,300,180,2)
+	player2 = SpritesClass.Player(x,y,180,2)
 
 	playerList.append(player1)
 	playerList.append(player2)
@@ -32,8 +43,9 @@ end = False
 FPSCLOCK = pygame.time.Clock()
 
 def get_next_frame(act):
-	reward = 0
-	term = 0
+	global life
+	reward = -0.1
+	term = 1
 
 	if act[0]<-0.5:
 		action = [0,0,0,0,0,1,0,0]
@@ -46,7 +58,7 @@ def get_next_frame(act):
 
 	if act[1]>0:
 		action[-1] = 1
-		reward -= 3.
+		reward -= 1
 
 	if action[7]==1:
 		bulletList.append(SpritesClass.Bullet(playerList.getList()[0]))
@@ -65,8 +77,10 @@ def get_next_frame(act):
 					dy = abs(bullet1.getPosition()[1] - player1.getPosition()[1])
 					if dx**2 + dy**2 < (bullet1.getRadius() + player1.getRadius())**2:
 						print('Hit ')
-						reward += 100.0
-						term = 1
+						reward += 10.0
+						life -= 1
+						if life==0:
+							term = 0
 
 	if playerList.getList() != 0:
 		for player1 in playerList.getList():
@@ -104,6 +118,9 @@ def get_next_frame(act):
 	reward = reward + (1. - abs(rdis))
 	reward = reward*10
 	reward = reward//5
+	if abs(rdis)<0.08:
+		reward += 2
+	# print(rdis)
 	# reward = - reward
 
 	pygame.display.flip()

@@ -18,7 +18,7 @@ TRAINING = 200000
 INIT_RAND = 0.7
 FINAL_RAND = 0.0
 rand_rate = 0.7
-BSIZE = 64
+BSIZE = 256
 # Explore and training
 frame_count = 0
 var = 3
@@ -47,16 +47,16 @@ while True:
 	r,rad,reward,terminated = gamemain.get_next_frame(act)
 	env1 = [r,rad]
 	memory.push([env0,env1,act,[reward],[terminated]])
-	if terminated==1:
+	if terminated==0:
 		gamemain.reset()
 		r,rad,reward,terminated = gamemain.get_next_frame(do_nothing)
 		env0 = [r,rad]
-		var = var*0.7
+		var = var*0.95
 		episode += 1
 	else:
 		env0 = env1
 	frame_count += 1
-	if episode>=2:
+	if episode>=1:
 		train_batch = memory.next_batch(BSIZE)
 		s0_batch = [i[0] for i in train_batch]
 		s1_batch = [i[1] for i in train_batch]
@@ -65,7 +65,7 @@ while True:
 		t_batch = [i[4] for i in train_batch]
 		feed_d = {holders[0]:s0_batch,holders[1]:s1_batch,holders[2]:rw_batch,holders[3]:a_batch,holders[4]:t_batch}
 		c_loss, a_loss, _,_ = sess.run(losses+train_steps,feed_dict=feed_d)
-		if frame_count%1000==0:
+		if frame_count%100==0:
 			sess.run(assign)
 		# print('\tC_Loss:%.4f\tA_Loss:%.4f'%(c_loss,a_loss))
 
