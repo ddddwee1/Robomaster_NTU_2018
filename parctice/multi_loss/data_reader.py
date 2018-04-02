@@ -111,7 +111,7 @@ class reader():
 			width = int(np.ceil(imgsize[1]/grid_size[i]))
 			# if no key in dictionary, create empty conf and bias array
 			if not indices[i] in result_dict:
-				bias_empty = np.zeros([height,width,3],np.float32)
+				bias_empty = np.zeros([height,width,4],np.float32)
 				conf_empty = np.zeros([height,width,1],np.float32)
 				result_dict[indices[i]] = [conf_empty,bias_empty]
 			# get the column number and row number 
