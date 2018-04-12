@@ -5,18 +5,19 @@ import random
 
 class reader():
 
-	def __init__(self,height=540,width=960,scale_range=[0.5,1.0],lower_bound=2,upper_bound=5):
+	def __init__(self,height=540,width=960,scale_range=[0.5,1.0],lower_bound=2,upper_bound=5,index_multiplier=1):
 		# set class params
 		self.height = height
 		self.width = width
 		self.scale_range = scale_range
 		self.lower_bound = lower_bound
 		self.upper_bound = upper_bound
+		self.index_multiplier = index_multiplier
 		print('Loading images...')
 		self.data = []
 		# add a progressbar to make it better look
 		bar = progressbar.ProgressBar(max_value=1371)
-		f = open('annotation.txt')
+		f = open('annotation2.txt')
 		counter = 0
 		for i in f:
 			i = i.strip().split('\t')
@@ -53,13 +54,13 @@ class reader():
 		x_trans = random.random()*(xmax-xmin) + xmin
 		y_trans = random.random()*(ymax-ymin) + ymin
 		# get transformation matrix and do transform
-		print(xmin,xmax)
+		# print(xmin,xmax)
 		M = np.float32([[1,0,-x_trans],[0,1,-y_trans]])
 		img_result = img.copy()
 		img_result = cv2.warpAffine(img_result,M,(self.width,self.height))
 		# substract the transformed pixels
 		annot = np.float32(annot) - np.float32([[x_trans,y_trans,0,0]])
-		print(annot)
+		# print(annot)
 		return img_result,annot
 
 	def random_scale(self,img,annot):
@@ -92,9 +93,15 @@ class reader():
 		coords = []
 		for x,y,w,h in coord:
 			area = w*h
-			index = np.ceil(np.log2(area)/2. - 3)
+			index = np.round(np.log2(area)/2.)
+			# print(area)
 			index = int(np.clip(index, self.lower_bound, self.upper_bound))
-			grid_size = int(np.exp2(2,index))
+			assert isinstance(self.index_multiplier,int)
+			# round to 4x gap
+			# print(index)
+			index = (index - self.lower_bound )//self.index_multiplier
+			grid_size = int(np.exp2(self.index_multiplier*index+self.lower_bound))
+			# print(index,grid_size)
 			# x center and y center
 			xc = x-w/2
 			yc = y-h/2
@@ -107,25 +114,27 @@ class reader():
 		# key: indices, value: [conf,bias]
 		result_dict = {}
 		for i in range(len(indices)):
-			height = int(np.ceil(imgsize[0]/grid_size[i]))
-			width = int(np.ceil(imgsize[1]/grid_size[i]))
+			height = int(np.ceil(imgsize[0]/grid_sizes[i]))
+			width = int(np.ceil(imgsize[1]/grid_sizes[i]))
 			# if no key in dictionary, create empty conf and bias array
 			if not indices[i] in result_dict:
 				bias_empty = np.zeros([height,width,4],np.float32)
 				conf_empty = np.zeros([height,width,1],np.float32)
+				# print(imgsize,grid_sizes[i])
 				result_dict[indices[i]] = [conf_empty,bias_empty]
 			# get the column number and row number 
 			xc,yc,w,h = coords[i]
-			row_num = int(np.floor(xc/16.0))
-			col_num = int(np.floor(yc/16.0))
+			col_num = int(np.floor(xc/float(grid_sizes[i])))
+			row_num = int(np.floor(yc/float(grid_sizes[i])))
+			# print(height,width,row_num,col_num)
 			# comute the bias_x and bias_y
-			grid_center_x = col_num*16+8
-			grid_center_y = row_num*16+8
+			grid_center_x = col_num*grid_sizes[i]+grid_sizes[i]//2
+			grid_center_y = row_num*grid_sizes[i]+grid_sizes[i]//2
 			bias_x = xc - grid_center_x
 			bias_y = yc - grid_center_y
 			# update the bias matrix and conf matrix
-			conf_mtx = result_dict[indices[i]][1]
-			bias_mtx = result_dict[indices[i]][0]
+			conf_mtx = result_dict[indices[i]][0]
+			bias_mtx = result_dict[indices[i]][1]
 			conf_mtx[row_num][col_num][0] = 1.
 			bias_mtx[row_num][col_num][0] = bias_x
 			bias_mtx[row_num][col_num][1] = bias_y
@@ -136,7 +145,9 @@ class reader():
 	def get_img(self):
 		# return one single image
 		img,coord = random.sample(self.data,1)[0]
-		img,coord = random_scale(img,coord)
-		img,coord = random_crop(img,coord)
-		result_dict = get_mtx(img.shape,coord)
+		img,coord = self.random_scale(img,coord)
+		img,coord = self.random_crop(img,coord)
+		result_dict = self.get_mtx(img.shape,coord)
 		return img,result_dict
+
+# a = reader()
