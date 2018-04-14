@@ -72,7 +72,7 @@ class reader():
 		annot = annot * scale
 		img_result = cv2.resize(img,None,fx=scale,fy=scale)
 		return img_result,annot
-		 
+
 	def show_img(self,img,coord):
 		imgbuff = img.copy()
 		for x,y,w,h in coord:

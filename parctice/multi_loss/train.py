@@ -5,8 +5,8 @@ import model as M
 import tensorflow as tf 
 import cv2 
 
-reader = data_reader.reader(height=540,width=960,scale_range=[0.05,0.5],
-	lower_bound=3,upper_bound=5,index_multiplier=2)
+reader = data_reader.reader(height=270*2,width=480*2,scale_range=[0.05,1.2],
+	lower_bound=3,upper_bound=7,index_multiplier=2)
 
 def draw(img,c,b,multip,name):
 	c = c[0]
@@ -26,10 +26,28 @@ def draw(img,c,b,multip,name):
 	cv2.imshow(name,img)
 	cv2.waitKey(1)
 
-b0,b1,c0,c1 = netpart.model_out
-netout = [[b0,c0],[b1,c1]]
+def draw2(img,c,b,multip,name):
+	c = c[0]
+	b = b[0]
+	row,col,_ = b.shape
+	c = c.reshape([-1])
+	ind = c.argsort()[-5:][::-1]
+	for aaa in ind:
+		# print(aaa)
+		i = aaa//col
+		j = aaa%col 
+		x = int(b[i][j][0])+j*multip+multip//2
+		y = int(b[i][j][1])+i*multip+multip//2
+		w = int(b[i][j][2])
+		h = int(b[i][j][3])
+		cv2.rectangle(img,(x-w//2,y-h//2),(x+w//2,y+h//2),(0,255,0),2)
+	cv2.imshow(name,img)
+	cv2.waitKey(1)
 
-MAX_ITER = 100000
+b0,b1,b2,c0,c1,c2 = netpart.model_out
+netout = [[b0,c0],[b1,c1],[b2,c2]]
+
+MAX_ITER = 500000
 with tf.Session() as sess:
 	saver = tf.train.Saver()
 	M.loadSess('./model/',sess)
@@ -44,8 +62,14 @@ with tf.Session() as sess:
 		if i%10==0:
 			print('Iter:\t%d\tLoss:\t%.6f\n'%(i,ls))
 		if i%100==0:
-			multip = 8 if k==0 else 32
+			if k==0:
+				multip = 8
+			elif k==1:
+				multip = 32
+			else:
+				multip = 128
+			# multip = 8 if k==0 else 32
 			draw(img.copy(),[train_dic[k][0]],[train_dic[k][1]],multip,'lab')
-			draw(img.copy(),c,b,multip,'pred')
+			draw2(img.copy(),c,b,multip,'pred')
 		if i%2000==0 and i>0:
 			saver.save(sess,'./model/MSRPN_%d.ckpt'%i)
