@@ -6,6 +6,13 @@ import numpy as np
 import cv2
 import Functions as F
 
+KNOWN_DISTANCE = 2.0
+KNOWN_WIDTH = 40.0
+
+def distance_to_camera(knownWidth, focalLength, perWidth):
+	# compute and return the distance from the maker to the camera
+	return (knownWidth * focalLength) / perWidth
+
 def draw(img,b,c,c_veri,scale,name,wait=0):
 	img = img.copy()
 	row,col,_ = b.shape
@@ -181,7 +188,8 @@ def test_veri(imgholder,RPNcb,croppedholder,veri_conf):
 					nw = w2c
 					nh = h2c
 
-				print ('local','x:',nx,'y:',ny,'w:',nw,'h:',nh,'Veri_0_c:',c0c,'Veri_2_c:',c2c)
+				depth=distance_to_camera(KNOWN_DISTANCE,KNOWN_WIDTH,nw)
+				print ('local','x:',nx,'y:',ny,'w:',nw,'h:',nh,'d',depth,'Veri_0_c:',c0c,'Veri_2_c:',c2c)
 
 
 test_veri(RPNholders[0],RPNcb,veriholders[0],vericb[0])
