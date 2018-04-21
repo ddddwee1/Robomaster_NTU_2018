@@ -19,7 +19,7 @@ def draw(img,b,c,c_veri,scale,name,wait=0):
 	c = c.reshape([-1])
 	indices = c.argsort()[-5:][::-1]      #we get the indices of flattened array in descending order
 	for k in range(len(c_veri)):
-		if c_veri[k]==c_veri.max() and c_veri[k]>0:
+		if c_veri[k]==c_veri.max() and c_veri[k]>-3.0:
 			ind = indices[k]
 			i = int(np.floor(ind/(col)))
 			j = int(np.floor(ind%(col)))
@@ -109,13 +109,13 @@ def test_veri(imgholder,RPNcb,croppedholder,veri_conf):
 				#draw2(img1,c0[0],b0[0],4,name='RPN_0',wait=1)
 				#draw2(img2,c2[0],b2[0],1,name='RPN_2',wait=1)
 				x0,y0,w0,h0,c0 = draw(img3,b0[0],c0[0],c_veri0,4,name='VERI_0',wait=1)
-				cv2.rectangle(img3,(x0-w0,y0-h0),(x0+w0,y0+h0),(0,0,255),4)
+				cv2.rectangle(img3,(x0-w0,y0-h0),(x0+w0,y0+h0),(0,255,0),4)
 				img3 = cv2.resize(img3,(480,270))
 				cv2.imshow('VERI_0',img3)
 				cv2.waitKey(1)
 
 				x2,y2,w2,h2,c2 = draw(img4,b2[0],c2[0],c_veri2,1,name='VERI_2',wait=1)
-				cv2.rectangle(img4,(x2-w2,y2-h2),(x2+w2,y2+h2),(0,0,255),4)
+				cv2.rectangle(img4,(x2-w2,y2-h2),(x2+w2,y2+h2),(0,255,0),4)
 				img4 = cv2.resize(img4,(480,270))
 				cv2.imshow('VERI_2',img4)
 				cv2.waitKey(1)
@@ -159,7 +159,11 @@ def test_veri(imgholder,RPNcb,croppedholder,veri_conf):
 				x0 = x0c + nx -128
 				y0 = y0c + ny -128
 
-				cv2.rectangle(img3,(x0-w0c,y0-h0c),(x0+w0c,y0+h0c),(0,0,255),4)
+				if x0 < 0 or y0 < 0:
+					state = 0 
+					continue
+
+				cv2.rectangle(img3,(x0-w0c,y0-h0c),(x0+w0c,y0+h0c),(0,255,0),4)
 				img3 = cv2.resize(img3,(480,270))
 				cv2.imshow('VERI_0',img3)
 				cv2.waitKey(1)
@@ -171,7 +175,11 @@ def test_veri(imgholder,RPNcb,croppedholder,veri_conf):
 				x2 = x2c + nx -128
 				y2 = y2c + ny -128
 
-				cv2.rectangle(img4,(x2-w2c,y2-h2c),(x2+w2c,y2+h2c),(0,0,255),4)
+				if x2 < 0 or y2 < 0:
+					state = 0 
+					continue
+
+				cv2.rectangle(img4,(x2-w2c,y2-h2c),(x2+w2c,y2+h2c),(0,255,0),4)
 				img4 = cv2.resize(img4,(480,270))
 				cv2.imshow('VERI_2',img4)
 				cv2.waitKey(1)
