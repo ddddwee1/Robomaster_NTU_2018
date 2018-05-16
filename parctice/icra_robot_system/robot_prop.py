@@ -21,3 +21,6 @@ def get_current_pos():
 
 def get_order():
 	return v1,v2,lr,fw,rot,shoot
+
+def get_r2():
+	return r2h,r2w,r2rot

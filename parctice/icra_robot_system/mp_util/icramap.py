@@ -28,7 +28,10 @@ a_star.set_obstacle(obs_list)
 
 # do avoid obstacle by setting obstacle in map 
 def set_point_obst(p0):
-	a_star.set_obstacle(p0)
+	a_star.set_obstacle([p0])
+
+def remove_point_obst(p0):
+	a_star.remove_obstacle([p0])
 
 def get_next_point(p0,p1):
 	path = a_star.compute_path(p0,p1)
