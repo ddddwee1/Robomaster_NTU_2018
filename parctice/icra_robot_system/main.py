@@ -3,6 +3,7 @@ import data_retriver
 import detection_main 
 import motion_main 
 import control_test
+from mp_util import icramap
 
 data_reader = data_retriver.data_reader_thread()
 data_reader.start()
