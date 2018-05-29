@@ -1,0 +1,4 @@
+How to set up the board and play the board:
+1. Run InitializeDigitImages.py
+2. When the seven segment digit images is shown on the screen, press the number that correspond to the digit in the image
+3. Run PlayBoard.py

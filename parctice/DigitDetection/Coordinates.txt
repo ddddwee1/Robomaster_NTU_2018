@@ -1,0 +1,12 @@
+Left Top Coordinates of the digits [X|Y]:
+Seven Segment Digits:
+[290|20] [370|20] [450|20] [530|20] [610|20]
+
+Handwritten Digits:
+[152|160] [384|160] [616|160]
+[152|320] [384|320] [616|320]
+[152|480] [384|480] [616|480]
+
+Bounding Box Sizes [W x H]:
+Seven Segment Digits	: [60 x 100]
+Handwritten Digits	: [192 x 120]
