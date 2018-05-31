@@ -27,9 +27,9 @@ for i in range(x.shape[0]):
 	# Format the value into 8bit unsigned integer
 	buff = np.uint8(buff)
 	# Rescale the images' size
-	buff_scaled = cv2.resize(buff, (120,120), interpolation = cv2.INTER_LINEAR)
+	buff_scaled = cv2.resize(buff, None, fx=5, fy=5, interpolation = cv2.INTER_LINEAR)
 	# Add white border to the left and right of the handwritten digit image so that the image size will be 192 x 120
-	buff_bordered = cv2.copyMakeBorder(buff_scaled, 0, 0, 36, 36, cv2.BORDER_CONSTANT, value=WHITE)
+	buff_bordered = cv2.copyMakeBorder(buff_scaled, 10, 10, 70, 70, cv2.BORDER_CONSTANT, value=WHITE)
 	# Add the directory/folder if it does not exist
 	if not os.path.exists('./DigitImages/Handwritten_%d'%(y[i])):
 		os.makedirs('./DigitImages/Handwritten_%d'%(y[i]))
@@ -53,7 +53,7 @@ for cnt in contours:
 	x,y,w,h = cv2.boundingRect(cnt)
 	if w*h > 100:
 		img = imgBordered[y:y+h, x:x+w]
-		imgScaled = cv2.resize(img, (60,100), interpolation = cv2.INTER_LINEAR)
+		imgScaled = cv2.resize(img, (92,124), interpolation = cv2.INTER_LINEAR)
 		cv2.imshow('digit',imgScaled)
 		k = cv2.waitKey(0) & 0xFF
 		k -= 48
