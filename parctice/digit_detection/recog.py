@@ -52,7 +52,7 @@ def remove_overlap(rects):
 
 # main process 
 img = cv2.imread('b.jpg')
-img = cv2.resize(img,(1300,1300))b
+img = cv2.resize(img,(1300,1300))
 img_gray = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
 img = cv2.medianBlur(img,5)
 
