@@ -38,6 +38,17 @@ def updateSevenSegment(display):
     # Return the list at the end
     return list
 
+def updateFlaming(display):
+    list = random.sample(DIGIT_LIST, k=9)
+    # Put the digit image to the display image
+    for i in range(len(list)):
+        img = cv2.imread('./DigitImages/Flaming_Digits/%d.jpg'%(list[i]), cv2.IMREAD_COLOR)
+        coor = HANDWRITTEN_COORDINATES[i]
+        size = HANDWRITTEN_SIZE
+        display[coor[1]:coor[1]+size[1],coor[0]:coor[0]+size[0]] = img
+    # Return the list at the end
+    return list
+
 def updateHandwritten(display, sevensegmentList):
     list = random.sample(DIGIT_LIST, k=9)
     # Initialize a variable to store the digit and file index of the images
@@ -69,13 +80,13 @@ while not done:
 
     # Update handwritten digits
     if counter % framerate == 0:
-        handwrittenList = updateHandwritten(DisplayImage, sevensegmentList)
+        handwrittenList = updateFlaming(DisplayImage)
 
     # Update pygame display
     if counter % framerate == 0:
         surface = pygame.display.get_surface()
         surfaceImage = cv2.cvtColor(DisplayImage, cv2.COLOR_BGR2RGB)
-        surfaceImage = cv2.resize(surfaceImage, None, fx=0.8, fy=0.8, interpolation = cv2.INTER_LINEAR)
+        surfaceImage = cv2.resize(surfaceImage, None, fx=0.8, fy=0.8, interpolation = cv2.INTER_AREA)
         surfaceImage = np.transpose(surfaceImage, (1, 0, 2))
         #print(surfaceImage.shape)
         #print(surface.get_size())

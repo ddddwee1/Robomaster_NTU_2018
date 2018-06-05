@@ -27,9 +27,9 @@ for i in range(x.shape[0]):
 	# Format the value into 8bit unsigned integer
 	buff = np.uint8(buff)
 	# Rescale the images' size
-	buff_scaled = cv2.resize(buff, None, fx=5, fy=5, interpolation = cv2.INTER_LINEAR)
+	buff_scaled = cv2.resize(buff, (280,160), interpolation = cv2.INTER_CUBIC)
 	# Add white border to the left and right of the handwritten digit image so that the image size will be 192 x 120
-	buff_bordered = cv2.copyMakeBorder(buff_scaled, 10, 10, 70, 70, cv2.BORDER_CONSTANT, value=WHITE)
+	buff_bordered = cv2.copyMakeBorder(buff_scaled, 0, 0, 0, 0, cv2.BORDER_CONSTANT, value=WHITE)
 	# Add the directory/folder if it does not exist
 	if not os.path.exists('./DigitImages/Handwritten_%d'%(y[i])):
 		os.makedirs('./DigitImages/Handwritten_%d'%(y[i]))
@@ -59,3 +59,25 @@ for cnt in contours:
 		k -= 48
 		cv2.imwrite('./DigitImages/Seven_Segments/%d.jpg'%(k), imgScaled)
 		cv2.destroyAllWindows()
+
+if not os.path.exists('./DigitImages/Flaming_Digits'):
+	os.makedirs('./DigitImages/Flaming_Digits')
+
+for i in range(1,6):
+	img_ori = cv2.imread('FlamingDigit%d.jpg'%(i), cv2.IMREAD_COLOR)
+	imgGray = cv2.cvtColor(img_ori, cv2.COLOR_BGR2GRAY)
+	ret, thresh = cv2.threshold(imgGray, 240, 255, cv2.THRESH_BINARY_INV)
+	im2, contours, hierarchy = cv2.findContours(thresh,cv2.RETR_TREE,cv2.CHAIN_APPROX_SIMPLE)
+	print(hierarchy)
+	j = 0
+	for cnt in contours:
+		if hierarchy[0][j][3] == -1:
+			x,y,w,h = cv2.boundingRect(cnt)
+			img = img_ori[y:y+h, x:x+w]
+			imgScaled = cv2.resize(img, (280,160), interpolation = cv2.INTER_AREA)
+			cv2.imshow('digit',imgScaled)
+			k = cv2.waitKey(0) & 0xFF
+			k -= 48
+			cv2.imwrite('./DigitImages/Flaming_Digits/%d.jpg'%(k), imgScaled)
+			cv2.destroyAllWindows()
+		j += 1
