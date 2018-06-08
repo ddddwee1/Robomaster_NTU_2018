@@ -74,13 +74,3 @@ def normalize_uwb(w,h,ang):
 	ang = ang%40
 	#print 'ang after',ang
 	return (w+w_offset)*w_scale , (h+h_offset)*h_scale , ang
-
-def encode_whang(w,h,ang):
-	whang = np.int16([w,h,ang])
-	encoded = whang.tobytes()
-	return encoded
-
-def decode_whang(whang):
-	whang = np.frombuffer(whang,dtype=np.int16)
-	w,h,ang = whang[0],whang[1],whang[2]
-	return w,h,ang
