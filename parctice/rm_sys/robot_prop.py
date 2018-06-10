@@ -18,11 +18,6 @@ process = 0
 isbuff = 0
 winner = 0
 
-#motion planning
-dst = [25,40]
-dst_ang = 10
-is_enemy = False
-
 def get_order():
 	return v1,v2,fw,lr,rot,shoot
 
