@@ -1,6 +1,8 @@
-from dl_util import model as M 
+from net import model as M 
 from net import netpart, net_veri
 import tensorflow as tf 
+import numpy as np
+import cv2
 
 def get_img_coord(img,c,b,multip):
 	# get the coordinations by c and b
@@ -49,21 +51,24 @@ def filter_valid_coord(coords,veri_result,scrs):
 def get_iou(inp1,inp2):
 	x1,y1,w1,h1 = inp1[0],inp1[1],inp1[2],inp1[3]
 	x2,y2,w2,h2 = inp2[0],inp2[1],inp2[2],inp2[3]
+	#print y1,y2,h1,h2
 	xo = min(abs(x1+w1/2-x2+w2/2), abs(x1-w1/2-x2-w2/2))
 	yo = min(abs(y1+h1/2-y2+h2/2), abs(y1-h1/2-y2-h2/2))
 	if abs(x1-x2) > (w1+w2)/2 or abs(y1-y2) > (h1+h2)/2:
 		return 0
-	if abs(x1-x2) < abs(w1-w2):
+	if abs(x1-x2) <= abs(w1-w2):
 		xo = min(w1, w2)
-	if abs(y1-y2) < abs(h1-h2):
+	if abs(y1-y2) <= abs(h1-h2):
 		yo = min(h1, h2)
 	overlap = xo*yo
 	total = w1*h1+w2*h2-overlap
-	return overlap/total
+	#print 'ovlp',overlap
+	#print 'ttl',total
+	return float(overlap)/total
 
 def non_max_sup(coords,scr):
 	# recursively get the max score in open list and delete the overlapped areas which is more than threshold
-	non_max_thresh = 0.3
+	non_max_thresh = 0.05
 	open_coords = list(coords)
 	open_scr = list(scr)
 	result_coords = []
@@ -71,9 +76,13 @@ def non_max_sup(coords,scr):
 	while len(open_scr)>0:
 		max_ind = np.argmax(np.array(open_scr))
 		max_coord = open_coords[max_ind]
-		result_coords.append(open_coords[max_ind])
+		result_coords.append(max_coord)
+		del open_coords[max_ind]
+		del open_scr[max_ind]
+		#print len(open_scr)
 		for i in range(len(open_scr),0,-1):
 			iou = get_iou(open_coords[i-1],max_coord)
+			#print iou
 			if iou>non_max_thresh:
 				del open_coords[i-1]
 				del open_scr[i-1]
@@ -117,4 +126,5 @@ def get_coord_from_detection(img):
 	veri_output = veri_output[:,1]
 
 	valid_coord,veri_output = filter_valid_coord(coords,veri_classi,veri_output)
+	valid_coord = non_max_sup(valid_coord,veri_output)
 	return valid_coord

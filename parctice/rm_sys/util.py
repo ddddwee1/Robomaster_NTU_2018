@@ -2,6 +2,7 @@ import numpy as np
 from math import sqrt
 import cv2 
 
+# delete later
 def normalize_uwb(w,h,ang):
 	w = (w+5)/10.
 	h = (h+5)/10.
@@ -19,3 +20,17 @@ def normalize_uwb(w,h,ang):
 	ang = ang%40
 	#print 'ang after',ang
 	return (w+w_offset)*w_scale , (h+h_offset)*h_scale , ang
+
+
+def get_delta(coord):
+	if len(coord) == 0:
+		return 0,0
+	distance = [(x-240)**2+(y-320)**2 for x,y,w,h in coord]
+	min_index = np.argmax(-np.array(distance))
+	target_coord = coord[min_index]
+	x,y,w,h = target_coord
+
+	# do process on x,y,w,h
+	return int(float(x-320)*6000/230),int(float(y-240)*6000/240)
+
+

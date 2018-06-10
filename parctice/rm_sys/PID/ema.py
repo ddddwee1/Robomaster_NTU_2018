@@ -10,3 +10,7 @@ class EMA():
 		return self.value
 	def get_value(self):
 		return self.value
+
+if name=='__main__':
+	ema = EMA(0.8)
+	result = ema.update(input_data)
