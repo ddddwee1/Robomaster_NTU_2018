@@ -4,7 +4,7 @@ import time
 import control_test
 import util 
 
-def get_whang(pitch,yaw,fb,lr,rot,trigger):
+def get_data(pitch,yaw,fb,lr,rot,trigger):
 	w,h,ang,t_yaw,t_pitch,process,hp,isbuff,winner = control_test.read_uwb(pitch,yaw,fb,lr,rot,trigger)
 	w,h,ang = util.normalize_uwb(w,h,ang)
 	robot_prop.process = process
@@ -25,7 +25,7 @@ class data_reader_thread(threading.Thread):
 			time.sleep(0.05)
 			if not robot_prop.port_writing:
 				pitch,yaw,fb,lr,rot,trigger = robot_prop.get_order()
-				w,h,ang = get_whang(pitch,yaw,fb,lr,rot,trigger)
+				w,h,ang = get_data(pitch,yaw,fb,lr,rot,trigger)
 				robot_prop.ang = ang
 				#print 'retrieved angle',ang
 				if (h>49 or h<1) or (w>79 or w<1) or ang>40:
