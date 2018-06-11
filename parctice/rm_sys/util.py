@@ -31,6 +31,6 @@ def get_delta(coord):
 	x,y,w,h = target_coord
 
 	# do process on x,y,w,h
-	return int(float(x-320)*6000/230),int(float(y-240)*6000/240)
+	return int(float(y-240)*3000/240),int(float(x-320)*3000/320)
 
 
