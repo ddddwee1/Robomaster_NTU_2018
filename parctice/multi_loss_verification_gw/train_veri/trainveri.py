@@ -10,12 +10,14 @@ threshold = 0.7
 MAXITER = 1000000
 
 def get_img_coord(img,c,b,multip):
+	# get the coordinations by c and b
+	# multip is the gridsize.
 	res = []
 	c = c[0]
 	b = b[0]
 	row,col,_ = b.shape
 	c = c.reshape([-1])
-	ind = c.argsort()[-5:][::-1]
+	ind = c.argsort()[-3:][::-1]
 	for aaa in ind:
 		i = aaa//col
 		j = aaa%col 
@@ -23,11 +25,22 @@ def get_img_coord(img,c,b,multip):
 		y = int(b[i][j][1])+i*multip+multip//2
 		w = int(b[i][j][2])
 		h = int(b[i][j][3])
-		M = np.float32([[1,0,-(x-w//2)],[0,1,-(y-h//2)]])
-		cropped = cv2.warpAffine(img,M,(w,h))
+		M = np.float32([[1,0,-(x-int(w*1.5)//2)],[0,1,-(y-int(h*1.5)//2)]])
+		cropped = cv2.warpAffine(img,M,(int(w*1.5),int(h*1.5)))
 		cropped = cv2.resize(cropped,(32,32))
+		# append [cropped_image,[x,y,w,h]] to result list
 		res.append([cropped,[x,y,w,h]])
 	return res 
+
+def crop(img,bs,cs):
+	# triple scales
+	multi = [8,32,128]
+	res = []
+	for i in range(3):
+		# the elements in res are [cropped_imgs, coordinates]
+		buff = get_img_coord(img,cs[i],bs[i],multi[i])
+		res += buff
+	return res
 
 
 def get_iou(inp1,inp2):
@@ -58,26 +71,6 @@ def get_lb(p1,p2):
 	else:
 		return 0
 
-def crop(img,bs,cs,coord):
-	multi = [8,32,128]
-	res = []
-	lbs = []
-	crds = []
-	for i in range(3):
-		buff = get_img_coord(img,cs[i],bs[i],multi[i])
-		res += buff
-	for c in coord:
-		x,y,w,h = c
-		x,y,w,h = int(x),int(y),int(w),int(h)
-		crds.append([x-w//2,y-h//2,w,h])
-	for item in res:
-		cropped = item[0]
-		coord = item[1]
-		lb = get_lb(coord,crds)
-		lbs.append([cropped,lb])
-		# x,y,w,h = 
-		# cv2.rectangle(img,())
-	return lbs
 
 reader = datareader2.reader(scale_range=[0.8,1.2])
 b0,b1,b2,c0,c1,c2 = netpart.model_out
@@ -89,9 +82,9 @@ with tf.Session() as sess:
 		img,coord = reader.get_img()
 		buff_out = sess.run([b0,b1,b2,c0,c1,c2],feed_dict={netpart.inpholder:[img]})
 		bs,cs = buff_out[:3],buff_out[3:]
-		lbs = crop(img,bs,cs,coord)
-		train_imgs = [k[0] for k in lbs]
-		train_labs = [k[1] for k in lbs]
+		res = crop(img,bs,cs)
+		train_imgs = [k[0] for k in res]
+		train_labs = [k[1] for k in res]
 		# for item in lbs:
 		# 	cv2.imshow('ad',item[0])
 		# 	print(item[1])
