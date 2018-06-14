@@ -33,6 +33,8 @@ def getKey():
 
 settings = termios.tcgetattr(sys.stdin)
 termios.tcsetattr(sys.stdin, termios.TCSADRAIN, settings)
+pitch_bias = 900
+yaw_bias = 0
 
 while True:
 	key = getKey()
@@ -41,6 +43,7 @@ while True:
 	coord = detection_mod.get_coord_from_detection(img)
 	#print img.shape
 
+
 	if len(coord) == 0 and counter_shoot >=10:
 		robot_prop.shoot = 0
 		counter_shoot = 0
@@ -48,7 +51,7 @@ while True:
 	else:
 		if key == 'q' :
 			print 'a'
-			robot_prop.shoot = 1
+			robot_prop.shoot = 2
 			counter_shoot +=1
 			#print 'b' , counter
 
@@ -83,13 +86,29 @@ while True:
 	#print 'p_d', pitch_delta
 	#print 'y_d', yaw_delta
 
-	depth=util.distance_to_camera(KNOWN_DISTANCE,KNOWN_WIDTH,coord)
-	pitch_bias = 770 + (1.2**depth)*5
-	print pitch_bias
+	height=util.get_height(coord)
+
+	if key == '2' :
+		pitch_bias-=2
+
+	if key == '1' :
+		pitch_bias+=2
+
+	#print 'height' , height
+	#print 'pitch bias', pitch_bias
+
+	if key == '3' :
+		yaw_bias-=5
+
+	if key == '4' :
+		yaw_bias+=5
+
+	#print 'yaw bias', yaw_bias
 
 	v1 = t_pitch + pitch_delta *1.0 - pitch_bias
-	v2 = t_yaw + yaw_delta *1.4
+	v2 = t_yaw + yaw_delta *1.0
 
+	print yaw_delta ,t_yaw , v2
 	if abs(v1) >= 2000:
 		v1 = 2000
 
@@ -97,7 +116,7 @@ while True:
 		v2 = 6000
 
 	robot_prop.v1 = v1
-	robot_prop.v2 = v2
+	robot_prop.v2 = 15
 	t2=time.time()
 	t_e = t2-t1
 	#print t_e
