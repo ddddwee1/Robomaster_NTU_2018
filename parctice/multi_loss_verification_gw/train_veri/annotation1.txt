@@ -1,0 +1,2579 @@
+./data/set1_red/c0.png	899	513	151	71	
+./data/set1_red/c1.png	897	517	152	74	
+./data/set1_red/c10.png	982	580	153	70	
+./data/set1_red/c100.png	1179	550	116	76	
+./data/set1_red/c101.png	1155	546	115	76	
+./data/set1_red/c102.png	1130	520	110	79	
+./data/set1_red/c103.png	1116	512	108	83	
+./data/set1_red/c104.png	1079	495	112	77	
+./data/set1_red/c105.png	1020	440	118	68	
+./data/set1_red/c106.png	966	387	114	57	
+./data/set1_red/c107.png	942	352	107	51	
+./data/set1_red/c108.png	938	271	111	61	
+./data/set1_red/c109.png	975	255	109	73	
+./data/set1_red/c11.png	1029	621	154	70	
+./data/set1_red/c110.png	1015	236	117	89	
+./data/set1_red/c111.png	1191	373	126	89	
+./data/set1_red/c112.png	1203	415	116	63	
+./data/set1_red/c113.png	1229	467	115	52	
+./data/set1_red/c114.png	1206	495	110	48	
+./data/set1_red/c115.png	1160	433	110	57	
+./data/set1_red/c116.png	1115	371	108	52	
+./data/set1_red/c117.png	1077	336	106	55	
+./data/set1_red/c118.png	1057	316	102	55	
+./data/set1_red/c119.png	1055	286	98	52	
+./data/set1_red/c12.png	1024	605	159	71	
+./data/set1_red/c120.png	1072	268	101	56	
+./data/set1_red/c121.png	1100	276	100	54	
+./data/set1_red/c122.png	1109	270	102	54	
+./data/set1_red/c123.png	1116	285	95	53	
+./data/set1_red/c124.png	1107	322	96	53	
+./data/set1_red/c125.png	1101	348	96	55	
+./data/set1_red/c126.png	1114	358	94	51	
+./data/set1_red/c127.png	1159	341	97	51	
+./data/set1_red/c128.png	1149	377	98	53	
+./data/set1_red/c129.png	1123	371	93	55	
+./data/set1_red/c13.png	1005	579	147	65	
+./data/set1_red/c130.png	1134	387	91	54	
+./data/set1_red/c131.png	1150	429	89	55	
+./data/set1_red/c132.png	1136	460	87	53	
+./data/set1_red/c133.png	1116	468	89	49	
+./data/set1_red/c134.png	1140	487	91	55	
+./data/set1_red/c135.png	1079	462	86	52	
+./data/set1_red/c136.png	1056	443	84	55	
+./data/set1_red/c137.png	1043	424	77	48	
+./data/set1_red/c138.png	1042	402	83	48	
+./data/set1_red/c139.png	1058	409	80	48	
+./data/set1_red/c14.png	980	575	152	67	
+./data/set1_red/c140.png	1038	384	81	50	
+./data/set1_red/c141.png	980	366	79	48	
+./data/set1_red/c142.png	943	386	76	50	1079	383	41	63	
+./data/set1_red/c143.png	927	396	76	43	1063	389	45	39	
+./data/set1_red/c144.png	895	381	75	45	1026	380	37	55	
+./data/set1_red/c145.png	882	352	75	42	1014	347	39	45	
+./data/set1_red/c146.png	876	362	74	40	1007	356	38	41	
+./data/set1_red/c147.png	891	343	70	43	1026	339	40	41	
+./data/set1_red/c148.png	953	344	75	44	1086	338	38	41	
+./data/set1_red/c149.png	1020	340	74	48	1164	336	49	44	
+./data/set1_red/c15.png	950	559	149	68	
+./data/set1_red/c150.png	1070	352	72	48	1216	352	47	41	
+./data/set1_red/c151.png	1075	354	66	42	1226	360	43	43	
+./data/set1_red/c152.png	1084	380	70	51	1231	379	44	43	
+./data/set1_red/c153.png	1083	407	65	46	1232	412	47	43	
+./data/set1_red/c154.png	1097	425	66	44	1242	432	45	41	
+./data/set1_red/c155.png	1108	435	67	47	1251	438	47	39	
+./data/set1_red/c156.png	1117	432	67	44	1260	444	41	46	
+./data/set1_red/c157.png	1117	436	64	42	1267	443	46	45	
+./data/set1_red/c158.png	1111	456	65	46	1265	460	48	41	
+./data/set1_red/c159.png	1085	432	62	45	1247	437	54	37	
+./data/set1_red/c16.png	941	557	147	66	
+./data/set1_red/c160.png	1070	416	61	45	1237	421	58	37	
+./data/set1_red/c161.png	1026	396	62	49	1197	401	64	39	
+./data/set1_red/c162.png	942	382	68	50	1108	384	68	40	
+./data/set1_red/c163.png	856	378	67	46	1023	382	67	37	
+./data/set1_red/c164.png	759	392	65	47	929	392	66	37	
+./data/set1_red/c165.png	691	394	70	48	865	395	69	40	
+./data/set1_red/c166.png	679	405	64	43	851	407	60	40	
+./data/set1_red/c167.png	717	400	61	47	887	405	61	41	
+./data/set1_red/c168.png	765	397	64	51	933	410	66	42	
+./data/set1_red/c169.png	797	379	61	49	969	394	68	37	
+./data/set1_red/c17.png	923	545	144	65	
+./data/set1_red/c170.png	839	353	56	48	1008	374	63	35	
+./data/set1_red/c171.png	857	328	55	50	1025	347	60	35	
+./data/set1_red/c172.png	858	286	56	46	1031	306	63	39	
+./data/set1_red/c173.png	869	275	54	47	1045	291	64	41	
+./data/set1_red/c174.png	905	249	54	45	1083	270	68	39	
+./data/set1_red/c175.png	927	252	47	50	1104	271	66	39	
+./data/set1_red/c176.png	918	274	49	46	1096	297	67	43	
+./data/set1_red/c177.png	911	372	41	52	1090	398	67	44	
+./data/set1_red/c178.png	857	395	44	50	1035	416	68	39	
+./data/set1_red/c179.png	824	399	45	49	998	431	66	42	
+./data/set1_red/c18.png	986	607	153	82	
+./data/set1_red/c180.png	806	367	41	52	978	403	71	43	
+./data/set1_red/c181.png	763	336	40	48	944	370	71	42	
+./data/set1_red/c182.png	742	290	45	47	927	299	72	39	
+./data/set1_red/c183.png	774	259	45	48	957	258	68	40	
+./data/set1_red/c184.png	796	282	45	45	980	278	74	50	
+./data/set1_red/c185.png	728	279	43	41	917	267	75	50	
+./data/set1_red/c186.png	757	283	45	45	945	293	79	50	
+./data/set1_red/c187.png	993	384	73	40	
+./data/set1_red/c188.png	1007	384	70	37	
+./data/set1_red/c189.png	1044	385	73	40	
+./data/set1_red/c19.png	1014	654	139	69	
+./data/set1_red/c190.png	1060	392	73	41	
+./data/set1_red/c191.png	1077	398	72	39	
+./data/set1_red/c192.png	1067	387	76	40	
+./data/set1_red/c193.png	1043	390	74	43	
+./data/set1_red/c194.png	1011	390	75	38	
+./data/set1_red/c195.png	957	349	73	39	
+./data/set1_red/c196.png	923	330	70	41	
+./data/set1_red/c197.png	931	344	73	39	
+./data/set1_red/c198.png	939	365	71	35	
+./data/set1_red/c199.png	933	365	71	37	
+./data/set1_red/c2.png	911	518	157	70	
+./data/set1_red/c20.png	998	613	142	69	
+./data/set1_red/c200.png	941	344	71	40	
+./data/set1_red/c201.png	969	334	72	34	
+./data/set1_red/c202.png	1003	309	71	33	
+./data/set1_red/c203.png	1030	291	74	37	
+./data/set1_red/c204.png	1060	266	73	35	
+./data/set1_red/c205.png	1056	272	73	35	
+./data/set1_red/c206.png	1037	279	71	33	
+./data/set1_red/c207.png	1018	289	71	35	
+./data/set1_red/c208.png	999	294	70	32	
+./data/set1_red/c209.png	988	307	71	36	
+./data/set1_red/c21.png	997	577	134	64	
+./data/set1_red/c210.png	960	345	71	35	
+./data/set1_red/c211.png	931	344	70	35	
+./data/set1_red/c212.png	923	316	66	34	
+./data/set1_red/c213.png	919	346	64	33	
+./data/set1_red/c214.png	867	368	73	35	
+./data/set1_red/c215.png	810	357	67	37	
+./data/set1_red/c216.png	765	371	70	30	
+./data/set1_red/c217.png	796	362	71	35	
+./data/set1_red/c218.png	840	362	64	34	
+./data/set1_red/c219.png	911	350	69	32	
+./data/set1_red/c22.png	989	578	138	63	
+./data/set1_red/c220.png	975	344	73	32	
+./data/set1_red/c221.png	974	277	60	35	
+./data/set1_red/c222.png	963	262	61	34	
+./data/set1_red/c223.png	946	291	64	31	
+./data/set1_red/c224.png	941	336	63	33	
+./data/set1_red/c225.png	957	347	60	33	
+./data/set1_red/c226.png	981	343	64	33	
+./data/set1_red/c227.png	996	356	61	28	
+./data/set1_red/c228.png	1007	376	59	30	
+./data/set1_red/c229.png	1123	402	68	31	
+./data/set1_red/c23.png	956	545	144	67	
+./data/set1_red/c230.png	1153	358	61	37	
+./data/set1_red/c231.png	1102	333	61	29	
+./data/set1_red/c232.png	1054	342	64	27	
+./data/set1_red/c233.png	1008	336	60	27	
+./data/set1_red/c234.png	980	338	60	26	
+./data/set1_red/c235.png	946	363	57	26	
+./data/set1_red/c236.png	919	388	56	26	
+./data/set1_red/c237.png	913	406	55	30	
+./data/set1_red/c238.png	899	398	57	26	
+./data/set1_red/c239.png	892	377	53	31	
+./data/set1_red/c24.png	926	478	138	69	
+./data/set1_red/c240.png	932	333	52	27	
+./data/set1_red/c241.png	965	305	54	27	
+./data/set1_red/c242.png	974	320	56	28	
+./data/set1_red/c243.png	989	298	54	27	
+./data/set1_red/c244.png	1012	288	55	28	
+./data/set1_red/c245.png	1020	288	53	27	
+./data/set1_red/c246.png	1013	280	56	27	
+./data/set1_red/c247.png	1001	273	51	27	
+./data/set1_red/c248.png	970	273	54	25	
+./data/set1_red/c249.png	947	276	54	24	
+./data/set1_red/c25.png	918	443	140	69	
+./data/set1_red/c250.png	917	298	52	28	
+./data/set1_red/c251.png	861	336	56	23	
+./data/set1_red/c252.png	814	354	53	27	
+./data/set1_red/c253.png	775	346	53	23	
+./data/set1_red/c254.png	756	337	53	24	
+./data/set1_red/c255.png	752	331	51	25	
+./data/set1_red/c256.png	763	326	53	25	
+./data/set1_red/c257.png	775	319	52	23	
+./data/set1_red/c258.png	792	325	51	27	
+./data/set1_red/c259.png	820	314	53	23	
+./data/set1_red/c26.png	919	414	142	68	
+./data/set1_red/c260.png	852	306	51	23	
+./data/set1_red/c261.png	857	300	54	26	
+./data/set1_red/c262.png	862	306	52	25	
+./data/set1_red/c263.png	871	316	50	22	
+./data/set1_red/c264.png	884	320	49	24	
+./data/set1_red/c265.png	904	326	49	25	
+./data/set1_red/c266.png	917	318	47	22	
+./data/set1_red/c267.png	915	306	49	21	
+./data/set1_red/c268.png	895	305	51	24	
+./data/set1_red/c269.png	861	273	53	26	
+./data/set1_red/c27.png	921	385	143	70	
+./data/set1_red/c270.png	819	258	53	26	
+./data/set1_red/c271.png	775	260	52	25	
+./data/set1_red/c272.png	744	282	49	23	
+./data/set1_red/c273.png	734	289	50	22	
+./data/set1_red/c274.png	747	296	50	25	
+./data/set1_red/c275.png	761	303	48	24	
+./data/set1_red/c276.png	788	296	49	22	
+./data/set1_red/c277.png	812	302	48	26	
+./data/set1_red/c278.png	803	313	48	23	
+./data/set1_red/c279.png	781	321	48	25	
+./data/set1_red/c28.png	914	368	140	71	
+./data/set1_red/c280.png	770	312	50	23	
+./data/set1_red/c281.png	766	316	51	25	
+./data/set1_red/c282.png	775	322	49	26	
+./data/set1_red/c283.png	792	317	48	21	
+./data/set1_red/c284.png	809	331	48	24	
+./data/set1_red/c285.png	831	338	48	22	
+./data/set1_red/c286.png	860	349	45	21	
+./data/set1_red/c287.png	898	360	47	22	
+./data/set1_red/c288.png	895	362	46	23	
+./data/set1_red/c289.png	854	353	46	20	
+./data/set1_red/c29.png	906	404	142	73	
+./data/set1_red/c290.png	802	363	51	27	
+./data/set1_red/c291.png	749	377	48	30	
+./data/set1_red/c292.png	697	402	48	28	
+./data/set1_red/c293.png	675	403	45	27	
+./data/set1_red/c294.png	681	382	46	24	
+./data/set1_red/c295.png	683	378	46	24	
+./data/set1_red/c296.png	693	375	43	24	
+./data/set1_red/c297.png	736	362	51	24	
+./data/set1_red/c298.png	786	346	49	23	
+./data/set1_red/c299.png	824	324	41	20	
+./data/set1_red/c3.png	908	525	154	73	
+./data/set1_red/c30.png	901	418	142	74	
+./data/set1_red/c300.png	838	292	42	22	
+./data/set1_red/c301.png	852	274	41	22	
+./data/set1_red/c302.png	875	282	43	19	
+./data/set1_red/c303.png	888	269	43	20	
+./data/set1_red/c304.png	897	258	46	23	
+./data/set1_red/c305.png	900	269	41	21	
+./data/set1_red/c306.png	911	284	44	20	
+./data/set1_red/c307.png	906	275	40	24	
+./data/set1_red/c308.png	919	269	41	20	
+./data/set1_red/c309.png	920	270	44	24	
+./data/set1_red/c31.png	895	459	141	75	
+./data/set1_red/c310.png	902	266	41	21	
+./data/set1_red/c311.png	901	268	40	24	
+./data/set1_red/c312.png	898	268	41	19	
+./data/set1_red/c313.png	891	276	42	21	
+./data/set1_red/c314.png	877	267	44	18	
+./data/set1_red/c315.png	868	267	41	21	
+./data/set1_red/c316.png	863	275	44	19	
+./data/set1_red/c317.png	885	296	42	20	
+./data/set1_red/c318.png	910	320	42	22	
+./data/set1_red/c319.png	930	326	41	21	
+./data/set1_red/c32.png	890	491	149	71	
+./data/set1_red/c320.png	931	310	40	20	
+./data/set1_red/c321.png	949	302	40	19	
+./data/set1_red/c322.png	961	287	41	19	
+./data/set1_red/c323.png	958	284	40	20	
+./data/set1_red/c324.png	951	283	40	19	
+./data/set1_red/c325.png	945	291	42	18	
+./data/set1_red/c326.png	944	306	40	23	
+./data/set1_red/c327.png	932	323	38	19	
+./data/set1_red/c328.png	913	322	40	20	
+./data/set1_red/c329.png	893	294	41	21	
+./data/set1_red/c33.png	887	506	142	70	
+./data/set1_red/c330.png	876	272	41	20	
+./data/set1_red/c331.png	851	268	40	20	
+./data/set1_red/c332.png	839	277	41	20	
+./data/set1_red/c333.png	842	271	43	21	
+./data/set1_red/c334.png	866	260	39	18	
+./data/set1_red/c335.png	880	263	39	21	
+./data/set1_red/c336.png	889	268	40	22	
+./data/set1_red/c337.png	891	275	41	19	
+./data/set1_red/c338.png	884	280	39	20	
+./data/set1_red/c339.png	877	292	38	21	
+./data/set1_red/c34.png	900	521	149	69	
+./data/set1_red/c340.png	864	293	41	19	
+./data/set1_red/c341.png	845	271	41	21	
+./data/set1_red/c342.png	821	238	41	18	
+./data/set1_red/c343.png	814	227	39	21	
+./data/set1_red/c344.png	829	234	40	21	
+./data/set1_red/c345.png	846	243	39	19	
+./data/set1_red/c346.png	863	256	39	18	
+./data/set1_red/c347.png	893	268	40	17	
+./data/set1_red/c348.png	923	279	37	22	
+./data/set1_red/c349.png	945	268	38	18	
+./data/set1_red/c35.png	907	528	144	68	
+./data/set1_red/c350.png	970	252	39	20	
+./data/set1_red/c351.png	976	228	38	22	
+./data/set1_red/c352.png	967	201	36	19	
+./data/set1_red/c353.png	939	192	39	19	
+./data/set1_red/c354.png	883	228	41	19	
+./data/set1_red/c355.png	841	258	37	20	
+./data/set1_red/c356.png	806	265	38	20	
+./data/set1_red/c357.png	767	259	40	20	
+./data/set1_red/c358.png	745	242	38	20	
+./data/set1_red/c359.png	753	232	38	20	
+./data/set1_red/c36.png	892	539	143	67	
+./data/set1_red/c360.png	763	249	38	20	
+./data/set1_red/c361.png	772	245	37	19	
+./data/set1_red/c362.png	784	248	40	22	
+./data/set1_red/c363.png	783	252	38	20	
+./data/set1_red/c364.png	776	249	39	22	
+./data/set1_red/c365.png	783	260	39	22	
+./data/set1_red/c366.png	786	262	37	18	
+./data/set1_red/c367.png	792	264	37	20	
+./data/set1_red/c368.png	792	266	37	18	
+./data/set1_red/c369.png	794	267	36	19	
+./data/set1_red/c37.png	857	507	146	68	
+./data/set1_red/c370.png	803	268	38	20	
+./data/set1_red/c371.png	801	275	38	19	
+./data/set1_red/c372.png	811	286	37	16	
+./data/set1_red/c373.png	827	285	37	18	
+./data/set1_red/c374.png	839	283	36	19	
+./data/set1_red/c375.png	842	276	38	17	
+./data/set1_red/c376.png	839	280	36	17	
+./data/set1_red/c377.png	831	283	36	18	
+./data/set1_red/c378.png	822	287	37	19	
+./data/set1_red/c379.png	816	284	34	17	
+./data/set1_red/c38.png	835	470	147	69	
+./data/set1_red/c380.png	814	287	35	17	
+./data/set1_red/c381.png	803	285	37	18	
+./data/set1_red/c382.png	801	278	35	17	
+./data/set1_red/c383.png	815	276	37	18	
+./data/set1_red/c384.png	821	277	36	19	
+./data/set1_red/c385.png	836	270	34	21	
+./data/set1_red/c386.png	854	272	35	18	
+./data/set1_red/c387.png	864	283	35	19	
+./data/set1_red/c388.png	865	281	36	17	
+./data/set1_red/c389.png	863	283	35	16	
+./data/set1_red/c39.png	860	441	148	72	
+./data/set1_red/c390.png	855	283	35	18	
+./data/set1_red/c391.png	852	275	33	18	
+./data/set1_red/c392.png	873	268	34	16	
+./data/set1_red/c393.png	904	265	35	19	
+./data/set1_red/c394.png	925	264	35	17	
+./data/set1_red/c395.png	937	266	34	20	
+./data/set1_red/c396.png	950	269	31	17	
+./data/set1_red/c397.png	978	293	36	18	
+./data/set1_red/c398.png	1007	296	33	18	
+./data/set1_red/c399.png	1015	302	34	18	
+./data/set1_red/c4.png	904	536	152	69	
+./data/set1_red/c40.png	892	446	141	70	
+./data/set1_red/c400.png	993	305	33	21	
+./data/set1_red/c401.png	958	306	34	17	
+./data/set1_red/c402.png	929	310	37	16	
+./data/set1_red/c403.png	909	312	36	17	
+./data/set1_red/c404.png	889	310	35	17	
+./data/set1_red/c405.png	870	308	35	16	
+./data/set1_red/c406.png	851	310	34	17	
+./data/set1_red/c407.png	839	316	34	16	
+./data/set1_red/c408.png	829	312	34	17	
+./data/set1_red/c409.png	828	282	34	18	
+./data/set1_red/c41.png	959	457	142	80	
+./data/set1_red/c410.png	834	243	33	17	
+./data/set1_red/c411.png	857	206	34	17	
+./data/set1_red/c412.png	897	195	34	15	
+./data/set1_red/c413.png	912	188	32	16	
+./data/set1_red/c414.png	929	201	36	16	
+./data/set1_red/c415.png	941	222	35	15	
+./data/set1_red/c416.png	946	233	33	18	
+./data/set1_red/c417.png	950	243	35	18	
+./data/set1_red/c418.png	957	257	33	18	
+./data/set1_red/c419.png	963	280	34	18	
+./data/set1_red/c42.png	1038	498	130	80	
+./data/set1_red/c420.png	951	282	37	17	
+./data/set1_red/c421.png	945	285	34	17	
+./data/set1_red/c422.png	944	286	36	18	
+./data/set1_red/c423.png	949	280	33	19	
+./data/set1_red/c424.png	953	279	34	16	
+./data/set1_red/c425.png	949	266	31	16	
+./data/set1_red/c426.png	946	251	35	21	
+./data/set1_red/c427.png	931	201	36	22	
+./data/set1_red/c428.png	925	178	31	21	
+./data/set1_red/c429.png	919	131	37	22	
+./data/set1_red/c43.png	1050	503	126	83	
+./data/set1_red/c430.png	911	121	34	19	
+./data/set1_red/c431.png	904	136	32	22	
+./data/set1_red/c432.png	894	176	33	22	
+./data/set1_red/c433.png	869	210	36	22	
+./data/set1_red/c434.png	840	245	33	21	
+./data/set1_red/c435.png	822	253	32	21	
+./data/set1_red/c436.png	827	245	33	20	
+./data/set1_red/c437.png	847	252	32	20	
+./data/set1_red/c438.png	874	256	29	16	
+./data/set1_red/c439.png	883	246	29	20	
+./data/set1_red/c44.png	1034	510	127	77	
+./data/set1_red/c440.png	899	248	31	20	
+./data/set1_red/c441.png	917	243	32	17	
+./data/set1_red/c442.png	927	242	32	18	
+./data/set1_red/c443.png	920	240	32	16	
+./data/set1_red/c444.png	897	254	30	17	
+./data/set1_red/c445.png	866	265	33	20	
+./data/set1_red/c446.png	837	269	32	19	
+./data/set1_red/c447.png	789	266	32	18	
+./data/set1_red/c448.png	758	267	32	18	
+./data/set1_red/c449.png	764	275	31	18	
+./data/set1_red/c45.png	1001	495	124	71	
+./data/set1_red/c450.png	785	289	32	18	
+./data/set1_red/c451.png	793	285	33	20	
+./data/set1_red/c452.png	799	276	32	18	
+./data/set1_red/c453.png	800	264	32	17	
+./data/set1_red/c454.png	812	257	30	19	
+./data/set1_red/c455.png	825	240	32	18	
+./data/set1_red/c456.png	827	224	30	18	
+./data/set1_red/c457.png	840	214	28	18	
+./data/set1_red/c458.png	866	200	30	17	
+./data/set1_red/c459.png	872	182	29	20	
+./data/set1_red/c46.png	1025	479	128	75	
+./data/set1_red/c460.png	841	174	32	21	
+./data/set1_red/c461.png	829	183	32	16	
+./data/set1_red/c462.png	820	182	30	18	
+./data/set1_red/c463.png	808	195	27	21	
+./data/set1_red/c464.png	817	216	30	16	
+./data/set1_red/c465.png	811	225	29	19	
+./data/set1_red/c466.png	783	221	29	16	
+./data/set1_red/c467.png	774	227	27	18	
+./data/set1_red/c468.png	767	221	30	18	
+./data/set1_red/c469.png	762	218	31	20	
+./data/set1_red/c47.png	1044	471	120	75	
+./data/set1_red/c470.png	787	233	28	19	
+./data/set1_red/c471.png	800	222	34	20	
+./data/set1_red/c472.png	812	221	29	16	
+./data/set1_red/c473.png	837	224	31	16	
+./data/set1_red/c474.png	855	214	29	19	
+./data/set1_red/c475.png	838	202	30	17	
+./data/set1_red/c476.png	788	220	30	16	
+./data/set1_red/c477.png	745	232	31	16	
+./data/set1_red/c478.png	718	236	31	15	
+./data/set1_red/c479.png	703	244	29	17	
+./data/set1_red/c48.png	1067	488	126	81	
+./data/set1_red/c480.png	684	242	27	16	
+./data/set1_red/c481.png	665	242	28	16	
+./data/set1_red/c482.png	656	236	30	17	
+./data/set1_red/c483.png	658	229	27	17	
+./data/set1_red/c484.png	671	220	32	16	
+./data/set1_red/c485.png	689	213	30	15	
+./data/set1_red/c486.png	703	210	29	19	
+./data/set1_red/c487.png	709	196	27	17	
+./data/set1_red/c488.png	717	180	29	16	
+./data/set1_red/c489.png	732	166	30	16	
+./data/set1_red/c49.png	1102	500	121	87	
+./data/set1_red/c490.png	741	168	30	17	
+./data/set1_red/c491.png	770	172	31	16	
+./data/set1_red/c492.png	780	184	29	12	
+./data/set1_red/c493.png	809	227	29	14	
+./data/set1_red/c494.png	820	214	28	11	
+./data/set1_red/c495.png	797	207	31	16	
+./data/set1_red/c496.png	765	192	27	15	
+./data/set1_red/c497.png	769	176	30	16	
+./data/set1_red/c498.png	758	164	31	18	
+./data/set1_red/c499.png	755	158	31	17	
+./data/set1_red/c5.png	907	560	152	64	
+./data/set1_red/c50.png	1120	528	119	89	
+./data/set1_red/c500.png	749	173	30	15	
+./data/set1_red/c501.png	739	180	33	18	
+./data/set1_red/c502.png	720	200	32	15	
+./data/set1_red/c503.png	732	200	33	17	
+./data/set1_red/c504.png	749	203	29	15	
+./data/set1_red/c505.png	759	187	34	21	
+./data/set1_red/c506.png	752	226	31	14	
+./data/set1_red/c507.png	750	210	32	17	
+./data/set1_red/c508.png	753	202	32	17	
+./data/set1_red/c509.png	723	224	30	16	
+./data/set1_red/c51.png	1087	552	118	90	
+./data/set1_red/c510.png	715	220	36	15	
+./data/set1_red/c511.png	707	239	34	16	
+./data/set1_red/c512.png	725	242	31	15	
+./data/set1_red/c513.png	752	210	31	16	
+./data/set1_red/c514.png	801	153	35	18	
+./data/set1_red/c515.png	851	159	32	19	
+./data/set1_red/c516.png	873	152	31	17	
+./data/set1_red/c517.png	864	176	32	17	
+./data/set1_red/c518.png	848	224	34	22	
+./data/set1_red/c519.png	822	248	31	16	
+./data/set1_red/c52.png	1072	541	109	92	
+./data/set1_red/c520.png	830	242	31	16	
+./data/set1_red/c521.png	861	234	39	20	
+./data/set1_red/c522.png	911	237	35	19	
+./data/set1_red/c523.png	949	270	38	21	
+./data/set1_red/c524.png	963	255	36	19	
+./data/set1_red/c525.png	960	256	36	19	
+./data/set1_red/c526.png	938	264	37	20	
+./data/set1_red/c527.png	921	320	36	19	
+./data/set1_red/c528.png	925	315	35	22	
+./data/set1_red/c529.png	923	310	34	24	
+./data/set1_red/c53.png	1046	538	110	89	
+./data/set1_red/c530.png	936	291	35	21	
+./data/set1_red/c531.png	954	295	39	25	
+./data/set1_red/c532.png	945	309	41	22	
+./data/set1_red/c533.png	1027	318	42	24	
+./data/set1_red/c534.png	1057	336	40	24	
+./data/set1_red/c535.png	1033	364	40	25	
+./data/set1_red/c536.png	1025	379	42	22	
+./data/set1_red/c537.png	1041	379	40	25	
+./data/set1_red/c538.png	1075	374	42	27	
+./data/set1_red/c539.png	1112	358	44	28	
+./data/set1_red/c54.png	988	543	108	83	
+./data/set1_red/c540.png	1127	362	44	25	
+./data/set1_red/c541.png	1116	355	45	25	
+./data/set1_red/c542.png	1103	360	51	27	
+./data/set1_red/c543.png	1080	414	49	29	
+./data/set1_red/c544.png	1088	466	44	29	
+./data/set1_red/c545.png	1096	460	48	32	
+./data/set1_red/c546.png	1075	392	54	35	
+./data/set1_red/c547.png	1037	316	56	32	
+./data/set1_red/c548.png	1012	272	57	32	
+./data/set1_red/c549.png	952	279	57	33	
+./data/set1_red/c55.png	963	524	109	75	1238	526	66	80	
+./data/set1_red/c550.png	933	247	58	37	
+./data/set1_red/c551.png	895	259	61	35	
+./data/set1_red/c552.png	867	260	59	31	
+./data/set1_red/c553.png	884	244	60	38	
+./data/set1_red/c554.png	936	252	63	33	
+./data/set1_red/c555.png	924	248	65	36	
+./data/set1_red/c556.png	902	242	65	38	
+./data/set1_red/c557.png	897	242	62	34	
+./data/set1_red/c558.png	852	374	63	34	
+./data/set1_red/c559.png	826	402	64	33	
+./data/set1_red/c56.png	925	533	106	77	
+./data/set1_red/c560.png	851	411	69	34	
+./data/set1_red/c561.png	912	392	68	34	
+./data/set1_red/c562.png	932	367	63	35	
+./data/set1_red/c563.png	933	341	69	37	
+./data/set1_red/c564.png	921	324	66	31	
+./data/set1_red/c565.png	880	266	63	36	
+./data/set1_red/c566.png	853	250	69	34	
+./data/set1_red/c567.png	838	256	65	38	
+./data/set1_red/c568.png	812	212	65	36	
+./data/set1_red/c569.png	800	201	69	35	
+./data/set1_red/c57.png	906	534	109	77	1167	527	59	77	
+./data/set1_red/c570.png	752	164	63	45	
+./data/set1_red/c571.png	766	153	67	46	
+./data/set1_red/c572.png	736	106	62	48	
+./data/set1_red/c573.png	712	98	66	51	
+./data/set1_red/c574.png	813	150	74	60	
+./data/set1_red/c575.png	899	194	69	41	
+./data/set1_red/c576.png	924	222	67	30	
+./data/set1_red/c577.png	956	248	65	31	
+./data/set1_red/c578.png	970	260	63	28	
+./data/set1_red/c579.png	979	270	64	32	
+./data/set1_red/c58.png	894	512	105	72	1156	505	65	74	
+./data/set1_red/c580.png	1000	276	63	37	
+./data/set1_red/c581.png	1007	271	64	35	
+./data/set1_red/c582.png	1012	272	64	34	
+./data/set1_red/c583.png	1045	278	64	34	
+./data/set1_red/c584.png	1047	280	62	37	
+./data/set1_red/c585.png	1033	282	66	36	
+./data/set1_red/c586.png	981	272	65	35	
+./data/set1_red/c587.png	900	239	64	28	
+./data/set1_red/c588.png	889	234	64	28	
+./data/set1_red/c589.png	876	234	65	31	
+./data/set1_red/c59.png	897	530	104	74	1154	523	59	73	
+./data/set1_red/c590.png	862	224	68	34	
+./data/set1_red/c591.png	886	223	69	35	
+./data/set1_red/c592.png	943	248	65	31	
+./data/set1_red/c593.png	946	254	65	34	
+./data/set1_red/c594.png	942	253	64	33	
+./data/set1_red/c595.png	923	238	72	34	
+./data/set1_red/c596.png	895	226	67	29	
+./data/set1_red/c597.png	867	216	68	29	
+./data/set1_red/c598.png	854	211	69	34	
+./data/set1_red/c599.png	844	210	66	31	
+./data/set1_red/c6.png	910	533	155	65	
+./data/set1_red/c60.png	880	496	103	76	1141	492	67	72	
+./data/set1_red/c600.png	856	211	66	31	
+./data/set1_red/c601.png	854	215	65	30	
+./data/set1_red/c602.png	885	220	69	28	
+./data/set1_red/c603.png	911	228	64	32	
+./data/set1_red/c604.png	910	231	67	34	
+./data/set1_red/c605.png	906	230	65	35	
+./data/set1_red/c606.png	895	227	68	32	
+./data/set1_red/c607.png	877	234	66	35	
+./data/set1_red/c608.png	846	257	67	34	
+./data/set1_red/c609.png	804	279	68	33	
+./data/set1_red/c61.png	881	487	99	74	1142	489	69	69	
+./data/set1_red/c610.png	769	276	76	32	
+./data/set1_red/c611.png	703	273	75	35	
+./data/set1_red/c612.png	676	309	79	32	
+./data/set1_red/c613.png	670	333	74	35	
+./data/set1_red/c614.png	703	346	75	34	
+./data/set1_red/c615.png	746	339	76	39	
+./data/set1_red/c616.png	834	330	76	36	
+./data/set1_red/c617.png	857	341	73	38	
+./data/set1_red/c618.png	835	335	71	38	
+./data/set1_red/c619.png	792	348	80	44	
+./data/set1_red/c62.png	900	479	99	83	
+./data/set1_red/c620.png	776	346	81	40	
+./data/set1_red/c621.png	751	402	81	45	
+./data/set1_red/c622.png	743	399	79	44	
+./data/set1_red/c623.png	751	402	79	44	
+./data/set1_red/c624.png	796	383	85	39	
+./data/set1_red/c625.png	843	377	86	41	
+./data/set1_red/c626.png	891	341	85	37	
+./data/set1_red/c627.png	894	331	89	41	
+./data/set1_red/c628.png	873	348	87	41	1021	318	31	48	
+./data/set1_red/c629.png	839	359	92	43	994	328	33	46	
+./data/set1_red/c63.png	939	517	95	79	1213	526	73	88	
+./data/set1_red/c630.png	808	366	93	50	969	334	27	57	
+./data/set1_red/c631.png	798	415	99	51	966	386	33	62	
+./data/set1_red/c632.png	797	467	92	43	971	435	33	54	
+./data/set1_red/c633.png	865	432	98	45	1051	403	45	59	
+./data/set1_red/c634.png	846	442	103	48	1042	402	44	61	
+./data/set1_red/c635.png	784	483	104	50	995	436	53	60	
+./data/set1_red/c636.png	731	497	104	57	951	445	50	65	
+./data/set1_red/c637.png	668	534	110	54	909	489	58	70	
+./data/set1_red/c638.png	633	499	112	56	896	465	65	74	
+./data/set1_red/c639.png	605	472	120	57	874	440	69	78	
+./data/set1_red/c64.png	947	492	97	85	1215	500	72	76	
+./data/set1_red/c640.png	631	457	111	64	917	425	71	87	
+./data/set1_red/c641.png	654	460	106	72	945	439	77	82	
+./data/set1_red/c642.png	674	459	104	77	985	444	90	97	
+./data/set1_red/c643.png	699	422	99	82	1026	410	111	99	
+./data/set1_red/c644.png	725	386	83	84	1059	385	113	101	
+./data/set1_red/c645.png	689	354	76	82	1029	356	119	100	
+./data/set1_red/c646.png	677	372	85	92	1028	371	132	108	
+./data/set1_red/c647.png	689	418	78	78	1031	417	122	106	
+./data/set1_red/c648.png	691	432	77	89	1029	435	112	103	
+./data/set1_red/c649.png	702	423	79	88	1041	433	121	102	
+./data/set1_red/c65.png	966	488	90	75	1257	504	96	84	
+./data/set1_red/c650.png	709	435	79	82	1043	448	118	118	
+./data/set1_red/c651.png	704	454	80	88	1032	457	126	107	
+./data/set1_red/c652.png	670	418	68	94	1000	420	125	104	
+./data/set1_red/c653.png	631	377	68	85	961	381	125	99	
+./data/set1_red/c654.png	609	360	66	79	929	366	126	94	
+./data/set1_red/c655.png	579	315	67	95	901	320	133	100	
+./data/set1_red/c656.png	571	319	58	81	890	334	125	108	
+./data/set1_red/c657.png	559	339	58	79	881	354	126	100	
+./data/set1_red/c658.png	553	356	62	80	879	374	131	102	
+./data/set1_red/c659.png	576	343	60	87	901	369	140	95	
+./data/set1_red/c66.png	975	474	81	73	1263	495	92	87	
+./data/set1_red/c660.png	645	382	52	79	969	420	151	92	
+./data/set1_red/c661.png	734	402	48	98	1043	445	144	104	
+./data/set1_red/c662.png	1125	522	147	120	
+./data/set1_red/c663.png	1107	556	155	80	
+./data/set1_red/c664.png	1087	540	146	90	
+./data/set1_red/c665.png	1074	538	143	82	
+./data/set1_red/c666.png	1037	540	139	77	
+./data/set1_red/c667.png	1049	532	144	77	
+./data/set1_red/c668.png	1090	547	134	71	
+./data/set1_red/c669.png	1062	536	133	60	
+./data/set1_red/c67.png	957	445	79	77	1239	459	100	76	
+./data/set1_red/c670.png	1058	499	141	55	
+./data/set1_red/c671.png	1035	500	140	66	
+./data/set1_red/c672.png	997	557	130	77	
+./data/set1_red/c673.png	973	562	131	66	
+./data/set1_red/c674.png	926	549	143	65	
+./data/set1_red/c675.png	872	512	129	68	
+./data/set1_red/c676.png	896	522	124	65	
+./data/set1_red/c677.png	911	544	122	61	
+./data/set1_red/c678.png	877	545	122	59	
+./data/set1_red/c679.png	899	535	123	59	
+./data/set1_red/c68.png	939	411	82	73	1211	435	91	82	
+./data/set1_red/c680.png	930	513	119	59	
+./data/set1_red/c681.png	943	515	121	65	
+./data/set1_red/c682.png	931	527	113	60	
+./data/set1_red/c683.png	923	532	112	58	
+./data/set1_red/c684.png	922	552	112	59	
+./data/set1_red/c685.png	929	569	108	57	
+./data/set1_red/c686.png	943	560	108	53	
+./data/set1_red/c687.png	964	547	103	51	
+./data/set1_red/c688.png	950	554	103	49	
+./data/set1_red/c689.png	940	544	105	47	
+./data/set1_red/c69.png	1003	439	88	86	1279	466	104	89	
+./data/set1_red/c690.png	951	537	102	50	
+./data/set1_red/c691.png	916	565	109	59	
+./data/set1_red/c692.png	944	568	103	50	
+./data/set1_red/c693.png	966	588	100	53	
+./data/set1_red/c694.png	962	582	102	51	
+./data/set1_red/c695.png	868	525	114	44	
+./data/set1_red/c696.png	853	508	101	40	
+./data/set1_red/c697.png	843	536	96	44	
+./data/set1_red/c698.png	841	550	92	46	
+./data/set1_red/c699.png	816	566	91	39	
+./data/set1_red/c7.png	893	546	147	64	
+./data/set1_red/c70.png	1027	451	76	78	1280	480	81	72	
+./data/set1_red/c700.png	811	534	92	32	
+./data/set1_red/c701.png	843	507	90	41	
+./data/set1_red/c702.png	887	516	86	36	
+./data/set1_red/c703.png	895	504	82	40	
+./data/set1_red/c704.png	886	453	80	40	
+./data/set1_red/c705.png	876	457	77	39	
+./data/set1_red/c706.png	866	456	74	36	
+./data/set1_red/c707.png	841	450	77	35	
+./data/set1_red/c708.png	816	466	75	38	
+./data/set1_red/c709.png	809	485	76	33	
+./data/set1_red/c71.png	1010	433	70	78	1289	469	106	73	
+./data/set1_red/c710.png	814	493	75	40	
+./data/set1_red/c711.png	806	508	75	40	
+./data/set1_red/c712.png	808	510	73	34	
+./data/set1_red/c713.png	823	500	76	33	
+./data/set1_red/c714.png	821	485	72	33	
+./data/set1_red/c715.png	815	474	73	33	
+./data/set1_red/c716.png	819	443	73	33	
+./data/set1_red/c717.png	816	386	72	39	
+./data/set1_red/c718.png	803	344	75	39	
+./data/set1_red/c719.png	860	279	75	34	
+./data/set1_red/c72.png	1008	424	65	86	1287	478	112	73	
+./data/set1_red/c720.png	865	252	73	33	
+./data/set1_red/c721.png	845	236	68	37	
+./data/set1_red/c722.png	838	239	71	34	
+./data/set1_red/c723.png	814	240	70	39	
+./data/set1_red/c724.png	794	244	70	36	
+./data/set1_red/c725.png	780	252	72	34	
+./data/set1_red/c726.png	777	266	71	32	
+./data/set1_red/c727.png	785	273	67	35	
+./data/set1_red/c728.png	775	278	72	34	
+./data/set1_red/c729.png	763	277	72	39	
+./data/set1_red/c73.png	1012	459	49	83	1284	515	99	63	
+./data/set1_red/c730.png	763	268	70	32	
+./data/set1_red/c731.png	751	270	74	37	
+./data/set1_red/c732.png	750	284	78	33	
+./data/set1_red/c733.png	743	300	79	31	
+./data/set1_red/c734.png	737	323	70	38	
+./data/set1_red/c735.png	724	365	75	35	
+./data/set1_red/c736.png	714	420	74	33	
+./data/set1_red/c737.png	731	421	73	29	
+./data/set1_red/c738.png	751	400	70	28	
+./data/set1_red/c739.png	759	371	69	29	
+./data/set1_red/c74.png	1009	451	46	71	1285	508	106	65	
+./data/set1_red/c740.png	746	363	72	27	
+./data/set1_red/c741.png	752	370	70	34	
+./data/set1_red/c742.png	773	414	70	28	
+./data/set1_red/c743.png	756	426	70	29	
+./data/set1_red/c744.png	728	410	69	29	
+./data/set1_red/c745.png	688	386	71	31	
+./data/set1_red/c746.png	655	379	78	30	
+./data/set1_red/c747.png	645	370	71	32	
+./data/set1_red/c748.png	678	369	71	29	
+./data/set1_red/c749.png	702	334	75	30	
+./data/set1_red/c75.png	999	465	50	74	1282	525	127	77	
+./data/set1_red/c750.png	758	314	75	32	
+./data/set1_red/c751.png	829	328	62	32	
+./data/set1_red/c752.png	835	332	68	34	
+./data/set1_red/c753.png	819	341	71	33	
+./data/set1_red/c754.png	799	353	65	31	
+./data/set1_red/c755.png	785	353	64	30	
+./data/set1_red/c756.png	773	339	66	32	
+./data/set1_red/c757.png	738	314	71	32	
+./data/set1_red/c758.png	697	311	71	32	
+./data/set1_red/c759.png	690	360	76	32	
+./data/set1_red/c76.png	969	480	45	74	1249	537	126	75	
+./data/set1_red/c760.png	665	359	74	36	
+./data/set1_red/c761.png	648	386	75	33	
+./data/set1_red/c762.png	646	395	80	31	
+./data/set1_red/c763.png	692	366	83	32	
+./data/set1_red/c764.png	747	386	76	38	
+./data/set1_red/c765.png	768	395	73	40	
+./data/set1_red/c766.png	760	390	73	33	
+./data/set1_red/c767.png	751	397	73	35	868	377	31	37	
+./data/set1_red/c768.png	731	411	79	38	847	394	30	41	
+./data/set1_red/c769.png	715	410	79	37	841	391	35	39	
+./data/set1_red/c77.png	942	486	49	67	1214	539	124	76	
+./data/set1_red/c770.png	713	419	81	36	841	398	39	42	
+./data/set1_red/c771.png	699	419	76	37	829	394	32	40	
+./data/set1_red/c772.png	698	423	79	39	831	395	38	40	
+./data/set1_red/c773.png	692	428	79	38	829	403	39	44	
+./data/set1_red/c774.png	711	415	79	40	851	384	40	45	
+./data/set1_red/c775.png	713	415	82	41	854	382	37	47	
+./data/set1_red/c776.png	697	372	84	42	842	335	43	50	
+./data/set1_red/c777.png	675	393	84	41	826	359	44	49	
+./data/set1_red/c778.png	693	394	87	40	847	368	45	51	
+./data/set1_red/c779.png	669	401	82	42	833	370	45	54	
+./data/set1_red/c78.png	950	475	45	64	1218	525	121	69	
+./data/set1_red/c780.png	663	370	82	50	841	343	52	50	
+./data/set1_red/c781.png	674	371	83	44	859	344	54	50	
+./data/set1_red/c782.png	674	371	87	53	867	346	62	55	
+./data/set1_red/c783.png	694	356	83	53	889	328	57	51	
+./data/set1_red/c784.png	722	363	86	51	920	334	66	53	
+./data/set1_red/c785.png	788	359	86	50	990	331	69	54	
+./data/set1_red/c786.png	831	353	83	48	1038	319	76	52	
+./data/set1_red/c787.png	894	347	85	51	1101	321	71	58	
+./data/set1_red/c788.png	914	371	74	54	1129	343	73	60	
+./data/set1_red/c789.png	889	373	71	52	1107	348	71	53	
+./data/set1_red/c79.png	1214	516	117	64	
+./data/set1_red/c790.png	848	359	64	60	1075	333	78	58	
+./data/set1_red/c791.png	811	365	69	56	1036	343	77	61	
+./data/set1_red/c792.png	775	387	65	50	1001	370	74	57	
+./data/set1_red/c793.png	749	391	64	58	978	377	78	55	
+./data/set1_red/c794.png	721	400	62	54	954	384	79	53	
+./data/set1_red/c795.png	700	432	59	57	934	415	73	52	
+./data/set1_red/c796.png	687	459	65	48	919	445	74	56	
+./data/set1_red/c797.png	686	464	65	51	922	447	75	56	
+./data/set1_red/c798.png	710	464	76	53	941	445	75	52	
+./data/set1_red/c799.png	701	489	76	55	937	474	77	63	
+./data/set1_red/c8.png	894	542	157	61	
+./data/set1_red/c80.png	1193	511	116	65	
+./data/set1_red/c800.png	701	545	72	63	943	524	72	68	
+./data/set1_red/c801.png	675	583	75	62	927	555	83	65	
+./data/set1_red/c802.png	675	574	68	55	937	546	82	69	
+./data/set1_red/c803.png	703	555	73	56	962	519	90	66	
+./data/set1_red/c804.png	735	511	66	64	1006	476	92	77	
+./data/set1_red/c805.png	719	374	77	66	1001	337	101	75	
+./data/set1_red/c806.png	725	349	76	66	1015	321	100	76	
+./data/set1_red/c807.png	717	408	74	83	1020	377	107	85	
+./data/set1_red/c808.png	643	452	79	72	966	422	107	82	
+./data/set1_red/c809.png	573	457	78	72	926	433	121	99	
+./data/set1_red/c81.png	1177	508	122	62	
+./data/set1_red/c810.png	545	564	86	103	907	539	117	114	
+./data/set1_red/c811.png	907	642	119	106	
+./data/set1_red/c812.png	918	688	135	72	
+./data/set1_red/c813.png		
+./data/set1_red/c814.png		
+./data/set1_red/c815.png		
+./data/set1_red/c816.png		
+./data/set1_red/c817.png		
+./data/set1_red/c818.png		
+./data/set1_red/c819.png		
+./data/set1_red/c82.png	1155	519	122	63	
+./data/set1_red/c820.png		
+./data/set1_red/c821.png		
+./data/set1_red/c822.png		
+./data/set1_red/c823.png		
+./data/set1_red/c824.png		
+./data/set1_red/c825.png		
+./data/set1_red/c826.png		
+./data/set1_red/c827.png		
+./data/set1_red/c828.png		
+./data/set1_red/c829.png		
+./data/set1_red/c83.png	1139	522	122	60	
+./data/set1_red/c830.png		
+./data/set1_red/c831.png		
+./data/set1_red/c832.png		
+./data/set1_red/c833.png		
+./data/set1_red/c834.png		
+./data/set1_red/c835.png		
+./data/set1_red/c836.png		
+./data/set1_red/c837.png		
+./data/set1_red/c838.png		
+./data/set1_red/c84.png	1145	502	124	63	
+./data/set1_red/c85.png	1171	469	119	65	
+./data/set1_red/c86.png	1168	442	120	60	
+./data/set1_red/c87.png	1159	438	121	57	
+./data/set1_red/c88.png	1163	434	120	60	
+./data/set1_red/c89.png	1186	444	117	58	
+./data/set1_red/c9.png	928	544	153	68	
+./data/set1_red/c90.png	1160	462	121	55	
+./data/set1_red/c91.png	1133	442	112	51	
+./data/set1_red/c92.png	1143	438	116	52	
+./data/set1_red/c93.png	1163	456	119	50	
+./data/set1_red/c94.png	1159	466	123	51	
+./data/set1_red/c95.png	1148	469	125	53	
+./data/set1_red/c96.png	1140	472	120	56	
+./data/set1_red/c97.png	1141	471	118	51	
+./data/set1_red/c98.png	1153	490	119	53	
+./data/set1_red/c99.png	1185	526	118	66	
+./data/set2_red/c0.png	715	527	116	70	
+./data/set2_red/c1.png	703	586	114	65	
+./data/set2_red/c10.png	797	348	105	56	
+./data/set2_red/c100.png	899	418	89	40	
+./data/set2_red/c101.png	910	400	91	40	
+./data/set2_red/c102.png	938	372	92	44	
+./data/set2_red/c103.png	950	375	95	47	
+./data/set2_red/c104.png	933	353	92	44	
+./data/set2_red/c105.png	937	344	92	42	
+./data/set2_red/c106.png	927	339	92	43	
+./data/set2_red/c107.png	908	348	91	41	
+./data/set2_red/c108.png	894	368	87	40	
+./data/set2_red/c109.png	897	377	93	44	
+./data/set2_red/c11.png	805	305	108	56	
+./data/set2_red/c110.png	884	406	93	42	
+./data/set2_red/c111.png	866	420	92	42	
+./data/set2_red/c112.png	873	423	90	41	
+./data/set2_red/c113.png	900	420	92	44	
+./data/set2_red/c114.png	922	432	89	43	
+./data/set2_red/c115.png	929	447	88	42	
+./data/set2_red/c116.png	915	442	85	45	
+./data/set2_red/c117.png	913	402	89	40	
+./data/set2_red/c118.png	909	401	86	41	
+./data/set2_red/c119.png	910	401	87	39	
+./data/set2_red/c12.png	811	296	107	61	
+./data/set2_red/c120.png	911	408	86	44	
+./data/set2_red/c121.png	908	427	85	43	
+./data/set2_red/c122.png	903	437	87	40	
+./data/set2_red/c123.png	913	430	87	41	
+./data/set2_red/c124.png	933	423	88	42	
+./data/set2_red/c125.png	946	424	88	42	
+./data/set2_red/c126.png	944	419	92	45	
+./data/set2_red/c127.png	927	424	90	42	
+./data/set2_red/c128.png	911	437	88	42	
+./data/set2_red/c129.png	903	462	86	42	
+./data/set2_red/c13.png	827	317	109	61	
+./data/set2_red/c130.png	902	460	85	40	
+./data/set2_red/c131.png	901	465	86	39	
+./data/set2_red/c132.png	897	468	82	39	
+./data/set2_red/c133.png	901	486	83	41	
+./data/set2_red/c134.png	911	468	82	39	
+./data/set2_red/c135.png	939	460	84	43	
+./data/set2_red/c136.png	952	452	82	43	
+./data/set2_red/c137.png	957	440	81	44	
+./data/set2_red/c138.png	963	446	82	44	
+./data/set2_red/c139.png	961	447	84	44	
+./data/set2_red/c14.png	837	346	104	61	
+./data/set2_red/c140.png	982	428	86	45	
+./data/set2_red/c141.png	981	426	82	45	
+./data/set2_red/c142.png	950	428	85	43	
+./data/set2_red/c143.png	935	440	82	44	
+./data/set2_red/c144.png	924	430	88	45	
+./data/set2_red/c145.png	918	402	84	42	
+./data/set2_red/c146.png	931	417	85	46	
+./data/set2_red/c147.png	929	402	81	44	
+./data/set2_red/c148.png	925	403	83	45	
+./data/set2_red/c149.png	922	419	84	45	
+./data/set2_red/c15.png	827	378	108	58	
+./data/set2_red/c150.png	901	425	86	45	
+./data/set2_red/c151.png	877	425	85	45	
+./data/set2_red/c152.png	853	436	84	43	
+./data/set2_red/c153.png	839	441	84	40	
+./data/set2_red/c154.png	836	439	86	41	
+./data/set2_red/c155.png	849	442	84	48	
+./data/set2_red/c156.png	866	437	81	41	
+./data/set2_red/c157.png	898	417	85	44	
+./data/set2_red/c158.png	947	416	79	44	
+./data/set2_red/c159.png	935	402	82	38	
+./data/set2_red/c16.png	807	388	110	58	
+./data/set2_red/c160.png	892	395	80	39	
+./data/set2_red/c161.png	844	395	78	39	
+./data/set2_red/c162.png	807	415	79	40	
+./data/set2_red/c163.png	789	431	79	37	
+./data/set2_red/c164.png	796	426	76	34	
+./data/set2_red/c165.png	809	379	78	35	
+./data/set2_red/c166.png	838	374	78	36	
+./data/set2_red/c167.png	850	380	75	35	
+./data/set2_red/c168.png	857	399	74	36	
+./data/set2_red/c169.png	852	416	73	36	
+./data/set2_red/c17.png	800	393	114	58	
+./data/set2_red/c170.png	844	429	79	35	
+./data/set2_red/c171.png	840	422	76	36	
+./data/set2_red/c172.png	825	468	76	38	
+./data/set2_red/c173.png	814	475	77	34	
+./data/set2_red/c174.png	793	490	74	31	
+./data/set2_red/c175.png	774	499	78	36	
+./data/set2_red/c176.png	765	487	74	30	
+./data/set2_red/c177.png	783	459	77	39	
+./data/set2_red/c178.png	806	442	75	38	
+./data/set2_red/c179.png	827	433	74	36	
+./data/set2_red/c18.png	778	398	113	61	
+./data/set2_red/c180.png	839	437	73	36	
+./data/set2_red/c181.png	811	450	76	34	
+./data/set2_red/c182.png	761	442	76	36	
+./data/set2_red/c183.png	745	420	79	37	
+./data/set2_red/c184.png	713	420	79	38	
+./data/set2_red/c185.png	687	416	77	35	
+./data/set2_red/c186.png	666	420	78	36	
+./data/set2_red/c187.png	652	424	78	36	
+./data/set2_red/c188.png	648	428	78	38	
+./data/set2_red/c189.png	668	415	81	38	
+./data/set2_red/c19.png	755	391	112	59	
+./data/set2_red/c190.png	704	404	78	34	
+./data/set2_red/c191.png	698	401	75	38	
+./data/set2_red/c192.png	697	415	82	37	
+./data/set2_red/c193.png	662	420	79	33	
+./data/set2_red/c194.png	667	416	82	35	
+./data/set2_red/c195.png	647	424	83	36	
+./data/set2_red/c196.png	633	438	81	37	
+./data/set2_red/c197.png	630	431	79	37	
+./data/set2_red/c198.png	644	430	81	34	
+./data/set2_red/c199.png	650	422	79	36	
+./data/set2_red/c2.png	763	578	108	58	
+./data/set2_red/c20.png	759	369	110	62	
+./data/set2_red/c200.png	665	417	82	35	
+./data/set2_red/c201.png	676	404	78	36	
+./data/set2_red/c202.png	696	380	78	37	
+./data/set2_red/c203.png	764	411	81	34	
+./data/set2_red/c204.png	842	419	83	40	
+./data/set2_red/c205.png	886	446	71	38	
+./data/set2_red/c206.png	870	446	73	36	
+./data/set2_red/c207.png	844	460	74	44	
+./data/set2_red/c208.png	805	438	74	42	
+./data/set2_red/c209.png	774	443	76	45	
+./data/set2_red/c21.png	801	378	106	62	
+./data/set2_red/c210.png	741	440	76	45	
+./data/set2_red/c211.png	731	432	76	39	
+./data/set2_red/c212.png	720	425	75	39	
+./data/set2_red/c213.png	730	404	74	37	
+./data/set2_red/c214.png	757	383	75	38	
+./data/set2_red/c215.png	757	366	75	34	
+./data/set2_red/c216.png	760	375	78	33	
+./data/set2_red/c217.png	830	378	74	33	
+./data/set2_red/c218.png	807	372	74	37	
+./data/set2_red/c219.png	786	364	74	34	
+./data/set2_red/c22.png	817	367	109	71	
+./data/set2_red/c220.png	796	348	74	38	
+./data/set2_red/c221.png	768	347	77	37	
+./data/set2_red/c222.png	726	363	84	37	
+./data/set2_red/c223.png	647	370	83	39	
+./data/set2_red/c224.png	628	375	85	38	
+./data/set2_red/c225.png	683	378	78	34	
+./data/set2_red/c226.png	735	378	79	38	
+./data/set2_red/c227.png	774	388	75	35	
+./data/set2_red/c228.png	840	408	70	34	
+./data/set2_red/c229.png	863	430	69	41	
+./data/set2_red/c23.png	824	391	99	67	
+./data/set2_red/c230.png	846	437	71	39	
+./data/set2_red/c231.png	816	433	76	45	
+./data/set2_red/c232.png	829	438	72	42	
+./data/set2_red/c233.png	840	457	68	41	954	450	29	42	
+./data/set2_red/c234.png	865	497	76	47	
+./data/set2_red/c235.png	931	497	67	44	
+./data/set2_red/c236.png	947	450	70	44	1065	448	34	42	
+./data/set2_red/c237.png	922	425	68	40	1045	419	40	41	
+./data/set2_red/c238.png	896	376	68	40	1018	367	33	39	
+./data/set2_red/c239.png	877	324	70	38	1005	316	38	37	
+./data/set2_red/c24.png	829	435	105	66	1021	431	37	50	
+./data/set2_red/c240.png	867	327	69	41	996	318	38	48	
+./data/set2_red/c241.png	849	347	68	40	979	338	38	48	
+./data/set2_red/c242.png	843	350	68	37	975	338	40	45	
+./data/set2_red/c243.png	842	352	69	41	974	340	39	37	
+./data/set2_red/c244.png	834	387	68	39	971	377	44	39	
+./data/set2_red/c245.png	806	399	71	37	939	391	41	45	
+./data/set2_red/c246.png	767	413	73	41	908	406	45	46	
+./data/set2_red/c247.png	695	430	68	41	842	419	43	41	
+./data/set2_red/c248.png	692	410	68	42	848	401	49	39	
+./data/set2_red/c249.png	707	389	74	40	868	382	54	43	
+./data/set2_red/c25.png	866	503	104	71	
+./data/set2_red/c250.png	770	386	70	44	929	379	53	40	
+./data/set2_red/c251.png	778	383	74	43	934	379	53	48	
+./data/set2_red/c252.png	825	382	73	44	983	373	56	39	
+./data/set2_red/c253.png	879	398	73	42	1037	391	54	43	
+./data/set2_red/c254.png	938	415	75	43	1099	409	59	42	
+./data/set2_red/c255.png	973	421	72	45	1137	416	62	42	
+./data/set2_red/c256.png	1005	412	72	42	1171	410	58	44	
+./data/set2_red/c257.png	1024	404	68	44	1195	400	60	44	
+./data/set2_red/c258.png	1034	389	69	44	1202	388	57	49	
+./data/set2_red/c259.png	1012	411	72	43	1180	408	58	46	
+./data/set2_red/c26.png	916	554	98	59	
+./data/set2_red/c260.png	1001	418	67	48	1179	416	59	50	
+./data/set2_red/c261.png	1015	435	68	52	1191	433	55	49	
+./data/set2_red/c262.png	1037	472	72	53	1213	468	59	48	
+./data/set2_red/c263.png	1049	497	76	49	1224	496	59	44	
+./data/set2_red/c264.png	1069	509	79	48	1243	506	57	45	
+./data/set2_red/c265.png	1059	480	77	47	1243	472	58	47	
+./data/set2_red/c266.png		
+./data/set2_red/c267.png	912	434	89	51	1096	423	65	49	
+./data/set2_red/c268.png	883	414	83	52	1068	396	56	51	
+./data/set2_red/c269.png	891	360	86	54	1077	338	54	57	
+./data/set2_red/c27.png	941	556	97	58	
+./data/set2_red/c270.png	876	364	87	52	1071	341	58	58	
+./data/set2_red/c271.png	874	355	89	57	1071	332	59	60	
+./data/set2_red/c272.png	855	345	87	53	1053	333	55	61	
+./data/set2_red/c273.png	814	360	91	60	1022	332	59	56	
+./data/set2_red/c274.png	786	339	97	57	993	314	57	62	
+./data/set2_red/c275.png	771	371	100	68	983	351	51	69	
+./data/set2_red/c276.png	791	431	102	75	998	410	53	77	
+./data/set2_red/c277.png	802	505	93	75	1025	484	55	81	
+./data/set2_red/c278.png	816	495	94	68	1057	476	70	70	
+./data/set2_red/c279.png	871	496	98	74	1128	480	88	76	
+./data/set2_red/c28.png	937	527	90	58	
+./data/set2_red/c280.png	830	496	92	70	1101	483	93	78	
+./data/set2_red/c281.png	783	496	87	76	1063	487	89	74	
+./data/set2_red/c282.png	759	519	77	79	1055	518	98	70	
+./data/set2_red/c283.png	992	514	96	70	691	522	78	80	
+./data/set2_red/c284.png	644	549	75	80	961	542	102	79	
+./data/set2_red/c285.png	641	559	80	81	962	542	104	79	
+./data/set2_red/c286.png	641	509	77	84	967	491	111	79	
+./data/set2_red/c287.png	646	457	66	84	979	446	124	72	
+./data/set2_red/c288.png	638	390	63	72	977	399	119	74	
+./data/set2_red/c289.png	610	358	71	82	949	364	126	72	
+./data/set2_red/c29.png	939	555	92	60	
+./data/set2_red/c290.png	565	357	68	69	911	361	123	74	
+./data/set2_red/c291.png	907	328	126	80	
+./data/set2_red/c292.png	857	328	132	85	
+./data/set2_red/c293.png	816	347	137	88	
+./data/set2_red/c294.png	787	362	143	95	
+./data/set2_red/c295.png	788	365	150	94	
+./data/set2_red/c296.png	785	362	152	91	
+./data/set2_red/c297.png	791	357	156	93	
+./data/set2_red/c298.png	854	314	160	90	
+./data/set2_red/c299.png	933	298	159	89	
+./data/set2_red/c3.png	836	595	103	59	
+./data/set2_red/c30.png	925	545	85	57	
+./data/set2_red/c300.png	966	362	154	100	
+./data/set2_red/c301.png	971	410	164	86	
+./data/set2_red/c302.png	930	437	158	79	
+./data/set2_red/c303.png	899	486	154	84	
+./data/set2_red/c304.png	878	492	154	80	
+./data/set2_red/c305.png	891	472	157	77	
+./data/set2_red/c306.png	905	463	156	79	
+./data/set2_red/c307.png	911	384	158	88	
+./data/set2_red/c308.png	973	337	159	81	
+./data/set2_red/c309.png	1027	333	158	74	
+./data/set2_red/c31.png	891	532	86	55	
+./data/set2_red/c310.png	1008	374	156	80	
+./data/set2_red/c311.png	993	391	150	72	
+./data/set2_red/c312.png	968	418	145	75	
+./data/set2_red/c313.png	955	428	143	70	
+./data/set2_red/c314.png	939	416	135	71	
+./data/set2_red/c315.png	938	407	131	66	
+./data/set2_red/c316.png	952	374	133	64	
+./data/set2_red/c317.png	998	346	132	65	
+./data/set2_red/c318.png	1019	356	131	64	
+./data/set2_red/c319.png	1026	353	123	62	
+./data/set2_red/c32.png	843	534	85	55	
+./data/set2_red/c320.png	1025	320	135	60	
+./data/set2_red/c321.png	995	318	128	60	
+./data/set2_red/c322.png	988	340	119	63	
+./data/set2_red/c323.png	1019	390	122	56	
+./data/set2_red/c324.png	1029	436	120	61	
+./data/set2_red/c325.png	1001	487	116	57	
+./data/set2_red/c326.png	994	503	110	49	
+./data/set2_red/c327.png	1037	553	117	56	
+./data/set2_red/c328.png	1029	528	108	48	
+./data/set2_red/c329.png	1015	490	107	51	
+./data/set2_red/c33.png	829	512	81	55	
+./data/set2_red/c330.png	1017	460	110	43	
+./data/set2_red/c331.png	1023	426	110	50	
+./data/set2_red/c332.png	1004	401	106	52	
+./data/set2_red/c333.png	987	410	108	53	
+./data/set2_red/c334.png	969	404	110	50	
+./data/set2_red/c335.png	959	380	104	46	
+./data/set2_red/c336.png	968	366	109	52	
+./data/set2_red/c337.png	1006	383	108	53	
+./data/set2_red/c338.png	1042	368	99	52	
+./data/set2_red/c339.png	1061	368	98	53	
+./data/set2_red/c34.png	822	482	81	55	
+./data/set2_red/c340.png	1048	343	99	50	
+./data/set2_red/c341.png	1065	337	98	48	
+./data/set2_red/c342.png	1094	327	98	47	
+./data/set2_red/c343.png	1099	316	96	50	
+./data/set2_red/c344.png	1071	340	104	51	
+./data/set2_red/c345.png	1004	359	95	46	
+./data/set2_red/c346.png	957	368	91	43	
+./data/set2_red/c347.png	927	408	91	43	
+./data/set2_red/c348.png	953	439	86	44	
+./data/set2_red/c349.png	936	464	88	41	
+./data/set2_red/c35.png	833	465	80	53	1010	492	48	42	
+./data/set2_red/c350.png	940	486	83	47	
+./data/set2_red/c351.png	921	483	82	45	
+./data/set2_red/c352.png	919	475	85	44	
+./data/set2_red/c353.png	927	471	81	40	1068	461	26	41	
+./data/set2_red/c354.png	936	437	77	39	1085	434	31	45	
+./data/set2_red/c355.png	968	392	81	40	1113	383	35	42	
+./data/set2_red/c356.png	1031	390	88	45	1175	378	36	45	
+./data/set2_red/c357.png	1069	392	75	42	1225	387	36	46	
+./data/set2_red/c358.png	1064	382	79	46	1220	378	40	48	
+./data/set2_red/c359.png	1028	362	75	43	1185	355	38	44	
+./data/set2_red/c36.png	816	455	75	58	989	480	44	45	
+./data/set2_red/c360.png	1010	335	81	37	1168	332	37	51	
+./data/set2_red/c361.png	964	336	81	38	1129	328	47	52	
+./data/set2_red/c362.png	918	343	81	41	1088	335	49	57	
+./data/set2_red/c363.png	920	356	78	40	1087	348	42	48	
+./data/set2_red/c364.png	946	352	78	41	1114	338	42	46	
+./data/set2_red/c365.png	952	360	73	41	1128	356	45	53	
+./data/set2_red/c366.png	962	370	73	44	1139	365	44	54	
+./data/set2_red/c367.png	971	364	70	45	1150	356	45	47	
+./data/set2_red/c368.png	956	353	68	47	1139	351	46	51	
+./data/set2_red/c369.png	936	356	71	51	1123	355	54	59	
+./data/set2_red/c37.png	789	449	80	58	962	476	49	50	
+./data/set2_red/c370.png	898	366	72	50	1086	356	53	55	
+./data/set2_red/c371.png	916	343	75	50	1109	335	54	58	
+./data/set2_red/c372.png	900	310	77	47	1098	304	65	63	
+./data/set2_red/c373.png	880	324	76	50	1084	318	64	70	
+./data/set2_red/c374.png	872	358	72	52	1076	338	63	59	
+./data/set2_red/c375.png	884	393	69	50	1093	376	66	60	
+./data/set2_red/c376.png	943	377	68	51	1153	366	70	55	
+./data/set2_red/c377.png	958	372	64	45	1173	368	75	58	
+./data/set2_red/c378.png	984	375	71	48	1199	374	80	62	
+./data/set2_red/c379.png	1007	384	62	50	1226	384	80	61	
+./data/set2_red/c38.png	758	444	79	60	935	472	55	44	
+./data/set2_red/c380.png	1063	391	51	69	1286	401	83	60	
+./data/set2_red/c381.png	1256	394	96	61	1029	385	52	61	
+./data/set2_red/c382.png	947	389	49	64	1169	393	83	59	
+./data/set2_red/c383.png	847	385	60	61	1071	386	99	58	
+./data/set2_red/c384.png		
+./data/set2_red/c385.png	646	401	66	59	877	397	87	61	
+./data/set2_red/c386.png	590	408	65	60	830	403	89	61	
+./data/set2_red/c387.png	590	394	75	61	823	390	89	64	
+./data/set2_red/c388.png	589	400	67	60	828	394	90	62	
+./data/set2_red/c389.png	579	404	65	63	818	405	93	63	
+./data/set2_red/c39.png	703	409	89	57	894	424	67	44	
+./data/set2_red/c390.png	581	411	55	58	819	410	92	62	
+./data/set2_red/c391.png	624	408	58	60	857	407	92	66	
+./data/set2_red/c392.png	665	420	59	60	895	414	98	60	
+./data/set2_red/c393.png	706	394	55	59	931	394	95	58	
+./data/set2_red/c394.png	738	402	39	65	961	401	91	64	
+./data/set2_red/c395.png	995	417	94	60	
+./data/set2_red/c396.png	968	426	98	61	
+./data/set2_red/c397.png	933	433	102	55	
+./data/set2_red/c398.png	951	436	108	64	
+./data/set2_red/c399.png	979	408	105	65	
+./data/set2_red/c4.png	831	585	107	54	
+./data/set2_red/c40.png	665	391	84	54	
+./data/set2_red/c400.png	973	420	101	68	
+./data/set2_red/c401.png	977	405	103	63	
+./data/set2_red/c402.png	991	415	104	67	
+./data/set2_red/c403.png	1012	419	108	69	
+./data/set2_red/c404.png	1017	439	106	68	
+./data/set2_red/c405.png	1005	449	115	62	
+./data/set2_red/c406.png	996	453	114	61	
+./data/set2_red/c407.png	995	461	114	68	
+./data/set2_red/c408.png	995	452	110	62	
+./data/set2_red/c409.png	1009	446	112	62	
+./data/set2_red/c41.png	644	381	82	47	835	376	51	52	
+./data/set2_red/c410.png	1005	460	117	63	
+./data/set2_red/c411.png	989	453	121	59	
+./data/set2_red/c412.png	996	448	116	58	
+./data/set2_red/c413.png	999	441	118	57	
+./data/set2_red/c414.png	987	406	117	58	
+./data/set2_red/c415.png	987	391	121	59	
+./data/set2_red/c416.png	945	408	126	63	
+./data/set2_red/c417.png	926	392	123	64	
+./data/set2_red/c418.png	924	388	131	63	
+./data/set2_red/c419.png	953	370	125	58	
+./data/set2_red/c42.png	631	376	88	53	817	356	48	50	
+./data/set2_red/c420.png	932	359	135	61	
+./data/set2_red/c421.png	920	382	133	66	
+./data/set2_red/c422.png	943	400	136	66	
+./data/set2_red/c423.png	937	435	149	71	
+./data/set2_red/c424.png	910	450	145	63	
+./data/set2_red/c425.png	881	450	149	68	
+./data/set2_red/c426.png	836	486	154	68	
+./data/set2_red/c427.png	803	513	156	74	
+./data/set2_red/c428.png	814	545	165	66	
+./data/set2_red/c429.png	859	526	164	64	
+./data/set2_red/c43.png	637	371	78	39	823	353	46	52	
+./data/set2_red/c430.png	866	522	170	74	
+./data/set2_red/c431.png	851	531	171	77	
+./data/set2_red/c432.png	865	492	174	78	
+./data/set2_red/c433.png	841	490	182	80	
+./data/set2_red/c434.png	838	478	179	83	
+./data/set2_red/c435.png	819	445	181	89	
+./data/set2_red/c436.png	776	383	187	88	
+./data/set2_red/c437.png	728	348	191	96	
+./data/set2_red/c438.png	706	377	201	93	
+./data/set2_red/c439.png	701	424	199	110	
+./data/set2_red/c44.png	661	387	78	44	850	369	51	51	
+./data/set2_red/c440.png	697	442	204	101	
+./data/set2_red/c441.png	735	464	198	106	
+./data/set2_red/c442.png	758	460	185	102	
+./data/set2_red/c443.png	815	410	179	101	
+./data/set2_red/c444.png	842	378	172	108	
+./data/set2_red/c445.png	892	373	162	111	1186	304	67	96	
+./data/set2_red/c446.png	945	388	164	112	1230	328	71	97	
+./data/set2_red/c447.png	1004	400	158	108	
+./data/set2_red/c448.png	1031	396	147	100	
+./data/set2_red/c449.png	999	402	133	94	
+./data/set2_red/c45.png	681	394	84	44	865	380	50	52	
+./data/set2_red/c450.png	972	375	130	92	1245	332	62	84	
+./data/set2_red/c451.png	974	359	134	96	1246	315	65	79	
+./data/set2_red/c452.png	957	364	126	91	1231	317	70	83	
+./data/set2_red/c453.png	955	370	121	84	1224	326	61	72	
+./data/set2_red/c454.png	949	363	119	83	1216	323	68	75	
+./data/set2_red/c455.png	925	380	112	80	1183	342	61	72	
+./data/set2_red/c456.png	898	395	111	78	1147	361	64	79	
+./data/set2_red/c457.png	853	408	108	76	1098	372	64	70	
+./data/set2_red/c458.png	831	412	109	68	1065	374	64	67	
+./data/set2_red/c459.png	807	420	102	66	1053	380	72	64	
+./data/set2_red/c46.png	697	400	82	49	879	390	51	48	
+./data/set2_red/c460.png	808	421	103	64	1041	376	64	59	
+./data/set2_red/c461.png	814	434	107	70	1037	385	59	76	
+./data/set2_red/c462.png	821	427	103	63	1041	383	58	79	
+./data/set2_red/c463.png	818	425	94	61	1045	381	57	65	
+./data/set2_red/c464.png	817	423	95	61	1048	380	67	74	
+./data/set2_red/c465.png	813	429	92	61	1046	382	69	63	
+./data/set2_red/c466.png	837	426	95	58	1061	378	67	62	
+./data/set2_red/c467.png	862	404	89	58	1091	360	73	66	
+./data/set2_red/c468.png	872	390	84	56	1096	346	66	63	
+./data/set2_red/c469.png	865	374	83	55	1085	332	66	73	
+./data/set2_red/c47.png	703	406	77	48	888	408	47	52	
+./data/set2_red/c470.png	849	390	80	56	1067	347	67	66	
+./data/set2_red/c471.png	833	419	84	53	1046	382	65	66	
+./data/set2_red/c472.png	801	473	82	59	1011	430	66	68	
+./data/set2_red/c473.png	781	482	80	53	985	445	62	62	
+./data/set2_red/c474.png	761	490	76	52	967	452	68	60	
+./data/set2_red/c475.png	710	470	75	47	908	436	67	55	
+./data/set2_red/c476.png	735	440	76	50	931	410	66	58	
+./data/set2_red/c477.png	772	400	72	48	969	371	69	54	
+./data/set2_red/c478.png	803	375	71	48	996	347	67	57	
+./data/set2_red/c479.png	835	349	68	48	1029	323	70	53	
+./data/set2_red/c48.png	706	410	81	50	891	408	51	50	
+./data/set2_red/c480.png	875	344	68	50	1066	319	65	57	
+./data/set2_red/c481.png	889	341	66	46	1083	318	68	52	
+./data/set2_red/c482.png	874	330	65	49	1069	306	67	51	
+./data/set2_red/c483.png	853	340	69	44	1037	319	64	53	
+./data/set2_red/c484.png	834	356	65	47	1027	336	69	54	
+./data/set2_red/c485.png	796	385	65	41	989	364	74	48	
+./data/set2_red/c486.png	793	393	61	43	977	369	65	46	
+./data/set2_red/c487.png	785	403	60	44	969	385	69	54	
+./data/set2_red/c488.png	762	385	65	41	942	363	68	49	
+./data/set2_red/c489.png	782	346	60	42	958	320	65	50	
+./data/set2_red/c49.png	709	400	81	42	895	401	53	41	
+./data/set2_red/c490.png	833	348	61	43	1006	325	65	54	
+./data/set2_red/c491.png	892	322	61	41	1067	301	69	50	
+./data/set2_red/c492.png	929	302	58	37	1107	282	69	50	
+./data/set2_red/c493.png	941	296	54	45	1122	276	69	53	
+./data/set2_red/c494.png	1105	276	67	52	928	299	51	44	
+./data/set2_red/c495.png	1123	324	67	51	948	347	50	45	
+./data/set2_red/c496.png	1142	369	67	53	968	383	51	46	
+./data/set2_red/c497.png	1151	425	65	42	976	428	49	45	
+./data/set2_red/c498.png	965	438	47	42	1133	442	64	39	
+./data/set2_red/c499.png	968	416	47	42	1133	427	64	39	
+./data/set2_red/c5.png	818	572	103	50	
+./data/set2_red/c50.png	722	408	83	50	905	408	50	52	
+./data/set2_red/c500.png	933	414	42	41	1098	420	65	36	
+./data/set2_red/c501.png	908	402	44	42	1067	403	64	33	
+./data/set2_red/c502.png	879	380	41	37	1043	383	62	35	
+./data/set2_red/c503.png	868	341	47	38	1025	343	62	37	
+./data/set2_red/c504.png	856	318	42	36	1019	321	60	37	
+./data/set2_red/c505.png	1018	290	65	41	855	290	38	41	
+./data/set2_red/c506.png	875	243	40	41	1040	240	67	36	
+./data/set2_red/c507.png	919	226	40	35	1084	227	68	42	
+./data/set2_red/c508.png	935	244	42	38	1093	240	63	35	
+./data/set2_red/c509.png	921	264	38	39	1078	266	67	38	
+./data/set2_red/c51.png	736	419	76	51	921	419	49	54	
+./data/set2_red/c510.png	933	254	36	38	1092	259	64	37	
+./data/set2_red/c511.png	931	229	36	34	1085	230	62	35	
+./data/set2_red/c512.png	1062	239	59	33	912	238	37	35	
+./data/set2_red/c513.png	881	270	37	33	1033	265	65	26	
+./data/set2_red/c514.png	846	277	35	31	993	276	60	34	
+./data/set2_red/c515.png	846	274	35	34	996	272	62	35	
+./data/set2_red/c516.png	902	266	44	36	1047	266	64	36	
+./data/set2_red/c517.png	954	298	37	31	1099	297	65	27	
+./data/set2_red/c518.png	927	313	33	32	1066	313	61	28	
+./data/set2_red/c519.png	881	337	28	33	1018	332	60	25	
+./data/set2_red/c52.png	735	418	75	53	923	418	48	51	
+./data/set2_red/c520.png	889	355	36	32	1001	349	54	33	
+./data/set2_red/c521.png	916	365	33	28	1033	360	56	25	
+./data/set2_red/c522.png	920	356	35	32	1029	347	56	25	
+./data/set2_red/c523.png	910	342	33	31	1019	335	54	25	
+./data/set2_red/c524.png	922	330	34	32	1029	322	52	25	
+./data/set2_red/c525.png	939	326	38	27	1042	324	53	30	
+./data/set2_red/c526.png	921	322	34	25	1028	318	51	27	
+./data/set2_red/c527.png	923	310	31	26	1031	309	52	30	
+./data/set2_red/c528.png	921	293	26	24	1030	292	52	27	
+./data/set2_red/c529.png	926	294	26	27	1040	291	54	25	
+./data/set2_red/c53.png	751	417	76	51	938	425	57	47	
+./data/set2_red/c530.png	933	332	30	37	1039	325	54	30	
+./data/set2_red/c531.png	942	362	27	28	1048	360	52	29	
+./data/set2_red/c532.png	921	353	27	28	1024	349	51	28	
+./data/set2_red/c533.png	903	339	27	27	1001	335	50	24	
+./data/set2_red/c534.png	899	344	27	26	999	343	52	28	
+./data/set2_red/c535.png	1021	343	51	28	
+./data/set2_red/c536.png	1027	360	48	26	
+./data/set2_red/c537.png	1034	358	46	24	
+./data/set2_red/c538.png	1042	332	47	23	
+./data/set2_red/c539.png	1036	330	48	25	
+./data/set2_red/c54.png	760	427	73	51	943	431	50	48	
+./data/set2_red/c540.png	917	332	17	29	1031	330	50	21	
+./data/set2_red/c541.png	1012	321	47	23	
+./data/set2_red/c542.png	990	322	48	23	
+./data/set2_red/c543.png	966	334	46	25	
+./data/set2_red/c544.png	941	345	48	28	
+./data/set2_red/c545.png	921	360	46	24	
+./data/set2_red/c546.png	883	353	44	23	
+./data/set2_red/c547.png	874	355	46	25	
+./data/set2_red/c548.png	847	345	43	24	
+./data/set2_red/c549.png	843	316	46	27	
+./data/set2_red/c55.png	802	426	77	50	982	431	53	46	
+./data/set2_red/c550.png	891	282	48	22	
+./data/set2_red/c551.png	939	272	49	19	
+./data/set2_red/c552.png	980	246	47	25	
+./data/set2_red/c553.png	993	228	43	22	
+./data/set2_red/c554.png	986	232	47	23	
+./data/set2_red/c555.png	970	259	47	26	
+./data/set2_red/c556.png	951	280	46	26	
+./data/set2_red/c557.png	941	295	47	23	
+./data/set2_red/c558.png	941	287	46	23	
+./data/set2_red/c559.png	929	323	45	21	
+./data/set2_red/c56.png	828	439	70	48	1005	448	52	48	
+./data/set2_red/c560.png	926	307	43	19	
+./data/set2_red/c561.png	919	326	42	23	
+./data/set2_red/c562.png	904	344	47	23	
+./data/set2_red/c563.png	855	347	47	19	
+./data/set2_red/c564.png	807	338	46	23	
+./data/set2_red/c565.png	774	327	44	23	
+./data/set2_red/c566.png	771	324	42	20	
+./data/set2_red/c567.png	781	311	42	20	
+./data/set2_red/c568.png	810	303	43	23	
+./data/set2_red/c569.png	834	300	42	20	
+./data/set2_red/c57.png	824	444	69	50	999	453	53	46	
+./data/set2_red/c570.png	854	288	44	21	
+./data/set2_red/c571.png	863	279	44	23	
+./data/set2_red/c572.png	857	276	44	19	
+./data/set2_red/c573.png	791	305	42	19	
+./data/set2_red/c574.png	772	319	45	18	
+./data/set2_red/c575.png	756	334	43	18	
+./data/set2_red/c576.png	748	346	42	20	
+./data/set2_red/c577.png	761	358	41	20	
+./data/set2_red/c578.png	776	359	44	17	
+./data/set2_red/c579.png	767	343	42	17	
+./data/set2_red/c58.png	819	461	69	49	995	469	55	44	
+./data/set2_red/c580.png	759	320	39	22	
+./data/set2_red/c581.png	766	322	40	19	
+./data/set2_red/c582.png	797	324	44	19	
+./data/set2_red/c583.png	844	334	39	21	
+./data/set2_red/c584.png	873	314	38	18	
+./data/set2_red/c585.png	892	302	39	21	
+./data/set2_red/c586.png	890	304	37	20	
+./data/set2_red/c587.png	871	310	38	19	
+./data/set2_red/c588.png	852	327	38	17	
+./data/set2_red/c589.png	849	330	38	19	
+./data/set2_red/c59.png	817	465	67	49	991	470	56	41	
+./data/set2_red/c590.png	849	334	36	18	
+./data/set2_red/c591.png	855	349	37	18	
+./data/set2_red/c592.png	853	344	36	20	
+./data/set2_red/c593.png	839	336	37	19	
+./data/set2_red/c594.png	839	300	40	20	
+./data/set2_red/c595.png	835	271	37	18	
+./data/set2_red/c596.png	841	284	40	20	
+./data/set2_red/c597.png	824	278	38	18	
+./data/set2_red/c598.png	867	282	39	17	
+./data/set2_red/c599.png	911	286	39	15	
+./data/set2_red/c6.png	811	548	106	46	
+./data/set2_red/c60.png	821	491	66	47	985	501	49	47	
+./data/set2_red/c600.png	909	288	37	21	
+./data/set2_red/c601.png	925	291	40	18	
+./data/set2_red/c602.png	902	326	35	18	
+./data/set2_red/c603.png	870	345	35	18	
+./data/set2_red/c604.png	799	328	40	23	
+./data/set2_red/c605.png	735	332	38	18	
+./data/set2_red/c606.png	683	337	42	18	
+./data/set2_red/c607.png	625	348	40	22	
+./data/set2_red/c608.png	591	342	39	19	
+./data/set2_red/c609.png	622	342	39	20	
+./data/set2_red/c61.png	829	507	61	46	999	513	54	41	
+./data/set2_red/c610.png	663	330	39	20	
+./data/set2_red/c611.png	701	305	35	20	
+./data/set2_red/c612.png	730	286	36	16	
+./data/set2_red/c613.png	739	283	40	19	
+./data/set2_red/c614.png	730	282	37	14	
+./data/set2_red/c615.png	723	290	37	17	
+./data/set2_red/c616.png	731	262	38	19	
+./data/set2_red/c617.png	754	270	37	19	
+./data/set2_red/c618.png	770	294	34	19	
+./data/set2_red/c619.png	781	297	37	17	
+./data/set2_red/c62.png	847	499	63	44	1013	509	54	43	
+./data/set2_red/c620.png	769	293	34	20	
+./data/set2_red/c621.png	760	286	35	18	
+./data/set2_red/c622.png	768	271	36	20	
+./data/set2_red/c623.png	774	254	37	18	
+./data/set2_red/c624.png	789	232	36	18	
+./data/set2_red/c625.png	791	208	35	17	
+./data/set2_red/c626.png	799	183	34	20	
+./data/set2_red/c627.png	815	189	38	23	
+./data/set2_red/c628.png	835	233	39	21	
+./data/set2_red/c629.png	845	249	34	18	
+./data/set2_red/c63.png	866	497	65	45	1033	505	57	39	
+./data/set2_red/c630.png	850	318	37	23	
+./data/set2_red/c631.png		
+./data/set2_red/c632.png	735	380	34	17	
+./data/set2_red/c633.png	705	370	35	18	
+./data/set2_red/c634.png	713	392	35	18	
+./data/set2_red/c635.png	708	365	35	17	
+./data/set2_red/c636.png	729	352	33	16	
+./data/set2_red/c637.png	762	347	37	19	
+./data/set2_red/c638.png	835	348	37	20	
+./data/set2_red/c639.png	839	286	37	22	
+./data/set2_red/c64.png	918	531	62	50	1089	541	64	41	
+./data/set2_red/c640.png	863	303	35	23	
+./data/set2_red/c641.png	864	233	36	20	
+./data/set2_red/c642.png	850	231	31	18	
+./data/set2_red/c643.png	899	238	35	18	
+./data/set2_red/c644.png	893	266	37	23	
+./data/set2_red/c645.png	923	331	36	19	
+./data/set2_red/c646.png	935	354	34	18	
+./data/set2_red/c647.png	939	346	34	13	
+./data/set2_red/c648.png	931	352	33	16	
+./data/set2_red/c649.png	939	347	31	21	
+./data/set2_red/c65.png	1173	550	70	44	995	533	64	51	
+./data/set2_red/c650.png	942	335	32	21	
+./data/set2_red/c651.png	945	320	31	19	
+./data/set2_red/c652.png	935	304	35	21	
+./data/set2_red/c653.png	905	290	33	16	
+./data/set2_red/c654.png	911	284	34	16	
+./data/set2_red/c655.png	891	278	34	20	
+./data/set2_red/c656.png	879	277	34	20	
+./data/set2_red/c657.png	909	276	34	15	
+./data/set2_red/c658.png	925	278	32	15	
+./data/set2_red/c659.png	929	277	33	17	
+./data/set2_red/c66.png	1067	560	60	50	
+./data/set2_red/c660.png	913	268	32	18	
+./data/set2_red/c661.png	913	265	32	15	
+./data/set2_red/c662.png	915	261	33	19	
+./data/set2_red/c663.png	916	258	33	16	
+./data/set2_red/c664.png	923	258	35	16	
+./data/set2_red/c665.png	930	256	33	18	
+./data/set2_red/c666.png	944	262	33	16	
+./data/set2_red/c667.png	955	267	30	17	
+./data/set2_red/c668.png	958	268	31	19	
+./data/set2_red/c669.png	952	250	33	18	
+./data/set2_red/c67.png	1091	555	58	51	1272	579	67	37	
+./data/set2_red/c670.png		
+./data/set2_red/c671.png	990	288	32	19	
+./data/set2_red/c672.png	990	303	32	17	
+./data/set2_red/c673.png		
+./data/set2_red/c674.png	891	268	34	17	
+./data/set2_red/c675.png	847	259	35	20	
+./data/set2_red/c676.png	859	205	38	22	
+./data/set2_red/c677.png	878	165	29	20	
+./data/set2_red/c678.png	925	177	32	20	
+./data/set2_red/c679.png	979	190	36	20	
+./data/set2_red/c68.png	1099	565	58	50	1283	587	73	38	
+./data/set2_red/c680.png	1025	183	35	22	
+./data/set2_red/c681.png	1021	176	28	17	
+./data/set2_red/c682.png	1058	196	31	18	
+./data/set2_red/c683.png	1036	219	33	20	
+./data/set2_red/c684.png	1000	252	33	24	
+./data/set2_red/c685.png	963	263	38	20	
+./data/set2_red/c686.png	851	283	33	20	
+./data/set2_red/c687.png	829	243	28	21	
+./data/set2_red/c688.png	801	279	30	18	
+./data/set2_red/c689.png	864	304	35	19	
+./data/set2_red/c69.png	1127	580	56	49	
+./data/set2_red/c690.png		
+./data/set2_red/c691.png		
+./data/set2_red/c692.png	940	189	29	21	
+./data/set2_red/c693.png	947	160	33	18	
+./data/set2_red/c694.png	954	143	31	15	
+./data/set2_red/c695.png	1000	161	35	15	
+./data/set2_red/c696.png	1019	162	31	19	
+./data/set2_red/c697.png	999	215	30	19	
+./data/set2_red/c698.png	1021	220	32	16	
+./data/set2_red/c699.png	1007	201	29	17	
+./data/set2_red/c7.png	816	498	105	47	
+./data/set2_red/c70.png	1130	570	57	50	
+./data/set2_red/c700.png	937	218	28	16	
+./data/set2_red/c701.png	907	238	26	16	
+./data/set2_red/c702.png	875	236	30	18	
+./data/set2_red/c703.png	840	206	27	13	
+./data/set2_red/c704.png	821	218	28	15	
+./data/set2_red/c705.png	826	203	28	13	
+./data/set2_red/c706.png	839	186	28	14	
+./data/set2_red/c707.png	850	174	28	17	
+./data/set2_red/c708.png	859	167	27	15	
+./data/set2_red/c709.png	872	159	27	16	
+./data/set2_red/c71.png	1120	550	54	50	
+./data/set2_red/c710.png	901	159	28	16	
+./data/set2_red/c711.png	916	156	29	17	
+./data/set2_red/c712.png	911	172	29	14	
+./data/set2_red/c713.png	881	203	30	13	
+./data/set2_red/c714.png	889	180	28	17	
+./data/set2_red/c715.png	882	156	27	14	
+./data/set2_red/c716.png	871	146	28	15	
+./data/set2_red/c717.png	864	158	27	15	
+./data/set2_red/c718.png	855	171	26	12	
+./data/set2_red/c719.png	876	185	28	13	
+./data/set2_red/c72.png	1121	532	52	47	1288	561	53	36	
+./data/set2_red/c720.png	906	189	31	11	
+./data/set2_red/c721.png	913	194	30	16	
+./data/set2_red/c722.png	921	183	28	15	
+./data/set2_red/c723.png	947	183	27	12	
+./data/set2_red/c724.png	957	182	24	12	
+./data/set2_red/c725.png	978	186	27	12	
+./data/set2_red/c726.png	1002	196	29	12	
+./data/set2_red/c727.png	1009	200	26	16	
+./data/set2_red/c728.png	986	213	30	16	
+./data/set2_red/c729.png	956	206	27	20	
+./data/set2_red/c73.png	1121	514	50	50	1287	545	56	48	
+./data/set2_red/c730.png	941	190	28	14	
+./data/set2_red/c731.png	885	180	27	16	
+./data/set2_red/c732.png	879	205	28	15	
+./data/set2_red/c733.png	870	224	27	14	
+./data/set2_red/c734.png	870	239	27	16	
+./data/set2_red/c735.png	871	246	28	13	
+./data/set2_red/c736.png	888	246	26	15	
+./data/set2_red/c737.png	949	260	27	14	
+./data/set2_red/c738.png	982	236	26	14	
+./data/set2_red/c739.png	987	227	27	14	
+./data/set2_red/c74.png	1109	503	37	55	1283	536	62	42	
+./data/set2_red/c740.png		
+./data/set2_red/c741.png	891	260	32	13	
+./data/set2_red/c742.png	847	253	28	15	
+./data/set2_red/c743.png	869	258	30	17	
+./data/set2_red/c744.png	908	288	29	16	
+./data/set2_red/c745.png	990	333	29	15	
+./data/set2_red/c746.png	1012	340	29	15	
+./data/set2_red/c747.png	1005	357	31	13	
+./data/set2_red/c748.png	973	402	29	14	
+./data/set2_red/c749.png	973	411	32	17	
+./data/set2_red/c75.png	1119	473	38	44	1283	504	51	34	
+./data/set2_red/c750.png	971	346	30	16	
+./data/set2_red/c751.png	978	282	29	16	
+./data/set2_red/c752.png	985	266	33	18	
+./data/set2_red/c753.png	951	225	32	21	
+./data/set2_red/c754.png		
+./data/set2_red/c755.png	902	304	33	17	
+./data/set2_red/c756.png	898	279	34	18	
+./data/set2_red/c757.png	882	265	32	17	
+./data/set2_red/c758.png	903	268	33	20	
+./data/set2_red/c759.png	898	265	35	18	
+./data/set2_red/c76.png	1122	484	37	51	1282	514	49	38	
+./data/set2_red/c760.png	909	241	38	19	
+./data/set2_red/c761.png	895	232	37	19	
+./data/set2_red/c762.png	890	235	37	21	
+./data/set2_red/c763.png	891	254	38	21	
+./data/set2_red/c764.png	923	248	39	21	
+./data/set2_red/c765.png	963	250	38	19	
+./data/set2_red/c766.png	997	260	40	17	
+./data/set2_red/c767.png	989	227	36	20	
+./data/set2_red/c768.png	970	220	43	18	
+./data/set2_red/c769.png	943	197	37	18	
+./data/set2_red/c77.png	1119	500	38	52	1282	530	54	39	
+./data/set2_red/c770.png	929	214	42	20	
+./data/set2_red/c771.png	939	253	42	23	
+./data/set2_red/c772.png	976	278	43	23	
+./data/set2_red/c773.png	1027	266	42	22	
+./data/set2_red/c774.png	1051	265	43	23	
+./data/set2_red/c775.png	1040	290	43	24	
+./data/set2_red/c776.png	1024	306	46	25	
+./data/set2_red/c777.png	1007	328	44	21	
+./data/set2_red/c778.png	1013	354	48	21	
+./data/set2_red/c779.png	1050	336	46	21	
+./data/set2_red/c78.png	1143	512	37	46	
+./data/set2_red/c780.png	1063	316	48	20	
+./data/set2_red/c781.png	1055	290	52	26	
+./data/set2_red/c782.png	1023	228	48	22	
+./data/set2_red/c783.png	980	208	52	29	
+./data/set2_red/c784.png		
+./data/set2_red/c785.png	819	207	54	24	
+./data/set2_red/c786.png	774	194	57	25	
+./data/set2_red/c787.png	717	214	58	26	
+./data/set2_red/c788.png	732	226	60	25	
+./data/set2_red/c789.png	815	235	57	27	
+./data/set2_red/c79.png	1176	497	37	47	
+./data/set2_red/c790.png	830	231	57	30	
+./data/set2_red/c791.png	827	240	64	26	
+./data/set2_red/c792.png	799	231	65	29	
+./data/set2_red/c793.png	790	241	67	27	
+./data/set2_red/c794.png	826	259	71	30	
+./data/set2_red/c795.png	876	266	70	33	
+./data/set2_red/c796.png	924	255	71	31	
+./data/set2_red/c797.png	928	247	71	34	
+./data/set2_red/c798.png	910	243	71	38	
+./data/set2_red/c799.png	881	252	75	31	
+./data/set2_red/c8.png	803	432	109	62	
+./data/set2_red/c80.png		
+./data/set2_red/c800.png	847	268	74	35	
+./data/set2_red/c801.png	801	273	74	35	
+./data/set2_red/c802.png	816	260	77	42	
+./data/set2_red/c803.png	855	250	80	38	
+./data/set2_red/c804.png	869	258	82	36	
+./data/set2_red/c805.png	873	268	81	42	
+./data/set2_red/c806.png	849	292	85	41	
+./data/set2_red/c807.png	797	304	85	41	
+./data/set2_red/c808.png	769	317	91	37	
+./data/set2_red/c809.png	753	338	97	46	
+./data/set2_red/c81.png	1284	547	69	43	
+./data/set2_red/c810.png	772	347	101	38	
+./data/set2_red/c811.png	824	333	96	43	
+./data/set2_red/c812.png	849	322	98	38	
+./data/set2_red/c813.png	900	297	95	46	
+./data/set2_red/c814.png	943	283	96	44	
+./data/set2_red/c815.png	952	263	97	46	
+./data/set2_red/c816.png	1005	317	97	48	
+./data/set2_red/c817.png	1059	342	88	44	
+./data/set2_red/c818.png	1050	340	88	42	
+./data/set2_red/c819.png	1015	376	92	44	
+./data/set2_red/c82.png	1283	555	79	43	
+./data/set2_red/c820.png	987	377	86	40	
+./data/set2_red/c821.png	1009	368	92	41	
+./data/set2_red/c822.png	1001	353	85	35	
+./data/set2_red/c823.png	1015	337	86	39	
+./data/set2_red/c824.png	1044	294	86	40	
+./data/set2_red/c825.png	1074	311	86	40	
+./data/set2_red/c826.png	1078	287	87	43	
+./data/set2_red/c827.png	1091	288	82	44	
+./data/set2_red/c828.png	1119	280	77	42	
+./data/set2_red/c829.png	1101	268	78	40	
+./data/set2_red/c83.png	1282	572	61	40	
+./data/set2_red/c830.png	1070	251	81	39	
+./data/set2_red/c831.png	1085	270	81	43	
+./data/set2_red/c832.png	1192	302	85	45	
+./data/set2_red/c833.png	1266	303	79	39	
+./data/set2_red/c834.png	1237	300	80	45	
+./data/set2_red/c835.png	1206	289	75	42	
+./data/set2_red/c836.png	1181	308	69	38	
+./data/set2_red/c837.png	1192	308	71	41	
+./data/set2_red/c838.png	1164	341	69	37	
+./data/set2_red/c839.png	1119	325	64	36	
+./data/set2_red/c84.png	1289	570	99	44	
+./data/set2_red/c840.png	1069	328	75	39	
+./data/set2_red/c841.png	945	320	70	37	1083	322	39	38	
+./data/set2_red/c842.png	838	313	71	37	975	310	42	34	
+./data/set2_red/c843.png		
+./data/set2_red/c844.png	741	300	69	39	878	296	44	39	
+./data/set2_red/c845.png	771	293	64	36	911	290	44	36	
+./data/set2_red/c846.png	831	300	63	38	969	300	47	38	
+./data/set2_red/c847.png	887	312	63	37	1024	319	47	41	
+./data/set2_red/c848.png	971	323	71	41	1101	330	51	42	
+./data/set2_red/c849.png	996	331	55	37	1135	343	48	43	
+./data/set2_red/c85.png	1264	581	90	43	
+./data/set2_red/c850.png	997	326	55	37	1136	330	46	31	
+./data/set2_red/c851.png	998	314	55	38	1141	321	53	37	
+./data/set2_red/c852.png	1015	290	60	40	1159	296	54	33	
+./data/set2_red/c853.png	981	293	55	43	1129	296	56	36	
+./data/set2_red/c854.png	939	298	53	39	1085	302	53	40	
+./data/set2_red/c855.png	910	289	56	36	1052	288	50	35	
+./data/set2_red/c856.png	877	289	52	33	1022	291	54	40	
+./data/set2_red/c857.png	868	288	51	36	1012	282	49	36	
+./data/set2_red/c858.png	919	289	50	34	1063	287	52	38	
+./data/set2_red/c859.png	971	275	58	35	1116	278	58	39	
+./data/set2_red/c86.png	1283	590	92	50	
+./data/set2_red/c860.png	1001	288	51	37	1147	289	56	35	
+./data/set2_red/c861.png	982	297	51	37	1125	298	50	37	
+./data/set2_red/c862.png	973	279	57	35	1121	278	60	38	
+./data/set2_red/c863.png	953	296	53	34	1093	293	49	37	
+./data/set2_red/c864.png	932	273	51	38	1077	268	53	37	
+./data/set2_red/c865.png	954	234	52	39	1100	231	55	38	
+./data/set2_red/c866.png	955	219	52	40	1101	212	54	38	
+./data/set2_red/c87.png	1251	600	108	46	
+./data/set2_red/c88.png	1140	609	103	44	
+./data/set2_red/c89.png	1019	604	93	44	
+./data/set2_red/c9.png	789	383	103	57	
+./data/set2_red/c90.png	969	600	97	45	
+./data/set2_red/c91.png	928	599	88	45	
+./data/set2_red/c92.png	919	568	96	47	
+./data/set2_red/c93.png	906	572	89	44	
+./data/set2_red/c94.png	908	568	89	37	
+./data/set2_red/c95.png	906	572	91	40	
+./data/set2_red/c96.png	911	547	91	44	
+./data/set2_red/c97.png	917	535	90	45	
+./data/set2_red/c98.png	919	479	92	49	
+./data/set2_red/c99.png	916	407	93	51	
+./data/set3_red/c0.png		
+./data/set3_red/c1.png		
+./data/set3_red/c10.png	628	430	79	42	
+./data/set3_red/c100.png	1039	503	160	103	
+./data/set3_red/c101.png	1029	526	161	104	
+./data/set3_red/c102.png	1018	516	169	104	
+./data/set3_red/c103.png	986	503	171	100	
+./data/set3_red/c104.png	947	508	180	104	
+./data/set3_red/c105.png	906	540	189	108	
+./data/set3_red/c106.png	893	546	194	111	
+./data/set3_red/c107.png	907	555	212	117	
+./data/set3_red/c108.png	911	588	215	120	
+./data/set3_red/c109.png	911	643	220	135	
+./data/set3_red/c11.png	655	417	82	38	
+./data/set3_red/c110.png	905	681	220	115	
+./data/set3_red/c111.png	931	664	215	129	
+./data/set3_red/c112.png	973	688	230	100	
+./data/set3_red/c113.png		
+./data/set3_red/c114.png		
+./data/set3_red/c115.png		
+./data/set3_red/c116.png		
+./data/set3_red/c117.png		
+./data/set3_red/c118.png	725	640	258	143	
+./data/set3_red/c119.png	672	569	261	135	
+./data/set3_red/c12.png	672	405	81	43	
+./data/set3_red/c120.png	678	613	281	140	
+./data/set3_red/c121.png	717	633	278	117	
+./data/set3_red/c122.png	736	676	284	133	
+./data/set3_red/c123.png	745	688	277	118	
+./data/set3_red/c124.png		
+./data/set3_red/c125.png		
+./data/set3_red/c126.png		
+./data/set3_red/c127.png		
+./data/set3_red/c128.png		
+./data/set3_red/c129.png		
+./data/set3_red/c13.png	702	432	80	47	
+./data/set3_red/c130.png		
+./data/set3_red/c131.png		
+./data/set3_red/c132.png		
+./data/set3_red/c133.png		
+./data/set3_red/c134.png		
+./data/set3_red/c135.png		
+./data/set3_red/c136.png		
+./data/set3_red/c137.png		
+./data/set3_red/c138.png		
+./data/set3_red/c139.png		
+./data/set3_red/c14.png	748	405	74	47	
+./data/set3_red/c140.png		
+./data/set3_red/c141.png		
+./data/set3_red/c142.png	1214	645	208	106	
+./data/set3_red/c143.png	1189	657	196	99	
+./data/set3_red/c144.png	1158	636	189	99	
+./data/set3_red/c145.png	1146	590	177	98	
+./data/set3_red/c146.png	1133	568	177	95	
+./data/set3_red/c147.png	1106	558	169	88	
+./data/set3_red/c148.png	1105	542	161	84	
+./data/set3_red/c149.png	1089	525	156	80	
+./data/set3_red/c15.png		
+./data/set3_red/c150.png	1075	498	154	77	
+./data/set3_red/c151.png	1064	477	147	81	
+./data/set3_red/c152.png	1071	475	152	75	
+./data/set3_red/c153.png	1066	455	144	73	
+./data/set3_red/c154.png	1057	406	139	68	
+./data/set3_red/c155.png	1062	375	139	69	
+./data/set3_red/c156.png	1052	379	144	73	
+./data/set3_red/c157.png	1011	398	136	70	
+./data/set3_red/c158.png	1004	423	135	64	
+./data/set3_red/c159.png	991	444	131	68	
+./data/set3_red/c16.png	899	445	78	46	
+./data/set3_red/c160.png	983	456	131	63	
+./data/set3_red/c161.png	966	473	127	64	
+./data/set3_red/c162.png	939	498	127	60	
+./data/set3_red/c163.png	932	500	125	59	
+./data/set3_red/c164.png	905	470	122	62	
+./data/set3_red/c165.png	870	445	123	62	
+./data/set3_red/c166.png	863	422	120	62	
+./data/set3_red/c167.png	881	403	125	66	
+./data/set3_red/c168.png	925	439	121	59	
+./data/set3_red/c169.png	948	467	121	64	
+./data/set3_red/c17.png	905	412	76	45	
+./data/set3_red/c170.png	985	488	117	52	
+./data/set3_red/c171.png	997	469	116	55	
+./data/set3_red/c172.png	1020	460	110	52	
+./data/set3_red/c173.png	1027	438	114	51	
+./data/set3_red/c174.png	1023	441	109	51	
+./data/set3_red/c175.png	1028	461	110	47	
+./data/set3_red/c176.png	1011	419	109	55	
+./data/set3_red/c177.png	943	281	109	52	
+./data/set3_red/c178.png	945	280	109	54	
+./data/set3_red/c179.png	917	239	115	65	
+./data/set3_red/c18.png	917	444	74	47	
+./data/set3_red/c180.png	882	231	112	68	
+./data/set3_red/c181.png	879	252	110	70	
+./data/set3_red/c182.png	869	267	106	67	
+./data/set3_red/c183.png	869	279	102	63	
+./data/set3_red/c184.png	873	279	110	67	
+./data/set3_red/c185.png	920	300	107	63	
+./data/set3_red/c186.png	941	326	104	46	
+./data/set3_red/c187.png	977	325	106	50	
+./data/set3_red/c188.png	977	330	105	54	
+./data/set3_red/c189.png	991	328	104	59	
+./data/set3_red/c19.png	908	442	75	48	
+./data/set3_red/c190.png	990	323	102	63	
+./data/set3_red/c191.png	984	316	105	65	
+./data/set3_red/c192.png	990	327	107	74	
+./data/set3_red/c193.png	981	331	103	75	
+./data/set3_red/c194.png	975	341	104	78	
+./data/set3_red/c195.png	971	344	104	76	
+./data/set3_red/c196.png	959	355	101	85	
+./data/set3_red/c197.png	950	339	106	80	
+./data/set3_red/c198.png	918	330	107	79	
+./data/set3_red/c199.png	897	318	107	80	
+./data/set3_red/c2.png		
+./data/set3_red/c20.png	901	432	79	48	
+./data/set3_red/c200.png	853	297	108	68	
+./data/set3_red/c201.png	843	285	110	72	
+./data/set3_red/c202.png	795	269	116	64	
+./data/set3_red/c203.png	797	264	110	65	
+./data/set3_red/c204.png	784	274	111	68	
+./data/set3_red/c205.png	758	278	116	57	
+./data/set3_red/c206.png	757	275	118	60	
+./data/set3_red/c207.png	751	271	121	58	
+./data/set3_red/c208.png	741	262	120	51	
+./data/set3_red/c209.png	724	254	129	52	
+./data/set3_red/c21.png	898	441	75	45	
+./data/set3_red/c210.png	705	253	122	58	
+./data/set3_red/c211.png	697	250	124	53	
+./data/set3_red/c212.png	700	254	120	55	
+./data/set3_red/c213.png	704	253	119	55	
+./data/set3_red/c214.png	704	255	116	61	
+./data/set3_red/c215.png	713	266	117	59	
+./data/set3_red/c216.png	734	310	117	61	
+./data/set3_red/c217.png	741	337	111	54	
+./data/set3_red/c218.png	749	347	114	46	
+./data/set3_red/c219.png	746	352	111	52	
+./data/set3_red/c22.png	906	430	81	46	
+./data/set3_red/c220.png	749	363	113	51	
+./data/set3_red/c221.png	757	381	114	51	
+./data/set3_red/c222.png	767	412	113	58	
+./data/set3_red/c223.png	777	428	113	53	
+./data/set3_red/c224.png	774	414	113	49	
+./data/set3_red/c225.png	760	402	113	47	
+./data/set3_red/c226.png	743	388	110	47	
+./data/set3_red/c227.png	722	366	115	53	
+./data/set3_red/c228.png	710	343	116	48	
+./data/set3_red/c229.png	716	338	123	53	
+./data/set3_red/c23.png	904	427	81	46	
+./data/set3_red/c230.png	714	335	113	53	
+./data/set3_red/c231.png	734	332	119	53	
+./data/set3_red/c232.png	738	330	115	53	
+./data/set3_red/c233.png	745	315	118	54	
+./data/set3_red/c234.png	747	300	110	52	
+./data/set3_red/c235.png	764	287	111	49	
+./data/set3_red/c236.png	794	283	110	52	
+./data/set3_red/c237.png	827	286	112	48	
+./data/set3_red/c238.png	833	278	112	47	
+./data/set3_red/c239.png	826	296	114	51	
+./data/set3_red/c24.png	863	443	81	44	
+./data/set3_red/c240.png	816	305	111	52	
+./data/set3_red/c241.png	808	313	116	58	
+./data/set3_red/c242.png	801	322	111	51	
+./data/set3_red/c243.png	806	335	109	49	
+./data/set3_red/c244.png	821	340	107	51	
+./data/set3_red/c245.png	860	355	104	51	
+./data/set3_red/c246.png	922	332	106	51	
+./data/set3_red/c247.png	954	338	105	48	
+./data/set3_red/c248.png	975	336	103	50	
+./data/set3_red/c249.png		
+./data/set3_red/c25.png	866	421	75	47	
+./data/set3_red/c250.png	972	350	104	52	
+./data/set3_red/c251.png	931	357	102	52	
+./data/set3_red/c252.png	896	374	102	52	
+./data/set3_red/c253.png	864	390	104	51	
+./data/set3_red/c254.png	861	397	103	51	
+./data/set3_red/c255.png	889	393	105	51	
+./data/set3_red/c256.png	885	401	110	53	
+./data/set3_red/c257.png	885	383	101	53	
+./data/set3_red/c258.png	898	376	98	51	
+./data/set3_red/c259.png	926	381	104	53	
+./data/set3_red/c26.png	905	430	75	41	
+./data/set3_red/c260.png	931	378	95	47	
+./data/set3_red/c261.png	957	373	96	53	
+./data/set3_red/c262.png	967	384	94	54	
+./data/set3_red/c263.png	925	393	98	54	
+./data/set3_red/c264.png	849	419	99	57	
+./data/set3_red/c265.png	812	438	107	62	
+./data/set3_red/c266.png	785	449	110	60	
+./data/set3_red/c267.png	787	422	110	61	
+./data/set3_red/c268.png	761	430	112	66	
+./data/set3_red/c269.png	794	401	107	71	
+./data/set3_red/c27.png	930	443	72	46	
+./data/set3_red/c270.png	811	411	108	75	
+./data/set3_red/c271.png	827	403	115	75	
+./data/set3_red/c272.png	860	421	111	82	1105	420	52	70	
+./data/set3_red/c273.png	871	435	113	80	1129	437	61	75	
+./data/set3_red/c274.png	850	416	119	83	1111	424	64	69	
+./data/set3_red/c275.png	811	422	124	85	1077	425	58	79	
+./data/set3_red/c276.png	779	424	125	86	1062	420	59	84	
+./data/set3_red/c277.png	732	466	127	92	1026	454	71	88	
+./data/set3_red/c278.png	703	512	132	100	1008	490	65	90	
+./data/set3_red/c279.png	713	521	134	93	1021	500	64	88	
+./data/set3_red/c28.png	947	428	74	43	
+./data/set3_red/c280.png	714	524	131	106	1045	510	78	97	
+./data/set3_red/c281.png	735	510	132	106	1089	508	89	94	
+./data/set3_red/c282.png	743	481	128	110	1112	489	95	105	
+./data/set3_red/c283.png	732	457	133	124	1110	468	97	101	
+./data/set3_red/c284.png	700	440	130	129	1101	468	104	125	
+./data/set3_red/c285.png	728	420	136	134	1160	473	131	141	
+./data/set3_red/c286.png	701	450	123	148	1153	513	140	150	
+./data/set3_red/c287.png	678	448	121	148	1147	533	143	157	
+./data/set3_red/c288.png	697	507	116	148	1182	601	154	167	
+./data/set3_red/c289.png	677	528	95	157	1180	646	181	152	
+./data/set3_red/c29.png	965	411	73	43	
+./data/set3_red/c290.png	1146	615	197	154	
+./data/set3_red/c291.png	1131	640	216	158	
+./data/set3_red/c292.png	1124	679	231	148	
+./data/set3_red/c293.png	1127	683	240	151	
+./data/set3_red/c294.png	1133	687	249	140	
+./data/set3_red/c295.png		
+./data/set3_red/c296.png		
+./data/set3_red/c297.png		
+./data/set3_red/c298.png		
+./data/set3_red/c299.png		
+./data/set3_red/c3.png	803	173	79	47	
+./data/set3_red/c30.png	1000	433	69	39	
+./data/set3_red/c300.png		
+./data/set3_red/c301.png	1223	688	269	82	
+./data/set3_red/c302.png	1211	678	266	92	
+./data/set3_red/c303.png	1184	641	267	95	
+./data/set3_red/c304.png	1143	616	269	94	
+./data/set3_red/c305.png	1135	609	259	101	
+./data/set3_red/c306.png	1179	569	258	105	
+./data/set3_red/c307.png	1171	552	246	100	
+./data/set3_red/c308.png	1122	491	234	89	
+./data/set3_red/c309.png	1083	471	225	103	
+./data/set3_red/c31.png	969	409	69	46	
+./data/set3_red/c310.png	1019	502	222	118	
+./data/set3_red/c311.png	867	520	216	132	
+./data/set3_red/c312.png	814	546	213	112	
+./data/set3_red/c313.png	794	552	198	120	
+./data/set3_red/c314.png	820	563	181	105	
+./data/set3_red/c315.png	882	536	172	92	
+./data/set3_red/c316.png	905	480	166	80	
+./data/set3_red/c317.png	925	469	158	76	
+./data/set3_red/c318.png	931	419	144	80	
+./data/set3_red/c319.png	901	394	153	79	
+./data/set3_red/c32.png	950	387	71	41	
+./data/set3_red/c320.png	860	403	169	79	
+./data/set3_red/c321.png	831	402	149	79	
+./data/set3_red/c322.png	823	405	152	75	
+./data/set3_red/c323.png	833	407	160	74	
+./data/set3_red/c324.png	895	399	162	60	
+./data/set3_red/c325.png	918	422	170	79	
+./data/set3_red/c326.png	910	497	173	68	
+./data/set3_red/c327.png	883	575	182	87	
+./data/set3_red/c328.png	887	632	186	74	
+./data/set3_red/c329.png	944	688	190	83	
+./data/set3_red/c33.png	933	396	77	41	
+./data/set3_red/c330.png		
+./data/set3_red/c331.png		
+./data/set3_red/c332.png		
+./data/set3_red/c333.png		
+./data/set3_red/c334.png		
+./data/set3_red/c335.png		
+./data/set3_red/c336.png		
+./data/set3_red/c337.png		
+./data/set3_red/c338.png		
+./data/set3_red/c339.png		
+./data/set3_red/c34.png	886	407	71	42	
+./data/set3_red/c340.png		
+./data/set3_red/c341.png		
+./data/set3_red/c342.png		
+./data/set3_red/c343.png		
+./data/set3_red/c344.png		
+./data/set3_red/c345.png		
+./data/set3_red/c346.png		
+./data/set3_red/c347.png	1028	655	193	94	
+./data/set3_red/c348.png	1061	545	178	88	
+./data/set3_red/c349.png	1029	499	180	82	
+./data/set3_red/c35.png	835	428	71	43	
+./data/set3_red/c350.png	988	507	164	88	
+./data/set3_red/c351.png	973	480	158	88	
+./data/set3_red/c352.png	977	444	156	84	
+./data/set3_red/c353.png	963	425	156	82	
+./data/set3_red/c354.png	945	407	149	79	
+./data/set3_red/c355.png	937	401	150	81	
+./data/set3_red/c356.png	935	404	154	84	
+./data/set3_red/c357.png	926	427	144	80	
+./data/set3_red/c358.png	940	456	146	84	
+./data/set3_red/c359.png	914	486	145	88	
+./data/set3_red/c36.png	786	439	73	37	
+./data/set3_red/c360.png	957	505	143	81	
+./data/set3_red/c361.png	1047	524	140	78	
+./data/set3_red/c362.png	1099	509	134	72	
+./data/set3_red/c363.png	1088	499	132	66	
+./data/set3_red/c364.png	1014	460	134	67	
+./data/set3_red/c365.png	936	500	133	76	
+./data/set3_red/c366.png	923	556	124	68	
+./data/set3_red/c367.png	974	552	112	70	
+./data/set3_red/c368.png	976	592	113	79	
+./data/set3_red/c369.png	974	620	104	77	
+./data/set3_red/c37.png	767	427	73	38	
+./data/set3_red/c370.png	1011	604	102	64	
+./data/set3_red/c371.png	1047	584	109	62	
+./data/set3_red/c372.png	1050	512	105	62	
+./data/set3_red/c373.png	1041	465	102	60	
+./data/set3_red/c374.png	1077	500	98	68	
+./data/set3_red/c375.png	1053	517	100	61	
+./data/set3_red/c376.png	1017	479	95	63	
+./data/set3_red/c377.png	990	469	97	57	
+./data/set3_red/c378.png	917	456	104	61	
+./data/set3_red/c379.png	841	458	100	55	
+./data/set3_red/c38.png	729	400	70	38	
+./data/set3_red/c380.png	798	458	93	57	
+./data/set3_red/c381.png	781	391	91	64	
+./data/set3_red/c382.png	792	358	96	58	
+./data/set3_red/c383.png	803	350	97	59	
+./data/set3_red/c384.png	817	330	91	59	
+./data/set3_red/c385.png	839	316	92	60	
+./data/set3_red/c386.png	850	283	98	61	
+./data/set3_red/c387.png	863	254	93	59	
+./data/set3_red/c388.png	877	244	90	56	
+./data/set3_red/c389.png	874	250	90	59	
+./data/set3_red/c39.png	686	371	71	38	
+./data/set3_red/c390.png	885	268	90	64	
+./data/set3_red/c391.png	885	340	92	73	
+./data/set3_red/c392.png	876	403	91	75	
+./data/set3_red/c393.png	875	435	85	74	
+./data/set3_red/c394.png	882	468	93	73	
+./data/set3_red/c395.png	940	442	89	46	
+./data/set3_red/c396.png	951	389	98	51	
+./data/set3_red/c397.png		
+./data/set3_red/c398.png	1174	251	95	55	
+./data/set3_red/c399.png	1142	279	96	46	
+./data/set3_red/c4.png	805	196	83	46	
+./data/set3_red/c40.png	664	344	69	40	
+./data/set3_red/c400.png	1119	277	101	37	
+./data/set3_red/c401.png	1085	268	94	50	
+./data/set3_red/c402.png	1059	274	93	47	
+./data/set3_red/c403.png	1049	286	96	50	
+./data/set3_red/c404.png	1032	286	95	48	
+./data/set3_red/c405.png	997	277	95	45	
+./data/set3_red/c406.png	960	267	97	48	
+./data/set3_red/c407.png	922	249	98	45	
+./data/set3_red/c408.png	853	237	99	44	
+./data/set3_red/c409.png	807	237	97	55	
+./data/set3_red/c41.png	659	306	70	35	
+./data/set3_red/c410.png	770	239	99	55	
+./data/set3_red/c411.png	754	250	98	57	
+./data/set3_red/c412.png	740	251	100	51	
+./data/set3_red/c413.png	712	250	105	56	
+./data/set3_red/c414.png	669	289	106	60	
+./data/set3_red/c415.png	680	334	101	67	
+./data/set3_red/c416.png	718	415	103	58	
+./data/set3_red/c417.png	717	429	93	62	
+./data/set3_red/c418.png	728	442	105	58	
+./data/set3_red/c419.png	742	460	97	52	
+./data/set3_red/c42.png	661	297	74	38	
+./data/set3_red/c420.png	747	470	94	49	
+./data/set3_red/c421.png	767	496	94	53	
+./data/set3_red/c422.png	800	480	95	48	
+./data/set3_red/c423.png	843	453	95	47	
+./data/set3_red/c424.png	896	421	97	49	
+./data/set3_red/c425.png	914	398	91	47	
+./data/set3_red/c426.png	921	398	95	50	
+./data/set3_red/c427.png	935	408	103	42	
+./data/set3_red/c428.png	903	403	101	46	
+./data/set3_red/c429.png	863	402	112	45	
+./data/set3_red/c43.png	682	292	72	40	
+./data/set3_red/c430.png	821	404	106	54	
+./data/set3_red/c431.png	794	384	107	48	
+./data/set3_red/c432.png	789	388	106	47	
+./data/set3_red/c433.png	821	391	110	45	
+./data/set3_red/c434.png	855	364	107	48	
+./data/set3_red/c435.png	857	318	108	56	
+./data/set3_red/c436.png	808	260	113	52	
+./data/set3_red/c437.png	807	190	114	62	
+./data/set3_red/c438.png	777	156	110	63	
+./data/set3_red/c439.png	733	182	115	71	
+./data/set3_red/c44.png	692	300	67	43	
+./data/set3_red/c440.png	694	234	120	69	
+./data/set3_red/c441.png		
+./data/set3_red/c442.png	556	368	127	73	
+./data/set3_red/c443.png	616	424	129	62	
+./data/set3_red/c444.png	648	487	124	55	
+./data/set3_red/c445.png	689	464	118	50	
+./data/set3_red/c446.png	734	450	117	52	
+./data/set3_red/c447.png	789	407	120	48	
+./data/set3_red/c448.png	799	360	108	53	
+./data/set3_red/c449.png	800	339	108	52	
+./data/set3_red/c45.png	694	303	67	40	836	300	40	39	
+./data/set3_red/c450.png	779	310	110	61	
+./data/set3_red/c451.png	790	279	110	61	
+./data/set3_red/c452.png	806	227	110	62	
+./data/set3_red/c453.png	873	211	108	64	
+./data/set3_red/c454.png	929	269	103	73	
+./data/set3_red/c455.png	952	360	99	55	
+./data/set3_red/c456.png	958	405	95	49	
+./data/set3_red/c457.png		
+./data/set3_red/c458.png	772	404	98	48	
+./data/set3_red/c459.png		
+./data/set3_red/c46.png	691	302	68	44	
+./data/set3_red/c460.png	583	484	95	48	
+./data/set3_red/c461.png	635	438	94	54	
+./data/set3_red/c462.png	713	365	81	49	
+./data/set3_red/c463.png	762	322	78	39	
+./data/set3_red/c464.png	805	338	76	37	
+./data/set3_red/c465.png	797	351	77	41	
+./data/set3_red/c466.png	785	384	78	47	
+./data/set3_red/c467.png	732	444	80	37	
+./data/set3_red/c468.png	665	453	76	39	
+./data/set3_red/c469.png	691	445	74	34	
+./data/set3_red/c47.png	696	346	66	43	835	342	39	37	
+./data/set3_red/c470.png	686	436	73	42	
+./data/set3_red/c471.png	698	409	74	39	
+./data/set3_red/c472.png	740	364	68	41	
+./data/set3_red/c473.png		
+./data/set3_red/c474.png	569	316	73	36	
+./data/set3_red/c475.png		
+./data/set3_red/c476.png		
+./data/set3_red/c477.png	606	621	69	33	
+./data/set3_red/c478.png	647	583	70	36	
+./data/set3_red/c479.png		
+./data/set3_red/c48.png	694	365	69	46	
+./data/set3_red/c480.png	735	511	64	26	
+./data/set3_red/c481.png	775	455	68	40	
+./data/set3_red/c482.png		
+./data/set3_red/c483.png		
+./data/set3_red/c484.png	971	189	66	32	
+./data/set3_red/c485.png	915	129	63	37	
+./data/set3_red/c486.png	913	76	63	39	
+./data/set3_red/c487.png	902	104	67	34	
+./data/set3_red/c488.png	883	122	62	36	
+./data/set3_red/c489.png	864	183	66	36	
+./data/set3_red/c49.png	712	408	64	40	
+./data/set3_red/c490.png	833	241	63	37	
+./data/set3_red/c491.png	818	252	61	30	
+./data/set3_red/c492.png	816	258	64	37	
+./data/set3_red/c493.png	809	264	62	30	
+./data/set3_red/c494.png	793	288	62	32	
+./data/set3_red/c495.png	782	295	63	33	
+./data/set3_red/c496.png	755	304	64	34	
+./data/set3_red/c497.png	784	305	68	30	
+./data/set3_red/c498.png	801	302	61	28	
+./data/set3_red/c499.png	805	291	60	29	
+./data/set3_red/c5.png	759	239	82	47	
+./data/set3_red/c50.png	723	404	69	39	
+./data/set3_red/c500.png	826	266	59	28	
+./data/set3_red/c501.png	830	290	61	29	
+./data/set3_red/c502.png	819	330	56	31	
+./data/set3_red/c503.png	864	326	56	32	
+./data/set3_red/c504.png		
+./data/set3_red/c505.png	677	341	58	29	
+./data/set3_red/c506.png	669	393	62	27	
+./data/set3_red/c507.png	809	332	63	29	
+./data/set3_red/c508.png	891	333	55	27	
+./data/set3_red/c509.png	937	302	55	26	
+./data/set3_red/c51.png	749	401	64	40	
+./data/set3_red/c510.png	949	274	58	24	
+./data/set3_red/c511.png	922	299	48	25	
+./data/set3_red/c512.png	901	291	50	26	
+./data/set3_red/c513.png		
+./data/set3_red/c514.png	807	309	55	26	
+./data/set3_red/c515.png	754	298	53	30	
+./data/set3_red/c516.png	741	294	58	26	
+./data/set3_red/c517.png	723	321	58	26	
+./data/set3_red/c518.png	702	338	56	25	
+./data/set3_red/c519.png	689	352	54	27	
+./data/set3_red/c52.png	770	413	61	42	
+./data/set3_red/c520.png	708	392	54	28	
+./data/set3_red/c521.png	777	402	50	28	
+./data/set3_red/c522.png	800	422	57	28	
+./data/set3_red/c523.png	793	442	53	26	
+./data/set3_red/c524.png	825	446	50	27	
+./data/set3_red/c525.png	835	438	52	26	
+./data/set3_red/c526.png	812	410	51	24	
+./data/set3_red/c527.png	804	419	49	28	
+./data/set3_red/c528.png	779	406	46	26	
+./data/set3_red/c529.png	766	369	45	24	
+./data/set3_red/c53.png	771	428	64	40	
+./data/set3_red/c530.png	806	372	49	27	
+./data/set3_red/c531.png	826	389	51	25	
+./data/set3_red/c532.png	825	397	49	22	
+./data/set3_red/c533.png	813	398	46	24	
+./data/set3_red/c534.png	784	365	50	22	
+./data/set3_red/c535.png		
+./data/set3_red/c536.png	709	284	50	23	
+./data/set3_red/c537.png	712	262	54	27	
+./data/set3_red/c538.png	749	250	53	26	
+./data/set3_red/c539.png	781	235	50	27	
+./data/set3_red/c54.png	745	444	66	41	
+./data/set3_red/c540.png	827	209	52	23	
+./data/set3_red/c541.png	861	159	49	26	
+./data/set3_red/c542.png	883	120	51	26	
+./data/set3_red/c543.png	856	156	48	31	
+./data/set3_red/c544.png	881	216	48	30	
+./data/set3_red/c545.png	869	264	54	25	
+./data/set3_red/c546.png	839	315	44	29	
+./data/set3_red/c547.png	825	357	52	27	
+./data/set3_red/c548.png	779	387	48	22	
+./data/set3_red/c549.png	750	401	47	27	
+./data/set3_red/c55.png	742	435	68	43	
+./data/set3_red/c550.png	728	412	49	28	
+./data/set3_red/c551.png	722	408	48	27	
+./data/set3_red/c552.png	714	410	44	26	
+./data/set3_red/c553.png	699	409	44	23	
+./data/set3_red/c554.png	737	427	46	25	
+./data/set3_red/c555.png	791	428	45	23	
+./data/set3_red/c556.png	812	423	43	24	
+./data/set3_red/c557.png		
+./data/set3_red/c558.png	908	426	43	22	
+./data/set3_red/c559.png	897	412	46	19	
+./data/set3_red/c56.png	746	435	64	41	
+./data/set3_red/c560.png	886	390	43	23	
+./data/set3_red/c561.png	857	394	43	25	
+./data/set3_red/c562.png	860	392	44	24	
+./data/set3_red/c563.png	846	387	43	23	
+./data/set3_red/c564.png	822	388	45	24	
+./data/set3_red/c565.png	793	389	47	21	
+./data/set3_red/c566.png	760	376	44	22	
+./data/set3_red/c567.png	744	350	43	28	
+./data/set3_red/c568.png	714	320	47	24	
+./data/set3_red/c569.png	697	327	46	22	
+./data/set3_red/c57.png	741	432	65	42	
+./data/set3_red/c570.png	713	346	43	24	
+./data/set3_red/c571.png	755	350	42	21	
+./data/set3_red/c572.png	761	352	43	20	
+./data/set3_red/c573.png	729	350	48	20	
+./data/set3_red/c574.png	705	379	43	19	
+./data/set3_red/c575.png	657	402	41	21	
+./data/set3_red/c576.png	642	404	44	21	
+./data/set3_red/c577.png	643	435	43	19	
+./data/set3_red/c578.png	666	441	39	17	
+./data/set3_red/c579.png		
+./data/set3_red/c58.png	738	443	66	39	891	448	47	44	
+./data/set3_red/c580.png		
+./data/set3_red/c581.png		
+./data/set3_red/c582.png	1052	345	40	24	
+./data/set3_red/c583.png	1001	362	41	20	
+./data/set3_red/c584.png	965	359	43	22	
+./data/set3_red/c585.png	957	376	40	24	
+./data/set3_red/c586.png	954	400	39	23	
+./data/set3_red/c587.png	949	394	40	19	
+./data/set3_red/c588.png	949	360	36	25	
+./data/set3_red/c589.png	963	298	40	26	
+./data/set3_red/c59.png	745	462	69	47	896	463	43	45	
+./data/set3_red/c590.png	937	278	38	23	
+./data/set3_red/c591.png	917	268	34	20	
+./data/set3_red/c592.png	900	276	39	24	
+./data/set3_red/c593.png	890	265	34	20	
+./data/set3_red/c594.png	913	261	38	19	
+./data/set3_red/c595.png	934	259	36	23	
+./data/set3_red/c596.png	927	247	45	21	
+./data/set3_red/c597.png	893	250	42	21	
+./data/set3_red/c598.png	870	261	37	20	
+./data/set3_red/c599.png		
+./data/set3_red/c6.png		
+./data/set3_red/c60.png	778	440	66	41	930	445	47	40	
+./data/set3_red/c600.png	781	286	39	22	
+./data/set3_red/c601.png	752	290	37	20	
+./data/set3_red/c602.png	750	293	41	22	
+./data/set3_red/c603.png	760	280	37	22	
+./data/set3_red/c604.png	778	254	38	16	
+./data/set3_red/c605.png	794	246	34	17	
+./data/set3_red/c606.png	815	246	37	22	
+./data/set3_red/c607.png	821	234	32	20	
+./data/set3_red/c608.png	810	227	31	19	
+./data/set3_red/c609.png	791	241	35	19	
+./data/set3_red/c61.png	814	416	68	42	
+./data/set3_red/c610.png	759	276	40	21	
+./data/set3_red/c611.png	752	303	35	19	
+./data/set3_red/c612.png	749	319	39	20	
+./data/set3_red/c613.png	747	350	34	20	
+./data/set3_red/c614.png	758	366	37	20	
+./data/set3_red/c615.png	754	348	33	17	
+./data/set3_red/c616.png	769	318	33	17	
+./data/set3_red/c617.png		
+./data/set3_red/c618.png	877	290	34	13	
+./data/set3_red/c619.png	869	285	30	13	
+./data/set3_red/c62.png	887	412	69	44	1039	420	45	42	
+./data/set3_red/c620.png	872	286	35	16	
+./data/set3_red/c621.png	871	291	33	16	
+./data/set3_red/c622.png	854	310	36	16	
+./data/set3_red/c623.png	786	291	34	17	
+./data/set3_red/c624.png	787	273	33	15	
+./data/set3_red/c625.png		
+./data/set3_red/c626.png	681	298	37	21	
+./data/set3_red/c627.png	635	359	30	21	
+./data/set3_red/c628.png	598	421	39	21	
+./data/set3_red/c629.png	612	438	33	22	
+./data/set3_red/c63.png	918	390	67	41	1071	397	42	38	
+./data/set3_red/c630.png		
+./data/set3_red/c631.png	721	486	34	20	
+./data/set3_red/c632.png		
+./data/set3_red/c633.png	759	540	35	17	
+./data/set3_red/c634.png		
+./data/set3_red/c635.png	854	512	31	14	
+./data/set3_red/c636.png	862	481	31	17	
+./data/set3_red/c637.png	856	488	32	18	
+./data/set3_red/c638.png	860	496	33	17	
+./data/set3_red/c639.png	831	505	34	13	
+./data/set3_red/c64.png	943	377	60	49	1109	391	54	42	
+./data/set3_red/c640.png		
+./data/set3_red/c641.png		
+./data/set3_red/c642.png	789	604	33	20	
+./data/set3_red/c643.png	791	595	32	20	
+./data/set3_red/c644.png	793	584	32	16	
+./data/set3_red/c645.png	811	557	32	15	
+./data/set3_red/c646.png	812	499	33	24	
+./data/set3_red/c647.png		
+./data/set3_red/c648.png	788	304	32	18	
+./data/set3_red/c649.png	782	281	29	15	
+./data/set3_red/c65.png	942	393	67	46	1109	408	55	43	
+./data/set3_red/c650.png	769	266	28	17	
+./data/set3_red/c651.png	768	248	33	15	
+./data/set3_red/c652.png	759	246	30	18	
+./data/set3_red/c653.png	759	242	33	18	
+./data/set3_red/c654.png	753	249	32	21	
+./data/set3_red/c655.png	742	250	31	15	
+./data/set3_red/c656.png	755	278	33	17	
+./data/set3_red/c657.png	761	263	32	18	
+./data/set3_red/c658.png	759	252	34	17	
+./data/set3_red/c659.png	759	301	30	18	
+./data/set3_red/c66.png	893	414	64	51	1066	428	66	44	
+./data/set3_red/c660.png	751	290	32	19	
+./data/set3_red/c661.png	739	258	31	17	
+./data/set3_red/c662.png	707	253	30	19	
+./data/set3_red/c663.png	722	210	31	20	
+./data/set3_red/c664.png	736	146	33	18	
+./data/set3_red/c665.png	755	110	36	20	
+./data/set3_red/c666.png	753	132	35	17	
+./data/set3_red/c667.png	722	163	37	20	
+./data/set3_red/c668.png		
+./data/set3_red/c669.png	832	234	38	18	
+./data/set3_red/c67.png	836	397	66	47	1006	422	60	40	
+./data/set3_red/c670.png	881	226	36	19	
+./data/set3_red/c671.png	895	215	36	19	
+./data/set3_red/c672.png	895	204	32	17	
+./data/set3_red/c673.png	875	197	35	20	
+./data/set3_red/c674.png	837	215	34	16	
+./data/set3_red/c675.png	845	214	31	16	
+./data/set3_red/c676.png		
+./data/set3_red/c677.png	796	208	32	25	
+./data/set3_red/c678.png	791	285	34	20	
+./data/set3_red/c679.png	807	287	35	20	
+./data/set3_red/c68.png	809	385	64	53	983	416	63	36	
+./data/set3_red/c680.png	823	270	33	21	
+./data/set3_red/c681.png	813	274	32	21	
+./data/set3_red/c682.png	822	262	31	20	
+./data/set3_red/c683.png		
+./data/set3_red/c684.png	759	216	34	24	
+./data/set3_red/c685.png	775	228	34	18	
+./data/set3_red/c686.png	757	226	34	15	
+./data/set3_red/c687.png	760	248	37	17	
+./data/set3_red/c688.png	767	238	34	18	
+./data/set3_red/c689.png	797	238	36	20	
+./data/set3_red/c69.png	766	368	65	56	947	392	61	36	
+./data/set3_red/c690.png		
+./data/set3_red/c691.png	959	242	35	19	
+./data/set3_red/c692.png	1016	237	35	18	
+./data/set3_red/c693.png	1107	272	39	22	
+./data/set3_red/c694.png	1149	243	38	22	
+./data/set3_red/c695.png	1173	208	34	18	
+./data/set3_red/c696.png		
+./data/set3_red/c697.png	1080	246	38	21	
+./data/set3_red/c698.png		
+./data/set3_red/c699.png	916	296	38	18	
+./data/set3_red/c7.png	659	366	80	49	
+./data/set3_red/c70.png	717	342	74	52	907	366	74	46	
+./data/set3_red/c700.png	879	285	36	21	
+./data/set3_red/c701.png	867	289	36	19	
+./data/set3_red/c702.png	889	296	34	19	
+./data/set3_red/c703.png	937	273	36	19	
+./data/set3_red/c704.png	1005	258	39	17	
+./data/set3_red/c705.png	1037	256	35	24	
+./data/set3_red/c706.png	1055	254	37	20	
+./data/set3_red/c707.png	1047	244	37	22	
+./data/set3_red/c708.png	1000	250	41	20	
+./data/set3_red/c709.png	963	302	39	18	
+./data/set3_red/c71.png	663	336	70	50	859	353	66	48	
+./data/set3_red/c710.png	923	336	39	21	
+./data/set3_red/c711.png	896	331	35	19	
+./data/set3_red/c712.png	900	312	37	19	
+./data/set3_red/c713.png	919	320	38	17	
+./data/set3_red/c714.png	928	302	35	20	
+./data/set3_red/c715.png	932	289	39	20	
+./data/set3_red/c716.png	935	288	38	21	
+./data/set3_red/c717.png	947	281	42	20	
+./data/set3_red/c718.png	944	289	37	21	
+./data/set3_red/c719.png	925	291	43	18	
+./data/set3_red/c72.png	651	340	70	53	854	353	71	51	
+./data/set3_red/c720.png	874	308	46	23	
+./data/set3_red/c721.png	832	324	43	22	
+./data/set3_red/c722.png	788	332	43	20	
+./data/set3_red/c723.png	781	257	40	27	
+./data/set3_red/c724.png	817	248	44	20	
+./data/set3_red/c725.png	837	237	40	21	
+./data/set3_red/c726.png	843	182	44	26	
+./data/set3_red/c727.png	843	144	44	24	
+./data/set3_red/c728.png	870	154	42	21	
+./data/set3_red/c729.png	881	176	46	23	
+./data/set3_red/c73.png	635	323	71	51	840	329	69	51	
+./data/set3_red/c730.png	851	182	43	23	
+./data/set3_red/c731.png	813	227	44	19	
+./data/set3_red/c732.png	771	256	47	25	
+./data/set3_red/c733.png	744	289	47	23	
+./data/set3_red/c734.png	708	320	47	22	
+./data/set3_red/c735.png	690	339	48	25	
+./data/set3_red/c736.png	681	356	48	25	
+./data/set3_red/c737.png	664	362	46	20	
+./data/set3_red/c738.png	667	356	48	24	
+./data/set3_red/c739.png	711	351	54	23	
+./data/set3_red/c74.png	610	316	80	56	814	312	70	60	
+./data/set3_red/c740.png	777	327	49	26	
+./data/set3_red/c741.png	825	312	47	23	
+./data/set3_red/c742.png	848	308	43	26	
+./data/set3_red/c743.png	830	308	45	26	
+./data/set3_red/c744.png	813	298	49	27	
+./data/set3_red/c745.png	792	319	51	27	
+./data/set3_red/c746.png	777	324	52	24	
+./data/set3_red/c747.png	784	336	51	29	
+./data/set3_red/c748.png	819	344	50	24	
+./data/set3_red/c749.png	857	346	50	24	
+./data/set3_red/c75.png	581	331	74	49	793	320	76	55	
+./data/set3_red/c750.png	869	349	52	26	
+./data/set3_red/c751.png	859	339	53	28	
+./data/set3_red/c752.png	856	321	52	30	
+./data/set3_red/c753.png	827	323	55	25	
+./data/set3_red/c754.png	766	352	59	33	
+./data/set3_red/c755.png	728	387	60	30	
+./data/set3_red/c756.png	709	418	61	28	
+./data/set3_red/c757.png	701	410	59	30	
+./data/set3_red/c758.png	738	363	65	29	
+./data/set3_red/c759.png	780	300	61	32	
+./data/set3_red/c76.png	576	340	71	47	789	326	72	60	
+./data/set3_red/c760.png	805	238	63	36	
+./data/set3_red/c761.png	785	219	63	37	
+./data/set3_red/c762.png	766	230	57	37	
+./data/set3_red/c763.png	772	273	62	37	
+./data/set3_red/c764.png	760	276	59	33	
+./data/set3_red/c765.png	751	345	60	40	
+./data/set3_red/c766.png	780	371	65	38	
+./data/set3_red/c767.png	837	359	68	39	
+./data/set3_red/c768.png	893	356	66	46	
+./data/set3_red/c769.png	980	371	70	47	1126	381	45	47	
+./data/set3_red/c77.png	609	352	76	54	821	339	80	63	
+./data/set3_red/c770.png	1003	389	64	49	1156	398	50	45	
+./data/set3_red/c771.png	960	399	67	50	1106	408	47	47	
+./data/set3_red/c772.png	901	419	65	55	1062	428	56	46	
+./data/set3_red/c773.png	846	420	65	53	1016	429	57	53	
+./data/set3_red/c774.png	817	459	64	51	996	467	65	50	
+./data/set3_red/c775.png	820	446	65	50	1000	456	60	52	
+./data/set3_red/c776.png	831	433	70	54	1013	444	65	55	
+./data/set3_red/c777.png	884	459	69	59	1078	477	70	57	
+./data/set3_red/c778.png	970	440	72	58	1175	470	83	63	
+./data/set3_red/c779.png	993	359	66	67	1205	383	76	56	
+./data/set3_red/c78.png	645	366	73	50	856	357	69	63	
+./data/set3_red/c780.png	938	248	63	62	1156	284	83	60	
+./data/set3_red/c781.png	907	190	70	71	1130	219	92	57	
+./data/set3_red/c782.png	834	164	71	71	1066	197	87	63	
+./data/set3_red/c783.png	773	156	77	78	1010	190	91	72	
+./data/set3_red/c784.png	679	196	76	79	924	226	99	74	
+./data/set3_red/c785.png	619	266	71	92	868	297	89	86	
+./data/set3_red/c786.png	628	326	70	80	884	355	96	72	
+./data/set3_red/c787.png	661	332	63	82	920	373	107	82	
+./data/set3_red/c788.png	705	355	70	80	968	405	107	82	
+./data/set3_red/c789.png	733	387	59	89	1001	454	122	93	
+./data/set3_red/c79.png	667	367	73	51	882	354	81	59	
+./data/set3_red/c790.png	744	387	59	76	1019	456	120	75	
+./data/set3_red/c791.png	722	404	55	81	999	480	138	83	
+./data/set3_red/c792.png	671	424	55	96	964	498	133	82	
+./data/set3_red/c793.png	612	429	55	89	917	503	134	86	
+./data/set3_red/c794.png	540	414	55	91	855	493	143	95	
+./data/set3_red/c795.png	522	370	48	94	849	450	148	92	
+./data/set3_red/c796.png	854	403	162	93	
+./data/set3_red/c797.png	858	436	163	89	
+./data/set3_red/c798.png	906	415	176	94	
+./data/set3_red/c799.png	1005	388	192	95	
+./data/set3_red/c8.png	642	414	80	44	
+./data/set3_red/c80.png	676	342	69	53	892	337	75	60	
+./data/set3_red/c800.png	1107	403	189	109	
+./data/set3_red/c801.png	1106	452	191	110	
+./data/set3_red/c802.png	1037	475	190	111	
+./data/set3_red/c803.png	913	526	194	112	
+./data/set3_red/c804.png	834	550	192	102	
+./data/set3_red/c805.png	841	544	194	100	
+./data/set3_red/c806.png	918	526	191	103	
+./data/set3_red/c807.png	979	511	185	100	
+./data/set3_red/c808.png		
+./data/set3_red/c809.png		
+./data/set3_red/c81.png	652	328	70	54	874	326	78	62	
+./data/set3_red/c810.png		
+./data/set3_red/c811.png	997	688	179	99	
+./data/set3_red/c812.png	959	515	180	109	
+./data/set3_red/c813.png	937	476	172	108	
+./data/set3_red/c814.png	934	470	176	110	
+./data/set3_red/c815.png	930	464	177	112	
+./data/set3_red/c816.png	929	469	179	113	
+./data/set3_red/c817.png	927	498	180	121	
+./data/set3_red/c818.png	936	602	177	122	
+./data/set3_red/c819.png	921	628	178	108	
+./data/set3_red/c82.png	635	348	65	58	865	349	83	69	
+./data/set3_red/c820.png	815	646	206	114	
+./data/set3_red/c821.png	719	663	198	113	
+./data/set3_red/c822.png	737	672	205	116	
+./data/set3_red/c823.png	717	677	228	119	
+./data/set3_red/c824.png		
+./data/set3_red/c825.png		
+./data/set3_red/c826.png		
+./data/set3_red/c827.png		
+./data/set3_red/c828.png	1016	679	95	167	
+./data/set3_red/c829.png	977	676	112	151	
+./data/set3_red/c83.png	655	366	72	59	889	369	85	62	
+./data/set3_red/c830.png	946	658	126	156	
+./data/set3_red/c831.png	991	649	140	157	
+./data/set3_red/c832.png	1047	630	148	151	
+./data/set3_red/c833.png	1075	573	163	149	
+./data/set3_red/c834.png	1062	630	164	172	
+./data/set3_red/c835.png	1107	524	167	132	
+./data/set3_red/c836.png	1146	526	163	120	
+./data/set3_red/c837.png	1214	521	160	93	
+./data/set3_red/c838.png	1219	527	151	89	
+./data/set3_red/c839.png	1238	502	152	82	
+./data/set3_red/c84.png	663	388	71	59	902	394	83	65	
+./data/set3_red/c840.png	1221	510	155	84	
+./data/set3_red/c841.png	1224	520	154	80	
+./data/set3_red/c842.png	1261	581	157	78	
+./data/set3_red/c843.png	1203	561	144	67	
+./data/set3_red/c844.png	1169	562	141	72	
+./data/set3_red/c845.png	1223	518	146	54	
+./data/set3_red/c846.png	1200	482	129	54	
+./data/set3_red/c847.png		
+./data/set3_red/c848.png	1010	463	127	65	
+./data/set3_red/c849.png	1203	409	141	75	
+./data/set3_red/c85.png	670	417	71	66	919	425	90	65	
+./data/set3_red/c850.png	1073	424	137	78	
+./data/set3_red/c851.png	928	466	130	73	
+./data/set3_red/c852.png	856	464	119	70	
+./data/set3_red/c853.png	835	468	117	69	
+./data/set3_red/c854.png	851	462	122	63	
+./data/set3_red/c855.png	913	455	121	67	
+./data/set3_red/c856.png	991	432	119	67	
+./data/set3_red/c857.png	1108	398	129	73	
+./data/set3_red/c858.png	1195	418	128	63	
+./data/set3_red/c859.png	1205	425	121	62	
+./data/set3_red/c86.png	667	429	65	79	921	435	93	68	
+./data/set3_red/c860.png	1211	421	119	73	
+./data/set3_red/c861.png	1250	446	119	60	
+./data/set3_red/c862.png	1231	481	118	57	
+./data/set3_red/c863.png	1211	502	117	60	
+./data/set3_red/c864.png	1165	498	120	57	
+./data/set3_red/c865.png	1099	458	115	50	
+./data/set3_red/c866.png	1078	460	115	52	
+./data/set3_red/c867.png	1038	457	112	65	
+./data/set3_red/c868.png	1023	452	114	65	
+./data/set3_red/c869.png	1007	452	112	66	
+./data/set3_red/c87.png	691	437	61	72	950	453	96	73	
+./data/set3_red/c870.png	1011	443	108	63	
+./data/set3_red/c871.png	1019	445	113	63	
+./data/set3_red/c872.png	1072	467	114	53	
+./data/set3_red/c88.png	711	438	61	72	973	465	100	78	
+./data/set3_red/c89.png	722	457	60	77	993	480	107	75	
+./data/set3_red/c9.png	628	422	83	41	
+./data/set3_red/c90.png	742	484	60	62	1014	506	111	77	
+./data/set3_red/c91.png	739	466	52	64	1018	499	119	78	
+./data/set3_red/c92.png	725	458	54	64	1006	496	119	80	
+./data/set3_red/c93.png	684	440	55	76	977	473	129	81	
+./data/set3_red/c94.png	687	402	57	82	989	436	126	83	
+./data/set3_red/c95.png	662	387	59	87	978	420	131	91	
+./data/set3_red/c96.png	649	370	58	94	977	408	141	95	
+./data/set3_red/c97.png	671	405	68	93	1003	449	144	99	
+./data/set3_red/c98.png	676	408	57	87	1014	459	151	93	
+./data/set3_red/c99.png	681	394	55	90	1024	455	151	96	

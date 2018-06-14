@@ -14,8 +14,8 @@ def build_model(inp_holder):
 		mod.convLayer(3,16,activation=M.PARAM_LRELU) #480_ 2x2	
 		mod.convLayer(5,32,stride=2,activation=M.PARAM_LRELU) #240_ 4x4
 		c1 = mod.convLayer(5,32,stride=2,activation=M.PARAM_LRELU) #120_ 8x8
-		#mod.convLayer(3,64,activation=M.PARAM_LRELU)
-		feat1 = mod.convLayer(3,64,activation=M.PARAM_LRELU)
+		mod.convLayer(3,64,activation=M.PARAM_LRELU)
+		feat1 = mod.convLayer(3,128,activation=M.PARAM_LRELU)
 		bias1 = mod.convLayer(1,4)
 		mod.set_current(feat1)
 		conf1 = mod.convLayer(1,1)

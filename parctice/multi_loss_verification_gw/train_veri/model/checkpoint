@@ -1,0 +1,6 @@
+model_checkpoint_path: "MSRPN_20000.ckpt"
+all_model_checkpoint_paths: "MSRPN_12000.ckpt"
+all_model_checkpoint_paths: "MSRPN_14000.ckpt"
+all_model_checkpoint_paths: "MSRPN_16000.ckpt"
+all_model_checkpoint_paths: "MSRPN_18000.ckpt"
+all_model_checkpoint_paths: "MSRPN_20000.ckpt"

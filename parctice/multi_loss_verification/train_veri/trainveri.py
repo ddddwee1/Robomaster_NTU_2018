@@ -37,9 +37,9 @@ def get_iou(inp1,inp2):
 	yo = min(abs(y1+h1/2-y2+h2/2), abs(y1-h1/2-y2-h2/2))
 	if abs(x1-x2) > (w1+w2)/2 or abs(y1-y2) > (h1+h2)/2:
 		return 0
-	if abs(x1-x2) < abs(w1-w2):
+	if abs(float((x1-x2)*2)) < abs(w1-w2):
 		xo = min(w1, w2)
-	if abs(y1-y2) < abs(h1-h2):
+	if abs(float((y1-y2)*2)) < abs(h1-h2):
 		yo = min(h1, h2)
 	overlap = xo*yo
 	total = w1*h1+w2*h2-overlap
