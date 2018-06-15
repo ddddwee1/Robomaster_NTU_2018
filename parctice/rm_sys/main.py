@@ -33,7 +33,7 @@ def getKey():
 
 settings = termios.tcgetattr(sys.stdin)
 termios.tcsetattr(sys.stdin, termios.TCSADRAIN, settings)
-pitch_bias = 900
+pitch_bias = 920
 yaw_bias = 0
 
 while True:
@@ -89,10 +89,10 @@ while True:
 	height=util.get_height(coord)
 
 	if key == '2' :
-		pitch_bias-=2
+		pitch_bias-=5
 
 	if key == '1' :
-		pitch_bias+=2
+		pitch_bias+=5
 
 	#print 'height' , height
 	#print 'pitch bias', pitch_bias
@@ -106,7 +106,7 @@ while True:
 	#print 'yaw bias', yaw_bias
 
 	v1 = t_pitch + pitch_delta *1.0 - pitch_bias
-	v2 = t_yaw + yaw_delta *1.0
+	v2 = t_yaw + yaw_delta *1.0 - yaw_bias
 
 	print yaw_delta ,t_yaw , v2
 	if abs(v1) >= 2000:
@@ -116,7 +116,7 @@ while True:
 		v2 = 6000
 
 	robot_prop.v1 = v1
-	robot_prop.v2 = 15
+	robot_prop.v2 = v2
 	t2=time.time()
 	t_e = t2-t1
 	#print t_e
