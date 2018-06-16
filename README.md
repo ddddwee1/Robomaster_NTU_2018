@@ -50,10 +50,10 @@ The marked items are finished topics and unmarked ones are still in progress or 
 
 ## Practice 
 
-- [ ] Handwritten digits recognition in real world. 
+- [x] Handwritten digits recognition in real world. 
 
 - [x] Hit area (board) detection 
 
-- [ ] High-level assist operation
+- [x] High-level auto-shooting assist operation
 
 #### We will add more functions if needed 
