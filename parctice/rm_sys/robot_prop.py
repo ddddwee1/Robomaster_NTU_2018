@@ -5,19 +5,17 @@ port_writing = False
 v1 = 0 #pitch speed
 v2 = 0 #yaw speed
 shoot = 0
-lr = 0
-fw = 0
-rot = 0
+mode = 0
 
 # turret 
 t_pitch = 0
 t_yaw = 0
 
 # game prop
-process = 0
-isbuff = 0
-winner = 0
+time_remain = 0
 
 def get_order():
-	return v1,v2,fw,lr,rot,shoot
-
+	global v1,v2,mode,shoot,time_remain
+	if time_remain==0:
+		mode = 0
+	return v1,v2,mode,shoot
