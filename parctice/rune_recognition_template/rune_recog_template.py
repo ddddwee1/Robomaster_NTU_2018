@@ -191,7 +191,7 @@ def get_detection_rune(img_ori):
 	dst = cv2.warpPerspective(img,M,(1580,1050))
 
 	for rect in side_rects_bnd_rect:
-	    *# Draw the rectangles
+	    # Draw the rectangles
 	    cv2.rectangle(img, (rect[0], rect[1]), (rect[0] + rect[2], rect[1] + rect[3]), (0, 255, 0), 3)
 	    pass
 
@@ -269,3 +269,7 @@ def get_detection_rune(img_ori):
 	print(elapsed_time)
 
 	cv2.waitKey(0)
+
+if __name__=='__main__':
+	im = cv2.imread('c.jpg')
+	get_detection_rune(im)
