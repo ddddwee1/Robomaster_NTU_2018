@@ -1,2 +1,0 @@
-model_checkpoint_path: "MSRPN_triple.ckpt"
-all_model_checkpoint_paths: "MSRPN_triple.ckpt"
