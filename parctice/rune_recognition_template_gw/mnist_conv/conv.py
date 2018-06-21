@@ -76,7 +76,7 @@ def build_graph():
 	last_layer = build_model(img_holder)
 	loss = tf.reduce_mean(tf.nn.sigmoid_cross_entropy_with_logits(labels=lab_holder,logits=last_layer))
 	accuracy = M.accuracy(last_layer,tf.argmax(lab_holder,1))
-	train_step = tf.train.AdamOptimizer(0.00001).minimize(loss)
+	train_step = tf.train.AdamOptimizer(0.000001).minimize(loss)
 	return img_holder,lab_holder,loss,train_step,accuracy,last_layer
 
 img_holder,lab_holder,loss,train_step,accuracy,last_layer = build_graph()
