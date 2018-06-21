@@ -1,4 +1,5 @@
 import rune_recog_template_gw
+import conv
 import cv2
 import time
 import numpy as np
@@ -6,10 +7,12 @@ from imutils.perspective import four_point_transform
 from imutils import contours
 import imutils
 
-cap = cv2.VideoCapture(0)
+cap = cv2.VideoCapture(1)
 cap.set(cv2.CAP_PROP_FPS,30)
 #fps = cap.get(cv2.CAP_PROP_FPS)
 #print 'fps',fps
+WHITE = (255,255,255)
+BLACK = (0,0,0)
 
 image_width = 1024
 image_height = 768 
@@ -26,6 +29,8 @@ while True:
 	row_right_rect = []
 	#img = cv2.imread('b.jpg',3)
 	_,image = cap.read()
+	cv2.imshow('',image)
+
 	#print img
 	#img1=np.array(img)
 	#print img1.shape
@@ -33,11 +38,12 @@ while True:
 	# graycale, blurring it, and computing an edge map
 	gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 	#blurred = cv2.GaussianBlur(gray, (5,5), 0)
-	#blurred = cv2.bilateralFilter(gray, 11, 17, 17)
-	ret, th_img = cv2.threshold(gray,20,255,cv2.THRESH_BINARY+cv2.THRESH_OTSU)
-	edged = cv2.Canny(th_img, 50, 255, 255)
+	blurred = cv2.bilateralFilter(gray, 3, 139, 139)
+	#ret, th_img = cv2.threshold(gray,20,255,cv2.THRESH_BINARY)
+	#cv2.imshow('cccc',blurred)
+	edged = cv2.Canny(blurred, 120, 240,L2gradient=True)
 	#ret, th_img = cv2.threshold(edged,0,255,cv2.THRESH_BINARY+cv2.THRESH_OTSU)
-
+	cv2.waitKey(1)
 	_, contours, hierarchy = cv2.findContours(edged.copy(),cv2.RETR_TREE,cv2.CHAIN_APPROX_SIMPLE)
 
 	for contour in contours:
@@ -127,15 +133,48 @@ while True:
 	M = cv2.getPerspectiveTransform(pts1,pts2)
 
 	dst = cv2.warpPerspective(image,M,(300,150))
+	dst = cv2.Canny(dst, 50, 255, 255,L2gradient=True )
 
-	digits_rect = [(50,3),(125,3),(200,3),(50,58),(125,58),(200,58),(50,113),(125,113),(200,113)]
+	digits_rect = [(51,3),(125,3),(200,3),(51,58),(125,58),(200,58),(51,113),(125,113),(200,113)]
+	digit_imgs = []
+	abc = 0
 	for x,y in digits_rect:
-		cv2.rectangle(dst,(x,y),(x+50,y+34),(255,0,0),2)
-		#buf = dst[y+2:y+20,x+2:x+40]
-		
+		#cv2.rectangle(dst,(x,y),(x+48,y+34),(255,0,0),2)
+		buf = dst[y:y+32,x:x+48]
+		#buf = cv2.cvtColor(buf,cv2.COLOR_BGR2GRAY)
+		buf = cv2.copyMakeBorder(buf,1, 1, 1, 1, cv2.BORDER_CONSTANT, value=BLACK)
+		buf = cv2.resize(buf,(28,28))
+		cv2.imshow('bb'+abc,buf)
+		#cv2.waitKey(0)
+		buf = buf.reshape([-1])
+		digit_imgs.append(buf)
 
+	cv2.waitKey(0)
+	scr = conv.get_pred(digit_imgs)
+	print(scr)
+
+	dst1 = cv2.warpPerspective(image,M,(300,150))
+	dst1 = cv2.Canny(dst, 50, 255, 255,L2gradient=True )
+	digits_rect = [(18, 18), (122, 18), (226, 18), (330, 18), (434, 18)]
+
+	digit_imgs = []
+	for x,y in digits_rect:
+		#cv2.rectangle(dst,(x,y),(x+48,y+34),(255,0,0),2)
+		buf = dst[y:y+32,x:x+48]
+		#buf = cv2.cvtColor(buf,cv2.COLOR_BGR2GRAY)
+		buf = cv2.copyMakeBorder(buf,1, 1, 1, 1, cv2.BORDER_CONSTANT, value=BLACK)
+		buf = cv2.resize(buf,(28,28))
+		cv2.imshow('bb'+abc,buf)
+		#cv2.waitKey(0)
+		buf = buf.reshape([-1])
+		digit_imgs.append(buf)
+
+	scr_7seg = conv.get_pred(digit_imgs)
+	print(scr_7seg)
+
+	scr_7seg = conv.get_pred(digit_imgs)
 	cv2.imshow('a',dst)
-	cv2.imshow('b',image)
+	cv2.imshow('b',edged)
 #	cv2.imshow('b', dst)
 	cv2.waitKey(1)
 
