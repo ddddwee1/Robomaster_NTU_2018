@@ -17,7 +17,6 @@ import numpy as np
 turret_pitch = [ 600 , 200 , -200] 
 turret_yaw = [ -500 , 0 , -500]
 
-RESIZING_PROCESSED_IMAGE = True
 
 cap = cv2.VideoCapture(0)
 cap.set(cv2.CAP_PROP_FPS,10)
@@ -36,31 +35,35 @@ while True:
 	_,img = cap.read()
 	#print img
 	try:
-		handwritten_num , num_7seg = rune_recog_template.get_detection_rune(img)
+		handwritten_num_raw , num_7seg_raw = rune_recog_template.get_detection_rune(img)
 	except:
 		print 'Error'
 		time.sleep(0.1)
 		continue
-	#print handwritten_num
+	
 	handwritten_dict = {}
+	num_7seg_dict = {}
 
 	# filter handwritten_num
 	for i in range(len(handwritten_num)):
 		handwritten_dict[handwritten_num[i]] = np.count_nonzero(handwritten_num[i])
 
-	if len(handwritten_dict) != 9:
-		continue
+	for i in range(len(num_7seg)):
+		num_7seg_dict[num_7seg[i]] = np.count_nonzero(num_7seg[i])
 
-	# filter num_7seg
-	#for i in range(len(num_7seg)):
-	#	num_7seg_dict[num_7seg[i]] = np.count_nonzero(num_7seg[i])
+	if len(handwritten_dict) != 9 and len(num_7seg_dict) != 5:
+		print "wrong handwritten number"
+	else:
+		handwritten_num= handwritten_num_raw
+		print handwritten_num
+	
+	if len(num_7seg_dict) != 5:
+		print "wrong 7seg number"
+	else:
+		num_7seg = num_7seg_raw
+		print num_7seg
 
-	#if len(num_7seg_dict) != 5:
-	#	continue
-
-	print handwritten_num , num_7seg
-
-	if save_num_7seg == 0 or save_num_7seg == num_7seg:
+	if save_num_7seg == 0 or save_num_7seg == num_7seg and handwritten_num != None and num_7seg!=None :
 		shoot_handwritten_num = num_7seg[num_7seg_index]
 		num_7seg_index +=1
 		for i in range(len(handwritten_num)):
@@ -71,8 +74,8 @@ while True:
 		handwritten_num_row = handwritten_num // 3
 		handwritten_num_col = handwritten_num % 3
 
-		robot_prop.v1 = turret_pitch[handwritten_num_row]
-		robot_prop.v2 = turret_yaw[handwritten_num_col]
+		robot_prop.v1 = turret_pitch[int(handwritten_num_row)]
+		robot_prop.v2 = turret_yaw[int(handwritten_num_col)]
 		for i in range(20):
 			robot_prop.shoot = 1
 		time.sleep(0.05)

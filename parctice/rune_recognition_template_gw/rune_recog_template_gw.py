@@ -183,7 +183,6 @@ def get_detection_rune(img_ori):
 	        if centroid[1] > sr_br[1]:
 	            sr_br = centroid
 
-	print sr_tl,sr_tr,sr_bl,sr_br
 	pts1 = np.float32([sr_tl,sr_tr,sr_bl,sr_br])
 	pts2 = np.float32([[50, 280],[1390, 280],[50, 800],[1390, 800]])
 	pts2 = pts2 + np.float32([70, 35])
