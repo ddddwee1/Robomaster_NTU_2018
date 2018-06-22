@@ -244,6 +244,12 @@ def get_detection_rune(img_ori):
 	digit_imgs = []
 	for x,y in digits_rect:
 		buf = img_sevseg_red[y:y+124,x-12:x+92+12]
+
+		img_sevseg_red = cv2.inRange(img_sevseg_red, 210, 255)
+		kernel = np.ones((2,2),np.uint8)
+		img_sevseg_red = cv2.morphologyEx(img_sevseg_red, cv2.MORPH_OPEN, kernel)
+		img_sevseg_red = cv2.bitwise_not(img_sevseg_red)
+
 		buf = cv2.resize(buf,(24,24),interpolation=cv2.INTER_AREA)
 		buf = cv2.copyMakeBorder(buf, 2, 2, 2, 2, cv2.BORDER_CONSTANT, value=WHITE)
 		# zeros = np.ones([28,28],dtype=np.uint8) * 255

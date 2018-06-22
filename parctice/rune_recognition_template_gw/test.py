@@ -1,13 +1,15 @@
 import rune_recog_template
+import conv
 import cv2
 import time
 import numpy as np
 
-cap = cv2.VideoCapture(1)
+cap = cv2.VideoCapture(0)
 cap.set(cv2.CAP_PROP_FPS,30)
 #fps = cap.get(cv2.CAP_PROP_FPS)
 #print 'fps',fps
-
+WHITE = (255,255,255)
+BLACK = (0,0,0)
 
 image_width = 1024
 image_height = 768 
@@ -16,37 +18,168 @@ cap.set(3, image_width);
 cap.set(4, image_height);
 
 while True:
+
+
+	leftRect = []
+	rightRect = []
+	left_rect = []
+	right_rect = []
+	row_left_rect = []
+	row_right_rect = []
 	#img = cv2.imread('b.jpg',3)
-	_,img = cap.read()
+	_,image = cap.read()
+	cv2.imshow('',image)
+
 	#print img
-	img1=np.array(img)
+	#img1=np.array(img)
 	#print img1.shape
-	cv2.imshow('img',img)
+
+	# graycale, blurring it, and computing an edge map
+	gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+	#blurred = cv2.GaussianBlur(gray, (5,5), 0)
+	blurred = cv2.bilateralFilter(gray, 3, 233, 233)
+	#ret, th_img = cv2.threshold(gray,20,255,cv2.THRESH_BINARY)
+	#cv2.imshow('cccc',blurred)
+	edged = cv2.Canny(blurred, 120, 240,L2gradient=True)
+	#ret, th_img = cv2.threshold(edged,0,255,cv2.THRESH_BINARY+cv2.THRESH_OTSU)
 	cv2.waitKey(1)
-#	try:
-#		handwritten_num , num_7seg = rune_recog_template.get_detection_rune(img)
-#	except:
-#		print 'Error'
-#		time.sleep(0.1)
-#		continue
-#	
-#	handwritten_dict = {}
-#	num_7seg_dict = {}
+	_, contours, hierarchy = cv2.findContours(edged.copy(),cv2.RETR_TREE,cv2.CHAIN_APPROX_SIMPLE)
 
-#	# filter handwritten_num
-#	for i in range(len(handwritten_num)):
-#		handwritten_dict[handwritten_num[i]] = np.count_nonzero(handwritten_num[i])
+	for contour in contours:
 
-#	for i in range(len(num_7seg)):
-#		num_7seg_dict[num_7seg[i]] = np.count_nonzero(num_7seg[i])
+		if cv2.contourArea(contour)<500 or cv2.contourArea(contour)>1500:
+			continue
 
-#	if len(handwritten_dict) != 9 and len(num_7seg_dict) != 5:
-#		print "wrong handwritten number"
-#	else:
-#		print handwritten_num
-#	
-#	if len(num_7seg_dict) != 5:
-#		print "wrong 7seg number"
-#	else:
-#		print num_7seg
-#	time.sleep(0.1)
+		x,y,w,h = cv2.boundingRect(contour)
+
+		if (w / h) < 1.0 or (w / h) > 2.5:
+			continue
+
+		cv2.drawContours(edged, [contour], -1, (255, 255, 255), 3)
+
+		if x < (image_width//2):
+			leftRect.append(contour)
+		else:
+			rightRect.append(contour)
+
+	if len(leftRect)< 5 or len(rightRect)< 5 :
+		continue
+
+	find_left = True
+
+	for i in range(len(leftRect)):
+		xi,_,_,_ = cv2.boundingRect(leftRect[i])
+		for j in range(len(leftRect)):
+			j1=4-j
+			xj1,_,_,_ = cv2.boundingRect(leftRect[j1])
+			if abs(xi - xj1) > 50:
+				find_left = False
+
+		if find_left == True:
+			left_rect.append(leftRect[i])
+
+		find_left = True
+
+	for i in range(len(left_rect)):
+		x1,y1,w1,h1 = cv2.boundingRect(left_rect[i])
+		row_left_rect.append(y1)
+		cv2.rectangle(image,(x1,y1),(x1+w1,y1+h1),(0,255,0),2)
+
+	find_right = True
+
+	for i in range(len(rightRect)):
+		xi,_,_,_ = cv2.boundingRect(rightRect[i])
+		for j in range(len(rightRect)):
+			j1=4-j
+			xj1,_,_,_ = cv2.boundingRect(rightRect[j1])
+			if abs(xi - xj1) > 50:
+				find_right = False
+
+		if find_right == True:
+			right_rect.append(rightRect[i])
+
+		find_right = True
+
+	for i in range(len(right_rect)):
+		x2,y2,w2,h2 = cv2.boundingRect(right_rect[i])
+		row_right_rect.append(y2)
+		cv2.rectangle(image,(x2,y2),(x2+w2,y2+h2),(0,255,0),2)
+
+	if len(row_left_rect) == 0 or len(row_right_rect) == 0:
+		continue
+
+	#print row_left_rect
+
+	tl_index = np.argmin(row_left_rect)
+	bl_index = np.argmax(row_left_rect)
+	tr_index = np.argmin(row_right_rect)
+	br_index = np.argmax(row_right_rect)
+
+	x1,y1,w1,h1=cv2.boundingRect(left_rect[tl_index])
+	x2,y2,w2,h2=cv2.boundingRect(left_rect[bl_index])
+	x3,y3,w3,h3=cv2.boundingRect(right_rect[tr_index])
+	x4,y4,w4,h4=cv2.boundingRect(right_rect[br_index])
+
+	sr_tl = [x1,y1]
+	sr_bl = [x2,y2+h2]
+	sr_tr = [x3+w3,y3]
+	sr_br = [x4+w4,y4+h4]
+
+
+	pts1 = np.float32([sr_tl,sr_tr,sr_bl,sr_br])
+	pts2 = np.float32([[0, 50],[300, 50],[0, 200],[300, 200]])
+#	pts2 = pts2 + np.float32([70, 35])
+	M = cv2.getPerspectiveTransform(pts1,pts2)
+
+	dst = cv2.warpPerspective(image,M,(300,200))
+	gray_1 = cv2.cvtColor(dst, cv2.COLOR_BGR2GRAY)
+	blurred_1 = cv2.bilateralFilter(gray_1, 3, 133, 133)
+	equ = cv2.equalizeHist(blurred_1)
+	#th3 = cv2.adaptiveThreshold(equ,255,cv2.ADAPTIVE_THRESH_GAUSSIAN_C,cv2.THRESH_BINARY,33,1)
+	ret, th3 = cv2.threshold(equ,20,255,cv2.THRESH_BINARY+cv2.THRESH_OTSU)
+	#kernel = np.ones((2,2),np.uint8)
+	#erosion = cv2.dilate(th3,kernel,iterations = 1)
+	#dst = cv2.Canny(dst, 50, 255, 255,L2gradient=True )
+
+	digits_rect = [(51,54),(125,54),(200,54),(51,109),(125,109),(200,109),(51,163),(125,163),(200,163)]
+	digit_imgs = []
+	abc = 0
+	for x,y in digits_rect:
+		#cv2.rectangle(dst,(x,y),(x+40,y+38),(0,0,0),1)
+		buf =  th3[y:y+32,x:x+52]
+		#buf = cv2.cvtColor(buf,cv2.COLOR_BGR2GRAY)
+		#buf = cv2.copyMakeBorder(buf,1, 1, 1, 1, cv2.BORDER_CONSTANT, value=BLACK)
+		buf = cv2.resize(buf,(28,28))
+		cv2.imshow('bb',buf)
+		cv2.waitKey(0)
+		buf = buf.reshape([-1])
+		digit_imgs.append(buf)
+
+	scr = conv.get_pred(digit_imgs)
+	print(scr)
+
+#	dst1 = cv2.warpPerspective(image,M,(300,150))
+#	dst1 = cv2.Canny(dst, 50, 255, 255,L2gradient=True )
+#	digits_rect = [(18, 18), (122, 18), (226, 18), (330, 18), (434, 18)]
+
+#	digit_imgs = []
+#	for x,y in digits_rect:
+#		#cv2.rectangle(dst,(x,y),(x+48,y+34),(255,0,0),2)
+#		buf = dst[y:y+32,x:x+48]
+#		#buf = cv2.cvtColor(buf,cv2.COLOR_BGR2GRAY)
+#		buf = cv2.copyMakeBorder(buf,1, 1, 1, 1, cv2.BORDER_CONSTANT, value=BLACK)
+#		buf = cv2.resize(buf,(28,28))
+#		cv2.imshow('bb'+abc,buf)
+#		#cv2.waitKey(0)
+#		buf = buf.reshape([-1])
+#		digit_imgs.append(buf)
+
+#	scr_7seg = conv.get_pred(digit_imgs)
+#	print(scr_7seg)
+
+#	scr_7seg = conv.get_pred(digit_imgs)
+	cv2.imshow('a', th3)
+	cv2.imshow('b',edged)
+#	cv2.imshow('b', dst)
+	cv2.waitKey(1)
+
