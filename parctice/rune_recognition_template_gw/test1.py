@@ -1,13 +1,10 @@
-import rune_recog_template_gw
+import rune_recog_template
 import conv
 import cv2
 import time
 import numpy as np
-from imutils.perspective import four_point_transform
-from imutils import contours
-import imutils
 
-cap = cv2.VideoCapture(1)
+cap = cv2.VideoCapture(0)
 cap.set(cv2.CAP_PROP_FPS,30)
 #fps = cap.get(cv2.CAP_PROP_FPS)
 #print 'fps',fps
@@ -21,6 +18,8 @@ cap.set(3, image_width);
 cap.set(4, image_height);
 
 while True:
+
+
 	leftRect = []
 	rightRect = []
 	left_rect = []
@@ -132,48 +131,50 @@ while True:
 #	pts2 = pts2 + np.float32([70, 35])
 	M = cv2.getPerspectiveTransform(pts1,pts2)
 
-	dst = cv2.warpPerspective(image,M,(300,150))
-	dst = cv2.Canny(dst, 50, 255, 255,L2gradient=True )
+	dst = cv2.warpPerspective(image,M,(300,200))
+	gray_1 = cv2.cvtColor(dst, cv2.COLOR_BGR2GRAY)
+	equ = cv2.equalizeHist(gray_1)
+	th3 = cv2.adaptiveThreshold(equ,255,cv2.ADAPTIVE_THRESH_GAUSSIAN_C,cv2.THRESH_BINARY,21,0.9)
+	#dst = cv2.Canny(dst, 50, 255, 255,L2gradient=True )
 
-	digits_rect = [(51,3),(125,3),(200,3),(51,58),(125,58),(200,58),(51,113),(125,113),(200,113)]
+	digits_rect = [(58,2),(132,2),(207,2),(58,57),(132,57),(207,57),(58,112),(132,112),(207,112)]
 	digit_imgs = []
 	abc = 0
 	for x,y in digits_rect:
-		#cv2.rectangle(dst,(x,y),(x+48,y+34),(255,0,0),2)
-		buf = dst[y:y+32,x:x+48]
+		cv2.rectangle(th3,(x,y),(x+34,y+34),(0,0,0),1)
+		buf = th3[y:y+34,x:x+34]
 		#buf = cv2.cvtColor(buf,cv2.COLOR_BGR2GRAY)
-		buf = cv2.copyMakeBorder(buf,1, 1, 1, 1, cv2.BORDER_CONSTANT, value=BLACK)
+		buf = cv2.copyMakeBorder(buf,1, 1, 1, 1, cv2.BORDER_CONSTANT, value=WHITE)
 		buf = cv2.resize(buf,(28,28))
-		cv2.imshow('bb'+abc,buf)
+		#cv2.imshow('bb',buf)
 		#cv2.waitKey(0)
 		buf = buf.reshape([-1])
 		digit_imgs.append(buf)
 
-	cv2.waitKey(0)
-	scr = conv.get_pred(digit_imgs)
-	print(scr)
+	#scr = conv.get_pred(digit_imgs)
+	#print(scr)
 
-	dst1 = cv2.warpPerspective(image,M,(300,150))
-	dst1 = cv2.Canny(dst, 50, 255, 255,L2gradient=True )
-	digits_rect = [(18, 18), (122, 18), (226, 18), (330, 18), (434, 18)]
+#	dst1 = cv2.warpPerspective(image,M,(300,150))
+#	dst1 = cv2.Canny(dst, 50, 255, 255,L2gradient=True )
+#	digits_rect = [(18, 18), (122, 18), (226, 18), (330, 18), (434, 18)]
 
-	digit_imgs = []
-	for x,y in digits_rect:
-		#cv2.rectangle(dst,(x,y),(x+48,y+34),(255,0,0),2)
-		buf = dst[y:y+32,x:x+48]
-		#buf = cv2.cvtColor(buf,cv2.COLOR_BGR2GRAY)
-		buf = cv2.copyMakeBorder(buf,1, 1, 1, 1, cv2.BORDER_CONSTANT, value=BLACK)
-		buf = cv2.resize(buf,(28,28))
-		cv2.imshow('bb'+abc,buf)
-		#cv2.waitKey(0)
-		buf = buf.reshape([-1])
-		digit_imgs.append(buf)
+#	digit_imgs = []
+#	for x,y in digits_rect:
+#		#cv2.rectangle(dst,(x,y),(x+48,y+34),(255,0,0),2)
+#		buf = dst[y:y+32,x:x+48]
+#		#buf = cv2.cvtColor(buf,cv2.COLOR_BGR2GRAY)
+#		buf = cv2.copyMakeBorder(buf,1, 1, 1, 1, cv2.BORDER_CONSTANT, value=BLACK)
+#		buf = cv2.resize(buf,(28,28))
+#		cv2.imshow('bb'+abc,buf)
+#		#cv2.waitKey(0)
+#		buf = buf.reshape([-1])
+#		digit_imgs.append(buf)
 
-	scr_7seg = conv.get_pred(digit_imgs)
-	print(scr_7seg)
+#	scr_7seg = conv.get_pred(digit_imgs)
+#	print(scr_7seg)
 
-	scr_7seg = conv.get_pred(digit_imgs)
-	cv2.imshow('a',dst)
+#	scr_7seg = conv.get_pred(digit_imgs)
+	cv2.imshow('a',th3)
 	cv2.imshow('b',edged)
 #	cv2.imshow('b', dst)
 	cv2.waitKey(1)
