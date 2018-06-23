@@ -159,6 +159,7 @@ while True:
     M = cv2.getPerspectiveTransform(pts1,pts2)
     inverse_M = cv2.getPerspectiveTransform(pts2,pts1)
 
+
     dst = cv2.warpPerspective(image,M,(300,200))
 
 
@@ -196,7 +197,7 @@ while True:
 
     if len(handwritten_dict) >= 9 :
         handwritten_num= handwritten_num_raw
-        print handwritten_num
+        print"Handwritten digits detected : ",handwritten_num
     else:
         continue
 
@@ -205,34 +206,36 @@ while True:
     for digit_top_left_coord in digits_rect:
         coord = (digit_top_left_coord[0]+25,digit_top_left_coord[1]+16)
         warped_digit_coords.append(coord)
+    warped_digit_coords = np.asarray( warped_digit_coords,dtype='float32')
+    warped_digit_coords = np.array([warped_digit_coords])
 
     original_digit_coords = cv2.perspectiveTransform(warped_digit_coords,inverse_M)
 
-    #Mark the 4 corners in the original image
-    cv2.circle(image,sr_tl,(0,255,0),-1)
-    cv2.circle(image,sr_tr,(0,255,0),-1)
-    cv2.circle(image,sr_bl,(0,255,0),-1)
-    cv2.circle(image,sr_br,(0,255,0),-1)
+    #Mark the 4 corners in the original image,
+    cv2.circle(image,tuple(sr_tl),5,(0,255,0),-1)
+    cv2.circle(image,tuple(sr_tr),5,(0,255,0),-1)
+    cv2.circle(image,tuple(sr_bl),5,(0,255,0),-1)
+    cv2.circle(image,tuple(sr_br),5,(0,255,0),-1)
 
     #Mark the 4 corners in the warped image
-    cv2.circle(dst,sr_tl,(0,255,0),-1)
-    cv2.circle(dst,sr_tr,(0,255,0),-1)
-    cv2.circle(dst,sr_bl,(0,255,0),-1)
-    cv2.circle(dst,sr_br,(0,255,0),-1)
+    cv2.circle(dst,tuple(sr_tl),5,(0,255,0),-1)
+    cv2.circle(dst,tuple(sr_tr),5,(0,255,0),-1)
+    cv2.circle(dst,tuple(sr_bl),5,(0,255,0),-1)
+    cv2.circle(dst,tuple(sr_br),5,(0,255,0),-1)
 
     #Mark the 9 digits in the original image
-    for original_digit_coord in original_digit_coords:
-        cv2.circle(image,original_digit_coord,5,(0,0,255),-1)
+    for original_digit_coord in original_digit_coords[0]:
+        cv2.circle(image,tuple(original_digit_coord),5,(0,0,255),-1)
 
     #Mark the 9 digits in the warped image
-    for warped_digit_coord in warped_digit_coords:
-        cv2.circle(dst,warped_digit_coord,5,(0,0,255),-1)
+    for warped_digit_coord in warped_digit_coords[0]:
+        cv2.circle(dst,tuple(warped_digit_coord),5,(0,0,255),-1)
 
     cv2.imshow('Warped Image', dst)
     cv2.imshow('Original Image',image)
 	# cv2.imshow('b',edged)
 
 
-    cv2.waitKey(0)
+    cv2.waitKey(1)
 
 
