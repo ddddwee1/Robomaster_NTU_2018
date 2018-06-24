@@ -31,7 +31,7 @@ def build_graph():
 img_holder,lab_holder,loss,train_step,accuracy,last_layer = build_graph()
 
 sess = tf.Session()
-M.loadSess('./model/',sess)
+M.loadSess('./model_mnist/',sess)
 
 def get_pred(imgs):
 	scr = sess.run(tf.argmax(last_layer,1),feed_dict={img_holder:imgs})

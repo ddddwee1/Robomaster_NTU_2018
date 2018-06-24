@@ -1,0 +1,2 @@
+model_checkpoint_path: "7seg_500.ckpt"
+all_model_checkpoint_paths: "7seg_500.ckpt"

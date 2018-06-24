@@ -1,5 +1,6 @@
-import rune_recog_template
+#import rune_recog_template
 import conv
+#import conv_7seg
 import cv2
 import time
 import numpy as np
@@ -20,6 +21,10 @@ cap.set(4, image_height);
 cap.set(14, 0.0)  #exposure
 cap.set(10, 0.05) #brightness
 
+
+kernel2 = np.ones((2,2),np.uint8)
+kernel3 = np.ones((3,3),np.uint8)
+kernel4 = np.ones((4,4),np.uint8)
 #exp3 = cap.get(10)
 #print exp3
 
@@ -164,13 +169,14 @@ while True:
 		_,buf = cv2.threshold(buf,20,255,cv2.THRESH_BINARY+cv2.THRESH_OTSU)
 		#buf = cv2.adaptiveThreshold(buf,255,cv2.ADAPTIVE_THRESH_GAUSSIAN_C,cv2.THRESH_BINARY,33,1)
 		#buf = cv2.copyMakeBorder(buf,1, 1, 1, 1, cv2.BORDER_CONSTANT, value=BLACK)
+		buf = cv2.erode(buf,kernel2,iterations = 1)
 		buf = cv2.resize(buf,(24,24))
 		buf = cv2.copyMakeBorder(buf, 2, 2, 2, 2, cv2.BORDER_CONSTANT, value=WHITE)
-		buf = buf.reshape([-1])
+		#cv2.imshow('cv',buf)
+		#cv2.waitKey(0)
 		buf = 255 - buf
 		buf = np.float32(buf) / 255.
-		#cv2.imshow('bb',buf)
-		#cv2.waitKey(0)
+
 		buf = buf.reshape([-1])
 		digit_imgs.append(buf)
 
@@ -186,9 +192,9 @@ while True:
 
 #	if len(handwritten_dict) >= 9 :
 #		handwritten_num= handwritten_num_raw
-#		#print handwritten_num
+#		print handwritten_num
 #	else:
-#		continue
+#		pass
 
 	digits_7seg_rect = [(100, 0), (121, 0), (142, 0), (162, 0), (183, 0)]
 
@@ -202,18 +208,16 @@ while True:
 		img_sevseg=cv2.cvtColor(img_sevseg, cv2.COLOR_BGR2HSV)
 		img_sevseg_red = img_sevseg[:,:,2].copy()
 		#img_sevseg_red = cv2.inRange(img_sevseg_red, 210, 255)
-		kernel = np.ones((2,2),np.uint8)
-		kernel1 = np.ones((3,3),np.uint8)
-		img_sevseg_red = cv2.morphologyEx(img_sevseg_red, cv2.MORPH_OPEN, kernel)
+		img_sevseg_red = cv2.morphologyEx(img_sevseg_red, cv2.MORPH_OPEN, kernel2)
 		_,buf = cv2.threshold(img_sevseg_red,150,255,cv2.THRESH_BINARY+cv2.THRESH_OTSU)
 		#buf=cv2.dilate(buf,kernel,iterations = 1)
 		#buf=cv2.erode(buf,kernel,iterations = 2)
 		buf = cv2.bitwise_not(buf)
-		buf=cv2.dilate(buf,kernel,iterations = 1)
+		buf=cv2.dilate(buf,kernel2,iterations = 1)
 
-		buf = cv2.resize(buf,(22,18))
-		buf = cv2.copyMakeBorder(buf, 5, 5, 2, 4, cv2.BORDER_CONSTANT, value=WHITE)
-		cv2.imshow('bb',buf)
+		buf = cv2.resize(buf,(24,24))
+		buf = cv2.copyMakeBorder(buf, 2, 2, 2, 2, cv2.BORDER_CONSTANT, value=WHITE)
+		#cv2.imshow('bb',buf)
 		#cv2.waitKey(0)
 		buf = buf.reshape([-1])
 		buf = 255 - buf
@@ -221,7 +225,7 @@ while True:
 		buf = buf.reshape([-1])
 		digit_7seg_imgs.append(buf)
 
-	scr_7seg_raw = conv.get_pred(digit_7seg_imgs)
+	#scr_7seg_raw = conv_7seg.get_pred(digit_7seg_imgs)
 	#print (scr_7seg_raw)
 	#print scr_7seg_raw
 #	for i in range(len(scr_7seg_raw)):
@@ -233,6 +237,29 @@ while True:
 #	else:
 #		continue
 #	print(scr_7seg)
+
+#	flamingdigits_rect = [(51,54),(125,54),(200,54),(51,109),(125,109),(200,109),(51,163),(125,163),(200,163)]
+#	digit_imgs = []
+#	abc = 0
+#	for x,y in flamingdigits_rect:
+#		#cv2.rectangle(dst,(x,y),(x+50,y+34),(0,0,255),1)
+#		buf =  dst[y:y+32,x:x+50]
+#		cv2.imshow('cv',buf)
+#		img_FD = cv2.cvtColor(buf,cv2.COLOR_BGR2GRAY)
+#		buf=cv2.erode(img_FD,kernel2,iterations = 3)
+#		_,buf = cv2.threshold(buf,200,255,cv2.THRESH_BINARY+cv2.THRESH_OTSU)
+#		#cv2.imshow('cv',buf)
+#		buf = cv2.erode(buf,kernel2,iterations = 1)
+#		buf = cv2.resize(buf,(24,24))
+#		buf = cv2.copyMakeBorder(buf, 2, 2, 2, 2, cv2.BORDER_CONSTANT, value=WHITE)
+#		#cv2.imshow('cv',buf)
+#		cv2.waitKey(0)
+#		buf = 255 - buf
+#		buf = np.float32(buf) / 255.
+
+#		buf = buf.reshape([-1])
+#		digit_imgs.append(buf)
+
 
 #	scr_7seg = conv.get_pred(digit_imgs)
 	cv2.imshow('a', dst)
