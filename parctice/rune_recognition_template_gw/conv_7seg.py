@@ -17,12 +17,12 @@ def build_model(img_input):
 		mod.maxpoolLayer(2)
 		mod.flatten()
 		mod.fcLayer(50,activation=M.PARAM_LRELU)
-		mod.fcLayer(10)
+		mod.fcLayer(11)
 	return mod.get_current_layer()
 
 def build_graph():
 	img_holder = tf.placeholder(tf.float32,[None,28*28])
-	lab_holder = tf.placeholder(tf.float32,[None,10])
+	lab_holder = tf.placeholder(tf.float32,[None,11])
 	last_layer = build_model(img_holder)
 	loss = tf.reduce_mean(tf.nn.sigmoid_cross_entropy_with_logits(labels=lab_holder,logits=last_layer))
 	accuracy = M.accuracy(last_layer,tf.argmax(lab_holder,1))

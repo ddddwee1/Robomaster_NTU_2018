@@ -1,2 +1,6 @@
-model_checkpoint_path: "7seg_500.ckpt"
-all_model_checkpoint_paths: "7seg_500.ckpt"
+model_checkpoint_path: "7seg_95000.ckpt"
+all_model_checkpoint_paths: "7seg_75000.ckpt"
+all_model_checkpoint_paths: "7seg_80000.ckpt"
+all_model_checkpoint_paths: "7seg_85000.ckpt"
+all_model_checkpoint_paths: "7seg_90000.ckpt"
+all_model_checkpoint_paths: "7seg_95000.ckpt"

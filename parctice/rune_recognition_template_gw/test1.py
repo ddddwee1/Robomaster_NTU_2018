@@ -1,13 +1,13 @@
 #import rune_recog_template
-import conv
-#import conv_7seg
+#import conv
+import conv_7seg
 import cv2
 import time
 import numpy as np
 
 cap = cv2.VideoCapture(0)
 cap.set(cv2.CAP_PROP_FPS,60)
-#fps = cap.get(cv2.CAP_PROP_FPS)
+fps = cap.get(cv2.CAP_PROP_FPS)
 #print 'fps',fps
 WHITE = (255,255,255)
 BLACK = (0,0,0)
@@ -46,12 +46,11 @@ while True:
 
 	# graycale, blurring it, and computing an edge map
 	gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-	#blurred = cv2.GaussianBlur(gray, (5,5), 0)	
-	#kernel = cv2.getTrackbarPos('Threshold', 'frame')
-	blurred = cv2.bilateralFilter(gray, 3, 133, 133)
-	#ret, th_img = cv2.threshold(gray,20,255,cv2.THRESH_BINARY)
-	#cv2.imshow('cccc',blurred)
-	edged = cv2.Canny(blurred, 120, 240,L2gradient=True)
+	blur = cv2.GaussianBlur(gray,(3,3),0)
+	blur = cv2.GaussianBlur(blur,(3,3),0)
+	blurred = cv2.bilateralFilter(blur, 3, 333, 333)
+	_,th3 = cv2.threshold(blurred,0,255,cv2.THRESH_BINARY+cv2.THRESH_OTSU)
+	edged = cv2.Canny(blurred, 255, 255)
 	#ret, th_img = cv2.threshold(edged,0,255,cv2.THRESH_BINARY+cv2.THRESH_OTSU)
 
 	cv2.imshow('',image)
@@ -60,9 +59,10 @@ while True:
 	_, contours, hierarchy = cv2.findContours(edged.copy(),cv2.RETR_TREE,cv2.CHAIN_APPROX_SIMPLE)
 
 	for contour in contours:
+		#contour = cv2.convexHull(contour)
 		peri = cv2.arcLength(contour,True)
-		contour = cv2.approxPolyDP(contour, 0.03 * peri, True)
-		if cv2.contourArea(contour)<500 or cv2.contourArea(contour)>1500:
+		contour = cv2.approxPolyDP(contour, 0.00001 * peri, True)
+		if cv2.contourArea(contour)<300 or cv2.contourArea(contour)>2500:
 			continue
 
 		x,y,w,h = cv2.boundingRect(contour)
@@ -73,56 +73,51 @@ while True:
 		cv2.drawContours(edged, [contour], -1, (255, 255, 255), 3)
 
 		if x < (image_width//2):
-			leftRect.append(contour)
+			leftRect.append([x,y,w,h])
 		else:
-			rightRect.append(contour)
+			rightRect.append([x,y,w,h])
+	#cv2.imshow('aaaa',edged)
+#	if len(leftRect)< 5 or len(rightRect)< 5 :
+#		continue
 
-	if len(leftRect)< 5 or len(rightRect)< 5 :
-		continue
-
-	find_left = True
 
 	for i in range(len(leftRect)):
-		xi,_,_,_ = cv2.boundingRect(leftRect[i])
-		for j in range(len(leftRect)):
-			j1=4-j
-			xj1,_,_,_ = cv2.boundingRect(leftRect[j1])
-			if abs(xi - xj1) > 100:
-				find_left = False
+		find_left = False
+		xi,_,_,_ = leftRect[i]
+		for j in range(len(leftRect)-1):
+			j1=1+j
+			xj1,_,_,_ = leftRect[j1]
+			if abs(xi - xj1) < 50:
+				find_left = True
 
 		if find_left == True:
 			left_rect.append(leftRect[i])
 
-		find_left = True
 
 	for i in range(len(left_rect)):
-		x1,y1,w1,h1 = cv2.boundingRect(left_rect[i])
+		x1,y1,w1,h1 = left_rect[i]
 		row_left_rect.append(y1)
 		#cv2.rectangle(image,(x1,y1),(x1+w1,y1+h1),(0,255,0),2)
 
-	find_right = True
-
 	for i in range(len(rightRect)):
-		xi,_,_,_ = cv2.boundingRect(rightRect[i])
-		for j in range(len(rightRect)):
-			j1=4-j
-			xj1,_,_,_ = cv2.boundingRect(rightRect[j1])
-			if abs(xi - xj1) > 100:
-				find_right = False
+		find_right = False
+		xi,_,_,_ = rightRect[i]
+		for j in range(len(rightRect)-1):
+			j1=1+j
+			xj1,_,_,_ = rightRect[j1]
+			if abs(xi - xj1) < 50:
+				find_right = True
 
 		if find_right == True:
 			right_rect.append(rightRect[i])
 
-		find_right = True
-
 	for i in range(len(right_rect)):
-		x2,y2,w2,h2 = cv2.boundingRect(right_rect[i])
+		x2,y2,w2,h2 = right_rect[i]
 		row_right_rect.append(y2)
 		#cv2.rectangle(image,(x2,y2),(x2+w2,y2+h2),(0,255,0),2)
 
 	if len(row_left_rect) == 0 or len(row_right_rect) == 0:
 		continue
-
 	#print row_left_rect
 
 	tl_index = np.argmin(row_left_rect)
@@ -130,10 +125,10 @@ while True:
 	tr_index = np.argmin(row_right_rect)
 	br_index = np.argmax(row_right_rect)
 
-	x1,y1,w1,h1=cv2.boundingRect(left_rect[tl_index])
-	x2,y2,w2,h2=cv2.boundingRect(left_rect[bl_index])
-	x3,y3,w3,h3=cv2.boundingRect(right_rect[tr_index])
-	x4,y4,w4,h4=cv2.boundingRect(right_rect[br_index])
+	x1,y1,w1,h1=left_rect[tl_index]
+	x2,y2,w2,h2=left_rect[bl_index]
+	x3,y3,w3,h3=right_rect[tr_index]
+	x4,y4,w4,h4=right_rect[br_index]
 
 	sr_tl = [x1,y1]
 	sr_bl = [x2,y2+h2]
@@ -180,8 +175,8 @@ while True:
 		buf = buf.reshape([-1])
 		digit_imgs.append(buf)
 
-	handwritten_num_raw = conv.get_pred(digit_imgs)
-	print(handwritten_num_raw)
+	#handwritten_num_raw = conv.get_pred(digit_imgs)
+	#print(handwritten_num_raw)
 
 	handwritten_dict = {}
 	num_7seg_dict = {}
@@ -225,8 +220,8 @@ while True:
 		buf = buf.reshape([-1])
 		digit_7seg_imgs.append(buf)
 
-	#scr_7seg_raw = conv_7seg.get_pred(digit_7seg_imgs)
-	#print (scr_7seg_raw)
+	scr_7seg_raw = conv_7seg.get_pred(digit_7seg_imgs)
+	print (scr_7seg_raw)
 	#print scr_7seg_raw
 #	for i in range(len(scr_7seg_raw)):
 #		num_7seg_dict[scr_7seg_raw[i]] = np.count_nonzero(scr_7seg_raw[i])
