@@ -6,7 +6,7 @@ import numpy as np
 BSIZE = 128
 BLACK = (0,0,0)
 
-x =150
+x =65
 y = 0
 
 def PickSevenSegment(BSIZE):
@@ -31,30 +31,32 @@ def PickSevenSegment(BSIZE):
 
 		else:
 			img_FD = cv2.imread('./Flaming_Digits/%d.jpg'%(pick_digit), cv2.IMREAD_COLOR)
-			# print digit_label
-			img_FD = img_FD[y:y+500,x:x+500]
+			#print (digit_label)
+			img_FD = img_FD[y:y+150,x:x+150]
+			#cv2.imshow('',img_FD)
+			#cv2.waitKey(0)
 			img_FD = cv2.cvtColor(img_FD, cv2.COLOR_BGR2GRAY)
 			_,buf = cv2.threshold(img_FD,200,255,cv2.THRESH_TOZERO+cv2.THRESH_OTSU)
 			edged = cv2.Canny(buf, 255, 255)
 			_, contours, hierarchy = cv2.findContours(edged.copy(),cv2.RETR_EXTERNAL,cv2.CHAIN_APPROX_SIMPLE)
 			cv2.drawContours(buf, contours, -1, 255,-1)
 			buf = cv2.resize(buf,(30,32))
-			uniform_random = np.random.uniform(0.6,1.0,2)
+			uniform_random = np.random.uniform(0.7,1.0,2)
 			buf = cv2.resize(buf,None,fx=uniform_random[0], fy=uniform_random[1])
 			#print uniform_random
 			uniform_random1 = np.random.uniform(-1.0,1.0,2)
 			#uniform_random[0] *
-			M = np.float32([[1,0,int(uniform_random1[0]*3)],[0,1,int(uniform_random1[1]*3)]])
+			M = np.float32([[1,0,int(uniform_random1[0]*7)],[0,1,int(uniform_random1[1]*7)]])
 			buf = cv2.warpAffine(buf,M,(30,32))
 			kernel = np.ones((2,2),np.uint8)
 			buf = cv2.bitwise_not(buf)
 			random_int=np.random.randint(0,2, size=2)
-			random_int1=np.random.randint(3, size=1)
+			random_int1=np.random.randint(2, size=1)
 			for i in range(random_int1[0]):
 				buf=cv2.erode(buf,kernel,iterations = random_int[0])
 				buf=cv2.dilate(buf,kernel,iterations = random_int[1])
-			#cv2.imshow('',buf)
-			#cv2.waitKey(0)
+			cv2.imshow('',buf)
+			cv2.waitKey(0)
 
 		buf = cv2.resize(buf,(28,28))
 		#cv2.imshow('',buf)
@@ -101,13 +103,13 @@ img_holder,lab_holder,loss,train_step,accuracy,last_layer = build_graph()
 with tf.Session() as sess:
 	saver = tf.train.Saver()
 	M.loadSess('./model/',sess,init=True)
-	for i in range(100000):
+	for i in range(1000000):
 		x_train, y_train = PickSevenSegment(BSIZE)
 		_,acc,ls = sess.run([train_step,accuracy,loss],feed_dict={img_holder:x_train,lab_holder:y_train})
-		if i%1==0:
+		if i%100==0:
 			print('iter',i,'\t|acc:',acc,'\tloss:',ls)
 		if i%5000==0 and i != 0:
 			#acc = sess.run(accuracy,feed_dict={img_holder:mnist.test.images, lab_holder:mnist.test.labels})
 			#print('Test accuracy:',acc)
-			saver.save(sess,'./model_flaming/fd_%d.ckpt'%i)
+			saver.save(sess,'./model/7seg_%d.ckpt'%i)
 
