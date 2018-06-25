@@ -55,8 +55,8 @@ def PickSevenSegment(BSIZE):
 			for i in range(random_int1[0]):
 				buf=cv2.erode(buf,kernel,iterations = random_int[0])
 				buf=cv2.dilate(buf,kernel,iterations = random_int[1])
-			cv2.imshow('',buf)
-			cv2.waitKey(0)
+			#cv2.imshow('',buf)
+			#cv2.waitKey(0)
 
 		buf = cv2.resize(buf,(28,28))
 		#cv2.imshow('',buf)
@@ -103,7 +103,7 @@ img_holder,lab_holder,loss,train_step,accuracy,last_layer = build_graph()
 with tf.Session() as sess:
 	saver = tf.train.Saver()
 	M.loadSess('./model/',sess,init=True)
-	for i in range(1000000):
+	for i in range(100000):
 		x_train, y_train = PickSevenSegment(BSIZE)
 		_,acc,ls = sess.run([train_step,accuracy,loss],feed_dict={img_holder:x_train,lab_holder:y_train})
 		if i%100==0:
@@ -111,5 +111,5 @@ with tf.Session() as sess:
 		if i%5000==0 and i != 0:
 			#acc = sess.run(accuracy,feed_dict={img_holder:mnist.test.images, lab_holder:mnist.test.labels})
 			#print('Test accuracy:',acc)
-			saver.save(sess,'./model/7seg_%d.ckpt'%i)
+-			saver.save(sess,'./model_flaming/fd_%d.ckpt'%i)
 
