@@ -111,5 +111,5 @@ with tf.Session() as sess:
 		if i%5000==0 and i != 0:
 			#acc = sess.run(accuracy,feed_dict={img_holder:mnist.test.images, lab_holder:mnist.test.labels})
 			#print('Test accuracy:',acc)
--			saver.save(sess,'./model_flaming/fd_%d.ckpt'%i)
+			saver.save(sess,'./model_flaming/fd_%d.ckpt'%i)
 
