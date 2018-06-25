@@ -10,11 +10,11 @@ def PickSevenSegment(BSIZE):
 	img = []
 	y_label = []
 	for i in range(BSIZE):
-		pick_digit = np.random.randint(0,10)
-		digit_label = np.zeros((10,), dtype=int)
+		pick_digit = np.random.randint(0,11)
+		digit_label = np.zeros((11,), dtype=int)
 		digit_label[pick_digit] = 1 
 
-		if pick_digit == 0:
+		if pick_digit == 10:
 			blank_image = np.ones((28,28,3), np.uint8)
 			blank_image = cv2.cvtColor(blank_image, cv2.COLOR_BGR2GRAY)
 			random_int2=np.random.randint(0,4, size=1)
@@ -73,19 +73,19 @@ def build_model(img_input):
 		mod.convLayer(5,16,activation=M.PARAM_LRELU)
 		mod.maxpoolLayer(2)
 		mod.convLayer(5,16,activation=M.PARAM_LRELU)
-		mod.dropout(0.9)
 		mod.maxpoolLayer(2)
 		mod.convLayer(5,16,activation=M.PARAM_LRELU)
 		mod.maxpoolLayer(2)
 		mod.flatten()
 		mod.dropout(0.9)
 		mod.fcLayer(50,activation=M.PARAM_LRELU)
-		mod.fcLayer(10)
+		mod.dropout(0.8)
+		mod.fcLayer(11)
 	return mod.get_current_layer()
 
 def build_graph():
 	img_holder = tf.placeholder(tf.float32,[None,28*28])
-	lab_holder = tf.placeholder(tf.float32,[None,10])
+	lab_holder = tf.placeholder(tf.float32,[None,11])
 	last_layer = build_model(img_holder)
 	loss = tf.reduce_mean(tf.nn.sigmoid_cross_entropy_with_logits(labels=lab_holder,logits=last_layer))
 	accuracy = M.accuracy(last_layer,tf.argmax(lab_holder,1))
@@ -97,12 +97,12 @@ img_holder,lab_holder,loss,train_step,accuracy,last_layer = build_graph()
 with tf.Session() as sess:
 	saver = tf.train.Saver()
 	M.loadSess('./model/',sess,init=True)
-	for i in range(100000000):
+	for i in range(100000):
 		x_train, y_train = PickSevenSegment(BSIZE)
 		_,acc,ls = sess.run([train_step,accuracy,loss],feed_dict={img_holder:x_train,lab_holder:y_train})
 		if i%100==0:
 			print('iter',i,'\t|acc:',acc,'\tloss:',ls)
-		if i%500==0 and i != 0:
+		if i%5000==0 and i != 0:
 			#acc = sess.run(accuracy,feed_dict={img_holder:mnist.test.images, lab_holder:mnist.test.labels})
 			#print('Test accuracy:',acc)
 			saver.save(sess,'./model/7seg_%d.ckpt'%i)
