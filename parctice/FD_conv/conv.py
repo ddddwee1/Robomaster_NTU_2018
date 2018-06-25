@@ -31,7 +31,7 @@ def PickSevenSegment(BSIZE):
 
 		else:
 			img_FD = cv2.imread('./Flaming_Digits/%d.jpg'%(pick_digit), cv2.IMREAD_COLOR)
-			print digit_label
+			# print digit_label
 			img_FD = img_FD[y:y+500,x:x+500]
 			img_FD = cv2.cvtColor(img_FD, cv2.COLOR_BGR2GRAY)
 			_,buf = cv2.threshold(img_FD,200,255,cv2.THRESH_TOZERO+cv2.THRESH_OTSU)
@@ -101,13 +101,13 @@ img_holder,lab_holder,loss,train_step,accuracy,last_layer = build_graph()
 with tf.Session() as sess:
 	saver = tf.train.Saver()
 	M.loadSess('./model/',sess,init=True)
-	for i in range(1000000):
+	for i in range(100000):
 		x_train, y_train = PickSevenSegment(BSIZE)
 		_,acc,ls = sess.run([train_step,accuracy,loss],feed_dict={img_holder:x_train,lab_holder:y_train})
-		if i%100==0:
+		if i%1==0:
 			print('iter',i,'\t|acc:',acc,'\tloss:',ls)
 		if i%5000==0 and i != 0:
 			#acc = sess.run(accuracy,feed_dict={img_holder:mnist.test.images, lab_holder:mnist.test.labels})
 			#print('Test accuracy:',acc)
-			saver.save(sess,'./model/7seg_%d.ckpt'%i)
+			saver.save(sess,'./model_flaming/fd_%d.ckpt'%i)
 
