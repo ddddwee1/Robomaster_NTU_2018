@@ -102,8 +102,7 @@ def get_handwritten_coords(image, DEBUG):
 
     #Skip if no boxes are detected on left half or right half
     if len(row_left_rect) == 0 or len(row_right_rect) == 0:
-        return
-
+        return False,False,False
 
     #find the 4 bounding boxes of the corner contours
     tl_index = np.argmin(row_left_rect)

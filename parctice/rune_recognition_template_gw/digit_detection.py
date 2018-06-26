@@ -3,24 +3,16 @@ import cv2
 import time
 import numpy as np
 
-cap = cv2.VideoCapture(1)
 WHITE = (255,255,255)
 BLACK = (0,0,0)
 
 image_width = 1024
 image_height = 768
 
-cap.set(3, image_width);
-cap.set(4, image_height);
-
-cap.set(14, 0.0)  #exposure
-cap.set(10, 0.05) #brightness
-
-
 kernel2 = np.ones((2,2),np.uint8)
 kernel3 = np.ones((3,3),np.uint8)
 
-def get_digits(image)
+def get_digits(image):
 
 
 	leftRect = []
@@ -94,7 +86,7 @@ def get_digits(image)
 		row_right_rect.append(y2)
 
 	if len(row_left_rect) == 0 or len(row_right_rect) == 0:
-		continue
+		return False,False,False,False
 
 	tl_index = np.argmin(row_left_rect)
 	bl_index = np.argmax(row_left_rect)
@@ -111,6 +103,7 @@ def get_digits(image)
 	sr_tr = [x3+w3,y3]
 	sr_br = [x4+w4,y4+h4]
 
+	coord = [[x1,y1,w1,h1],[x2,y2,w2,h2],[x3,y3,w3,h3],[x4,y4,w4,h4]]
 
 	pts1 = np.float32([sr_tl,sr_tr,sr_bl,sr_br])
 	pts2 = np.float32([[0, 50],[300, 50],[0, 200],[300, 200]])
@@ -118,6 +111,10 @@ def get_digits(image)
 
 	dst = cv2.warpPerspective(image,M,(300,200))
 
+
+	""" 
+	Handwritten
+	"""
 	digits_rect = [(51,54),(125,54),(200,54),(51,109),(125,109),(200,109),(51,163),(125,163),(200,163)]
 	digit_imgs = []
 	abc = 0
@@ -152,7 +149,12 @@ def get_digits(image)
 	else:
 		handwritten_num = False
 		pass
-	print handwritten_num
+	#print handwritten_num
+
+
+	""" 
+	7segment
+	"""
 
 	digits_7seg_rect = [(100, 0), (121, 0), (142, 0), (162, 0), (183, 0)]
 
@@ -181,6 +183,10 @@ def get_digits(image)
 
 	scr_7seg_raw = conv_deploy.get_pred_7seg(digit_7seg_imgs)
 	#print (scr_7seg_raw)
+
+	""" 
+	Flaming Digits
+	"""
 
 	flamingdigits_rect = [(61,54),(135,54),(210,54),(61,109),(135,109),(210,109),(61,163),(135,163),(210,163)]
 	digit_imgs = []
@@ -221,4 +227,4 @@ def get_digits(image)
 		pass
 	#print(scr_FD)
 
-	return scr_7seg_raw, handwritten_num, Flaming_digit
+	return coord, scr_7seg_raw, handwritten_num, Flaming_digit

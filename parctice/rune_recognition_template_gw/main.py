@@ -1,93 +1,56 @@
-import rune_recog_template
+import digit_detection
 import cv2
 import time
 import numpy as np
-#import data_retriver
-#import robot_prop 
-#import util
-#import detection_mod
-#from camera_module import camera_thread
 
-#data_reader = data_retriver.data_reader_thread()
-#data_reader.start()
-
-#camera_thread = camera_thread()
-#camera_thread.start()
-
-turret_pitch = [ 600 , 200 , -200] 
-turret_yaw = [ -500 , 0 , -500]
-
-
-cap = cv2.VideoCapture(0)
-cap.set(cv2.CAP_PROP_FPS,10)
+cap = cv2.VideoCapture(1)
+cap.set(cv2.CAP_PROP_FPS,30)
 fps = cap.get(cv2.CAP_PROP_FPS)
-print 'fps',fps
-cap.set(3, 640);
-cap.set(4, 480);
+#print 'fps',fps
+WHITE = (255,255,255)
+BLACK = (0,0,0)
 
-robot_prop.v1 = 0
-robot_prop.v2 = 0
-save_num_7seg = 0
-num_7seg_index = 0
+image_width = 1024
+image_height = 768
+
+cap.set(3, image_width);
+cap.set(4, image_height);
+
+cap.set(14, 0.0)  #exposure
+cap.set(10, 0.05) #brightness
 
 while True:
-	#img = cv2.imread('b.jpg',3)
-	_,img = cap.read()
-	#print img
+
+	_,image = cap.read()
+	if image is None:
+		break
 	try:
-		handwritten_num_raw , num_7seg_raw = rune_recog_template.get_detection_rune(img)
+		coord,scr_7seg_raw, handwritten_num, Flaming_digit = digit_detection.get_digits(image)
 	except:
-		print 'Error'
 		time.sleep(0.1)
 		continue
-	
-	handwritten_dict = {}
-	num_7seg_dict = {}
 
-	# filter handwritten_num
-	for i in range(len(handwritten_num)):
-		handwritten_dict[handwritten_num[i]] = np.count_nonzero(handwritten_num[i])
+	if coord == False:
+		continue
 
-	for i in range(len(num_7seg)):
-		num_7seg_dict[num_7seg[i]] = np.count_nonzero(num_7seg[i])
 
-	if len(handwritten_dict) != 9 and len(num_7seg_dict) != 5:
-		print "wrong handwritten number"
-	else:
-		handwritten_num= handwritten_num_raw
-		print handwritten_num
-	
-	if len(num_7seg_dict) != 5:
-		print "wrong 7seg number"
-	else:
-		num_7seg = num_7seg_raw
-		print num_7seg
+	#x0 = 
+	x1 = (coord[2][0] + coord[2][2] + coord[3][0] +coord[3][2] - coord[0][0] - coord[1][0])//4 +  (coord[0][0] + coord[1][0]) //2
+	y1 = (coord[1][1] + coord[1][3] + coord[3][1] +coord[3][3] - coord[0][1] - coord[2][1])//4 + (coord[0][1] + coord[2][1]) //2
 
-	if save_num_7seg == 0 or save_num_7seg == num_7seg and handwritten_num != None and num_7seg!=None :
-		shoot_handwritten_num = num_7seg[num_7seg_index]
-		num_7seg_index +=1
-		for i in range(len(handwritten_num)):
-			if handwritten_num[i] == shoot_handwritten_num:
-				handwritten_num_index = i
-				continue
+	x0 = (x1 - coord[0][0])//2 + coord[0][0]
+	y0 = (coord[0][1] +coord[0][3] + coord[2][1] + coord[0][3])//2
 
-		handwritten_num_row = handwritten_num // 3
-		handwritten_num_col = handwritten_num % 3
+	x2 = (coord[2][0] + coord[2][2] - x1)//2 + x1
+	y2 = (coord[1][1] + coord[3][1])//2
 
-		robot_prop.v1 = turret_pitch[int(handwritten_num_row)]
-		robot_prop.v2 = turret_yaw[int(handwritten_num_col)]
-		for i in range(20):
-			robot_prop.shoot = 1
-		time.sleep(0.05)
-		robot_prop.v1 = 0
-		robot_prop.v2 = 0
-		robot_prop.shoot = 0
+	radius = (coord[0][3]) //4
 
-	else:
-		save_num_7seg = 0
-		num_7seg_index = 0
+	handwritten_coord = [[x0,y0],[x1,y0],[x2,y0],[x0,y1],[x1,y1],[x2,y1],[x0,y2],[x1,y2],[x2,y2]]
+	for x,y in handwritten_coord:
+		cv2.circle(image,(x,y),radius, (0,0,255), 4)
 
-	save_num_7seg = num_7seg
-	#time.sleep(0.2)
-	cv2.imshow('img',img)
+	cv2.imshow('',image)
 	cv2.waitKey(1)
+
+	print scr_7seg_raw, handwritten_num
