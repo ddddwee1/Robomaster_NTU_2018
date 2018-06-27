@@ -29,9 +29,9 @@ def get_digits(image):
 	_,th3 = cv2.threshold(blurred,0,255,cv2.THRESH_BINARY+cv2.THRESH_OTSU)
 	edged = cv2.Canny(blurred, 255, 255)
 
-	cv2.imshow('',image)
+	#cv2.imshow('',image)
 
-	cv2.waitKey(1)
+	#cv2.waitKey(1)
 	_, contours, hierarchy = cv2.findContours(edged.copy(),cv2.RETR_TREE,cv2.CHAIN_APPROX_SIMPLE)
 
 	for contour in contours:
