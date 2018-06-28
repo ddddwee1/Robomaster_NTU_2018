@@ -28,6 +28,7 @@ while True:
 
 	key = key_reader.read()
 
+
 	#To hold the key value
 	if key == '':
 		if previous_key is not None:
@@ -74,8 +75,9 @@ while True:
 
 
 		#find index of the desired digit in handwritten_num
-		digit_index = None
-		print"key = ",key
+		#digit_index = None
+		digit_index = 1
+
 		if key != '' and key is not None:
 			print"Checking matching keys"
 			for i,digit in enumerate(handwritten_num):
