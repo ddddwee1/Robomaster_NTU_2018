@@ -22,6 +22,7 @@ key_reader.start()
 previous_key = None
 pitch_angle = 0
 yaw_angle = 0
+key = 1 #Initialize as 1
 
 while True:
 
@@ -35,54 +36,69 @@ while True:
 			pass
 	else:
 		previous_key = key
+		print"Key changed"
 
 
-	image = camera.read()
-	if image is None:
+	retval,image = camera.read()
+	if retval is False:
+		print"No image"
 		continue #no image
 	else:
 		cv2.imshow('',image)
 		cv2.waitKey(1)
 	try:
-		coord, handwritten_num, Flaming_digit, handwritten_coords = digit_detection2.get_digits2(image)
+		print "trying get_digits2"
+		handwritten_num, handwritten_coords = digit_detection2.get_digits2(image)
 	except:
 		time.sleep(0.1)
 		continue
-
-	#Mark the handwritten digits in the original image. For verification purpose
-	for coords in handwritten_coords:
-		cv2.circle(image,coords,5,(0,255,0),-1)
-
-
 	#Mark the center of the image with a blue dot
 	cv2.circle(image,(image_width/2,image_height/2),5,(255,0,0),-1)
-	cv2.imshow()
+
+
+
+
+
+	cv2.imshow('',image)
 	cv2.waitKey(1)
 
 
+	if handwritten_num is not None and handwritten_coords is not None:
+		print"handwritten_num = ",handwritten_num
+		print"handwriten_coords = ",handwritten_coords
+		#Mark the handwritten digits in the original image. For verification purpose
+		for coords in handwritten_coords:
+			cv2.circle(image,coords,5,(0,255,0),-1)
+		cv2.imshow('',image)
+		cv2.waitKey(1)
 
-	#find index of the desired digit in handwritten_num
-	digit_index = None
-	for i,digit in enumerate(handwritten_num):
-		if digit == key:
-			digit_index = i
+
+		#find index of the desired digit in handwritten_num
+		digit_index = None
+		print"key = ",key
+		if key != '' and key is not None:
+			print"Checking matching keys"
+			for i,digit in enumerate(handwritten_num):
+				if digit == key:
+					digit_index = i
 
 
-	#TODO make the below code into a function to make the code more modular
-	desired_coord = handwritten_coords[digit_index]
-	current_pitch = robot_prop.t_pitch
-	current_yaw = robot_prop.t_yaw
-	x_delta = desired_coord[0] - image_width/2
-	y_delta = desired_coord[1] - image_height/2
-	if x_delta > 0:
-		yaw_angle = int(float(current_yaw + 500)) #I am using 500 instead of 300 because the turret is not responsive to small increase in yaw angle when turning to the right
-	elif x_delta <0:
-		yaw_angle = int(float(current_yaw - 300))
-	if y_delta > 0:
-		pitch_angle = int(float(current_pitch + 400))
-	elif y_delta <0:
-		pitch_angle = int(float(current_pitch - 400))
-
+		#TODO make the below code into a function to make the code more modular
+		desired_coord = handwritten_coords[digit_index]
+		current_pitch = robot_prop.t_pitch
+		current_yaw = robot_prop.t_yaw
+		x_delta = desired_coord[0] - image_width/2
+		y_delta = desired_coord[1] - image_height/2
+		if x_delta > 0:
+			yaw_angle = int(float(current_yaw + 500)) #I am using 500 instead of 300 because the turret is not responsive to small increase in yaw angle when turning to the right
+		elif x_delta <0:
+			yaw_angle = int(float(current_yaw - 300))
+		if y_delta > 0:
+			pitch_angle = int(float(current_pitch + 400))
+		elif y_delta <0:
+			pitch_angle = int(float(current_pitch - 400))
+	else:
+		print"No handwritten digits"
 
 	#Enforce angle limits
 	if abs(yaw_angle) > 6000:
