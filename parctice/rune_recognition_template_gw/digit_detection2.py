@@ -243,20 +243,20 @@ def get_digits2(image):  #hansel's version, returns the coords or the handwritte
 	row_right_rect = []
 
 	gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-	blur = cv2.GaussianBlur(gray,(3,3),0)
+	#blur = cv2.GaussianBlur(gray,(3,3),0)
 	blur = cv2.GaussianBlur(blur,(3,3),0)
 	blurred = cv2.bilateralFilter(blur, 3, 333, 333)
 	_,th3 = cv2.threshold(blurred,0,255,cv2.THRESH_BINARY+cv2.THRESH_OTSU)
 	edged = cv2.Canny(blurred, 255, 255)
 
-	#cv2.imshow('',image)
+	cv2.imshow('edged',edged)
 
 	#cv2.waitKey(1)
 	_, contours, hierarchy = cv2.findContours(edged.copy(),cv2.RETR_TREE,cv2.CHAIN_APPROX_SIMPLE)
 
 	for contour in contours:
 		peri = cv2.arcLength(contour,True)
-		contour = cv2.approxPolyDP(contour, 0.00001 * peri, True)
+		contour = cv2.approxPolyDP(contour, 0.001 * peri, True)
 		if cv2.contourArea(contour)<300 or cv2.contourArea(contour)>2500:
 			continue
 
