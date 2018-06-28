@@ -30,7 +30,9 @@ def build_graph():
 
 img_holder,lab_holder,loss,train_step,accuracy,last_layer = build_graph()
 
-sess = tf.Session()
+config - tf.ConfigProto(allow_soft_placement = True)
+config.gpu_options.allow_growth = True
+sess = tf.Session(config=config)
 M.loadSess('./model_mnist/',sess)
 
 def get_pred(imgs):

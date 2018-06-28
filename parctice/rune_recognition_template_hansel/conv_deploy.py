@@ -47,7 +47,9 @@ def build_graph():
 
 img_holder,last_layer,last_layer_7seg = build_graph()
 
-sess = tf.Session()
+config - tf.ConfigProto(allow_soft_placement = True)
+config.gpu_options.allow_growth = True
+sess = tf.Session(config=config)
 M.loadSess('./model_mnist/',sess,var_list=M.get_all_vars('mnist'))
 M.loadSess('./model_7seg/',sess,var_list=M.get_all_vars('7seg_detection'))
 
