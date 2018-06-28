@@ -37,8 +37,8 @@ while True:
 		previous_key = key
 
 
-	retval,image = camera.read()
-	if retval is False:
+	image = camera.read()
+	if image is None:
 		continue #no image
 	else:
 		cv2.imshow('',image)

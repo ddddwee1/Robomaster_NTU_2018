@@ -367,7 +367,7 @@ def get_digits2(image):  #hansel's version, returns the coords or the handwritte
 		handwritten_num= handwritten_num_raw
 		print handwritten_num
 	else:
-        return None,None
+		return None,None
 
 
 	#center pixel of the digit boxes
@@ -414,7 +414,7 @@ def get_digits2(image):  #hansel's version, returns the coords or the handwritte
 	"""
 	Flaming Digits
 	"""
-    """
+	"""
 	flamingdigits_rect = [(61,54),(135,54),(210,54),(61,109),(135,109),(210,109),(61,163),(135,163),(210,163)]
 	digit_imgs = []
 	abc = 0
@@ -453,7 +453,7 @@ def get_digits2(image):  #hansel's version, returns the coords or the handwritte
 		Flaming_digit = False
 		pass
 	#print(scr_FD)
-    """
+	"""
 	return handwritten_num, handwritten_coords
 
 

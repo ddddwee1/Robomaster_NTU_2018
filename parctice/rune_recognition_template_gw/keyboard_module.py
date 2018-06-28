@@ -6,8 +6,8 @@ import time
 class keyboard_thread(threading.Thread):
     def __init__(self):
         self.settings = termios.tcgetattr(sys.stdin)
-        self.key
-        termios.tcsetattr(sys.stdin, termios.TCSADRAIN, settings)
+        self.key = ''
+        termios.tcsetattr(sys.stdin, termios.TCSADRAIN, self.settings)
         threading.Thread.__init__(self)
 
 	def run(self):
