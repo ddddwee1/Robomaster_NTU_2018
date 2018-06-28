@@ -306,7 +306,7 @@ def get_digits2(image):  #hansel's version, returns the coords or the handwritte
 		row_right_rect.append(y2)
 
 	if len(row_left_rect) == 0 or len(row_right_rect) == 0:
-		return False,False,False,False
+		return None,None #Sorry i don't like False,False ... None is more commonly used by people
 
 	tl_index = np.argmin(row_left_rect)
 	bl_index = np.argmax(row_left_rect)
@@ -365,11 +365,10 @@ def get_digits2(image):  #hansel's version, returns the coords or the handwritte
 
 	if len(handwritten_dict) >= 9 :
 		handwritten_num= handwritten_num_raw
-		#print handwritten_num
+		print handwritten_num
 	else:
-		handwritten_num = None
-		pass
-	#print handwritten_num
+        return None,None
+
 
 	#center pixel of the digit boxes
 	warped_digit_coords = []
