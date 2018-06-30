@@ -20,7 +20,8 @@ camera_thread.start()
 counter_detection = 0
 counter_shoot = 0
 
-pitch_bias = 920
+#initial bias values
+pitch_bias = 500
 yaw_bias = 0
 
 def getKey():
@@ -36,6 +37,7 @@ def getKey():
 
 settings = termios.tcgetattr(sys.stdin)
 termios.tcsetattr(sys.stdin, termios.TCSADRAIN, settings)
+csv_file = open("/home/nvidia/bias_test.csv", 'a')
 
 while True:
 	key = getKey()
@@ -69,34 +71,51 @@ while True:
 	t_yaw = robot_prop.t_yaw
 
 	pitch_delta,yaw_delta = util.get_delta(coord)
-#	if abs(pitch_delta) < 200:
-#		pitch_delta = 0
-#	else:
-#		print 'p_d', pitch_delta, coord
-#
-#	if abs(yaw_delta) < 200:
-#		yaw_delta = 0
-#	else:
-#		print 'y_d', yaw_delta,coord
 
 
 	if pitch_delta ==0 and yaw_delta ==0:
 		continue
-
+	#get height of bounding box
 	height=util.get_height(coord)
 
 	if key == '2' :
+		print"Decreasing pitch bias.............."
 		pitch_bias-=5
 
 	if key == '1' :
+		print"Increasing pitch bias.............."
 		pitch_bias+=5
 
 	if key == '3' :
+		print"Decreasing pitch bias.............."
 		yaw_bias-=5
 
 	if key == '4' :
+		print"Increasing yaw bias.............."
 		yaw_bias+=5
 
+	if key == 't' : #record as hitting the top edge
+		csv_file.write(str(height))
+		csv_file.write(';')
+		csv_file.write(str(pitch_bias))
+		csv_file.write(';')
+		csv_file.write('top edge')
+		csv_file.write('\n')
+		print"[Write] height = ", height, '  pitch bias = ',pitch_bias, ' TOP EDGE!!'
+
+	if key == 'b' : #record as hitting the btm edge
+		csv_file.write(str(height))
+		csv_file.write(';')
+		csv_file.write(str(pitch_bias))
+		csv_file.write(';')
+		csv_file.write('btm edge')
+		csv_file.write('\n')
+		print"[Write] height = ", height, '  pitch bias = ',pitch_bias, ' BTM EDGE!!'
+
+	if key == 's' :
+		csv_file.close()
+		csv_file = open("/home/nvidia/bias_test_upper_edge.csv", 'a')
+		print"Saving to file................"
 
 	print 'height' , height
 	print 'pitch bias', pitch_bias
@@ -105,10 +124,10 @@ while True:
 	v1 = t_pitch + pitch_delta *1.0 - pitch_bias
 	v2 = t_yaw + yaw_delta *1.0 - yaw_bias
 
-
+	#enforce pitch limit
 	if abs(v1) >= 2000:
 		v1 = 2000
-
+	#enforce yaw limit
 	if abs(v2) >= 6000:
 		v2 = 6000
 

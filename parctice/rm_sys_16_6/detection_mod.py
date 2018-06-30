@@ -3,6 +3,7 @@ from net import netpart, net_veri
 import tensorflow as tf 
 import numpy as np
 import cv2
+import time
 
 def get_img_coord(img,c,b,multip):
 	# get the coordinations by c and b
@@ -12,7 +13,7 @@ def get_img_coord(img,c,b,multip):
 	b = b[0]
 	row,col,_ = b.shape
 	c = c.reshape([-1])
-	ind = c.argsort()[-3:][::-1]
+	ind = c.argsort()[-2:][::-1]
 	for aaa in ind:
 		i = aaa//col
 		j = aaa%col 
@@ -20,11 +21,14 @@ def get_img_coord(img,c,b,multip):
 		y = int(b[i][j][1])+i*multip+multip//2
 		w = int(b[i][j][2])
 		h = int(b[i][j][3])
-		M = np.float32([[1,0,-(x-int(w*1.5)//2)],[0,1,-(y-int(h*1.5)//2)]])
-		cropped = cv2.warpAffine(img,M,(int(w*1.5),int(h*1.5)))
-		cropped = cv2.resize(cropped,(32,32))
-		# append [cropped_image,[x,y,w,h]] to result list
-		res.append([cropped,[x,y,w,h]])
+		try:
+			M = np.float32([[1,0,-(x-int(w*1.5)//2)],[0,1,-(y-int(h*1.5)//2)]])
+			cropped = cv2.warpAffine(img,M,(int(w*1.5),int(h*1.5)))
+			cropped = cv2.resize(cropped,(32,32))
+			# append [cropped_image,[x,y,w,h]] to result list
+			res.append([cropped,[x,y,w,h]])
+		except:
+			continue
 	return res 
 
 def crop(img,bs,cs):
@@ -109,15 +113,19 @@ M.loadSess('./modelveri_tiny/',sess)
 import time 
 
 def get_coord_from_detection(img):
+	#t1 = time.time()
 	buff_out = sess.run([b0,b1,b2,c0,c1,c2],feed_dict={netpart.inpholder:[img]})
 	bs,cs = buff_out[:3],buff_out[3:]
+	#t2 = time.time()
 	res = crop(img,bs,cs)
+	#t3 = time.time()
 	cropped_imgs = [k[0] for k in res]
 	coords = [k[1] for k in res]
 
 	# get score and output
 	veri_output = sess.run(net_veri.output,feed_dict={net_veri.inputholder:cropped_imgs})
 	veri_classi = np.argmax(veri_output,1)
+	#t4 = time.time()
 	# ------
 	# If nonmax supression is not needed, just remove the softmax computation
 	# ------
@@ -127,4 +135,5 @@ def get_coord_from_detection(img):
 
 	valid_coord,veri_output = filter_valid_coord(coords,veri_classi,veri_output)
 	valid_coord = non_max_sup(valid_coord,veri_output)
+	
 	return valid_coord

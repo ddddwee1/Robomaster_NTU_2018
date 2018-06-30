@@ -10,7 +10,7 @@ class camera_thread(threading.Thread):
 
 	def run(self):
 		while True:
-			time.sleep(0.03)
+			time.sleep(0.02)
 			_,self.img = self.cap.read()
 
 	def read(self):

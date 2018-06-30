@@ -44,7 +44,11 @@ def distance_to_camera(knownWidth, focalLength,coord):
 	target_coord = coord[min_index]
 	x,y,w,h = target_coord
 
-	return (KNOWN_WIDTH * focalLength) / (h)
+	return (KNOWN_WIDTH * focalLength) / (w)
 
+def get_delta_buf(x,y):
+
+	# do process on x,y,w,h
+	return int(float(y-240)*3000/240),int(float(x-320)*3000/320)
 
 

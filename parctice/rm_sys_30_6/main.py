@@ -20,6 +20,9 @@ camera_thread.start()
 counter_detection = 0
 counter_shoot = 0
 
+pitch_bias = 920
+yaw_bias = 0
+
 def getKey():
 	tty.setraw(sys.stdin.fileno())
 	rlist, _, _ = select.select([sys.stdin], [], [], 0.1)
@@ -48,7 +51,7 @@ while True:
 	else:
 		if key == 'q' :
 			print 'a'
-			robot_prop.shoot = 1
+			robot_prop.shoot = 2
 			counter_shoot +=1
 			#print 'b' , counter
 
@@ -80,15 +83,28 @@ while True:
 	if pitch_delta ==0 and yaw_delta ==0:
 		continue
 
-	#print 'p_d', pitch_delta
-	#print 'y_d', yaw_delta
+	height=util.get_height(coord)
 
-	depth=util.distance_to_camera(KNOWN_DISTANCE,KNOWN_WIDTH,coord)
-	pitch_bias = 770 + (1.2**depth)*5
-	print pitch_bias
+	if key == '2' :
+		pitch_bias-=5
+
+	if key == '1' :
+		pitch_bias+=5
+
+	if key == '3' :
+		yaw_bias-=5
+
+	if key == '4' :
+		yaw_bias+=5
+
+
+	print 'height' , height
+	print 'pitch bias', pitch_bias
+	print 'yaw bias', yaw_bias
 
 	v1 = t_pitch + pitch_delta *1.0 - pitch_bias
-	v2 = t_yaw + yaw_delta *1.4
+	v2 = t_yaw + yaw_delta *1.0 - yaw_bias
+
 
 	if abs(v1) >= 2000:
 		v1 = 2000

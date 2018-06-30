@@ -2,26 +2,29 @@ import digit_detection
 import cv2
 import time
 import numpy as np
-
-import robot_prop 
-
+import data_retriver
+from camera_module import camera_thread
+import robot_prop
+import util
+import sys, select, termios, tty
 import time
+from turret_module import turret_thread
 
-cap = cv2.VideoCapture(1)
-cap.set(cv2.CAP_PROP_FPS,30)
-fps = cap.get(cv2.CAP_PROP_FPS)
-#print 'fps',fps
+
+data_reader = data_retriver.data_reader_thread()
+data_reader.start()
+
+camera_thread = camera_thread()
+camera_thread.start()
+
+turret_thread = turret_thread()
+turret_thread.start()
+
 WHITE = (255,255,255)
 BLACK = (0,0,0)
 
-image_width = 1920
-image_height = 1080
-
-cap.set(3, image_width);
-cap.set(4, image_height);
-
-cap.set(14, 0.0)  #exposure
-cap.set(10, 0.02) #brightness
+image_width = 640
+image_height = 480
 
 scr_7seg_index = 0
 saved_7seg_raw = -1
@@ -29,11 +32,30 @@ saved_numbers_handwritten = -1
 new_handwritten = False
 handwritten_num_index = -1
 
+counter_detection = 0
+counter_shoot = 0
+
+whether_shooted = False
+
+def getKey():
+	tty.setraw(sys.stdin.fileno())
+	rlist, _, _ = select.select([sys.stdin], [], [], 0.1)
+	if rlist:
+		key = sys.stdin.read(1)
+	else:
+		key = ''
+
+	termios.tcsetattr(sys.stdin, termios.TCSADRAIN, settings)
+	return key
+
+settings = termios.tcgetattr(sys.stdin)
+termios.tcsetattr(sys.stdin, termios.TCSADRAIN, settings)
+
 while True:
 
 	new_7seg = False
-
-	_,image = cap.read()
+	key = getKey()
+	image = camera_thread.read()
 	if image is None:
 		break
 	try:
@@ -79,6 +101,7 @@ while True:
 		saved_7seg_raw = numbers_7seg 
 		scr_7seg_index = 0
 		new_7seg = True
+		whether_shooted = False
 		print 'abc'
 
 	if saved_7seg_raw == -1 or saved_7seg_raw == numbers_7seg and checked_7seg_raw == True:
@@ -96,11 +119,12 @@ while True:
 		new_handwritten = True
 		saved_numbers_handwritten = numbers_handwritten
 		scr_7seg_index += 1
+		whether_shooted = False
 		for index in range(len(handwritten_num)):
 			if num_7seg == handwritten_num[index]:
 				handwritten_num_index = index
 				print ('b',prev_num_7seg,handwritten_num_index)
-				break
+
 	else:
 		if handwritten_num_index != -1:
 			print ('b',prev_num_7seg,handwritten_num_index)
@@ -109,5 +133,39 @@ while True:
 	if scr_7seg_index >=5:
 		scr_7seg_index = 0
 
+#	if counter_shoot >=10:
+#		robot_prop.shoot = 0
+#		counter_shoot = 0
+#		#print 'a' ,counter
+#	else:
+#		if key == 'q' :
+#			print 'a'
+#			robot_prop.shoot = 1
+#			counter_shoot +=1
+#			#print 'b' , counter
+
+#		else: 
+#			robot_prop.shoot = 0
+
+	shoot_coord = handwritten_coord[handwritten_num_index]
+	x,y = shoot_coord 
+	t_pitch = robot_prop.t_pitch
+	t_yaw = robot_prop.t_yaw
+
+	pitch_delta,yaw_delta = util.get_delta_buf(x,y)
+
+	if pitch_delta ==0 and yaw_delta ==0:
+		continue
+	pitch_bias = 700
+	v1 = t_pitch + pitch_delta *1.0 - pitch_bias
+	v2 = t_yaw + yaw_delta *1.0
+
+	robot_prop.v1 = v1
+	robot_prop.v2 = v2
+	time.sleep(0.1)
+
+	if whether_shooted == False:
+		turret_thread.shoot()
+		whether_shooted = True
 
 	#print scr_7seg_raw, handwritten_num, Flaming_digit

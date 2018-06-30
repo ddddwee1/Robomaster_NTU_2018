@@ -6,8 +6,8 @@ import numpy as np
 WHITE = (255,255,255)
 BLACK = (0,0,0)
 
-image_width = 1920
-image_height = 1080
+image_width = 640
+image_height = 480
 
 kernel2 = np.ones((2,2),np.uint8)
 kernel3 = np.ones((3,3),np.uint8)
@@ -24,10 +24,10 @@ def get_digits(image):
 
 	gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 	#blur = cv2.GaussianBlur(gray,(3,3),0)
-	#blur = cv2.GaussianBlur(blur,(3,3),0)
-	blurred = cv2.bilateralFilter(gray, 3, 333, 333)
+	#blur = cv2.GaussianBlur(gray,(3,3),0)
+	blurred = cv2.bilateralFilter(gray, 3, 119, 109)
 	_,th3 = cv2.threshold(blurred,0,255,cv2.THRESH_BINARY+cv2.THRESH_OTSU)
-	edged = cv2.Canny(blurred, 150, 180)
+	edged = cv2.Canny(blurred, 180, 240)
 
 	#cv2.imshow('',image)
 
@@ -36,13 +36,13 @@ def get_digits(image):
 
 	for contour in contours:
 		peri = cv2.arcLength(contour,True)
-		contour = cv2.approxPolyDP(contour, 0.00001 * peri, True)
-		if cv2.contourArea(contour)<500 or cv2.contourArea(contour)>3500:
+		contour = cv2.approxPolyDP(contour, 0.0001 * peri, True)
+		if cv2.contourArea(contour)<70 or cv2.contourArea(contour)>800:
 			continue
 
 		x,y,w,h = cv2.boundingRect(contour)
 
-		if (w / h) < 1.0 or (w / h) > 2.5:
+		if (w / h) < 0.9 or (w / h) > 2.5:
 			continue
 		#print cv2.contourArea(contour)
 		cv2.drawContours(edged, [contour], -1, (255, 255, 255), 3)
@@ -52,16 +52,23 @@ def get_digits(image):
 		else:
 			rightRect.append([x,y,w,h])
 
-	#cv2.imshow('abc',edged)
-	#cv2.waitKey(1)
+	cv2.imshow('abc',edged)
+	cv2.waitKey(1)
 	for i in range(len(leftRect)):
 		find_left = False
 		xi,_,_,_ = leftRect[i]
 		for j in range(len(leftRect)-i-1):
-			j1=1+i+j
+			j1=i+j+1
 			xj1,_,_,_ = leftRect[j1]
-			if abs(xi - xj1) < 50:
+			if abs(xi - xj1) < 10 :
 				find_left = True
+#				if (len(leftRect)-i-j-2) == 0 :
+#					find_left = True 
+#				for k in range(len(leftRect)-i-j-2):
+#					k1=2+i+j+k
+#					xk1,_,_,_ = leftRect[k1]
+#					if abs(xk1 - xj1) < 15 :
+
 
 		if find_left == True:
 			left_rect.append(leftRect[i])
@@ -75,10 +82,17 @@ def get_digits(image):
 		find_right = False
 		xi,_,_,_ = rightRect[i]
 		for j in range(len(rightRect)-i-1):
-			j1=1+i+j
+			j1=i+j+1
 			xj1,_,_,_ = rightRect[j1]
-			if abs(xi - xj1) < 50:
+			if abs(xi - xj1) < 10:
 				find_right = True
+#				if (len(rightRect)-i-j-2) == 0 :
+#					find_right = True 
+#				for k in range(len(rightRect)-i-j-2):
+#					k1=2+i+j+k
+#					xk1,_,_,_ = rightRect[k1]
+#					if abs(xk1 - xj1) < 15 :
+
 
 		if find_right == True:
 			right_rect.append(rightRect[i])
@@ -112,8 +126,8 @@ def get_digits(image):
 	M = cv2.getPerspectiveTransform(pts1,pts2)
 
 	dst = cv2.warpPerspective(image,M,(300,200))
-	#cv2.imshow('aaa',dst)
-	#cv2.waitKey(1)
+	cv2.imshow('aaa',dst)
+	cv2.waitKey(1)
 
 	""" 
 	Handwritten
