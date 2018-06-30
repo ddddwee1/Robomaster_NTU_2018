@@ -1,5 +1,5 @@
 import tensorflow as tf 
-import model as M 
+from net import model as M 
 import numpy as np 
 
 BSIZE = 128
