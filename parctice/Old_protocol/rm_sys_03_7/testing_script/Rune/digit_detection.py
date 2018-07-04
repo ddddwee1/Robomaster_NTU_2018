@@ -252,12 +252,3 @@ def get_digits(image):
 	#print(scr_FD)
 
 	return coord, scr_7seg_raw, handwritten_num, Flaming_digit
-
-
-#if __name__ == '__main__':
-#	cap = cv2.VideoCapture(0)
-#	while cap.isOpened():
-#		retval,img = cap.read()
-#		if retval == True:
-#			coord, scr_7_seg_raw, handwritten_num, flaming_digit = get_digits(img)
-
