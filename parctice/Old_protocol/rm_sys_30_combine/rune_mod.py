@@ -49,7 +49,7 @@ def run(camera_thread):
 	if image is None:
 		break
 	try:
-		coord,scr_7seg_raw, handwritten_num, Flaming_digit = digit_detection.get_digits(image,bigbuff=True)
+		coord,scr_7seg_raw, handwritten_num, Flaming_digit = digit_detection.get_digits(image,bigbuff=False)
 		#print scr_7seg_raw, handwritten_num, Flaming_digit
 	except:
 		time.sleep(0.1)
@@ -83,6 +83,7 @@ def run(camera_thread):
 
 	numbers_7seg = scr_7seg_raw[0]*10**4+scr_7seg_raw[1]*10**3+scr_7seg_raw[2]*10*2+scr_7seg_raw[3]*10+scr_7seg_raw[4]
 
+
 	if checked_7seg_raw == False:
 		continue
 
@@ -95,7 +96,8 @@ def run(camera_thread):
 	if saved_7seg_raw == numbers_7seg and checked_7seg_raw == True:
 
 		if scr_7seg_index == 0:
-			scr_7seg_index += 1
+			num_7seg = scr_7seg_raw[scr_7seg_index]
+			prev_num_7seg = scr_7seg_raw[scr_7seg_index]
 
 		if scr_7seg_index == 5:
 			num_7seg = scr_7seg_raw[scr_7seg_index-1]
@@ -125,7 +127,8 @@ def run(camera_thread):
 			print ('Before',prev_num_7seg,num_9boxes_index,scr_7seg_index)
 
 	if scr_7seg_index >=6:
-		scr_7seg_index = 1
+		scr_7seg_index = 0
+		saved_numbers_9boxes = -1
 
 	shoot_coord = handwritten_coord[num_9boxes_index]
 	x,y = shoot_coord 

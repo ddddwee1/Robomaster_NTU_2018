@@ -55,7 +55,7 @@ while True:
 	if image is None:
 		break
 	try:
-		coord,scr_7seg_raw, handwritten_num, Flaming_digit = digit_detection.get_digits(image,bigbuff=True)
+		coord,scr_7seg_raw, handwritten_num, Flaming_digit = digit_detection.get_digits(image,bigbuff=False)
 		#print scr_7seg_raw, handwritten_num, Flaming_digit
 	except:
 		time.sleep(0.1)
@@ -102,7 +102,8 @@ while True:
 	if saved_7seg_raw == numbers_7seg and checked_7seg_raw == True:
 
 		if scr_7seg_index == 0:
-			scr_7seg_index += 1
+			num_7seg = scr_7seg_raw[scr_7seg_index]
+			prev_num_7seg = scr_7seg_raw[scr_7seg_index]
 
 		if scr_7seg_index == 5:
 			num_7seg = scr_7seg_raw[scr_7seg_index-1]
@@ -132,5 +133,5 @@ while True:
 			print ('Before',prev_num_7seg,num_9boxes_index,scr_7seg_index)
 
 	if scr_7seg_index >=6:
-		scr_7seg_index = 1
-
+		scr_7seg_index = 0
+		saved_numbers_9boxes = -1

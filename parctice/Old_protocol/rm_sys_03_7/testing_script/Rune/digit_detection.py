@@ -74,7 +74,7 @@ def get_digits(image,bigbuff=False):
 				xj1,_,_,_ = leftRect[j]
 				if abs(xi - xj1) < 10 :
 					find_left = True
-					continue
+					break
 			else:
 				pass
 
@@ -101,7 +101,7 @@ def get_digits(image,bigbuff=False):
 				xj1,_,_,_ = rightRect[j]
 				if abs(xi - xj1) < 10:
 					find_right = True
-					continue
+					break
 			else:
 				pass
 
@@ -133,7 +133,7 @@ def get_digits(image,bigbuff=False):
 	coord = [[x1,y1,w1,h1],[x2,y2,w2,h2],[x3,y3,w3,h3],[x4,y4,w4,h4]]
 
 	pts1 = np.float32([sr_tl,sr_tr,sr_bl,sr_br])
-	pts2 = np.float32([[0, 50],[300, 50],[0, 200],[300, 200]])
+	pts2 = np.float32([[0, 52],[300, 52],[0, 200],[300, 200]])
 	M = cv2.getPerspectiveTransform(pts1,pts2)
 
 	dst = cv2.warpPerspective(image,M,(300,200))
@@ -150,19 +150,24 @@ def get_digits(image,bigbuff=False):
 
 	for x,y in digits_7seg_rect:
 		#cv2.rectangle(dst,(x,y),(x+19,y+33),(255,0,0),1)
-		img_sevseg = dst[y:y+32,x:x+19]
+		img_sevseg = dst[y:y+36,x:x+19]
 
 		img_sevseg=cv2.cvtColor(img_sevseg, cv2.COLOR_BGR2HSV)
 		img_sevseg_red = img_sevseg[:,:,2].copy()
 		img_sevseg_red = cv2.morphologyEx(img_sevseg_red, cv2.MORPH_OPEN, kernel2)
 		_,buf = cv2.threshold(img_sevseg_red,150,255,cv2.THRESH_BINARY+cv2.THRESH_OTSU)
 		buf = cv2.bitwise_not(buf)
-		buf=cv2.dilate(buf,kernel2,iterations = 1)
-
+		buf=cv2.erode(buf,kernel2,iterations = 1)
+		for i in range(1):
+			buf=cv2.dilate(buf,kernel3,iterations = 1)
+			buf=cv2.erode(buf,kernel3,iterations = 1)
+		buf=cv2.dilate(buf,kernel2,iterations = 2)
 		buf = cv2.resize(buf,(24,24))
-		buf = cv2.copyMakeBorder(buf, 2, 2, 2, 2, cv2.BORDER_CONSTANT, value=WHITE)
+		buf = cv2.copyMakeBorder(buf, 1, 3, 1, 3, cv2.BORDER_CONSTANT, value=WHITE)
+
 		#cv2.imshow('bb',buf)
 		#cv2.waitKey(0)
+
 		buf = buf.reshape([-1])
 		buf = 255 - buf
 		buf = np.float32(buf) / 255.
@@ -176,24 +181,28 @@ def get_digits(image,bigbuff=False):
 		""" 
 		Handwritten
 		"""
-		digits_rect = [(51,54),(125,54),(200,54),(51,109),(125,109),(200,109),(51,163),(125,163),(200,163)]
+		digits_rect = [(51,55),(125,55),(200,55),(51,110),(125,110),(200,110),(51,164),(125,164),(200,164)]
 		digit_imgs = []
 		abc = 0
 		for x,y in digits_rect:
-			#cv2.rectangle(dst,(x,y),(x+50,y+34),(0,0,255),1)
-			buf =  dst[y:y+32,x:x+50]
+			#cv2.rectangle(dst,(x,y),(x+50,y+33),(0,0,255),1)
+			buf =  dst[y:y+33,x:x+50]
 			buf = cv2.cvtColor(buf,cv2.COLOR_BGR2GRAY)
 			_,buf = cv2.threshold(buf,20,255,cv2.THRESH_BINARY+cv2.THRESH_OTSU)
 			buf = cv2.erode(buf,kernel2,iterations = 1)
 			buf = cv2.resize(buf,(24,24))
 			buf = cv2.copyMakeBorder(buf, 2, 2, 2, 2, cv2.BORDER_CONSTANT, value=WHITE)
+
 			#cv2.imshow('cv',buf)
 			#cv2.waitKey(0)
+
 			buf = 255 - buf
 			buf = np.float32(buf) / 255.
-
 			buf = buf.reshape([-1])
 			digit_imgs.append(buf)
+
+		#cv2.imshow('aaa',dst)
+		#cv2.waitKey(1)
 
 		handwritten_num_raw = conv_deploy.get_pred(digit_imgs)
 		#print(handwritten_num_raw)
@@ -219,12 +228,12 @@ def get_digits(image,bigbuff=False):
 		Flaming Digits
 		"""
 
-		flamingdigits_rect = [(61,54),(135,54),(210,54),(61,109),(135,109),(210,109),(61,163),(135,163),(210,163)]
+		flamingdigits_rect = [(61,55),(135,55),(210,55),(61,110),(135,110),(210,110),(61,164),(135,164),(210,164)]
 		digit_imgs = []
 		abc = 0
 		for x,y in flamingdigits_rect:
-			#cv2.rectangle(dst,(x,y),(x+30,y+32),(0,0,255),1)
-			buf =  dst[y:y+32,x:x+30]
+			#cv2.rectangle(dst,(x,y),(x+30,y+33),(255,555,255),1)
+			buf =  dst[y:y+33,x:x+30]
 			img_FD = cv2.cvtColor(buf,cv2.COLOR_BGR2GRAY)
 			_,buf = cv2.threshold(img_FD,200,255,cv2.THRESH_TOZERO+cv2.THRESH_OTSU)
 			edged = cv2.Canny(buf, 255, 255)
@@ -233,13 +242,17 @@ def get_digits(image,bigbuff=False):
 			buf = cv2.bitwise_not(buf)
 			buf = cv2.resize(buf,(24,24))
 			buf = cv2.copyMakeBorder(buf, 2, 2, 2, 2, cv2.BORDER_CONSTANT, value=WHITE)
+
 			#cv2.imshow('cv',buf)
 			#cv2.waitKey(0)
+
 			buf = 255 - buf
 			buf = np.float32(buf) / 255.
 			buf = buf.reshape([-1])
 			digit_imgs.append(buf)
 
+		#cv2.imshow('aaa',dst)
+		#cv2.waitKey(1)
 
 		scr_FD_raw = conv_deploy.get_pred_flaming(digit_imgs)
 		#print (scr_FD_raw)
