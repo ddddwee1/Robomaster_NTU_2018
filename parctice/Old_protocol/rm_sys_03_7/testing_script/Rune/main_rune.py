@@ -2,21 +2,27 @@ import digit_detection
 import cv2
 import time
 import numpy as np
-import data_retriver
-from camera_module import camera_thread
-import robot_prop
-import util
-import time
-from turret_module import turret_thread
 
+import time
+
+cap = cv2.VideoCapture(1)
+cap.set(cv2.CAP_PROP_FPS,10)
+fps = cap.get(cv2.CAP_PROP_FPS)
+#print 'fps',fps
+
+cap.set(14, 0.0)  #exposure
+cap.set(10, 0.02) #brightness
 
 image_width = 640
 image_height = 480
 
+cap.set(3, image_width);
+cap.set(4, image_height);
+
 scr_7seg_index = 0
 saved_7seg_raw = -1
-saved_numbers_handwritten = -1
-handwritten_num_index = -1
+saved_numbers_9boxes = -1
+num_9boxes_index = -1
 
 counter_detection = 0
 counter_shoot = 0
@@ -42,9 +48,9 @@ def draw_handwritten_digits(image,handwritten_coord,radius):
 	cv2.imshow('',image)
 	cv2.waitKey(1)
 
-def run(camera_thread):
+while True:
 	new_7seg = False
-	image = camera_thread.read()
+	_,image = cap.read()
 
 	if image is None:
 		break
@@ -82,6 +88,7 @@ def run(camera_thread):
 			checked_7seg_raw = True
 
 	numbers_7seg = scr_7seg_raw[0]*10**4+scr_7seg_raw[1]*10**3+scr_7seg_raw[2]*10*2+scr_7seg_raw[3]*10+scr_7seg_raw[4]
+
 
 	if checked_7seg_raw == False:
 		continue
@@ -127,22 +134,3 @@ def run(camera_thread):
 	if scr_7seg_index >=6:
 		scr_7seg_index = 1
 
-	shoot_coord = handwritten_coord[num_9boxes_index]
-	x,y = shoot_coord 
-	t_pitch = robot_prop.t_pitch
-	t_yaw = robot_prop.t_yaw
-
-	pitch_delta,yaw_delta = util.get_delta_buf(x,y)
-	if pitch_delta ==0 and yaw_delta ==0:
-		continue
-	pitch_bias = 700
-	v1 = t_pitch + pitch_delta *1.0 - pitch_bias
-	v2 = t_yaw + yaw_delta *1.0
-
-	robot_prop.v1 = v1
-	robot_prop.v2 = v2
-	time.sleep(0.1)
-
-	if whether_shooted == False:
-		turret_thread.shoot()
-		whether_shooted = True

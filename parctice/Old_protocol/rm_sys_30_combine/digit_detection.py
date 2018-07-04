@@ -9,10 +9,13 @@ BLACK = (0,0,0)
 image_width = 640
 image_height = 480
 
+#image_width = 1920
+#image_height = 1080
+
 kernel2 = np.ones((2,2),np.uint8)
 kernel3 = np.ones((3,3),np.uint8)
 
-def get_digits(image):
+def get_digits(image,bigbuff=False):
 
 	leftRect = []
 	rightRect = []
@@ -38,7 +41,7 @@ def get_digits(image):
 	for contour in contours:
 		peri = cv2.arcLength(contour,True)
 		contour = cv2.approxPolyDP(contour, 0.00001 * peri, True)
-		if cv2.contourArea(contour)<80 or cv2.contourArea(contour)>800:
+		if cv2.contourArea(contour)<60 or cv2.contourArea(contour)>800:
 			continue
 
 		x,y,w,h = cv2.boundingRect(contour)
@@ -138,46 +141,6 @@ def get_digits(image):
 	cv2.waitKey(1)
 
 	""" 
-	Handwritten
-	"""
-	digits_rect = [(51,54),(125,54),(200,54),(51,109),(125,109),(200,109),(51,163),(125,163),(200,163)]
-	digit_imgs = []
-	abc = 0
-	for x,y in digits_rect:
-		#cv2.rectangle(dst,(x,y),(x+50,y+34),(0,0,255),1)
-		buf =  dst[y:y+32,x:x+50]
-		buf = cv2.cvtColor(buf,cv2.COLOR_BGR2GRAY)
-		_,buf = cv2.threshold(buf,20,255,cv2.THRESH_BINARY+cv2.THRESH_OTSU)
-		buf = cv2.erode(buf,kernel2,iterations = 1)
-		buf = cv2.resize(buf,(24,24))
-		buf = cv2.copyMakeBorder(buf, 2, 2, 2, 2, cv2.BORDER_CONSTANT, value=WHITE)
-		#cv2.imshow('cv',buf)
-		#cv2.waitKey(0)
-		buf = 255 - buf
-		buf = np.float32(buf) / 255.
-
-		buf = buf.reshape([-1])
-		digit_imgs.append(buf)
-
-	handwritten_num_raw = conv_deploy.get_pred(digit_imgs)
-	#print(handwritten_num_raw)
-
-	handwritten_dict = {}
-
-	# filter handwritten_num
-	for i in range(len(handwritten_num_raw)):
-		handwritten_dict[handwritten_num_raw[i]] = np.count_nonzero(handwritten_num_raw[i])
-
-	if len(handwritten_dict) >= 9 :
-		handwritten_num= handwritten_num_raw
-		#print handwritten_num
-	else:
-		handwritten_num = [-1]
-		pass
-	#print handwritten_num
-
-
-	""" 
 	7segment
 	"""
 
@@ -209,55 +172,91 @@ def get_digits(image):
 	scr_7seg_raw = conv_deploy.get_pred_7seg(digit_7seg_imgs)
 	#print (scr_7seg_raw)
 
-	""" 
-	Flaming Digits
-	"""
+	if bigbuff == False:
+		""" 
+		Handwritten
+		"""
+		digits_rect = [(51,54),(125,54),(200,54),(51,109),(125,109),(200,109),(51,163),(125,163),(200,163)]
+		digit_imgs = []
+		abc = 0
+		for x,y in digits_rect:
+			#cv2.rectangle(dst,(x,y),(x+50,y+34),(0,0,255),1)
+			buf =  dst[y:y+32,x:x+50]
+			buf = cv2.cvtColor(buf,cv2.COLOR_BGR2GRAY)
+			_,buf = cv2.threshold(buf,20,255,cv2.THRESH_BINARY+cv2.THRESH_OTSU)
+			buf = cv2.erode(buf,kernel2,iterations = 1)
+			buf = cv2.resize(buf,(24,24))
+			buf = cv2.copyMakeBorder(buf, 2, 2, 2, 2, cv2.BORDER_CONSTANT, value=WHITE)
+			#cv2.imshow('cv',buf)
+			#cv2.waitKey(0)
+			buf = 255 - buf
+			buf = np.float32(buf) / 255.
 
-	flamingdigits_rect = [(61,54),(135,54),(210,54),(61,109),(135,109),(210,109),(61,163),(135,163),(210,163)]
-	digit_imgs = []
-	abc = 0
-	for x,y in flamingdigits_rect:
-		#cv2.rectangle(dst,(x,y),(x+30,y+32),(0,0,255),1)
-		buf =  dst[y:y+32,x:x+30]
-		img_FD = cv2.cvtColor(buf,cv2.COLOR_BGR2GRAY)
-		_,buf = cv2.threshold(img_FD,200,255,cv2.THRESH_TOZERO+cv2.THRESH_OTSU)
-		edged = cv2.Canny(buf, 255, 255)
-		_, contours, hierarchy = cv2.findContours(edged.copy(),cv2.RETR_EXTERNAL,cv2.CHAIN_APPROX_SIMPLE)
-		cv2.drawContours(buf, contours, -1, 255,-1)
-		buf = cv2.bitwise_not(buf)
-		buf = cv2.resize(buf,(24,24))
-		buf = cv2.copyMakeBorder(buf, 2, 2, 2, 2, cv2.BORDER_CONSTANT, value=WHITE)
-		#cv2.imshow('cv',buf)
-		#cv2.waitKey(0)
-		buf = 255 - buf
-		buf = np.float32(buf) / 255.
-		buf = buf.reshape([-1])
-		digit_imgs.append(buf)
+			buf = buf.reshape([-1])
+			digit_imgs.append(buf)
 
+		handwritten_num_raw = conv_deploy.get_pred(digit_imgs)
+		#print(handwritten_num_raw)
 
-	scr_FD_raw = conv_deploy.get_pred_flaming(digit_imgs)
-	#print (scr_FD_raw)
+		handwritten_dict = {}
 
-	#filter flaming digit
-	num_FD_dict = {}
-	for i in range(len(scr_FD_raw)):
-		num_FD_dict[scr_FD_raw[i]] = np.count_nonzero(scr_FD_raw[i])
+		# filter handwritten_num
+		for i in range(len(handwritten_num_raw)):
+			handwritten_dict[handwritten_num_raw[i]] = np.count_nonzero(handwritten_num_raw[i])
 
-	if len(num_FD_dict) >= 9 :
-		Flaming_digit= scr_FD_raw
-		#print scr_7seg
-	else:
+		if len(handwritten_dict) >= 9 :
+			handwritten_num= handwritten_num_raw
+			#print handwritten_num
+		else:
+			handwritten_num = [-1]
+			pass
+
 		Flaming_digit = [-1]
-		pass
-	#print(scr_FD)
+		#print handwritten_num
+
+	else:
+		""" 
+		Flaming Digits
+		"""
+
+		flamingdigits_rect = [(61,54),(135,54),(210,54),(61,109),(135,109),(210,109),(61,163),(135,163),(210,163)]
+		digit_imgs = []
+		abc = 0
+		for x,y in flamingdigits_rect:
+			#cv2.rectangle(dst,(x,y),(x+30,y+32),(0,0,255),1)
+			buf =  dst[y:y+32,x:x+30]
+			img_FD = cv2.cvtColor(buf,cv2.COLOR_BGR2GRAY)
+			_,buf = cv2.threshold(img_FD,200,255,cv2.THRESH_TOZERO+cv2.THRESH_OTSU)
+			edged = cv2.Canny(buf, 255, 255)
+			_, contours, hierarchy = cv2.findContours(edged.copy(),cv2.RETR_EXTERNAL,cv2.CHAIN_APPROX_SIMPLE)
+			cv2.drawContours(buf, contours, -1, 255,-1)
+			buf = cv2.bitwise_not(buf)
+			buf = cv2.resize(buf,(24,24))
+			buf = cv2.copyMakeBorder(buf, 2, 2, 2, 2, cv2.BORDER_CONSTANT, value=WHITE)
+			#cv2.imshow('cv',buf)
+			#cv2.waitKey(0)
+			buf = 255 - buf
+			buf = np.float32(buf) / 255.
+			buf = buf.reshape([-1])
+			digit_imgs.append(buf)
+
+
+		scr_FD_raw = conv_deploy.get_pred_flaming(digit_imgs)
+		#print (scr_FD_raw)
+
+		#filter flaming digit
+		num_FD_dict = {}
+		for i in range(len(scr_FD_raw)):
+			num_FD_dict[scr_FD_raw[i]] = np.count_nonzero(scr_FD_raw[i])
+
+		if len(num_FD_dict) >= 9 :
+			Flaming_digit= scr_FD_raw
+			#print scr_7seg
+		else:
+			Flaming_digit = [-1]
+			pass
+
+		handwritten_num = [-1]
+		#print(scr_FD)
 
 	return coord, scr_7seg_raw, handwritten_num, Flaming_digit
-
-
-#if __name__ == '__main__':
-#	cap = cv2.VideoCapture(0)
-#	while cap.isOpened():
-#		retval,img = cap.read()
-#		if retval == True:
-#			coord, scr_7_seg_raw, handwritten_num, flaming_digit = get_digits(img)
-
