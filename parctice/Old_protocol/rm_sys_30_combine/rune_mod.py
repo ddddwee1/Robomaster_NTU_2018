@@ -9,8 +9,6 @@ import util
 import time
 from turret_module import turret_thread
 
-WHITE = (255,255,255)
-BLACK = (0,0,0)
 
 image_width = 640
 image_height = 480

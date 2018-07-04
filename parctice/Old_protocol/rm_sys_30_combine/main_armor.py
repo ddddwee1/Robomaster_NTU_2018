@@ -107,10 +107,10 @@ while True:
 
 
 	if abs(v1) >= 2000:
-		v1 = 2000
+		v1 = 2000 * (v1/abs(v1))
 
 	if abs(v2) >= 6000:
-		v2 = 6000
+		v2 = 6000 * (v2/abs(v2))
 
 	robot_prop.v1 = v1
 	robot_prop.v2 = v2

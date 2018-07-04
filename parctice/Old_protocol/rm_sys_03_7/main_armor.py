@@ -8,9 +8,6 @@ import cv2
 import sys, select, termios, tty
 import math
 
-KNOWN_DISTANCE = 2.0
-KNOWN_WIDTH = 40.0
-
 data_reader = data_retriver.data_reader_thread()
 data_reader.start()
 
@@ -107,10 +104,10 @@ while True:
 
 
 	if abs(v1) >= 2000:
-		v1 = 2000
+		v1 = 2000 * (v1/abs(v1))
 
 	if abs(v2) >= 6000:
-		v2 = 6000
+		v2 = 6000 * (v2/abs(v2))
 
 	robot_prop.v1 = v1
 	robot_prop.v2 = v2

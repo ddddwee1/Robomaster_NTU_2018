@@ -20,16 +20,12 @@ camera_thread.start()
 turret_thread = turret_thread()
 turret_thread.start()
 
-#WHITE = (255,255,255)
-#BLACK = (0,0,0)
-
 image_width = 640
 image_height = 480
 
 scr_7seg_index = 0
 saved_7seg_raw = -1
 saved_numbers_handwritten = -1
-new_handwritten = False
 handwritten_num_index = -1
 
 counter_detection = 0
@@ -59,13 +55,10 @@ while True:
 	if image is None:
 		break
 	try:
-		t1 = time.time()
 		coord,scr_7seg_raw, handwritten_num, Flaming_digit = digit_detection.get_digits2(image)
-		t2 = time.time() - t1
 	except:
 		time.sleep(0.1)
 		continue
-	t3 = time.time()
 
 	if len(handwritten_num) == 1 and len(Flaming_digit) == 1 :
 		cv2.imshow('',image)
@@ -119,7 +112,6 @@ while True:
 	numbers_handwritten = handwritten_num[0]*10**8+handwritten_num[1]*10**7+handwritten_num[2]*10**6+handwritten_num[3]*10**5+handwritten_num[4]*10**4+handwritten_num[5]*10**3+handwritten_num[6]*10**2+handwritten_num[7]*10**1+handwritten_num[8]
 
 	if saved_numbers_handwritten == -1 or saved_numbers_handwritten !=  numbers_handwritten or new_7seg == True:
-		new_handwritten = True
 		saved_numbers_handwritten = numbers_handwritten
 		scr_7seg_index += 1
 		whether_shooted = False
@@ -131,7 +123,6 @@ while True:
 	else:
 		if handwritten_num_index != -1:
 			print ('b',prev_num_7seg,handwritten_num_index)
-		new_handwritten = False
 
 	if scr_7seg_index >=5:
 		scr_7seg_index = 0
