@@ -67,13 +67,16 @@ M.loadSess('./model_rune/model_7seg/',sess,var_list=M.get_all_vars('7seg_detecti
 M.loadSess('./model_rune/model_flaming/',sess,var_list=M.get_all_vars('FD_detection'))
 
 def get_pred(imgs):
-	scr = sess.run(tf.argmax(last_layer,1),feed_dict={img_holder:imgs})
+	scr = sess.run(last_layer,feed_dict={img_holder:imgs})
+	scr = np.argmax(scr,1)
 	return scr
 
 def get_pred_7seg(imgs):
-	scr = sess.run(tf.argmax(last_layer_7seg,1),feed_dict={img_holder:imgs})
+	scr = sess.run(last_layer_7seg,feed_dict={img_holder:imgs})
+	scr = np.argmax(scr,1)
 	return scr 
 
 def get_pred_flaming(imgs):
-	scr = sess.run(tf.argmax(last_layer_FD,1),feed_dict={img_holder:imgs})
+	scr = sess.run(last_layer_FD,feed_dict={img_holder:imgs})
+	scr = np.argmax(scr,1)
 	return scr 
