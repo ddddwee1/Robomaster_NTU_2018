@@ -17,10 +17,10 @@ def PickSevenSegment(BSIZE):
 		if pick_digit == 10:
 			blank_image = np.ones((28,28,3), np.uint8)
 			blank_image = cv2.cvtColor(blank_image, cv2.COLOR_BGR2GRAY)
-			random_int2=np.random.randint(0,4, size=1)
+			random_int2=np.random.randint(0,8, size=1)
 			for i in range(random_int2[0]):
 				random_int=np.random.randint(1,29, size=2)
-				random_int1=np.random.randint(0,6, size=1)
+				random_int1=np.random.randint(0,8, size=1)
 				cv2.circle(blank_image,(random_int[0],random_int[1]), random_int1[0], (255,255,255), -1)
 			buf = cv2.bitwise_not(blank_image)
 			#cv2.imshow('',buf)
@@ -35,21 +35,24 @@ def PickSevenSegment(BSIZE):
 			img_sevseg_red = cv2.morphologyEx(img_sevseg_red, cv2.MORPH_OPEN, kernel)
 			_,buf = cv2.threshold(img_sevseg_red,150,255,cv2.THRESH_BINARY+cv2.THRESH_OTSU)
 			uniform_random = np.random.uniform(0.6,1.0,2)
-			buf = cv2.resize(buf,(19,32))
+			buf = cv2.resize(buf,(19,36))
 			buf = cv2.resize(buf,None,fx=uniform_random[0], fy=uniform_random[1])
 			#print uniform_random
-			buf = cv2.copyMakeBorder(buf,1, 1, 1, 4, cv2.BORDER_CONSTANT, value=BLACK)
-			uniform_random1 = np.random.uniform(-1.0,0.7,2)
+			buf = cv2.copyMakeBorder(buf,1, 3, 1, 3, cv2.BORDER_CONSTANT, value=BLACK)
+			uniform_random1 = np.random.uniform(-0.8,0.5,2)
 			#uniform_random[0] *
-			M = np.float32([[1,0,int(uniform_random1[0]*3)],[0,1,int(uniform_random1[1]*3)]])
-			buf = cv2.warpAffine(buf,M,(19,32))
-			kernel = np.ones((2,2),np.uint8)
+			M = np.float32([[1,0,int(uniform_random1[0]*3)],[0,1,int(uniform_random1[1]*5)]])
+			buf = cv2.warpAffine(buf,M,(19,36))
+			kernel2 = np.ones((2,2),np.uint8)
+			kernel3 = np.ones((3,3),np.uint8)
+			random_kernel = [kernel2,kernel3]
 			buf = cv2.bitwise_not(buf)
-			random_int=np.random.randint(0,2, size=2)
-			random_int1=np.random.randint(3, size=1)
+			random_int=np.random.randint(1,2, size=2)
+			random_int1=np.random.randint(5, size=1)
+			random_int2=np.random.randint(2, size=1)
 			for i in range(random_int1[0]):
-				buf=cv2.erode(buf,kernel,iterations = random_int[0])
-				buf=cv2.dilate(buf,kernel,iterations = random_int[1])
+				buf=cv2.erode(buf,random_kernel[random_int2[0]],iterations = random_int[0])
+				buf=cv2.dilate(buf,random_kernel[random_int2[0]],iterations = random_int[1])
 
 		buf = cv2.resize(buf,(28,28))
 		
