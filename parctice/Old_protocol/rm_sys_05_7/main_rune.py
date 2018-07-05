@@ -67,6 +67,8 @@ def draw_handwritten_digits(image,handwritten_coord,radius):
 	cv2.waitKey(1)
 
 while True:
+	print('------loop start------')
+	start_time = time.time()
 
 	new_7seg = False
 	key = getKey()
@@ -77,9 +79,14 @@ while True:
 	try:
 		coord,scr_7seg_raw, handwritten_num, Flaming_digit = digit_detection.get_digits(image,bigbuff=True)
 		#print scr_7seg_raw, handwritten_num, Flaming_digit
-	except:
+	except Exception as e:
 		time.sleep(0.1)
+		print('line80 exception')
+		print(e)
 		continue
+
+	t2 = time.time()
+	print('digit_detection time:',t2 - start_time)
 
 	if len(handwritten_num) == 1 and len(Flaming_digit) == 1 :
 		cv2.imshow('',image)
@@ -94,6 +101,8 @@ while True:
 		num_9boxes = Flaming_digit
 
 	handwritten_coord = get_handwritten_coord(coord)
+	t3 = time.time()
+	print('get_handwritten_coord time: ',t3-t2)
 
 	#drawing for debugging
 	radius = (coord[0][3]) //4
@@ -111,6 +120,7 @@ while True:
 
 
 	if checked_7seg_raw == False:
+		print('checked_7seg_raw: false')
 		continue
 
 	if saved_7seg_raw != numbers_7seg and checked_7seg_raw == True:
@@ -156,6 +166,8 @@ while True:
 		scr_7seg_index = 0
 		saved_numbers_9boxes = -1
 
+	t4 = time.time()
+	print('shooting logic:',t4-t3)
 
 	shoot_coord = handwritten_coord[num_9boxes_index]
 	x,y = shoot_coord 
@@ -170,6 +182,14 @@ while True:
 	yaw_bias = 0
 	v1 = t_pitch + pitch_delta *1.0 - pitch_bias
 	v2 = t_yaw + yaw_delta *1.4 - yaw_bias
+
+	t5 = time.time()
+	print('compute v1 & v2:',t5-t4)
+
+	print('Loop time:',t5 - start_time)
+	print('v1 = %d\tv2 = %d'%(v1,v2))
+	print('whether_shooted:',whether_shooted)
+	print('------Loop End------')
 
 	robot_prop.v1 = v1
 	robot_prop.v2 = v2
