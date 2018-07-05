@@ -149,23 +149,22 @@ def get_digits(image,bigbuff=False):
 	digit_7seg_imgs = []
 
 	for x,y in digits_7seg_rect:
-		#cv2.rectangle(dst,(x,y),(x+19,y+33),(255,0,0),1)
-		img_sevseg = dst[y:y+36,x:x+19]
+		#cv2.rectangle(dst,(x,y),(x+19,y+36),(255,0,0),1)
+		img_sevseg = dst[y:y+34,x:x+19]
 
 		img_sevseg=cv2.cvtColor(img_sevseg, cv2.COLOR_BGR2HSV)
 		img_sevseg_red = img_sevseg[:,:,2].copy()
 		img_sevseg_red = cv2.morphologyEx(img_sevseg_red, cv2.MORPH_OPEN, kernel2)
 		_,buf = cv2.threshold(img_sevseg_red,150,255,cv2.THRESH_BINARY+cv2.THRESH_OTSU)
+		buf = cv2.copyMakeBorder(buf, 0, 10 , 0, 0, cv2.BORDER_CONSTANT, value=BLACK)
 		buf = cv2.bitwise_not(buf)
-		buf=cv2.erode(buf,kernel2,iterations = 1)
-		for i in range(1):
-			buf=cv2.dilate(buf,kernel3,iterations = 1)
-			buf=cv2.erode(buf,kernel3,iterations = 1)
+		buf=cv2.erode(buf,kernel3,iterations = 1)
 		buf=cv2.dilate(buf,kernel2,iterations = 2)
+		#buf=cv2.erode(buf,kernel2,iterations = 1)
 		buf = cv2.resize(buf,(24,24))
 		buf = cv2.copyMakeBorder(buf, 1, 3, 1, 3, cv2.BORDER_CONSTANT, value=WHITE)
 
-		#cv2.imshow('bb',buf)
+		#cv2.imshow('bb',buf)	
 		#cv2.waitKey(0)
 
 		buf = buf.reshape([-1])
@@ -173,6 +172,9 @@ def get_digits(image,bigbuff=False):
 		buf = np.float32(buf) / 255.
 		buf = buf.reshape([-1])
 		digit_7seg_imgs.append(buf)
+
+	#cv2.imshow('aaa',dst)
+	#cv2.waitKey(1)
 
 	scr_7seg_raw = conv_deploy.get_pred_7seg(digit_7seg_imgs)
 	#print (scr_7seg_raw)
