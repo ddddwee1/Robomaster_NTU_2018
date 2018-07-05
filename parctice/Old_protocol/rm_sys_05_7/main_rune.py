@@ -75,7 +75,7 @@ while True:
 	if image is None:
 		break
 	try:
-		coord,scr_7seg_raw, handwritten_num, Flaming_digit = digit_detection.get_digits(image,bigbuff=False)
+		coord,scr_7seg_raw, handwritten_num, Flaming_digit = digit_detection.get_digits(image,bigbuff=True)
 		#print scr_7seg_raw, handwritten_num, Flaming_digit
 	except:
 		time.sleep(0.1)
@@ -166,9 +166,10 @@ while True:
 
 	if pitch_delta ==0 and yaw_delta ==0:
 		continue
-	pitch_bias = 700
+	pitch_bias = 730
+	yaw_bias = 0
 	v1 = t_pitch + pitch_delta *1.0 - pitch_bias
-	v2 = t_yaw + yaw_delta *1.7
+	v2 = t_yaw + yaw_delta *1.4 - yaw_bias
 
 	robot_prop.v1 = v1
 	robot_prop.v2 = v2

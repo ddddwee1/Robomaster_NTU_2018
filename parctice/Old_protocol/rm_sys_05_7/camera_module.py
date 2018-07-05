@@ -6,7 +6,7 @@ class camera_thread(threading.Thread):
 	def __init__(self):
 		self.cap = cv2.VideoCapture(0)
 		self.cap.set(14, 0.01)  #exposure
-		self.cap.set(10, 0.05) #brightness
+		self.cap.set(10, 0.1) #brightness
 		_,self.img = self.cap.read()
 		threading.Thread.__init__(self)
 

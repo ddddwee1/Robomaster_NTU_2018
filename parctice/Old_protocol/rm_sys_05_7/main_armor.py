@@ -7,6 +7,7 @@ from camera_module import camera_thread
 import cv2
 import sys, select, termios, tty
 import math
+import armour_plate_mod
 
 data_reader = data_retriver.data_reader_thread()
 data_reader.start()
@@ -66,15 +67,7 @@ while True:
 	t_yaw = robot_prop.t_yaw
 
 	pitch_delta,yaw_delta = util.get_delta(coord)
-#	if abs(pitch_delta) < 200:
-#		pitch_delta = 0
-#	else:
-#		print 'p_d', pitch_delta, coord
-#
-#	if abs(yaw_delta) < 200:
-#		yaw_delta = 0
-#	else:
-#		print 'y_d', yaw_delta,coord
+
 
 
 	if pitch_delta ==0 and yaw_delta ==0:
