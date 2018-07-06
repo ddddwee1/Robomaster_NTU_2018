@@ -42,6 +42,40 @@ def getKey():
 settings = termios.tcgetattr(sys.stdin)
 termios.tcsetattr(sys.stdin, termios.TCSADRAIN, settings)
 
+def manual_shoot(coord):
+	global counter_shoot
+	if len(coord) == 0 and counter_shoot >=10:
+		robot_prop.shoot = 0
+		counter_shoot = 0
+	else:
+		if key == 'q' :
+			print 'shoot button pressed'
+			robot_prop.shoot = 2
+			counter_shoot +=1
+
+		else: 
+			robot_prop.shoot = 0
+def timeout():
+	pause_shooting = True
+	
+
+def auto_shoot(pitch_delta,yaw_delta):
+	# TODO: implement auto shooting here
+	if is_shooting == False:
+		is_shooting = True
+
+	if pitch_delta < 200 and yaw_delta < 200:
+		robot.prop.shoot = 2
+	else:
+		robot.prop.shoot = 0
+	pass
+
+def draw_detection(img,coord):
+	for x,y,width,height in coord:
+		cv2.rectangle(img,(x-width//2,y-height//2),(x+width//2,y+height//2),(0,255,0),2)
+	cv2.imshow('img',img)
+	cv2.waitKey(1)
+
 def turret_no_detected():
 	img_1 = camera_thread_1.read()
 	img_2 = camera_thread_2.read()
@@ -68,60 +102,20 @@ while True:
 			robot_prop.v2 = 18000
 		continue
 
+	shooting_timer = Timer(SHOOTING_MAX_DURATION, shooting_timeout)
+	pause_timer = Timer(PAUSE_DURATION, shooting_timeout)
 	key = getKey()
-	t1 = time.time()
-	img_0 = camera_thread_0.read()
-	coord_0 = detection_mod.get_coord_from_detection(img_0)
+	img = camera_thread.read()
+	coord = detection_mod.get_coord_from_detection(img)
 
-	coord = coord_0
+	# change shoot function 
+	manual_shoot(coord)
+	# auto_shoot(coord)
 
-	#print img.shape
-
-	if len(coord) == 0:
-		robot_prop.shoot = 0
-		robot_prop.mode = 0
-		continue
-
-	if len(coord) == 0 and counter_shoot >=10:
-		robot_prop.shoot = 0
-		counter_shoot = 0
-		#print 'a' ,counter
-	else:
-		if key == 'q' :
-			print 'a'
-			robot_prop.shoot = 2
-			counter_shoot +=1
-			#print 'b' , counter
-
-		else: 
-			robot_prop.shoot = 0
-
-	for x,y,width,height in coord:
-		cv2.rectangle(img,(x-width//2,y-height//2),(x+width//2,y+height//2),(0,255,0),2)
-	cv2.imshow('img',img)
-	cv2.waitKey(1)
-	#print coord
-
-
+	# draw detection for debugging
 	t_pitch = robot_prop.t_pitch
 	t_yaw = robot_prop.t_yaw
-
 	pitch_delta,yaw_delta = util.get_delta(coord)
-#	if abs(pitch_delta) < 200:
-#		pitch_delta = 0
-#	else:
-#		print 'p_d', pitch_delta, coord
-#
-#	if abs(yaw_delta) < 200:
-#		yaw_delta = 0
-#	else:
-#		print 'y_d', yaw_delta,coord
-
-
-	if pitch_delta ==0 and yaw_delta ==0:
-		continue
-
-	height=util.get_height(coord)
 
 	if key == '2' :
 		pitch_bias-=5
@@ -135,24 +129,14 @@ while True:
 	if key == '4' :
 		yaw_bias+=5
 
-
-	print 'height' , height
-	print 'pitch bias', pitch_bias
-	print 'yaw bias', yaw_bias
-
 	v1 = t_pitch + pitch_delta *1.0 - pitch_bias
 	v2 = t_yaw + yaw_delta *1.0 - yaw_bias
 
-
 	if abs(v1) >= 2000:
-		v1 = 2000
+		v1 = 2000 * (v1/abs(v1))
 
 	if abs(v2) >= 6000:
-		v2 = 6000
+		v2 = 6000 * (v2/abs(v2))
 
 	robot_prop.v1 = v1
 	robot_prop.v2 = v2
-	t2=time.time()
-	t_e = t2-t1
-	#print t_e
-	#print t_pitch, t_yaw
