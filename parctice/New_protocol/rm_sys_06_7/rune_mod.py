@@ -22,21 +22,23 @@ num_9boxes_index = -1
 whether_shooted = False
 
 def run(camera_thread):
+
 	image = camera_thread.read()
 
 	if image is None:
-		break
+		return [-1]
 
 	if robot_prop.time_remain > 240:
 		bigbuff = False
 	else:
 		bigbuff = True
+
 	handwritten_coord, saved_numbers_9boxes , saved_7seg_raw , scr_7seg_index , num_9boxes_index, whether_shooted = rune_shooting_logic.rune_shooting(image,saved_numbers_9boxes , saved_7seg_raw , scr_7seg_index , num_9boxes_index, whether_shooted,bigbuff)
 
 	#print 'abc', handwritten_coord , saved_numbers_9boxes , saved_7seg_raw , scr_7seg_index , num_9boxes_index, whether_shooted
 
 	if len(handwritten_coord)==1:
-		continue
+		return [-1]
 
 	shoot_coord = handwritten_coord[num_9boxes_index]
 	x,y = shoot_coord 
@@ -46,7 +48,7 @@ def run(camera_thread):
 	pitch_delta,yaw_delta = util.get_delta_buf(x,y)
 
 	if pitch_delta ==0 and yaw_delta ==0:
-		continue
+		return [-1]
 
 	v1 = t_pitch + pitch_delta *1.0 - pitch_bias
 	v2 = t_yaw + yaw_delta *1.4 - yaw_bias

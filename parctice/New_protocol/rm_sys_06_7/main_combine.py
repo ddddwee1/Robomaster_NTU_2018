@@ -1,4 +1,3 @@
-import main_rune_v2
 import data_retriver
 import robot_prop 
 import time
@@ -6,6 +5,7 @@ import util
 import detection_mod
 from camera_module import camera_thread
 import armor_plate_mod
+import rune_mod
 
 data_reader = data_retriver.data_reader_thread()
 data_reader.start()
@@ -20,4 +20,4 @@ while True:
 	elif mode==0:
 		time.sleep(0.1)
 	else:
-		main_rune_v2.run(camera_thread)
+		error=rune_mod.run(camera_thread)

@@ -30,7 +30,7 @@ def get_digits(image,bigbuff=False):
 	#blur = cv2.GaussianBlur(gray,(3,3),0)
 	#blur = cv2.GaussianBlur(gray,(3,3),0)
 	blurred = cv2.bilateralFilter(gray, 3, 119, 109)
-	_,th3 = cv2.threshold(blurred,200,255,cv2.THRESH_BINARY +cv2.THRESH_OTSU)
+	_,th3 = cv2.threshold(blurred,200,255,cv2.THRESH_BINARY)# +cv2.THRESH_OTSU)
 	edged = cv2.Canny(th3, 200, 240)
 	
 	#cv2.imshow('',image)
