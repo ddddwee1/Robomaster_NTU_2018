@@ -20,11 +20,14 @@ def get_img_coord(img,c,b,multip):
 		y = int(b[i][j][1])+i*multip+multip//2
 		w = int(b[i][j][2])
 		h = int(b[i][j][3])
-		M = np.float32([[1,0,-(x-int(w*1.5)//2)],[0,1,-(y-int(h*1.5)//2)]])
-		cropped = cv2.warpAffine(img,M,(int(w*1.5),int(h*1.5)))
-		cropped = cv2.resize(cropped,(32,32))
-		# append [cropped_image,[x,y,w,h]] to result list
-		res.append([cropped,[x,y,w,h]])
+		try:
+			M = np.float32([[1,0,-(x-int(w*1.5)//2)],[0,1,-(y-int(h*1.5)//2)]])
+			cropped = cv2.warpAffine(img,M,(int(w*1.5),int(h*1.5)))
+			cropped = cv2.resize(cropped,(32,32))
+			# append [cropped_image,[x,y,w,h]] to result list
+			res.append([cropped,[x,y,w,h]])
+		except:
+			pass
 	return res 
 
 def crop(img,bs,cs):

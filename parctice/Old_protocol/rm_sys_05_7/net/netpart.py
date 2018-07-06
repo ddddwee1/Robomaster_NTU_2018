@@ -4,17 +4,17 @@ import tensorflow as tf
 import time 
 
 def build_model(inp_holder):
-	with tf.variable_scope('MSRPN_v2'):
+	with tf.variable_scope('MSRPN_v3'):
+		#inp_holder = tf.image.random_saturation(inp_holder,lower=0.5,upper=1.5)
+		#inp_holder = tf.image.random_contrast(inp_holder,lower=0.5,upper=2.)
 		# inp_holder = tf.image.random_saturation(inp_holder,lower=0.5,upper=1.5)
-		# inp_holder = tf.image.random_contrast(inp_holder,lower=0.5,upper=2.)
-		# inp_holder = tf.image.random_saturation(inp_holder,lower=0.5,upper=1.5)
-		inp_holder = tf.image.random_brightness(inp_holder,50)
+		#inp_holder = tf.image.random_brightness(inp_holder,50)
 		mod = M.Model(inp_holder)
 		mod.dwconvLayer(7,4,stride=2,activation=M.PARAM_LRELU)
-		mod.convLayer(3,16,activation=M.PARAM_LRELU) #480_ 2x2	
-		mod.convLayer(5,32,stride=2,activation=M.PARAM_LRELU) #240_ 4x4
-		c1 = mod.convLayer(5,32,stride=2,activation=M.PARAM_LRELU) #120_ 8x8
-		#mod.convLayer(3,64,activation=M.PARAM_LRELU)
+		mod.convLayer(5,16,stride=2,activation=M.PARAM_LRELU) #480_ 2x2	
+		# mod.convLayer(5,32,stride=2,activation=M.PARAM_LRELU) #240_ 4x4
+		c1 = mod.convLayer(3,32,stride=2,activation=M.PARAM_LRELU) #120_ 8x8
+		mod.convLayer(3,32,activation=M.PARAM_LRELU)
 		feat1 = mod.convLayer(3,64,activation=M.PARAM_LRELU)
 		bias1 = mod.convLayer(1,4)
 		mod.set_current(feat1)
@@ -35,6 +35,7 @@ def build_model(inp_holder):
 		mod.set_current(feat4)
 		conf4 = mod.convLayer(1,1)
 	return bias1,bias3,bias4,conf1,conf3,conf4
+
 
 inpholder = tf.placeholder(tf.float32,[None,None,None,3])
 
