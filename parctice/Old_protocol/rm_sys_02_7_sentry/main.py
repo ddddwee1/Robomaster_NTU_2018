@@ -11,8 +11,14 @@ import math
 data_reader = data_retriver.data_reader_thread()
 data_reader.start()
 
-camera_thread = camera_thread()
-camera_thread.start()
+camera_thread_0 = camera_thread_0()
+camera_thread_0.start()
+
+camera_thread_1 = camera_thread_1()
+camera_thread_1.start()
+
+camera_thread_2 = camera_thread_2()
+camera_thread_2.start()
 
 counter_detection = 0
 counter_shoot = 0
@@ -36,34 +42,45 @@ def getKey():
 settings = termios.tcgetattr(sys.stdin)
 termios.tcsetattr(sys.stdin, termios.TCSADRAIN, settings)
 
+def turret_no_detected():
+	img_1 = camera_thread_1.read()
+	img_2 = camera_thread_2.read()
+	coord_1 = detection_mod.get_coord_from_detection(img_1)
+	coord_2 = detection_mod.get_coord_from_detection(img_2)
+	if len(coord_1) == 0 and len(coord_2) == 0:
+		robot_prop.mode = 0
+		return 'none'
+	elif len(coord_1)!=0:
+		robot_prop.mode = 1
+		return 'front'
+	else:
+		robot_prop.mode = 1
+		return 'back'
+
 while True:
+	if robot_prop.mode == 0:
+		base_detect = turret_no_detected()
+		if base_detect == 'front':
+			robot_prop.v1 = 0
+			robot_prop.v2 = 0
+		elif base_detect == 'back':
+			robot_prop.v1 = 0
+			robot_prop.v2 = 18000
+		continue
+
 	key = getKey()
-	t1=time.time()
+	t1 = time.time()
 	img_0 = camera_thread_0.read()
 	coord_0 = detection_mod.get_coord_from_detection(img_0)
-	coord = coord_0
 
-	if len(coord_0) == 0:
-		turret_cam_detected = False
-		img_1 = camera_thread_1.read()
-		img_2 = camera_thread_2.read()
-		coord_1 = detection_mod.get_coord_from_detection(img_1)
-		coord_2 = detection_mod.get_coord_from_detection(img_2)
+	coord = coord_0
 
 	#print img.shape
 
-	if turret_cam_detected == False:
-		if len(coord_1) != 0 and len(coord_2) != 0:
-			robot_prop.v1 = #TODO
-			robot_prop.v2 = #TODO
-
-		if len(coord_1) != 0:
-			robot_prop.v1 = #TODO
-			robot_prop.v2 = #TODO
-
-		if len(coord_2) != 0:
-			robot_prop.v1 = #TODO
-			robot_prop.v2 = #TODO
+	if len(coord) == 0:
+		robot_prop.shoot = 0
+		robot_prop.mode = 0
+		continue
 
 	if len(coord) == 0 and counter_shoot >=10:
 		robot_prop.shoot = 0
