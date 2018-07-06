@@ -1,5 +1,5 @@
 import data_retriver
-import robot_prop 
+import robot_prop
 import time
 import util
 import detection_mod
@@ -53,7 +53,7 @@ while True:
 			counter_shoot +=1
 			#print 'b' , counter
 
-		else: 
+		else:
 			robot_prop.shoot = 0
 
 	for x,y,width,height in coord:
@@ -73,7 +73,7 @@ while True:
 	if pitch_delta ==0 and yaw_delta ==0:
 		continue
 
-	height=util.get_height(coord)
+	# height=util.get_height(coord)
 
 	if key == '2' :
 		pitch_bias-=5

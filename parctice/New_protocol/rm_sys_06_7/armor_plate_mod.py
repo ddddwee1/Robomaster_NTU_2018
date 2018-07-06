@@ -1,4 +1,4 @@
-import robot_prop 
+import robot_prop
 import time
 import util
 import detection_mod
@@ -6,20 +6,21 @@ import cv2
 import sys, select, termios, tty
 import math
 from turret_module import turret_thread
-from threading import Timer
+
 
 # comment manual adjusting after debugging
 
 settings = termios.tcgetattr(sys.stdin)
 termios.tcsetattr(sys.stdin, termios.TCSADRAIN, settings)
 
+#Parameters
 pitch_bias = 920
 yaw_bias = 0
-is_shooting = False
-SHOOTING_MAX_DURATION = 5 #Maximum duration the turret will be continuously shooting
-PAUSE_DURATION = 7 # Duration for the turret to cool down
 pause_shooting = False
 counter_shoot = 0
+TARGET_MIN_HEIGHT = 10 #Acceptable minimum height of the target before the turret shoots at it
+MIN_PITCH_DELTA = 200
+MIN_YAW_DELTA = 200
 
 def getKey():
 	tty.setraw(sys.stdin.fileno())
@@ -34,6 +35,7 @@ def getKey():
 
 def manual_shoot(coord):
 	global counter_shoot
+	global key
 	if len(coord) == 0 and counter_shoot >=10:
 		robot_prop.shoot = 0
 		counter_shoot = 0
@@ -43,22 +45,18 @@ def manual_shoot(coord):
 			robot_prop.shoot = 2
 			counter_shoot +=1
 
-		else: 
+		else:
 			robot_prop.shoot = 0
-def timeout():
-	pause_shooting = True
-	
 
-def auto_shoot(pitch_delta,yaw_delta):
-	# TODO: implement auto shooting here
-	if is_shooting == False:
-		is_shooting = True
 
-	if pitch_delta < 200 and yaw_delta < 200:
-		robot.prop.shoot = 2
-	else:
-		robot.prop.shoot = 0
-	pass
+def auto_shoot(pitch_delta,yaw_delta,coord):
+	if len(coord) > 0:
+		target_coord = util.get_nearest_target(coord)
+		height = target_coord[3]
+		if pitch_delta < MIN_PITCH_DELTA and yaw_delta < MIN_YAW_DELTA and height > TARGET_MIN_HEIGHT:
+			robot_prop.shoot = 2
+		else:
+			robot_prop.shoot = 0
 
 def draw_detection(img,coord):
 	for x,y,width,height in coord:
@@ -68,21 +66,21 @@ def draw_detection(img,coord):
 
 def run(camera_thread):
 	global pitch_bias,yaw_bias
-	shooting_timer = Timer(SHOOTING_MAX_DURATION, shooting_timeout)
-	pause_timer = Timer(PAUSE_DURATION, shooting_timeout)
 	key = getKey()
 	img = camera_thread.read()
+	cv2.imshow('img',img)
+	cv2.waitKey(1)
 	coord = detection_mod.get_coord_from_detection(img)
-
-	# change shoot function 
+	draw_detection(img, coord)
+	# change shoot function
 	manual_shoot(coord)
-	# auto_shoot(coord)
+
 
 	# draw detection for debugging
 	t_pitch = robot_prop.t_pitch
 	t_yaw = robot_prop.t_yaw
 	pitch_delta,yaw_delta = util.get_delta(coord)
-
+	# auto_shoot(pitch_delta,yaw_delta,coord)
 	if key == '2' :
 		pitch_bias-=5
 
