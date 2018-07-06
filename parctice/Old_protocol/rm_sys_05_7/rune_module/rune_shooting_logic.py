@@ -5,29 +5,6 @@ import numpy as np
 
 import time
 
-cap = cv2.VideoCapture(1)
-cap.set(cv2.CAP_PROP_FPS,10)
-fps = cap.get(cv2.CAP_PROP_FPS)
-#print 'fps',fps
-
-cap.set(14, 0.0)  #exposure
-cap.set(10, 0.02) #brightness
-
-image_width = 640
-image_height = 480
-
-cap.set(3, image_width);
-cap.set(4, image_height);
-
-scr_7seg_index = 0
-saved_7seg_raw = -1
-saved_numbers_9boxes = -1
-num_9boxes_index = -1
-
-counter_detection = 0
-counter_shoot = 0
-
-whether_shooted = False
 
 def get_handwritten_coord(coord):
 	x1 = (coord[2][0] + coord[2][2] + coord[3][0] +coord[3][2] - coord[0][0] - coord[1][0])//4 +  (coord[0][0] + coord[1][0]) //2
@@ -48,24 +25,22 @@ def draw_handwritten_digits(image,handwritten_coord,radius):
 	cv2.imshow('',image)
 	cv2.waitKey(1)
 
-while True:
-	new_7seg = False
-	_,image = cap.read()
+def rune_shooting(image,saved_numbers_9boxes , saved_7seg_raw , scr_7seg_index , num_9boxes_index, whether_shooted,bigbuff=False ):
 
-	if image is None:
-		break
+	new_7seg = False
+
 	try:
-		coord,scr_7seg_raw, handwritten_num, Flaming_digit = digit_detection.get_digits(image,bigbuff=False)
+		coord,scr_7seg_raw, handwritten_num, Flaming_digit = digit_detection.get_digits(image,bigbuff)
 		#print scr_7seg_raw, handwritten_num, Flaming_digit
 	except:
 		time.sleep(0.1)
-		continue
+		return [-1], saved_numbers_9boxes , saved_7seg_raw , scr_7seg_index , num_9boxes_index, whether_shooted 
 
 	if len(handwritten_num) == 1 and len(Flaming_digit) == 1 :
 		cv2.imshow('',image)
 		cv2.waitKey(1)
 		print ("Wrong number")
-		continue
+		return [-1], saved_numbers_9boxes , saved_7seg_raw , scr_7seg_index , num_9boxes_index, whether_shooted 
 
 	if len(handwritten_num) != 1 and len(Flaming_digit) == 1 :
 		num_9boxes = handwritten_num
@@ -87,11 +62,13 @@ while True:
 		else: 
 			checked_7seg_raw = True
 
-	numbers_7seg = scr_7seg_raw[0]*10**4+scr_7seg_raw[1]*10**3+scr_7seg_raw[2]*10*2+scr_7seg_raw[3]*10+scr_7seg_raw[4]
+	numbers_7seg = scr_7seg_raw[0]*10000 + scr_7seg_raw[1] * 1000+scr_7seg_raw[2] * 100 + scr_7seg_raw[3]*10+scr_7seg_raw[4]
 
 
 	if checked_7seg_raw == False:
-		continue
+		return [-1], saved_numbers_9boxes , saved_7seg_raw , scr_7seg_index , num_9boxes_index, whether_shooted 
+
+	print saved_7seg_raw
 
 	if saved_7seg_raw != numbers_7seg and checked_7seg_raw == True:
 		saved_7seg_raw = numbers_7seg 
@@ -129,9 +106,11 @@ while True:
 				break
 
 	else:
-		if num_9boxes_index != -1:
-			print ('Before',prev_num_7seg,num_9boxes_index,scr_7seg_index)
+		#if num_9boxes_index != -1:
+		print ('Before',prev_num_7seg,num_9boxes_index,scr_7seg_index)
 
 	if scr_7seg_index >=6:
 		scr_7seg_index = 0
 		saved_numbers_9boxes = -1
+
+	return handwritten_coord , saved_numbers_9boxes , saved_7seg_raw , scr_7seg_index , num_9boxes_index, whether_shooted 
