@@ -16,11 +16,11 @@ settings = termios.tcgetattr(sys.stdin)
 termios.tcsetattr(sys.stdin, termios.TCSADRAIN, settings)
 
 #Parameters
-pitch_bias = 920
+pitch_bias = 800
 yaw_bias = 0
-TARGET_MIN_HEIGHT = 10 #Acceptable minimum height of the target before the turret shoots at it
-MIN_PITCH_DELTA = 200
-MIN_YAW_DELTA = 200
+TARGET_MIN_HEIGHT = 0 #Acceptable minimum height of the target before the turret shoots at it
+MIN_PITCH_DELTA = 300
+MIN_YAW_DELTA = 500
 
 def getKey():
 	tty.setraw(sys.stdin.fileno())
@@ -33,23 +33,21 @@ def getKey():
 	termios.tcsetattr(sys.stdin, termios.TCSADRAIN, settings)
 	return key
 
-def manual_shoot(coord):
-
-	global key
+def manual_shoot(coord,key):
 
 	if key == 'q' :
 		print 'shoot button pressed'
 		turret_thread.shoot_armour()
 
 
-def auto_shoot(pitch_delta,yaw_delta,coord):
+def auto_shoot(pitch_delta,yaw_delta,coord,y_bias):
 	if len(coord) > 0:
-		target_coord = util.get_nearest_target(coord)
+		target_coord = util.get_nearest_target(coord,y_bias)
 		height = target_coord[3]
-		if pitch_delta < MIN_PITCH_DELTA and yaw_delta < MIN_YAW_DELTA and height > TARGET_MIN_HEIGHT:
-			robot_prop.shoot = 2
+		if pitch_delta < MIN_PITCH_DELTA+pitch_bias and yaw_delta < MIN_YAW_DELTA and height > TARGET_MIN_HEIGHT:
+			turret_thread.shoot_armour()
 		else:
-			robot_prop.shoot = 0
+			pass
 
 def draw_detection(img,coord):
 	for x,y,width,height in coord:
@@ -66,7 +64,7 @@ def run(camera_thread):
 	coord = detection_mod.get_coord_from_detection(img)
 	draw_detection(img, coord)
 	# change shoot function
-	manual_shoot(coord)
+	manual_shoot(coord,key)
 
 
 	# draw detection for debugging
@@ -75,7 +73,9 @@ def run(camera_thread):
 	y_bias = util.pitchbias_to_ypixel(pitch_bias)
 	pitch_delta,yaw_delta = util.get_delta(coord,y_bias)
 
-	# auto_shoot(pitch_delta,yaw_delta,coord)
+	if pitch_delta ==0 and yaw_delta ==0:
+		return
+	#auto_shoot(pitch_delta,yaw_delta,coord,y_bias)
 
 	if key == '2' :
 		pitch_bias-=5
@@ -97,6 +97,7 @@ def run(camera_thread):
 
 	if abs(v2) >= 6000:
 		v2 = 6000 * (v2/abs(v2))
-
+	print"pitch_delta = ",pitch_delta
+	print"yaw_delta = ",yaw_delta
 	robot_prop.v1 = v1
 	robot_prop.v2 = v2

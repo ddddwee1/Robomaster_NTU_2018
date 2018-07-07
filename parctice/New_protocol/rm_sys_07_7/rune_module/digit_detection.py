@@ -30,8 +30,8 @@ def get_digits(image,bigbuff=False):
 	#blur = cv2.GaussianBlur(gray,(3,3),0)
 	#blur = cv2.GaussianBlur(gray,(3,3),0)
 	blurred = cv2.bilateralFilter(gray, 3, 119, 109)
-	_,th3 = cv2.threshold(blurred,200,255,cv2.THRESH_BINARY)# +cv2.THRESH_OTSU)
-	edged = cv2.Canny(th3, 200, 240)
+	#_,th3 = cv2.threshold(blurred,200,255,cv2.THRESH_BINARY)# +cv2.THRESH_OTSU)
+	edged = cv2.Canny(blurred, 200, 240)
 	
 	#cv2.imshow('',image)
 
@@ -137,8 +137,8 @@ def get_digits(image,bigbuff=False):
 	M = cv2.getPerspectiveTransform(pts1,pts2)
 
 	dst = cv2.warpPerspective(image,M,(300,200))
-	#cv2.imshow('aaa',dst)
-	#cv2.waitKey(1)
+	cv2.imshow('aaa',dst)
+	cv2.waitKey(1)
 
 	""" 
 	7segment
@@ -259,7 +259,7 @@ def get_digits(image,bigbuff=False):
 		#cv2.waitKey(1)
 
 		scr_FD_raw = conv_deploy.get_pred_flaming(digit_imgs)
-		#print (scr_FD_raw)
+		#print ('fd',scr_FD_raw)
 
 		#filter flaming digit
 		num_FD_dict = {}

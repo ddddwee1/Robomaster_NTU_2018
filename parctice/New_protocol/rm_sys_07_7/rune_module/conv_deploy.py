@@ -62,9 +62,9 @@ img_holder,last_layer,last_layer_7seg,last_layer_FD = build_graph()
 config = tf.ConfigProto(allow_soft_placement = True)
 config.gpu_options.allow_growth = True
 sess = tf.Session(config=config)
-M.loadSess('./model_rune/model_mnist/',sess,var_list=M.get_all_vars('mnist'))
-M.loadSess('./model_rune/model_7seg/',sess,var_list=M.get_all_vars('7seg_detection'))
-M.loadSess('./model_rune/model_flaming/',sess,var_list=M.get_all_vars('FD_detection'))
+M.loadSess('./rune_module/model_rune/model_mnist/',sess,var_list=M.get_all_vars('mnist'))
+M.loadSess('./rune_module/model_rune/model_7seg/',sess,var_list=M.get_all_vars('7seg_detection'))
+M.loadSess('./rune_module/model_rune/model_flaming/',sess,var_list=M.get_all_vars('FD_detection'))
 
 def get_pred(imgs):
 	scr = sess.run(last_layer,feed_dict={img_holder:imgs})

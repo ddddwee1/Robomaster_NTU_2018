@@ -8,12 +8,12 @@ def pitchbias_to_ypixel(pitch_bias):
 
 def get_nearest_target(coord,y_bias):
 	#get nearest target to image center
-	distance = [(x-320)+(y-240+y_bias) for x,y,w,h in coord]
+	distance = [(x-320)*(y-240+y_bias) for x,y,w,h in coord]
 	min_index = np.argmax(-np.array(distance))
 	target_coord = coord[min_index]
 	return target_coord
 
-def get_delta(coord,y_bias):
+def get_delta(coord,y_bias = 0):
 	if len(coord) == 0:
 		return 0,0
 	target_coord = get_nearest_target(coord,y_bias)
