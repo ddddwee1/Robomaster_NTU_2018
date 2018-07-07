@@ -12,9 +12,10 @@ class turret_thread(threading.Thread):
 		time.sleep(0.2)
 		robot_prop.shoot = 0
 		#time.sleep(0.001)
-#	def shoot_armour(self):
-#		robot.prop.shoot = 2
-#	def stop_shooting(self):
-#		robot.prop.shoot = 0
-		
+
+	def shoot_armour(self):
+
+	 	robot_prop.shoot = 1
+		time.sleep(0.5)
+		robot_prop.shoot = 0
 

@@ -7,6 +7,8 @@ import sys, select, termios, tty
 import math
 from turret_module import turret_thread
 
+turret_thread = turret_thread()
+turret_thread.start()
 
 # comment manual adjusting after debugging
 
@@ -16,8 +18,6 @@ termios.tcsetattr(sys.stdin, termios.TCSADRAIN, settings)
 #Parameters
 pitch_bias = 920
 yaw_bias = 0
-pause_shooting = False
-counter_shoot = 0
 TARGET_MIN_HEIGHT = 10 #Acceptable minimum height of the target before the turret shoots at it
 MIN_PITCH_DELTA = 200
 MIN_YAW_DELTA = 200
@@ -34,19 +34,12 @@ def getKey():
 	return key
 
 def manual_shoot(coord):
-	global counter_shoot
-	global key
-	if len(coord) == 0 and counter_shoot >=10:
-		robot_prop.shoot = 0
-		counter_shoot = 0
-	else:
-		if key == 'q' :
-			print 'shoot button pressed'
-			robot_prop.shoot = 2
-			counter_shoot +=1
 
-		else:
-			robot_prop.shoot = 0
+	global key
+
+	if key == 'q' :
+		print 'shoot button pressed'
+		turret_thread.shoot_armour()
 
 
 def auto_shoot(pitch_delta,yaw_delta,coord):
@@ -79,8 +72,11 @@ def run(camera_thread):
 	# draw detection for debugging
 	t_pitch = robot_prop.t_pitch
 	t_yaw = robot_prop.t_yaw
-	pitch_delta,yaw_delta = util.get_delta(coord)
+	y_bias = util.pitchbias_to_ypixel(pitch_bias)
+	pitch_delta,yaw_delta = util.get_delta(coord,y_bias)
+
 	# auto_shoot(pitch_delta,yaw_delta,coord)
+
 	if key == '2' :
 		pitch_bias-=5
 
@@ -94,7 +90,7 @@ def run(camera_thread):
 		yaw_bias+=5
 
 	v1 = t_pitch + pitch_delta *1.0 - pitch_bias
-	v2 = t_yaw + yaw_delta *1.0 - yaw_bias
+	v2 = t_yaw + yaw_delta *1.4 - yaw_bias
 
 	if abs(v1) >= 2000:
 		v1 = 2000 * (v1/abs(v1))

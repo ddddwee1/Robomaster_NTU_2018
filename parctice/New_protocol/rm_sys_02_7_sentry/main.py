@@ -4,6 +4,7 @@ import time
 import util
 import detection_mod
 from camera_module import camera_thread_0, camera_thread_1, camera_thread_2
+from turret_module import turret_thread
 import cv2
 import sys, select, termios, tty
 import math
@@ -20,8 +21,8 @@ camera_thread_1.start()
 camera_thread_2 = camera_thread_2()
 camera_thread_2.start()
 
-counter_detection = 0
-counter_shoot = 0
+turret_thread = turret_thread()
+turret_thread.start()
 
 pitch_bias = 920
 yaw_bias = 0
@@ -43,32 +44,22 @@ settings = termios.tcgetattr(sys.stdin)
 termios.tcsetattr(sys.stdin, termios.TCSADRAIN, settings)
 
 def manual_shoot(coord):
-	global counter_shoot
-	if len(coord) == 0 and counter_shoot >=10:
-		robot_prop.shoot = 0
-		counter_shoot = 0
-	else:
-		if key == 'q' :
-			print 'shoot button pressed'
+
+	global key
+
+	if key == 'q' :
+		print 'shoot button pressed'
+		turret_thread.shoot_armour()
+
+
+def auto_shoot(pitch_delta,yaw_delta,coord):
+	if len(coord) > 0:
+		target_coord = util.get_nearest_target(coord)
+		height = target_coord[3]
+		if pitch_delta < MIN_PITCH_DELTA and yaw_delta < MIN_YAW_DELTA and height > TARGET_MIN_HEIGHT:
 			robot_prop.shoot = 2
-			counter_shoot +=1
-
-		else: 
+		else:
 			robot_prop.shoot = 0
-def timeout():
-	pause_shooting = True
-	
-
-def auto_shoot(pitch_delta,yaw_delta):
-	# TODO: implement auto shooting here
-	if is_shooting == False:
-		is_shooting = True
-
-	if pitch_delta < 200 and yaw_delta < 200:
-		robot.prop.shoot = 2
-	else:
-		robot.prop.shoot = 0
-	pass
 
 def draw_detection(img,coord):
 	for x,y,width,height in coord:
@@ -102,8 +93,6 @@ while True:
 			robot_prop.v2 = 18000
 		continue
 
-	shooting_timer = Timer(SHOOTING_MAX_DURATION, shooting_timeout)
-	pause_timer = Timer(PAUSE_DURATION, shooting_timeout)
 	key = getKey()
 	img = camera_thread.read()
 	coord = detection_mod.get_coord_from_detection(img)
@@ -115,7 +104,8 @@ while True:
 	# draw detection for debugging
 	t_pitch = robot_prop.t_pitch
 	t_yaw = robot_prop.t_yaw
-	pitch_delta,yaw_delta = util.get_delta(coord)
+	y_bias = util.pitchbias_to_ypixel(pitch_bias)
+	pitch_delta,yaw_delta = util.get_delta(coord,y_bias)
 
 	if key == '2' :
 		pitch_bias-=5
