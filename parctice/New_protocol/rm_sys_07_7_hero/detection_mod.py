@@ -9,7 +9,11 @@ def pre_process(img):
 
 	hsv = cv2.cvtColor(img2,cv2.COLOR_BGR2HSV)
 
-	h1,h2,s1,s2,v1,v2 = 0,255,0,255,205,255
+	# for red
+	h1,h2,s1,s2,v1,v2 = 0,55,0,255,245,255
+
+	# for blue
+	# h1,h2,s1,s2,v1,v2 = 100,150,0,255,245,255
 
 	# print(h1,h2)
 	lower = np.array([h1,s1,v1])
