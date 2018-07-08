@@ -14,25 +14,37 @@ This is a plan for 07/07 - 12/07
 
 - [x] Modify the rune detection (stabiliy test and speed test)
 
-- [ ] Take new video
+- [x] Take new video
 
 ### 08/07:
 
-- [ ] Label the new video (with both big plate and small plate)
+- [x] Label the new video (with both big plate and small plate)
+
+- [x] Finish code for hero
 
 - [ ] Train the new video
 
 - [ ] Tune bias parameters for each robot
 
-- [ ] Finish code for hero
-
-### 09/08:
+### 09/07:
 
 - [ ] Finish training on both colors
 
-- [ ] Test the infantry to cooperate with pilot
+- [ ] Test the armour plate detection on infantry 'A' (gw)
 
-- [ ] Test the performance on hero
+- [ ] Test infantry cooperation with pilot on infantry 'A'. Need to take video (gw)
+
+- [ ] Set up and test the whole system for infantry 'B' (hansel)
+
+- [ ] Test the NUC performance on hero (cy)
+
+- [ ] Test sentry (cy & gw)
+
+### 10/07
+
+- [ ] Test the whole system infantry 'C'
+
+- [ ] Setup autostart for all robots (my)
 
 ### To-be-done in Shenzhen
 
