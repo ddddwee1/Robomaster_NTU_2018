@@ -22,29 +22,34 @@ This is a plan for 07/07 - 12/07
 
 - [x] Finish code for hero
 
-- [ ] Train the new video
+- [x] Train the new video
 
 ### 09/07:
 
-- [ ] Finish training on both colors
+- [x] Finish training on both colors
 
-- [ ] Tune bias parameters for each robot
-
-- [ ] Test the armour plate detection on infantry 'A' (gw)
-
-- [ ] Test infantry cooperation with pilot on infantry 'A'. Need to take video (gw)
+- [x] Test the armour plate detection on infantry 'A' (gw)
 
 - [ ] Set up and test the whole system for infantry 'B' (hansel)
 
-- [ ] Test the NUC performance on hero (cy)
-
-- [ ] Test sentry (cy & gw)
-
 ### 10/07
+
+- [ ] Setup TK1
+
+- [ ] Test the NUC performance on hero (depends on electrical team)
+
+- [ ] Test sentry (depends on sid bearing 3D printing)
+
+- [ ] Setup autostart for all robots
+
+### 11/07
+
+- [ ] Test the NUC performance on hero
 
 - [ ] Test the whole system infantry 'C'
 
-- [ ] Setup autostart for all robots (my)
+### 12/07
+
 
 ### To-be-done in Shenzhen
 
