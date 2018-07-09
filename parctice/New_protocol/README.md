@@ -24,11 +24,11 @@ This is a plan for 07/07 - 12/07
 
 - [ ] Train the new video
 
-- [ ] Tune bias parameters for each robot
-
 ### 09/07:
 
 - [ ] Finish training on both colors
+
+- [ ] Tune bias parameters for each robot
 
 - [ ] Test the armour plate detection on infantry 'A' (gw)
 
