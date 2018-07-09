@@ -36,9 +36,9 @@ This is a plan for 07/07 - 12/07
 
 - [ ] Setup TK1
 
-- [ ] Test the NUC performance on hero (depends on electrical team)
+- [ ] Test the NUC performance on **infantry**
 
-- [ ] Test sentry (depends on sid bearing 3D printing)
+- [ ] Test sentry (Sentry is now passed to e-team, should be ready for testing by tomorrow)
 
 - [ ] Setup autostart for all robots
 
