@@ -12,6 +12,7 @@ class camera_thread(threading.Thread):
 	def __init__(self):
 		self.camera_num = 0
 		self.cap = cv2.VideoCapture(self.camera_num)
+		self.camera_num += 1
 		#self.cap.set(14, 0.01)  #exposure
 		self.cap.set(cv2.CAP_PROP_EXPOSURE,-6.)
 		self.cap.set(10, 0.01) #brightness
@@ -26,24 +27,15 @@ class camera_thread(threading.Thread):
 				_,self.img = self.cap.read()
 				self.img = hist_equal(self.img)
 			except:
-
-				print('camera_down, trying to read camera: ', self.camera_num)
-				self.camera_num = 1
-				self.cap = cv2.VideoCapture(self.camera_num)
-				self.cap.set(cv2.CAP_PROP_EXPOSURE,-6.)
-				self.cap.set(10, 0.01) #brightness
-				_,self.img = self.cap.read()
-				self.img = hist_equal(self.img)
-
-#				if self.camera_num < 10:
-#					print('camera_down, trying to read camera: ', self.camera_num)
-#					self.cap = cv2.VideoCapture(self.camera_num)
-#					self.camera_num += 1
-#					self.cap.set(14, 0.01)  #exposure
-#					self.cap.set(10, 0.01) #brightness
-#					_,self.img = self.cap.read()
-#				else:
-#					break
+				if self.camera_num < 10:
+					print('camera_down, trying to read camera: ', self.camera_num)
+					self.cap = cv2.VideoCapture(self.camera_num)
+					self.camera_num += 1
+					self.cap.set(14, 0.01)  #exposure
+					self.cap.set(10, 0.01) #brightness
+					_,self.img = self.cap.read()
+				else:
+					break
 
 	def read(self):
 		return self.img 

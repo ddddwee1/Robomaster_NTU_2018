@@ -11,6 +11,14 @@ def build_model(inp):
 		mod.fcLayer(2)
 	return mod.get_current_layer()
 
+def build_loss(layer,lb):
+	loss = tf.reduce_mean(tf.nn.sparse_softmax_cross_entropy_with_logits(logits=layer,labels=lb))
+	ts = tf.train.AdamOptimizer(0.0001).minimize(loss)
+	return loss,ts
+
 inputholder = tf.placeholder(tf.float32,[None,32,32,3])
+labelholder = tf.placeholder(tf.int32,[None])
 
 output = build_model(inputholder)
+accuracy = M.accuracy(output,labelholder)
+loss,ts = build_loss(output,labelholder)
