@@ -53,7 +53,7 @@ def pre_process(img):
 					areas.append([top_left,btm_right])
 	return areas
 
-def crop(areas):
+def crop(areas,img):
 	img_coord = []
 	for top_left,btm_right in areas:
 		w = btm_right[0] - top_left[0]
@@ -148,7 +148,7 @@ import time
 
 def get_coord_from_detection(img):
 	areas = pre_process(img)
-	res = crop(areas)
+	res = crop(areas,img)
 	if len(res)==0:
 		return []
 	cropped_imgs = [k[0] for k in res]
