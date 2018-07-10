@@ -19,8 +19,8 @@ termios.tcsetattr(sys.stdin, termios.TCSADRAIN, settings)
 pitch_bias = 450
 yaw_bias = 200
 TARGET_MIN_HEIGHT = 10 #Acceptable minimum height of the target before the turret shoots at it
-MIN_PITCH_DELTA = 250
-MIN_YAW_DELTA = 250
+MIN_PITCH_DELTA = 300
+MIN_YAW_DELTA = 300
 pitch_weight = 1.0
 yaw_weight = 1.4
 
