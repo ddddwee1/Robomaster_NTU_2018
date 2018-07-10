@@ -59,13 +59,25 @@ def draw_detection(img,coord):
 	cv2.imshow('img',img)
 	cv2.waitKey(1)
 
-def run(camera_thread):
+def run(camera_thread,counter_coord):
 	global pitch_bias,yaw_bias
 	key = getKey()
 	img = camera_thread.read()
 	cv2.imshow('img',img)
 	cv2.waitKey(1)
 	coord = detection_mod.get_coord_from_detection(img)
+	if coord ==[]:
+		counter_coord +=1
+		#print counter_coord
+
+	if coord ==[] and counter_coord > 5:
+		counter_coord +=1
+		robot_prop.v1 = 0
+		robot_prop.v2 = 0
+		#print counter_coord
+		return counter_coord
+	if coord !=[]:
+		counter_coord = 0
 	draw_detection(img, coord)
 	# change shoot function
 	#manual_shoot(coord,key)
@@ -78,7 +90,7 @@ def run(camera_thread):
 	pitch_delta,yaw_delta = util.get_delta(coord,y_bias,x_bias)
 
 	if pitch_delta ==0 and yaw_delta ==0:
-		return
+		return counter_coord
 	auto_shoot(pitch_delta,yaw_delta,coord,y_bias,x_bias)
 
 	if key == '2' :
@@ -105,3 +117,4 @@ def run(camera_thread):
 	print"yaw_delta = ",yaw_delta
 	robot_prop.v1 = v1
 	robot_prop.v2 = v2
+	return counter_coord
