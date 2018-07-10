@@ -28,7 +28,7 @@ class camera_thread(threading.Thread):
 			except:
 
 				print('camera_down, trying to read camera: ', self.camera_num)
-				self.camera_num = 1
+				self.camera_num += 1
 				self.cap = cv2.VideoCapture(self.camera_num)
 				self.cap.set(cv2.CAP_PROP_EXPOSURE,-6.)
 				self.cap.set(10, 0.01) #brightness

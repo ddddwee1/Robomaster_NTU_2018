@@ -10,6 +10,8 @@ def check_socket():
 		for i in range(10):
 			try:
 				ser = serial.Serial('/dev/ttyACM%d'%i,115200)
+				if not ser is None:
+					return True
 			except:
 				continue
 		if ser is None:
