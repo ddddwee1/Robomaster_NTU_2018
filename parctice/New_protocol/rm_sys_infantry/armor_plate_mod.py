@@ -19,10 +19,10 @@ termios.tcsetattr(sys.stdin, termios.TCSADRAIN, settings)
 pitch_bias = 450
 yaw_bias = 200
 TARGET_MIN_HEIGHT = 10 #Acceptable minimum height of the target before the turret shoots at it
-MIN_PITCH_DELTA = 300
-MIN_YAW_DELTA = 300
-pitch_weight = 1.0
-yaw_weight = 1.4
+MIN_PITCH_DELTA = 350
+MIN_YAW_DELTA = 350
+pitch_weight = 1.2
+yaw_weight = 1.8
 
 def getKey():
 	tty.setraw(sys.stdin.fileno())
@@ -47,7 +47,7 @@ def auto_shoot(pitch_delta,yaw_delta,coord,y_bias,x_bias):
 		target_coord = util.get_nearest_target(coord,y_bias,x_bias)
 		height = target_coord[3]
 		print pitch_delta,yaw_delta,height
-		if MIN_PITCH_DELTA > abs(pitch_delta-pitch_bias) and MIN_YAW_DELTA > abs(yaw_delta) and height > TARGET_MIN_HEIGHT:
+		if MIN_PITCH_DELTA > abs(pitch_delta-pitch_bias) and MIN_YAW_DELTA > abs(yaw_delta-yaw_bias) and height > TARGET_MIN_HEIGHT:
 			turret_thread.shoot_armour()
 		else:
 			robot_prop.shoot = 0
@@ -70,8 +70,7 @@ def run(camera_thread,counter_coord):
 		counter_coord +=1
 		#print counter_coord
 
-	if coord ==[] and counter_coord > 5:
-		counter_coord +=1
+	if coord ==[] and counter_coord > 10:
 		robot_prop.v1 = 0
 		robot_prop.v2 = 0
 		#print counter_coord
@@ -79,18 +78,18 @@ def run(camera_thread,counter_coord):
 	if coord !=[]:
 		counter_coord = 0
 	draw_detection(img, coord)
-	# change shoot function
-	#manual_shoot(coord,key)
-
 
 	# draw detection for debugging
 	t_pitch = robot_prop.t_pitch
 	t_yaw = robot_prop.t_yaw
-	y_bias,x_bias = util.pitchbias_to_ypixel(pitch_bias,yaw_bias,pitch_weight,yaw_weight)
+	y_bias,x_bias = util.bias_to_pixel(pitch_bias,yaw_bias)
 	pitch_delta,yaw_delta = util.get_delta(coord,y_bias,x_bias)
 
 	if pitch_delta ==0 and yaw_delta ==0:
 		return counter_coord
+
+	# change shoot function
+	#manual_shoot(coord,key)
 	auto_shoot(pitch_delta,yaw_delta,coord,y_bias,x_bias)
 
 	if key == '2' :

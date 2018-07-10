@@ -2,9 +2,9 @@ import numpy as np
 from math import sqrt
 import cv2 
 
-def pitchbias_to_ypixel(pitch_bias,yaw_bias,pitch_weight,yaw_weight):
+def bias_to_pixel(pitch_bias,yaw_bias):
 
-	return int(float(pitch_bias*240/2800)),int(float(yaw_bias*320/2800)*yaw_weight)
+	return int(float(pitch_bias*240/2800)),int(float(yaw_bias*320/2800))
 
 def get_nearest_target(coord,y_bias,x_bias):
 	#get nearest target to image center
