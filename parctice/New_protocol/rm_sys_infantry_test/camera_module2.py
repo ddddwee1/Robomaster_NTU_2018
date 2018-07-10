@@ -26,7 +26,6 @@ class camera_thread(threading.Thread):
 				_,self.img = self.cap.read()
 				self.img = hist_equal(self.img)
 			except:
-				os.system('reboot')
 				for camera_num in range(10):
 					try:
 						print('camera_down, trying to read camera: ', camera_num)
