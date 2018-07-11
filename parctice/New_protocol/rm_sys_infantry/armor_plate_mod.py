@@ -17,10 +17,10 @@ termios.tcsetattr(sys.stdin, termios.TCSADRAIN, settings)
 
 #Parameters
 pitch_bias = 600
-yaw_bias = 250
+yaw_bias = 220
 TARGET_MIN_HEIGHT = 15 #Acceptable minimum height of the target before the turret shoots at it
 MIN_PITCH_DELTA = 130
-MIN_YAW_DELTA = 180
+MIN_YAW_DELTA = 150
 pitch_weight = 1.15
 yaw_weight = 1.8
 
@@ -42,16 +42,24 @@ def manual_shoot(key):
 		turret_thread.shoot_armour()
 
 
-def auto_shoot(pitch_delta,yaw_delta,coord,y_bias,x_bias):
+def auto_shoot(pitch_delta,yaw_delta,coord,y_bias,x_bias,Target_lock):
 	if len(coord) > 0:
 		target_coord = util.get_nearest_target(coord,y_bias,x_bias)
 		height = target_coord[3]
 		print pitch_delta,yaw_delta,height
 		if MIN_PITCH_DELTA > abs(pitch_delta-pitch_bias) and MIN_YAW_DELTA > abs(yaw_delta-yaw_bias) and height > TARGET_MIN_HEIGHT:
+			Target_lock +=1
+		else:
+			Target_lock = 0
+
+		if Target_lock >= 2:
+
 			turret_thread.shoot_armour()
 		else:
 			robot_prop.shoot = 0
-			pass
+
+		return Target_lock
+
 
 def draw_detection(img,coord):
 	for x,y,width,height in coord:
@@ -59,7 +67,7 @@ def draw_detection(img,coord):
 	cv2.imshow('img',img)
 	cv2.waitKey(1)
 
-def run(camera_thread,counter_coord):
+def run(camera_thread,counter_coord,Target_lock):
 	global pitch_bias,yaw_bias
 	key = getKey()
 	img = camera_thread.read()
@@ -74,7 +82,7 @@ def run(camera_thread,counter_coord):
 		robot_prop.v1 = 0
 		robot_prop.v2 = 0
 		#print counter_coord
-		return counter_coord
+		return counter_coord , 0
 	if coord !=[]:
 		counter_coord = 0
 	draw_detection(img, coord)
@@ -89,11 +97,11 @@ def run(camera_thread,counter_coord):
 		robot_prop.v1 = t_pitch
 		robot_prop.v2 = t_yaw
 		#print t_pitch,t_yaw
-		return counter_coord
+		return counter_coord, Target_lock
 
 	# change shoot function
 	#manual_shoot(key)
-	auto_shoot(pitch_delta,yaw_delta,coord,y_bias,x_bias)
+	Target_lock = auto_shoot(pitch_delta,yaw_delta,coord,y_bias,x_bias,Target_lock)
 
 	if key == '2' :
 		pitch_bias-=5
@@ -113,10 +121,10 @@ def run(camera_thread,counter_coord):
 	if abs(v1) >= 2000:
 		v1 = 2000 * (v1/abs(v1))
 
-	if abs(v2) >= 6000:
+	if abs(v2) >= 6000:	
 		v2 = 6000 * (v2/abs(v2))
-	print"pitch_delta = ",pitch_delta
-	print"yaw_delta = ",yaw_delta
+	#print"pitch_delta = ",pitch_delta
+	#print"yaw_delta = ",yaw_delta
 	robot_prop.v1 = v1
 	robot_prop.v2 = v2
-	return counter_coord
+	return counter_coord,Target_lock
