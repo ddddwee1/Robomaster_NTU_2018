@@ -18,15 +18,15 @@ class camera_thread(threading.Thread):
 		self.cap.set(cv2.CAP_PROP_EXPOSURE,-6.)
 		self.cap.set(10, 0.01) #brightness
 		_,self.img = self.cap.read()
-		self.img = hist_equal(self.img)
+		#self.img = hist_equal(self.img)
 		threading.Thread.__init__(self)
 
 	def run(self):
 		while True:
-			time.sleep(0.02)
+			time.sleep(0.03)
 			try:
 				_,self.img = self.cap.read()
-				self.img = hist_equal(self.img)
+				#self.img = hist_equal(self.img)
 			except:
 				os.system('reboot')
 #				print('camera_down, trying to read camera: ', self.camera_num)

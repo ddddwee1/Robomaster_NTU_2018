@@ -37,7 +37,7 @@ def run(camera_thread):
 
 	if image is None:
 		return
-
+	print ('robot_prop.time_remain: ' , robot_prop.time_remain)
 #	if robot_prop.time_remain > 240:
 #		bigbuff = False
 #	else:

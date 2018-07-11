@@ -7,11 +7,17 @@ ser = None
 def check_socket():
 	global ser
 	if ser is None:
-		try:
-			ser = serial.Serial('/dev/ttyACM0',115200)
-			return True
-		except:
-			ser = None
+		for i in range(10):
+			try:
+				print('Trying to read ttyACM%d'%i)
+				ser = serial.Serial('/dev/ttyACM%d'%i,115200)
+				if not ser is None:
+					print('Connected: ttyACM%d'%i)
+					return True
+			except:
+				continue
+		if ser is None:
+			print('----- CANNOT FIND SERIAL PORT -----')
 			return False
 	return True
 
@@ -40,22 +46,34 @@ def send_order(pitch,yaw,mode,trigger):#changes made on 5.14print
 	send_msg(data)
 
 def read_data(pitch,yaw,mode,trigger):
+	global ser
 	is_socket = check_socket()
 	if not is_socket:
+		time.sleep(0.1)
 		return 0,0,0,0
 
-	request_data = send_turret(pitch,yaw,mode,trigger,True) #request the info
-	send_msg(request_data)
-	while True:
-		data = ser.read()
-		if data==b'\xab':
+	try:
+		request_data = send_turret(pitch,yaw,mode,trigger,True) #request the info
+		send_msg(request_data)
+		while True:
 			data = ser.read()
-			if data==b'\x55':
-				data = ser.read(7)
-				break
+			if data==b'\xab':
+				data = ser.read()
+				if data==b'\x55':
+					data = ser.read(7)
+					break
 
-	t_pitch = np.frombuffer(data[0:2],dtype=np.int16)[0]
-	t_yaw = np.frombuffer(data[2:4],dtype=np.int16)[0]
-	mode = np.frombuffer(data[4],dtype=np.uint8)[0]
-	time_remain = np.frombuffer(data[5:7],dtype=np.uint16)[0]
+		t_pitch = np.frombuffer(data[0:2],dtype=np.int16)[0]
+		t_yaw = np.frombuffer(data[2:4],dtype=np.int16)[0]
+		mode = np.frombuffer(data[4],dtype=np.uint8)[0]
+		time_remain = np.frombuffer(data[5:7],dtype=np.uint16)[0]
+	except:
+		print('Error occured in serial port communication. Will start re-establish coonection.')
+		ser = None
+		time.sleep(0.1)
+		return 0,0,0,0
 	return t_pitch,t_yaw,mode,time_remain
+
+if __name__=='__main__':
+	while 1:
+		read_data(0,0,0,0)

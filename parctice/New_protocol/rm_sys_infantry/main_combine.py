@@ -14,6 +14,7 @@ camera_thread = camera_thread()
 camera_thread.start()
 counter_coord = 0
 while True:
+	#t1 = time.time()
 	mode = robot_prop.mode
 	if mode==1:
 		counter_coord=armor_plate_mod.run(camera_thread,counter_coord)
@@ -21,3 +22,5 @@ while True:
 		time.sleep(0.1)
 	else:
 		rune_mod.run(camera_thread)
+	#t2 = time.time()
+	#print (t2-t1)
