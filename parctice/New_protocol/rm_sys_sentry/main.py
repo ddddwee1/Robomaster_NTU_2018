@@ -105,6 +105,8 @@ while True:
 		#print counter_coord
 
 	if coord ==[] and counter_coord > 3:
+		robot_prop.v1 = 0
+		robot_prop.v2 = 0
 		robot_prop.mode = 0
 
 	if coord !=[]:
@@ -119,7 +121,7 @@ while True:
 			robot_prop.v2 = 9000
 		elif base_detect == 'back':
 			robot_prop.v1 = 0
-			robot_prop.v2 = 27000
+			robot_prop.v2 = -9000
 		continue
 
 	draw_detection(img, coord)
@@ -155,11 +157,6 @@ while True:
 	v1 = t_pitch + pitch_delta *pitch_weight - pitch_bias
 	v2 = t_yaw + yaw_delta *yaw_weight - yaw_bias
 
-	if abs(v1) >= 2000:
-		v1 = 2000 * (v1/abs(v1))
-
-	if abs(v2) >= 6000:	
-		v2 = 6000 * (v2/abs(v2))
 	#print"pitch_delta = ",pitch_delta
 	#print"yaw_delta = ",yaw_delta
 	robot_prop.v1 = v1
