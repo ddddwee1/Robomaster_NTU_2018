@@ -74,6 +74,3 @@ def read_data(pitch,yaw,mode,trigger):
 		return 0,0,0,0
 	return t_pitch,t_yaw,mode,time_remain
 
-#if __name__=='__main__':
-#	while 1:
-#		read_data(0,0,0,0)

@@ -25,13 +25,14 @@ turret_thread = turret_thread()
 turret_thread.start()
 
 #Parameters
-pitch_bias = 600
-yaw_bias = 220
-TARGET_MIN_HEIGHT = 15 #Acceptable minimum height of the target before the turret shoots at it
-MIN_PITCH_DELTA = 130
-MIN_YAW_DELTA = 150
-pitch_weight = 1.15
-yaw_weight = 1.8
+pitch_bias = 250
+yaw_bias = 80
+TARGET_MIN_HEIGHT = 12 #Acceptable minimum height of the target before the turret shoots at it
+MIN_PITCH_DELTA = 200
+MIN_YAW_DELTA = 100
+MIN_CONSECUTIVE_TARGET_LOCKS = 2
+pitch_weight = 1.3
+yaw_weight = 2.0
 
 turret_cam_detected = False
 
@@ -63,11 +64,15 @@ def auto_shoot(pitch_delta,yaw_delta,coord,y_bias,x_bias,Target_lock):
 		print pitch_delta,yaw_delta,height
 		if MIN_PITCH_DELTA > abs(pitch_delta-pitch_bias) and MIN_YAW_DELTA > abs(yaw_delta-yaw_bias) and height > TARGET_MIN_HEIGHT:
 			Target_lock +=1
+			#print"[!!!]Target within range, count = ",Target_lock
 		else:
+			#print"Target not within range"
+			#print"pitch delta = ",abs(pitch_delta-pitch_bias)
+			#print"yaw delta = ",abs(yaw_delta-yaw_bias)
 			Target_lock = 0
 
-		if Target_lock >= 2:
-
+		if Target_lock >= MIN_CONSECUTIVE_TARGET_LOCKS:
+			#print"Target within range for more than x frames -> [SHOOT]"
 			turret_thread.shoot_armour()
 		else:
 			robot_prop.shoot = 0
@@ -100,18 +105,19 @@ while True:
 	key = getKey()
 	img = camera_thread.read()
 	coord = detection_mod.get_coord_from_detection(img)
-	if coord ==[]:
+	if len(coord) == 0 :
 		counter_coord +=1
+		#print "No detection"
 		#print counter_coord
+		if counter_coord > 5:
+			#print "More than 5 frames without detection, No detection count :",counter_coord
+			robot_prop.v1 = 0
+			robot_prop.v2 = 0
+			robot_prop.mode = 0
 
-	if coord ==[] and counter_coord > 3:
-		robot_prop.v1 = 0
-		robot_prop.v2 = 0
-		robot_prop.mode = 0
-
-	if coord !=[]:
+	else:
+		#print "TARGET DETECTED"
 		counter_coord = 0
-		robot_prop.mode = 1
 
 
 	if robot_prop.mode == 0:
@@ -139,8 +145,8 @@ while True:
 		continue
 
 	# change shoot function
-	#manual_shoot(key)
-	Target_lock = auto_shoot(pitch_delta,yaw_delta,coord,y_bias,x_bias,Target_lock)
+	manual_shoot(key)
+	#Target_lock = auto_shoot(pitch_delta,yaw_delta,coord,y_bias,x_bias,Target_lock)
 
 	if key == '2' :
 		pitch_bias-=5
@@ -157,8 +163,14 @@ while True:
 	v1 = t_pitch + pitch_delta *pitch_weight - pitch_bias
 	v2 = t_yaw + yaw_delta *yaw_weight - yaw_bias
 
-	#print"pitch_delta = ",pitch_delta
-	#print"yaw_delta = ",yaw_delta
+	if abs(v1) >= 2000:
+		v1 = 2000 * (v1/abs(v1))
+
+	if abs(v2) >= 6000:
+		v2 = 6000 * (v2/abs(v2))
+
+	print"pitch_delta = ",pitch_delta
+	print"yaw_delta = ",yaw_delta
 	robot_prop.v1 = v1
 	robot_prop.v2 = v2
 

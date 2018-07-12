@@ -29,31 +29,6 @@ class camera_thread(threading.Thread):
 				#self.img = hist_equal(self.img)
 			except:
 				os.system('reboot')
-#				print('camera_down, trying to read camera: ', self.camera_num)
-#				self.camera_num = 0
-#				try:
-#					self.camera_num = 0
-#					print('camera_down, trying to read camera: ', self.camera_num)
-#					self.cap = cv2.VideoCapture(self.camera_num)
-#					self.cap.set(cv2.CAP_PROP_EXPOSURE,-6.)
-#					self.cap.set(10, 0.01) #brightness
-#					_,self.img = self.cap.read()
-#					self.img = hist_equal(self.img)
-#				except:
-#					print('Trying to initialise camera: ', self.camera_num)
-#					pass
-#				try:
-#					if self.camera_num < 10:
-#						print('camera_down, trying to read camera: ', self.camera_num)
-#						self.cap = cv2.VideoCapture(self.camera_num)
-#						self.camera_num += 1
-#						self.cap.set(14, 0.01)  #exposure
-#						self.cap.set(10, 0.01) #brightness
-#						_,self.img = self.cap.read()
-#					else:
-#						break
-#				except:
-#					pass
 
 	def read(self):
 		return self.img 

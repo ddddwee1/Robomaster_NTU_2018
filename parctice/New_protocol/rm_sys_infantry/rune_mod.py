@@ -45,7 +45,7 @@ def run(camera_thread):
 
 	handwritten_coord, saved_numbers_9boxes , saved_7seg_raw , scr_7seg_index , num_9boxes_index, whether_shooted = rune_shooting_logic.rune_shooting(image,saved_numbers_9boxes , saved_7seg_raw , scr_7seg_index , num_9boxes_index, whether_shooted,bigbuff)
 
-	#print 'abc', handwritten_coord , saved_numbers_9boxes , saved_7seg_raw , scr_7seg_index , num_9boxes_index, whether_shooted
+
 
 	if len(handwritten_coord)==1:
 		return
@@ -65,8 +65,8 @@ def run(camera_thread):
 
 	robot_prop.v1 = v1
 	robot_prop.v2 = v2
-	#time.sleep(0.1)
+
 	if whether_shooted == False:
 		turret_thread.shoot()
 		whether_shooted = True
-	#print scr_7seg_raw, handwritten_num, Flaming_digit
+
