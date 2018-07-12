@@ -1,0 +1,10 @@
+#Parameters
+pitch_bias = 250
+yaw_bias = 80
+TARGET_MIN_HEIGHT = 12 #Acceptable minimum height of the target before the turret shoots at it
+MIN_PITCH_DELTA = 200
+MIN_YAW_DELTA = 100
+MIN_CONSECUTIVE_TARGET_LOCKS = 2
+pitch_weight = 1.3
+yaw_weight = 2.0
+
