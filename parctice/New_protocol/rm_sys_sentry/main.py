@@ -35,6 +35,10 @@ pitch_weight = 1.3
 yaw_weight = 2.0
 
 turret_cam_detected = False
+y1_coefficient = 100 #TODO
+x1_coefficient = 100 #TODO
+y2_coefficient = 100 #TODO
+x2_coefficient = 100 #TODO
 
 def getKey():
 	tty.setraw(sys.stdin.fileno())
@@ -92,13 +96,15 @@ def turret_no_detected():
 	coord_2 = detection_mod.get_coord_from_detection(img_2)
 	if coord_1 == [] and coord_2 == []:
 		robot_prop.mode = 0
-		return 'none'
+		return 'none' , None
 	elif coord_1 != []:
+		target_coord_1 = util.get_nearest_target(coord_1,0,0)
 		robot_prop.mode = 1
-		return 'front'
+		return 'front' , target_coord_1
 	else:
+		target_coord_2 = util.get_nearest_target(coord_2,0,0)
 		robot_prop.mode = 1
-		return 'back'
+		return 'back' , target_coord_2
 
 while True:
 
@@ -109,25 +115,28 @@ while True:
 		counter_coord +=1
 		#print "No detection"
 		#print counter_coord
-		if counter_coord > 5:
+		if counter_coord > 3:
 			#print "More than 5 frames without detection, No detection count :",counter_coord
 			robot_prop.v1 = 0
-			robot_prop.v2 = 0
+			robot_prop.v2 = 9000
 			robot_prop.mode = 0
 
 	else:
 		#print "TARGET DETECTED"
+		robot_prop.mode = 1
 		counter_coord = 0
 
 
 	if robot_prop.mode == 0:
-		base_detect = turret_no_detected()
+		base_detect,target_coord_1_2 = turret_no_detected()
 		if base_detect == 'front':
-			robot_prop.v1 = 0
-			robot_prop.v2 = 9000
+			x_1,y_1,w_1,h_1 = target_coord_1_2
+			robot_prop.v1 = 0 - y1_coefficient*(y_1-240)
+			robot_prop.v2 = -9000 + x1_coefficient*(x_1-320)
 		elif base_detect == 'back':
-			robot_prop.v1 = 0
-			robot_prop.v2 = -9000
+			x_2,y_2,w_2,h_2 = target_coord_1_2
+			robot_prop.v1 = 0 - y2_coefficient*(y_2-240)
+			robot_prop.v2 = 9000 + x2_coefficient*(x_2-320)
 		continue
 
 	draw_detection(img, coord)

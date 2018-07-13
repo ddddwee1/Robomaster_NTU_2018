@@ -5,7 +5,7 @@ Open
 Startup Applications
 ```
 
-type
+type in command
 ```bash
 gnome-terminal -x ./Desktop/autoboot_test/autostart.bash
 ```
