@@ -110,8 +110,11 @@ B0,B1,C0,C1 = netpart_s.model_out
 config = tf.ConfigProto(allow_soft_placement=True)
 config.gpu_options.allow_growth = True
 sess = tf.Session(config=config)
-M.loadSess('./modelveri_tiny/',sess,var_list=M.get_all_vars('VERI') + M.get_all_vars('MSRPN_v3'))
-M.loadSess('./modelveri_tiny_s/',sess,var_list=M.get_all_vars('VERI_s') + M.get_all_vars('MSRPN_v3_s'))
+v1 = M.get_all_vars('VERI') + M.get_all_vars('MSRPN_v3')
+v2 = M.get_all_vars('VERI_s') + M.get_all_vars('MSRPN_v3_s')
+v1 = [item for item in v1 if item not in v2]
+M.loadSess('./modelveri_tiny/',sess,var_list=v1)
+M.loadSess('./modelveri_tiny_s/',sess,var_list=v2)
 
 import time 
 
@@ -143,7 +146,7 @@ def get_coord_from_detection(img):
 
 def get_coord_from_detection_small(img):
 	#t1 = time.time()
-	buff_out = sess.run([B0,B1,C0,C1],feed_dict={netpart.inpholder:[img]})
+	buff_out = sess.run([B0,B1,C0,C1],feed_dict={netpart_s.inpholder:[img]})
 	bs,cs = buff_out[:2],buff_out[2:]
 	#t2 = time.time()
 	res = crop(img,bs,cs)
@@ -166,3 +169,8 @@ def get_coord_from_detection_small(img):
 	valid_coord = non_max_sup(valid_coord,veri_output)
 	
 	return valid_coord
+
+if __name__=='__main__':
+	img = np.random.random([400,400,3])
+	get_coord_from_detection(img)
+	get_coord_from_detection_small(img)

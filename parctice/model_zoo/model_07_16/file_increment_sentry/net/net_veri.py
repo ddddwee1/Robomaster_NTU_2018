@@ -2,7 +2,7 @@ import tensorflow as tf
 import model as M 
 
 def build_model(inp):
-	with tf.variable_scope('VERI_s'):
+	with tf.variable_scope('VERI'):
 		mod = M.Model(inp)
 		mod.convLayer(5,16,stride=2,activation=M.PARAM_LRELU)
 		mod.convLayer(5,32,stride=2,activation=M.PARAM_LRELU)
