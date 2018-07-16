@@ -4,7 +4,7 @@ This folder is created for first practice for Robomasters 2018.
 
 ## Methods
 
-The detection approache will be based on RPN(region proposal network) and a verification net, inspired by [Faster-CNN](https://arxiv.org/abs/1506.01497).
+The detection approach will be based on RPN(region proposal network) and a verification net, inspired by [Faster-CNN](https://arxiv.org/abs/1506.01497).
 
 ### Structure
 

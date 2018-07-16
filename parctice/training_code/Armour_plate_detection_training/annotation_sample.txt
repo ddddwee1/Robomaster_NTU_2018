@@ -1,0 +1,9 @@
+./images/blue_equalized_big/3364.jpg	436	143	375	145
+./images/blue_equalized_big/3365.jpg	530	240	91	38
+./images/blue_equalized_big/3366.jpg	564	233	94	42
+./images/blue_equalized_big/3367.jpg	590	219	100	46
+./images/blue_equalized_big/3368.jpg	606	206	103	48
+./images/blue_equalized_big/3369.jpg	614	205	109	51
+./images/blue_equalized_big/3370.jpg	601	204	116	54
+./images/blue_equalized_big/3371.jpg	560	202	112	55
+./images/blue_equalized_big/3372.jpg	495	202	94	53
