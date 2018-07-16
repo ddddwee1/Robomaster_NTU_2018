@@ -50,10 +50,15 @@ The marked items are finished topics and unmarked ones are still in progress or 
 
 ## Practice 
 
-- [x] Handwritten digits recognition in real world. 
+- autoboot_test: Auto boot of script 
 
-- [x] Hit area (board) detection 
+- model_zoo: Models of different training set. Old files just for reference
 
-- [x] High-level auto-shooting assist operation
+- New_protocol: Deploy codes for different kinds of robots.
 
-#### We will add more functions if needed 
+- record_video: Recording script. 
+
+- training_code: Code for training.
+
+- icra_robot_system: Codes for ICRA 2018.
+
