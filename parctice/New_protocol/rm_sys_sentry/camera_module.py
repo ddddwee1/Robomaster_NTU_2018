@@ -30,6 +30,8 @@ class camera_thread_0(threading.Thread):
 class camera_thread_1(threading.Thread):
 	def __init__(self):
 		self.cap = cv2.VideoCapture(1)
+		self.cap.set(3,320)
+		self.cap.set(4,240)
 		self.cap.set(14,0.01) #exp
 		self.cap.set(cv2.CAP_PROP_EXPOSURE,-6.)
 		self.cap.set(10,0.1) #bright
@@ -49,6 +51,8 @@ class camera_thread_1(threading.Thread):
 class camera_thread_2(threading.Thread):
 	def __init__(self):
 		self.cap = cv2.VideoCapture(2)
+		self.cap.set(3,320)
+		self.cap.set(4,240)
 		self.cap.set(14,0.01) #exp
 		self.cap.set(cv2.CAP_PROP_EXPOSURE,-6.)
 		self.cap.set(10,0.1) #bright

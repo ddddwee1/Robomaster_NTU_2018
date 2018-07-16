@@ -1,5 +1,5 @@
 from net import model as M 
-from net import netpart, net_veri
+from net import netpart, net_veri, netpart_s, net_veri_s
 import tensorflow as tf 
 import numpy as np
 import cv2
@@ -35,7 +35,7 @@ def crop(img,bs,cs):
 	# triple scales
 	multi = [8,32,128]
 	res = []
-	for i in range(3):
+	for i in range(len(bs)):
 		# the elements in res are [cropped_imgs, coordinates]
 		buff = get_img_coord(img,cs[i],bs[i],multi[i])
 		res += buff
@@ -104,11 +104,17 @@ def draw(img,coords):
 
 b0,b1,b2,c0,c1,c2 = netpart.model_out
 
+B0,B1,C0,C1 = netpart_s.model_out
+
 # set and load session
 config = tf.ConfigProto(allow_soft_placement=True)
 config.gpu_options.allow_growth = True
 sess = tf.Session(config=config)
-M.loadSess('./modelveri_tiny/',sess)
+v1 = M.get_all_vars('VERI') + M.get_all_vars('MSRPN_v3')
+v2 = M.get_all_vars('VERI_s') + M.get_all_vars('MSRPN_v3_s')
+v1 = [item for item in v1 if item not in v2]
+M.loadSess('./modelveri_tiny/',sess,var_list=v1)
+M.loadSess('./modelveri_tiny_s/',sess,var_list=v2)
 
 import time 
 
@@ -137,3 +143,34 @@ def get_coord_from_detection(img):
 	valid_coord = non_max_sup(valid_coord,veri_output)
 	
 	return valid_coord
+
+def get_coord_from_detection_small(img):
+	#t1 = time.time()
+	buff_out = sess.run([B0,B1,C0,C1],feed_dict={netpart_s.inpholder:[img]})
+	bs,cs = buff_out[:2],buff_out[2:]
+	#t2 = time.time()
+	res = crop(img,bs,cs)
+	#t3 = time.time()
+	cropped_imgs = [k[0] for k in res]
+	coords = [k[1] for k in res]
+
+	# get score and output
+	veri_output = sess.run(net_veri_s.output,feed_dict={net_veri_s.inputholder:cropped_imgs})
+	veri_classi = np.argmax(veri_output,1)
+	#t4 = time.time()
+	# ------
+	# If nonmax supression is not needed, just remove the softmax computation
+	# ------
+	#veri_output = np.exp(veri_output-100)
+	#veri_output = veri_output/np.sum(veri_output,axis=1,keepdims=True)
+	veri_output = veri_output[:,1]
+
+	valid_coord,veri_output = filter_valid_coord(coords,veri_classi,veri_output)
+	valid_coord = non_max_sup(valid_coord,veri_output)
+	
+	return valid_coord
+
+if __name__=='__main__':
+	img = np.random.random([400,400,3])
+	get_coord_from_detection(img)
+	get_coord_from_detection_small(img)

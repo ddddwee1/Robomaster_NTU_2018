@@ -16,6 +16,6 @@ time_remain = 0
 
 def get_order():
 	global v1,v2,mode,shoot,time_remain
-	if time_remain==0:
-		mode = 0
+#	if time_remain==0:
+#		mode = 0
 	return v1,v2,mode,shoot
