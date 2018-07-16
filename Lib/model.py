@@ -14,12 +14,7 @@ PARAM_MFM_FC = 5
 PARAM_SIGMOID = 6
 
 def loadSess(modelpath=None,sess=None,modpath=None,mods=None,var_list=None,init=False):
-# load session if there exist any models, and initialize the sess if not
-# modelpath: model folder
-# modpath: single ckpt model 
-# mods: multiple models 
-# var_list: list of variables to load
-# init: flag for whether the initialization takes place 
+#load session if there exist any models, and initialize the sess if not
 	assert modpath==None or mods==None
 	assert (not modelpath==None) or (not modpath==None) or (not modpath==None)
 	if sess==None:
@@ -90,27 +85,6 @@ def enforcedClassifier(featurelayer,CLASS,BSIZE,lbholder,dropout=1,enforced=Fals
 			lstlayer = evallayer
 	return lstlayer,evallayer
 
-# def enforcedClassfier2(featurelayer,inputdim,lbholder,BSIZE,CLASS,enforced=False,dropout=1):
-# 	with tf.variable_scope('Enforced_Softmax2'):
-# 		if enforced:
-# 			print('Enforced softmax loss is enabled.')
-# 		featurelayer = tf.nn.dropout(featurelayer,dropout)
-# 		w = L.weight([inputdim,CLASS])
-# 		nfl = tf.nn.l2_normalize(featurelayer,1)
-# 		buff = tf.matmul(nfl,tf.nn.l2_normalize(w,0))
-# 		constant = 40.0
-# 		evallayer = tf.scalar_mul(constant,buff)
-# 		if enforced:
-# 			floatlb = tf.cast(lbholder,tf.float32)
-# 			lbc = tf.ones([BSIZE,CLASS],dtype=tf.float32) - floatlb
-# 			filteredmtx = tf.multiply(lbc,evallayer)
-# 			#filteredmtx = tf.maximum(filteredmtx*1.2,filteredmtx*0.8)
-# 			cosmtx = tf.multiply(floatlb,evallayer)
-# 			cosmtx2 = (tf.minimum(cosmtx*0.8,cosmtx*1.2))*floatlb
-# 			lstlayer = cosmtx2+filteredmtx
-# 		else:
-# 			lstlayer = evallayer
-# 	return lstlayer,evallayer
 
 def get_feed_dict(keylist,vallist):
 	assert len(keylist)==len(vallist)
@@ -140,10 +114,8 @@ class Model():
 		else:
 			self.inpsize = list(size)
 		self.layernum = 0
-		self.transShape = None
-		self.varlist = []
-		self.fcs = []
 		self.bntraining = True
+		self.epsilon = None
 
 	def set_bn_training(self,training):
 		self.bntraining = training
@@ -154,11 +126,11 @@ class Model():
 	def get_current_layer(self):
 		return self.result
 
+	def __call__(self):
+		return [self.result,self.inpsize]
+
 	def get_shape(self):
 		return self.inpsize
-
-	def get_current(self):
-		return [self.result,list(self.inpsize)]
 
 	def activation(self,param):
 		return self.activate(param)
@@ -185,7 +157,7 @@ class Model():
 			else:
 				res =  inp
 		self.result = res
-		return [self.result,list(self.inpsize)]
+		return self.result
 
 	def convLayer(self,size,outchn,dilation_rate=1,stride=1,pad='SAME',activation=-1,batch_norm=False,layerin=None,usebias=True,kernel_data=None,bias_data=None):
 		with tf.variable_scope('conv_'+str(self.layernum)):
@@ -194,36 +166,34 @@ class Model():
 			else:
 				kernel = [size,size]
 			if layerin!=None:
-				self.result=layerin[0]
-				self.inpsize=list(layerin[1])
+				self.result = layerin
+				self.inpsize = layerin.get_shape().as_list()
 			self.result = L.conv2D(self.result,kernel,outchn,'conv_'+str(self.layernum),stride=stride,pad=pad,usebias=usebias,kernel_data=kernel_data,bias_data=bias_data,dilation_rate=dilation_rate)
-			self.varlist = tf.get_collection(tf.GraphKeys.TRAINABLE_VARIABLES)
 			if batch_norm:
 				self.result = L.batch_norm(self.result,'batch_norm_'+str(self.layernum),training=self.bntraining,epsilon=self.epsilon)
 			self.layernum += 1
 			self.inpsize = self.result.get_shape().as_list()
 			self.activate(activation)
-		return [self.result,list(self.inpsize)]
+		return self.result
 
-
-	def dwconvLayer(self,kernel,multi,stride=1,pad='SAME',activation=-1,batch_norm=False,weight=None):
+	def dwconvLayer(self,kernel,multi,stride=1,pad='SAME',activation=-1,batch_norm=False,weight=None,usebias=True):
 		with tf.variable_scope('dwconv_'+str(self.layernum)):
 			if isinstance(kernel,list):
 				kernel = kernel
 			else:
 				kernel = [kernel,kernel]
-			self.result = L.conv2Ddw(self.result,self.inpsize[3],kernel,multi,'dwconv_'+str(self.layernum),stride=stride,pad=pad,weight_data=weight)
+			self.result = L.conv2Ddw(self.result,self.inpsize[3],kernel,multi,'dwconv_'+str(self.layernum),stride=stride,pad=pad,weight_data=weight,usebias=usebias)
 			if batch_norm:
 				self.result = L.batch_norm(self.result,'batch_norm_'+str(self.layernum),epsilon=self.epsilon)
 			self.layernum+=1
 			self.inpsize = self.result.get_shape().as_list()
 			self.activate(activation)
-		return [self.result,list(self.inpsize)]
+		return self.result
 
 	def spconvLayer(self,size,multi,stride=1,pad='SAME',activation=-1,batch_norm=False):
 		self.dwconvLayer(size,multi,stride=stride,pad=pad)
 		self.convLayer(1,self.inpsize[3],activation=activation,batch_norm=batch_norm)
-		return [self.result,list(self.inpsize)]
+		return self.result
 
 	def deconvLayer(self,kernel,outchn,stride=1,pad='SAME',activation=-1,batch_norm=False):
 		self.result = L.deconv2D(self.result,kernel,outchn,'deconv_'+str(self.layernum),stride=stride,pad=pad)
@@ -232,53 +202,43 @@ class Model():
 		self.layernum+=1
 		self.inpsize = self.result.get_shape().as_list()
 		self.activate(activation)
-		return [self.result,list(self.inpsize)]
+		return self.result
 
 	def maxpoolLayer(self,size,stride=None,pad='SAME'):
 		if stride==None:
 			stride = size
 		self.result = L.maxpooling(self.result,size,stride,'maxpool_'+str(self.layernum),pad=pad)
 		self.inpsize = self.result.get_shape().as_list()
-		return [self.result,list(self.inpsize)]
+		return self.result
 
 	def avgpoolLayer(self,size,stride=None,pad='SAME'):
 		if stride==None:
 			stride = size
 		self.result = L.avgpooling(self.result,size,stride,'maxpool_'+str(self.layernum),pad=pad)
 		self.inpsize = self.result.get_shape().as_list()
-		return [self.result,list(self.inpsize)]
+		return self.result
 
 	def flatten(self):
 		self.result = tf.reshape(self.result,[-1,self.inpsize[1]*self.inpsize[2]*self.inpsize[3]])
 		self.transShape = [self.inpsize[1],self.inpsize[2],self.inpsize[3],0]
 		self.inpsize = [None,self.inpsize[1]*self.inpsize[2]*self.inpsize[3]]
-		self.fcs.append(len(self.varlist))
-		return [self.result,list(self.inpsize)]
+		return self.result
 
 	def construct(self,shape):
 		self.result = tf.reshape(self.result,[-1,shape[0],shape[1],shape[2]])
 		self.inpsize = [None,shape[0],shape[1],shape[2]]
-		return [self.result,list(self.inpsize)]
+		return self.result
 
 	def fcLayer(self,outsize,activation=-1,nobias=False,batch_norm=False):
 		with tf.variable_scope('fc_'+str(self.layernum)):
 			self.inpsize = [i for i in self.inpsize]
 			self.result = L.Fcnn(self.result,self.inpsize[1],outsize,'fc_'+str(self.layernum),nobias=nobias)
-			if len(self.fcs)!=0:
-				if self.fcs[-1] == len(self.varlist):
-					self.transShape[-1] = outsize
-			self.varlist = tf.get_collection(tf.GraphKeys.TRAINABLE_VARIABLES)
 			if batch_norm:
 				self.result = L.batch_norm(self.result,'batch_norm_'+str(self.layernum),training=self.bntraining,epsilon=self.epsilon)
 			self.inpsize[1] = outsize
 			self.activate(activation)
 			self.layernum+=1
-		return [self.result,list(self.inpsize)]
-
-	def scale(self,number):
-		with tf.variable_scope('scale_'+str(self.layernum)):
-			self.result = self.result * number
-		return [self.result,list(self.inpsize)]
+		return self.result
 
 	def multiply(self,layerin):
 		if isinstance(layerin,list):
@@ -287,71 +247,67 @@ class Model():
 			self.result = self.result*layerin
 
 	def sum(self,layerin):
-		assert layerin[1][2] == self.inpsize[2] and layerin[1][1] == self.inpsize[1]
-		assert layerin[1][3] == self.inpsize[3]
 		with tf.variable_scope('sum_'+str(self.layernum)):
-			self.result = self.result +	layerin[0]
-		return [self.result,list(self.inpsize)]
+			self.result = self.result +	layerin
+		return self.result
 
 	def NIN(self,size,outchn1,outchn2,activation=-1,batch_norm=False,pad='SAME'):
 		with tf.variable_scope('NIN_'+str(self.layernum)):
 			self.convLayer(1,outchn1,activation=activation,batch_norm=batch_norm)
 			self.convLayer(size,outchn2,activation=activation,batch_norm=batch_norm,pad=pad)
-		return [self.result,list(self.inpsize)]
+		return self.result
 
 	def incep(self,outchn1,outchn2,outchn3,outchn4,outchn5,activation=-1,batch_norm=False):
 		with tf.variable_scope('Incep_'+str(self.layernum)):
 			orignres = self.result
 			orignsize = self.inpsize
 			a,_ = self.NIN(3,outchn1,outchn2,activation=activation,batch_norm=batch_norm)
-			asize = self.inpsize
-			self.inpsize = orignsize
 			self.result = orignres
 			b,_ = self.NIN(5,outchn3,outchn4,activation=activation,batch_norm=batch_norm)
-			bsize = self.inpsize
-			self.inpsize = orignsize
 			self.result = orignres
 			c,_ = self.convLayer(1,outchn5,activation=activation,batch_norm=batch_norm)
 			csize = self.inpsize
-			self.inpsize[3] = asize[3]+bsize[3]+csize[3]
 			self.result = tf.concat(axis=3,values=[a,b,c])
-			return [self.result,list(self.inpsize)]
+			self.inpsize = self.result.get_shape().as_list()
+			return self.result
 
-	def concat_to_current(self,layerinfo,axis=3):
+	def concat_to_current(self,layerin,axis=3):
 		with tf.variable_scope('concat'+str(self.layernum)):
-			layerin, layersize = layerinfo[0],list(layerinfo[1])
 			self.result = tf.concat(axis=axis,values=[self.result,layerin])
-			self.inpsize[axis] += layersize[axis]
-		return [self.result,list(self.inpsize)]
+			self.inpsize = self.result.get_shape().as_list()
+		return self.result
 
 	def concat_to_all_batch(self,layerinfo):
 		with tf.variable_scope('concat'+str(self.layernum)):
-			layerin, layersize = layerinfo[0],list(layerinfo[1])
+			layerin = layerinfo
 			layerin = tf.expand_dims(layerin,0)
 			layerin = tf.tile(layerin,[tf.shape(self.result)[0],1,1,1])
 			self.result = tf.concat(axis=-1,values=[self.result,layerin])
-			self.inpsize[-1] += layersize[-1]
-		return [self.result,list(self.inpsize)]
+			self.inpsize = self.result.get_shape().as_list()
+		return self.result
 
 	def set_current(self,layerinfo):
-		layerin, layersize = layerinfo[0],layerinfo[1]
-		self.result = layerin
-		self.inpsize = layersize
+		if isinstance(layerinfo,list):
+			self.result = layerinfo[0]
+			self.inpsize = layerinfo[1]
+		else:
+			self.result = layerinfo
+			self.inpsize = self.result.get_shape().as_list()
 
 	def dropout(self,ratio):
 		with tf.name_scope('dropout'+str(self.layernum)):
 			self.result = tf.nn.dropout(self.result,ratio)
-		return [self.result,list(self.inpsize)]
+		return self.result
 
 	def l2norm(self,axis=1):
 		with tf.name_scope('l2norm'+str(self.layernum)):
 			self.result = tf.nn.l2_normalize(self.result,axis)
-		return [self.result,list(self.inpsize)]
+		return self.result
 
 	def batch_norm(self):
 		with tf.variable_scope('batch_norm'+str(self.layernum)):
 			self.result = L.batch_norm(self.result,'batch_norm_'+str(self.layernum),training=self.bntraining,epsilon=self.epsilon)
-		return [self.result,list(self.inpsize)]
+		return self.result
 
 	def resize_nn(self,multip):
 		assert self.inpsize[1] == self.inpsize[2]
@@ -359,19 +315,19 @@ class Model():
 			self.result = L.resize_nn(self.result,multip*self.inpsize[1],name='resize_nn_'+str(self.layernum))
 			self.inpsize[1] *= multip
 			self.inpsize[2] *= multip
-		return [self.result,list(self.inpsize)]
+		return self.result
 
 	def reshape(self,shape):
 		with tf.variable_scope('reshape_'+str(self.layernum)):
 			self.result = tf.reshape(self.result,shape)
 			self.inpsize = shape
-		return [self.result,list(self.inpsize)]
+		return self.result
 
 	def transpose(self,order):
 		with tf.variable_scope('transpose_'+str(self.layernum)):
 			self.result=tf.transpose(self.result,order)
 			self.inpsize = [self.inpsize[i] for i in order]
-		return [self.result,list(self.inpsize)]
+		return self.result
 
 	def gradient_flip_layer(self):
 		with tf.variable_scope('Gradient_flip_'+str(self.layernum)):
@@ -382,7 +338,7 @@ class Model():
 			g = tf.get_default_graph()
 			with g.gradient_override_map({'Identity':'GradFlip'}):
 				self.result = tf.identity(self.result)
-		return [self.result,list(self.inpsize)]
+		return self.result
 
 	def pyrDown(self,stride=1):
 		with tf.variable_scope('Pyramid_down_'+str(self.layernum)):
@@ -398,23 +354,24 @@ class Model():
 			kernel = tf.constant(kernel,dtype=tf.float32)
 			with tf.name_scope('gaussian_conv'):
 				self.result = tf.nn.depthwise_conv2d(self.result,kernel,[1,stride,stride,1],'SAME')
-		return [self.result,list(self.inpsize)]
+		return self.result
 
 	def primaryCaps(self, size, vec_dim, n_chn,activation=None, stride=1,pad='SAME'):
 		with tf.variable_scope('Caps_'+str(self.layernum)):
 			self.convLayer(size, vec_dim*n_chn, activation=activation, stride=stride, pad=pad)
 			shape = self.result.get_shape().as_list()
+			# output: BSIZE, capin, 1, vdim, 1
 			self.result = tf.reshape(self.result, [-1,shape[1]*shape[2]*shape[3]//vec_dim,1,vec_dim,1])
 			self.inpsize = self.result.get_shape().as_list()
 			self.squash()
-		return [self.result,list(self.inpsize)]
+		return self.result
 
 	def squash(self):
 		with tf.variable_scope('squash_'+str(self.layernum)):
 			sqr = tf.reduce_sum(tf.square(self.result),-2,keep_dims=True)
 			activate = sqr / (1+sqr)
 			self.result = activate * tf.nn.l2_normalize(self.result,-2)
-		return [self.result,list(self.inpsize)]
+		return self.result
 
 	def capsLayer(self,outchn,vdim2,iter_num,BSIZE=None):
 		if BSIZE is None:
@@ -437,14 +394,14 @@ class Model():
 			self.result = tf.einsum('ijklm->ikjlm',self.result)
 			self.inpsize = [None,outchn,1,vdim2,1]
 			self.layernum += 1
-		return [self.result,list(self.inpsize)]
+		return self.result
 
 	def capsDown(self):
 		with tf.variable_scope('Caps_Dim_Down_'+str(self.layernum)):
 			self.result = tf.reduce_sum(self.result,-1)
 			self.result = tf.reduce_sum(self.result,-2)
 			self.inpsize = [None,self.inpsize[1],self.inpsize[3]]
-		return [self.result,list(self.inpsize)]
+		return self.result
 
 	def capsMask(self,labholder):
 		with tf.variable_scope('capsMask_'+str(self.layernum)):
@@ -452,7 +409,7 @@ class Model():
 			self.result = self.result * labholder
 			self.result = tf.reshape(self.result,[-1,self.inpsize[1]*self.inpsize[2]])
 			self.inpsize = [None,self.inpsize[1]*self.inpsize[2]]
-		return [self.result,list(self.inpsize)]
+		return self.result
 
 	def pad(self,padding):
 		with tf.variable_scope('pad_'+str(self.layernum)):
@@ -462,6 +419,41 @@ class Model():
 			else:
 				self.result = tf.pad(self.result,[[0,0],[padding,padding],[padding,padding],[0,0]])
 			self.inpsize = self.result.get_shape().as_list()
-		return [self.result,list(self.inpsize)]
+		return self.result
 
-	# def caps_conv_layer(self,out_dim,out_channel,)
+	def caps_conv(self,ksize,outdim,outcaps,stride=1,activation='l2',usebias=True):
+		print('Caps_conv_bias:',usebias)
+		# resize the input to [BSIZE, height, width, capsnum, vecdim]
+		capsnum = self.inpsize[3]
+		vecdim = self.inpsize[4]
+		stride_ = [1,stride,stride,capsnum,1]
+		with tf.variable_scope('CapsConv_'+str(self.layernum)):
+			res = []
+			for i in range(outcaps):
+				with tf.variable_scope('CapsConv_3dConv_'+str(i)):
+					k = L.weight([ksize,ksize,capsnum,vecdim,outdim])
+					buff = tf.nn.conv3d(self.result , k , stride_ , 'SAME')
+					res.append(buff)
+			self.result = tf.concat(res, axis=3)
+			if usebias:
+				b = L.bias([1,1,1,outcaps,outdim])
+				self.result += b
+			if activation=='l2':
+				self.result = tf.nn.l2_normalize(self.result,-1)
+		self.layernum += 1
+		self.inpsize = self.result.get_shape().as_list()
+		
+		return self.result
+
+	def capsulization(self,dim,caps):
+		bsize,h,w,chn = self.inpsize
+		assert dim*caps==chn,'Dimension and capsule number must be complemented with channel number'
+		self.result = tf.reshape(self.result,[-1,h,w,caps,dim])
+		self.inpsize = self.result.get_shape().as_list()
+		return self.result
+
+	def caps_flatten(self):
+		bsize,h,w,caps,dim = self.inpsize
+		self.result = tf.reshape(self.result,[-1,h*w*caps,1,dim,1])
+		self.inpsize = self.result.get_shape().as_list()
+		return self.result
