@@ -4,11 +4,7 @@ import numpy as np
 import robot_prop
 import util
 from camera_module import camera_thread
-from turret_module import turret_thread
 from rune_module import rune_shooting_logic
-
-turret_thread = turret_thread()
-turret_thread.start()
 
 pitch_bias = 730
 yaw_bias = 0
@@ -67,6 +63,8 @@ def run(camera_thread):
 	robot_prop.v2 = v2
 
 	if whether_shooted == False:
-		turret_thread.shoot()
+		robot_prop.mode = 2
+		robot_prop.shoot = 1
+		robot_prop.shoot = 0
 		whether_shooted = True
 

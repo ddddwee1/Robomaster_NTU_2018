@@ -4,7 +4,6 @@ import util
 import detection_mod
 import cv2
 import sys, select, termios, tty
-import math
 
 # comment manual adjusting after debugging
 
@@ -20,6 +19,8 @@ MIN_YAW_DELTA = 100
 MIN_CONSECUTIVE_TARGET_LOCKS = 2
 pitch_weight = 1.0
 yaw_weight = 1.0
+
+no_detection = False
 
 def getKey():
 	tty.setraw(sys.stdin.fileno())
@@ -46,15 +47,10 @@ def auto_shoot(pitch_delta,yaw_delta,coord,y_bias,x_bias,Target_lock):
 		print pitch_delta,yaw_delta,height
 		if MIN_PITCH_DELTA > abs(pitch_delta-pitch_bias) and MIN_YAW_DELTA > abs(yaw_delta-yaw_bias) and height > TARGET_MIN_HEIGHT:
 			Target_lock +=1
-			#print"[!!!]Target within range, count = ",Target_lock
 		else:
-			#print"Target not within range"
-			#print"pitch delta = ",abs(pitch_delta-pitch_bias)
-			#print"yaw delta = ",abs(yaw_delta-yaw_bias)
 			Target_lock = 0
 
 		if Target_lock >= MIN_CONSECUTIVE_TARGET_LOCKS:
-			#print"Target within range for more than x frames -> [SHOOT]"
 			robot_prop.shoot = 1
 		else:
 			robot_prop.shoot = 0
@@ -78,12 +74,9 @@ def run(camera_thread,counter_coord,Target_lock):
 	coord = detection_mod.get_coord_from_detection(img)
 	if len(coord) == 0 :
 		counter_coord +=1
-		#print "No detection"
-		#print counter_coord
 		if counter_coord > 5:
-			#print "More than 5 frames without detection, No detection count :",counter_coord
+			no_detection = True
 	else:
-		#print "TARGET DETECTED"
 		counter_coord = 0
 
 	draw_detection(img, coord)
@@ -91,14 +84,12 @@ def run(camera_thread,counter_coord,Target_lock):
 	# draw detection for debugging
 	t_pitch = robot_prop.t_pitch
 	t_yaw = robot_prop.t_yaw
-	y_bias,x_bias = util.bias_to_pixel(pitch_bias,yaw_bias)
-	pitch_delta,yaw_delta = util.get_delta(coord,y_bias,x_bias)
-
-	if pitch_delta ==0 and yaw_delta ==0:
-		robot_prop.v1 = t_pitch
-		robot_prop.v2 = t_yaw
-		#print t_pitch,t_yaw
-		return counter_coord, Target_lock
+	if no_detection = True:
+		pitch_delta = 0
+		yaw_delta = 0
+	else:
+		y_bias,x_bias = util.bias_to_pixel(pitch_bias,yaw_bias)
+		pitch_delta,yaw_delta = util.get_delta(coord,y_bias,x_bias)
 
 	# change shoot function
 	manual_shoot(key)
