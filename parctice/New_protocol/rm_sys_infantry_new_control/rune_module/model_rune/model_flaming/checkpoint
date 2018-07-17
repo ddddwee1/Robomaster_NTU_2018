@@ -1,0 +1,6 @@
+model_checkpoint_path: "fd_30000.ckpt"
+all_model_checkpoint_paths: "fd_10000.ckpt"
+all_model_checkpoint_paths: "fd_15000.ckpt"
+all_model_checkpoint_paths: "fd_20000.ckpt"
+all_model_checkpoint_paths: "fd_25000.ckpt"
+all_model_checkpoint_paths: "fd_30000.ckpt"
