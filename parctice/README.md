@@ -4,7 +4,7 @@ This repo is created for Robomasters 2018. Software Team of MECATron, [Nanyang T
 
 ## Practice
 
-This folder includes all scripts deployed for robot.
+This folder includes all scripts deployed on robot.
 
 ### Content
 

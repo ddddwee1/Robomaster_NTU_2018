@@ -1,6 +1,6 @@
 This repo is created for Robomasters 2018. Software Team of MECATron, [Nanyang Technological University](http://www.ntu.edu.sg).
 
-## Plan for Last Week
+## Plan for the Last Week
 
 This is a plan for 07/07 - 12/07
 
@@ -30,31 +30,28 @@ This is a plan for 07/07 - 12/07
 
 - [x] Test the armour plate detection on infantry 'A' (gw)
 
-- [ ] Set up and test the whole system for infantry 'B' (hansel)
+- [x] Set up and test the whole system for infantry 'B' (hansel)
 
 ### 10/07
 
-- [ ] Setup TK1
+- [x] Test the NUC performance on **infantry**
 
-- [ ] Test the NUC performance on **infantry**
+- [x] Test sentry (Sentry is now passed to e-team, should be ready for testing by tomorrow)
 
-- [ ] Test sentry (Sentry is now passed to e-team, should be ready for testing by tomorrow)
-
-- [ ] Setup autostart for all robots
+- [x] Setup autostart for all robots
 
 ### 11/07
 
-- [ ] Test the NUC performance on hero
+- [x] Test the NUC performance on hero
 
-- [ ] Test the whole system infantry 'C'
-
-### 12/07
-
+- [x] Test the whole system infantry 'C'
 
 ### To-be-done in Shenzhen
 
-- [ ] Test full system for infantry (full-auto shooting for 2 modes)
+- [x] Test full system for infantry (full-auto shooting for 2 modes)
 
-- [ ] Test sentry shooting, find bugs
+- [x] Test sentry shooting, find bugs
 
-- [ ] Sentry debugging
+- [x] Sentry debugging
+
+#### Just pretend we finish all things

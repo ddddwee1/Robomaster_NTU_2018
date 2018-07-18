@@ -48,11 +48,13 @@ The marked items are finished topics and unmarked ones are still in progress or 
 
 - [x] ROS tutorial
 
+#### We dont need to use ROS for this simple project. We do it on our own.
+
 ## Practice 
 
-- autoboot_test: Auto boot of script 
+- autoboot_test: Auto boot script 
 
-- model_zoo: Models of different training set. Old files just for reference
+- model_zoo: Models of different training set. Old files just for archive
 
 - New_protocol: Deploy codes for different kinds of robots.
 

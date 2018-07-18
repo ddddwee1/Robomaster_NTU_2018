@@ -6,6 +6,8 @@ This folder is created for first practice for Robomasters 2018.
 
 We split different recognition tasks into different network. Each network is light in structure.
 
+Small rune is MNIST, 7seg and flaming digits are processed images. 
+
 ### Structure
 
 conv(5,16)
