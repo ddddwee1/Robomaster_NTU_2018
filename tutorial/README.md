@@ -52,7 +52,7 @@ The marked items are finished topics and unmarked ones are still in progress or 
 
 ## Folders
 
-- face: Facial keypoint detection. see (Kaggle competition)[https://www.kaggle.com/c/facial-keypoints-detection]
+- face: Facial keypoint detection. see [Kaggle competition](https://www.kaggle.com/c/facial-keypoints-detection)
 
 - flappy_bird: Reinforcement learning sample
 
