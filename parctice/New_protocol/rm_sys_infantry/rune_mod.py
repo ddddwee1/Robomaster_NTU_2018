@@ -13,6 +13,8 @@ turret_thread.start()
 pitch_bias = 730
 yaw_bias = 0
 
+PITCH_WEIGHT = 1.0
+YAW_WEIGHT = 1.4
 scr_7seg_index = 0
 saved_7seg_raw = -1
 saved_numbers_9boxes = -1
@@ -60,13 +62,14 @@ def run(camera_thread):
 	if pitch_delta ==0 and yaw_delta ==0:
 		return
 
-	v1 = t_pitch + pitch_delta *0.9 - pitch_bias
-	v2 = t_yaw + yaw_delta *1.4 - yaw_bias
+	v1 = t_pitch + pitch_delta *PITCH_WEIGHT - pitch_bias
+	v2 = t_yaw + yaw_delta *YAW_WEIGHT - yaw_bias
 
 	robot_prop.v1 = v1
 	robot_prop.v2 = v2
 
 	if whether_shooted == False:
-		turret_thread.shoot()
+		robot_prop.mode = 2
+		robot_prop.shoot = 1
 		whether_shooted = True
 

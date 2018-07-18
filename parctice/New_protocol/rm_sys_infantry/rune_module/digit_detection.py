@@ -14,6 +14,7 @@ image_height = 480
 
 kernel2 = np.ones((2,2),np.uint8)
 kernel3 = np.ones((3,3),np.uint8)
+kernel7 = np.ones((7,7),np.uint8)
 
 def hist_equal(img):
 	equ = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
@@ -41,7 +42,7 @@ def get_digits(image,bigbuff=False):
 	
 	cv2.imshow('',image)
 
-	cv2.waitKey(1)
+	#cv2.waitKey(1)
 	_, contours, hierarchy = cv2.findContours(edged.copy(),cv2.RETR_TREE,cv2.CHAIN_APPROX_SIMPLE)
 
 	for contour in contours:
@@ -155,20 +156,23 @@ def get_digits(image,bigbuff=False):
 	digit_7seg_imgs = []
 
 	for x,y in digits_7seg_rect:
-		cv2.rectangle(dst,(x,y),(x+19,y+34),(255,0,0),1)
+		#cv2.rectangle(dst,(x,y),(x+19,y+34),(255,0,0),1)
 		img_sevseg = dst[y:y+34,x:x+19]
 
 		# another test
 		img_sevseg = img_sevseg[:,:,2]
-		img_sevseg = cv2.inRange(img_sevseg,215,255)
+		img_sevseg = cv2.inRange(img_sevseg,210,255)
+		img_sevseg = cv2.morphologyEx(img_sevseg,cv2.MORPH_OPEN,kernel2)
 		img_sevseg = cv2.morphologyEx(img_sevseg,cv2.MORPH_CLOSE,kernel2)
+		#cv2.imshow('bb',img_sevseg)
+		#cv2.waitKey(0)
 
-		buf = cv2.bitwise_not(buf)
+		buf = cv2.bitwise_not(img_sevseg)
+		buf = cv2.dilate(buf,kernel2,iterations = 1)
+		buf = cv2.erode(buf,kernel2,iterations = 2)
 		buf = cv2.resize(buf,(24,24))
-		buf = cv2.copyMakeBorder(buf, 1, 3, 1, 3, cv2.BORDER_CONSTANT, value=WHITE)
+		buf = cv2.copyMakeBorder(buf, 0, 4, 0, 4, cv2.BORDER_CONSTANT, value=WHITE)
 
-		# cv2.imshow('bb',buf)
-		# cv2.waitKey(0)
 
 		buf = buf.reshape([-1])
 		buf = 255 - buf
@@ -180,7 +184,7 @@ def get_digits(image,bigbuff=False):
 	#cv2.waitKey(0)
 
 	scr_7seg_raw = conv_deploy.get_pred_7seg(digit_7seg_imgs)
-	#print (scr_7seg_raw)
+	print (scr_7seg_raw)
 
 	if bigbuff == False:
 		""" 
@@ -190,8 +194,8 @@ def get_digits(image,bigbuff=False):
 		digit_imgs = []
 		abc = 0
 		for x,y in digits_rect:
-			#cv2.rectangle(dst,(x,y),(x+53,y+36),(0,0,255),1)
-			buf =  dst[y:y+37,x:x+52]
+			#cv2.rectangle(dst,(x,y),(x+52,y+36),(0,0,255),1)
+			buf =  dst[y:y+36,x:x+52]
 			buf = cv2.cvtColor(buf,cv2.COLOR_BGR2GRAY)
 			_,buf = cv2.threshold(buf,20,255,cv2.THRESH_BINARY+cv2.THRESH_OTSU)
 			buf = cv2.erode(buf,kernel2,iterations = 2)
@@ -210,7 +214,7 @@ def get_digits(image,bigbuff=False):
 		#cv2.waitKey(1)
 
 		handwritten_num_raw = conv_deploy.get_pred(digit_imgs)
-		# print(handwritten_num_raw)
+		print(handwritten_num_raw)
 
 		handwritten_dict = {}
 
@@ -277,5 +281,5 @@ def get_digits(image,bigbuff=False):
 		handwritten_num = [-1]
 		#print(scr_FD)
 	cv2.imshow('aaa',dst)
-	cv2.waitKey(0)
+	#cv2.waitKey(0)
 	return coord, scr_7seg_raw, handwritten_num, Flaming_digit

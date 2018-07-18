@@ -12,15 +12,13 @@ data_reader.start()
 
 camera_thread = camera_thread()
 camera_thread.start()
-counter_coord = 0  #no-detection count
 Target_lock=0
-
 
 while True:
 
 	mode = robot_prop.mode
 	if mode==1:
-		counter_coord, Target_lock=armor_plate_mod.run(camera_thread,counter_coord,Target_lock)
+		Target_lock=armor_plate_mod.run(camera_thread,Target_lock)
 	elif mode==0:
 		time.sleep(0.1)
 	else:

@@ -19,9 +19,6 @@ MIN_CONSECUTIVE_TARGET_LOCKS= 2
 PITCH_WEIGHT= 1.15
 YAW_WEIGHT= 1.5
 mode = 'auto'
-stop_pitch = robot_prop.t_pitch
-stop_yaw = robot_prop.t_yaw
-first_time_no_detection = True
 
 def getKey():
 	tty.setraw(sys.stdin.fileno())
@@ -91,8 +88,8 @@ def draw_detection(img,coord):
 	cv2.imshow('img',img)
 	cv2.waitKey(1)
 
-def run(camera_thread,no_detection_count,target_lock):
-	t1 = time.time()
+def run(camera_thread,target_lock):
+	#t1 = time.time()
 	global PITCH_BIAS,YAW_BIAS,first_time_no_detection, stop_pitch, stop_yaw
 	img = camera_thread.read()
 	cv2.imshow('img',img)
@@ -104,7 +101,6 @@ def run(camera_thread,no_detection_count,target_lock):
 	#Armour plate(s) detected
 	if len(coord) != 0:
 		first_time_no_detection = True
-		no_detection_count = 0
 		draw_detection(img,coord)
 		y_bias, x_bias = util.bias_to_pixel(PITCH_BIAS,YAW_BIAS)
 		pitch_delta, yaw_delta = util.get_delta(coord,y_bias,x_bias)
@@ -119,20 +115,6 @@ def run(camera_thread,no_detection_count,target_lock):
 			manual_shoot(key)
 
 
-	#No armour plate detected
-	else:
-		no_detection_count +=1
-
-
-		#When no armour plate are detected for more than 3 frames, stop moving the turret
-		if no_detection_count > 5:
-			if first_time_no_detection == True:
-				stop_pitch = robot_prop.t_pitch
-				stop_yaw = robot_prop.t_yaw
-				first_time_no_detection = False
-			#robot_prop.v1 = initial_pitch
-			#robot_prop.v2 = initial_yaw
-			#print initial_pitch, initial_yaw
-	computation_time = time.time() - t1
+	#computation_time = time.time() - t1
 	#print "computational time = ",computation_time
-	return no_detection_count, target_lock
+	return target_lock
