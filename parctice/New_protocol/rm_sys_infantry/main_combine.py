@@ -15,6 +15,7 @@ camera_thread.start()
 counter_coord = 0  #no-detection count
 Target_lock=0
 
+
 while True:
 
 	mode = robot_prop.mode
