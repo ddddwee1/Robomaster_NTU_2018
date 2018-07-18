@@ -50,28 +50,20 @@ The marked items are finished topics and unmarked ones are still in progress or 
 
 #### We dont need to use ROS for this simple project. We do it on our own.
 
-## Practice 
+## Folders
 
-- autoboot_test: Auto boot script 
+- face: Facial keypoint detection. see (Kaggle competition)[https://www.kaggle.com/c/facial-keypoints-detection]
 
-- model_zoo: Models of different training set. Old files just for archive
+- flappy_bird: Reinforcement learning sample
 
-- New_protocol: Deploy codes for different kinds of robots.
+- linear_reg: Linear regression 
 
-- record_video: Recording script. 
+- log_reg: Logistic regression
 
-- training_code: Code for training.
+- mnist: Fully connected network to classify handwritten digits
 
-- icra_robot_system: Codes for ICRA 2018.
+- mnist_conv: Convolutional network for handwritten digits
 
-## Lib
+- start: How to use tensorflow and session
 
-You must know what this means.
-
-## Label
-
-Label tool, with instructions.
-
-## Extract frames
-
-Script to extract frames from video.
+#### PPTs are for illustration. I am sorry that it is not very good-looking.

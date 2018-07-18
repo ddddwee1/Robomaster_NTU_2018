@@ -5,15 +5,15 @@ import model as M
 import tensorflow as tf 
 import cv2 
 
-import time
+import time 
 import myconvertmod as cvt
 
 import os 
 if not os.path.exists('./model/'):
 	os.mkdir('./model/')
 
-reader = data_reader.reader(height=480,width=640,scale_range=[0.05,2.5],
-	lower_bound=3,upper_bound=7,index_multiplier=2)
+reader = data_reader.reader(height=240,width=320,scale_range=[0.05,1.2],
+	lower_bound=3,upper_bound=5,index_multiplier=2)
 
 def draw(img,c,b,multip,name):
 	c = c[0]
@@ -51,10 +51,10 @@ def draw2(img,c,b,multip,name):
 	cv2.imshow(name,img)
 	cv2.waitKey(1)
 
-b0,b1,b2,c0,c1,c2 = netpart.model_out
-netout = [[b0,c0],[b1,c1],[b2,c2]]
+b0,b1,c0,c1 = netpart.model_out
+netout = [[b0,c0],[b1,c1]]
 
-start_time = time.time()
+t1 = time.time()
 MAX_ITER = 500000
 with tf.Session() as sess:
 	saver = tf.train.Saver()
@@ -69,7 +69,7 @@ with tf.Session() as sess:
 				netpart.c_labholder:[train_dic[k][0]]})
 		if i%10==0:
 			t2 = time.time()
-			remain_time = float(MAX_ITER - i) / float(i+1) * (t2 - start_time)
+			remain_time = float(MAX_ITER - i) / float(i+1) * (t2-t1)
 			h,m,s = cvt.sec2hms(remain_time)
 			print('Iter:\t%d\tLoss:\t%.6f\tK:%d\tETA:%d:%d:%d'%(i,ls,k,h,m,s))
 		if i%100==0:
@@ -77,8 +77,6 @@ with tf.Session() as sess:
 				multip = 8
 			elif k==1:
 				multip = 32
-			else:
-				multip = 128
 			# multip = 8 if k==0 else 32
 			draw(img.copy(),[train_dic[k][0]],[train_dic[k][1]],multip,'lab')
 			draw2(img.copy(),c,b,multip,'pred')

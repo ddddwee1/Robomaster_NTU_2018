@@ -14,7 +14,7 @@ if not os.path.exists('./modelveri/'):
 	os.mkdir('./modelveri/')
 
 threshold = 0.4
-MAXITER = 100000
+
 
 def get_img_coord(img,c,b,multip):
 	res = []
@@ -69,11 +69,11 @@ def get_lb(p1,p2):
 		return 0
 
 def crop(img,bs,cs,coord):
-	multi = [8,32,128]
+	multi = [8,32]
 	res = []
 	lbs = []
 	crds = []
-	for i in range(3):
+	for i in range(2):
 		buff = get_img_coord(img,cs[i],bs[i],multi[i])
 		res += buff
 	for c in coord:
@@ -89,17 +89,18 @@ def crop(img,bs,cs,coord):
 		# cv2.rectangle(img,())
 	return lbs
 
-reader = datareader2.reader(scale_range=[0.05,1.2])
-b0,b1,b2,c0,c1,c2 = netpart.model_out
+reader = datareader2.reader(height=240,width=320,scale_range=[0.05,1.2])
+b0,b1,c0,c1 = netpart.model_out
 
 start_time = time.time()
+MAXITER = 100000
 with tf.Session() as sess:
 	saver = tf.train.Saver()
 	M.loadSess('./model/',sess,init=True,var_list=M.get_trainable_vars('MSRPN'))
 	for i in range(MAXITER):
 		img,coord = reader.get_img()
-		buff_out = sess.run([b0,b1,b2,c0,c1,c2],feed_dict={netpart.inpholder:[img]})
-		bs,cs = buff_out[:3],buff_out[3:]
+		buff_out = sess.run([b0,b1,c0,c1],feed_dict={netpart.inpholder:[img]})
+		bs,cs = buff_out[:2],buff_out[2:]
 		lbs = crop(img,bs,cs,coord)
 		train_imgs = [k[0] for k in lbs]
 		train_labs = [k[1] for k in lbs]
