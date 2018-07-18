@@ -105,7 +105,7 @@ def run(camera_thread,no_detection_count,target_lock):
 		y_bias, x_bias = util.bias_to_pixel(PITCH_BIAS,YAW_BIAS)
 		pitch_delta, yaw_delta = util.get_delta(coord,y_bias,x_bias)
 		pitch_goal = current_pitch + pitch_delta *PITCH_WEIGHT - PITCH_BIAS
-		yaw_goal = current_yaw + yaw_delta*PITCH_WEIGHT - YAW_BIAS
+		yaw_goal = current_yaw + yaw_delta*YAW_WEIGHT - YAW_BIAS
 		robot_prop.v1 = pitch_goal
 		robot_prop.v2 = yaw_goal
 		if mode == 'auto':
