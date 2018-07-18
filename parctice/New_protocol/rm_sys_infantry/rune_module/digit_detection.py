@@ -155,7 +155,7 @@ def get_digits(image,bigbuff=False):
 	digit_7seg_imgs = []
 
 	for x,y in digits_7seg_rect:
-		#cv2.rectangle(dst,(x,y),(x+19,y+34),(255,0,0),1)
+		cv2.rectangle(dst,(x,y),(x+19,y+34),(255,0,0),1)
 		img_sevseg = dst[y:y+34,x:x+19]
 
 		# another test
@@ -163,12 +163,12 @@ def get_digits(image,bigbuff=False):
 		img_sevseg = cv2.inRange(img_sevseg,215,255)
 		img_sevseg = cv2.morphologyEx(img_sevseg,cv2.MORPH_CLOSE,kernel2)
 
-		buf = cv2.bitwise_not(img_sevseg)
+		buf = cv2.bitwise_not(buf)
 		buf = cv2.resize(buf,(24,24))
 		buf = cv2.copyMakeBorder(buf, 1, 3, 1, 3, cv2.BORDER_CONSTANT, value=WHITE)
 
-		cv2.imshow('bb',buf)
-		cv2.waitKey(0)
+		# cv2.imshow('bb',buf)
+		# cv2.waitKey(0)
 
 		buf = buf.reshape([-1])
 		buf = 255 - buf
@@ -279,14 +279,3 @@ def get_digits(image,bigbuff=False):
 	cv2.imshow('aaa',dst)
 	cv2.waitKey(0)
 	return coord, scr_7seg_raw, handwritten_num, Flaming_digit
-
-if __name__=='__main__':
-	for i in range(1000):
-		img = cv2.imread('imgs/%d.jpg'%i)
-		coord, scr_7seg_raw, handwritten_num, Flaming_digit = get_digits(img)
-		print(i)
-		print(coord)
-		print(scr_7seg_raw)
-		print(handwritten_num)
-		print(Flaming_digit)
-		print('-----------------')

@@ -41,12 +41,13 @@ def crop(img,bs,cs):
 	return res
 
 def filter_valid_coord(coords,veri_result,scrs):
+	threshold = 0.5
 	res = []
 	scr_res = []
 	for i in range(len(coords)):
 		# if the verification result is 1, then append to result. 
 		# filter both the coordination and scores for further non_max_suppresion
-		if veri_result[i]==1:
+		if scrs[i]>=threshold:
 			res.append(coords[i])
 			scr_res.append(scrs[i])
 	return res,scr_res
