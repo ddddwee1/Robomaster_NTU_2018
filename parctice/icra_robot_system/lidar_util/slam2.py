@@ -5,8 +5,6 @@ import RPLIDAR_CONST
 import numpy as np 
 import threading
 import time 
-from control_template import get_order
-from astar import astar
 import myslam
 
 fout = open('ffff.txt','w')

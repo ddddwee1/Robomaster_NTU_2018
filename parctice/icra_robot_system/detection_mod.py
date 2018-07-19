@@ -20,11 +20,14 @@ def get_img_coord(img,c,b,multip):
 		y = int(b[i][j][1])+i*multip+multip//2
 		w = int(b[i][j][2])
 		h = int(b[i][j][3])
-		M = np.float32([[1,0,-(x-int(w*1.5)//2)],[0,1,-(y-int(h*1.5)//2)]])
-		cropped = cv2.warpAffine(img,M,(int(w*1.5),int(h*1.5)))
-		cropped = cv2.resize(cropped,(32,32))
-		# append [cropped_image,[x,y,w,h]] to result list
-		res.append([cropped,[x,y,w,h]])
+		try:
+			M = np.float32([[1,0,-(x-int(w*1.5)//2)],[0,1,-(y-int(h*1.5)//2)]])
+			cropped = cv2.warpAffine(img,M,(int(w*1.5),int(h*1.5)))
+			cropped = cv2.resize(cropped,(32,32))
+			# append [cropped_image,[x,y,w,h]] to result list
+			res.append([cropped,[x,y,w,h]])
+		except:
+			pass
 	return res 
 
 def crop(img,bs,cs):
@@ -38,12 +41,13 @@ def crop(img,bs,cs):
 	return res
 
 def filter_valid_coord(coords,veri_result,scrs):
+	threshold = 0.5
 	res = []
 	scr_res = []
 	for i in range(len(coords)):
 		# if the verification result is 1, then append to result. 
 		# filter both the coordination and scores for further non_max_suppresion
-		if veri_result[i]==1:
+		if scrs[i]>=threshold:
 			res.append(coords[i])
 			scr_res.append(scrs[i])
 	return res,scr_res
@@ -51,21 +55,24 @@ def filter_valid_coord(coords,veri_result,scrs):
 def get_iou(inp1,inp2):
 	x1,y1,w1,h1 = inp1[0],inp1[1],inp1[2],inp1[3]
 	x2,y2,w2,h2 = inp2[0],inp2[1],inp2[2],inp2[3]
+	#print y1,y2,h1,h2
 	xo = min(abs(x1+w1/2-x2+w2/2), abs(x1-w1/2-x2-w2/2))
 	yo = min(abs(y1+h1/2-y2+h2/2), abs(y1-h1/2-y2-h2/2))
 	if abs(x1-x2) > (w1+w2)/2 or abs(y1-y2) > (h1+h2)/2:
 		return 0
-	if abs(x1-x2) < abs(w1-w2):
+	if abs(float((x1-x2)*2)) < abs(w1-w2):
 		xo = min(w1, w2)
-	if abs(y1-y2) < abs(h1-h2):
+	if abs(float((y1-y2)*2)) < abs(h1-h2):
 		yo = min(h1, h2)
 	overlap = xo*yo
 	total = w1*h1+w2*h2-overlap
-	return overlap/total
+	#print 'ovlp',overlap
+	#print 'ttl',total
+	return float(overlap)/total
 
 def non_max_sup(coords,scr):
 	# recursively get the max score in open list and delete the overlapped areas which is more than threshold
-	non_max_thresh = 0.3
+	non_max_thresh = 0.05
 	open_coords = list(coords)
 	open_scr = list(scr)
 	result_coords = []
@@ -73,9 +80,13 @@ def non_max_sup(coords,scr):
 	while len(open_scr)>0:
 		max_ind = np.argmax(np.array(open_scr))
 		max_coord = open_coords[max_ind]
-		result_coords.append(open_coords[max_ind])
+		result_coords.append(max_coord)
+		del open_coords[max_ind]
+		del open_scr[max_ind]
+		#print len(open_scr)
 		for i in range(len(open_scr),0,-1):
 			iou = get_iou(open_coords[i-1],max_coord)
+			#print iou
 			if iou>non_max_thresh:
 				del open_coords[i-1]
 				del open_scr[i-1]
@@ -111,12 +122,9 @@ def get_coord_from_detection(img):
 	# get score and output
 	veri_output = sess.run(net_veri.output,feed_dict={net_veri.inputholder:cropped_imgs})
 	veri_classi = np.argmax(veri_output,1)
-	# ------
-	# If nonmax supression is not needed, just remove the softmax computation
-	# ------
-	#veri_output = np.exp(veri_output-100)
-	#veri_output = veri_output/np.sum(veri_output,axis=1,keepdims=True)
+
 	veri_output = veri_output[:,1]
 
 	valid_coord,veri_output = filter_valid_coord(coords,veri_classi,veri_output)
+	valid_coord = non_max_sup(valid_coord,veri_output)
 	return valid_coord

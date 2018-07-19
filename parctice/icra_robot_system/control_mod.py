@@ -24,12 +24,6 @@ def send_turret(pitch,yaw,fb,lr,rot,flyw,trigger,request=False):
 	data_pack += check_sum + b'\xff'
 	return data_pack
 
-def send_order(pitch,yaw,fb,lr,rot,trigger):#changes made on 5.14print
-	print 'order sent'
-	print fb,lr
-	data = send_turret(pitch,yaw,fb,lr,rot,1,trigger)
-	send_msg(data)
-
 def read_uwb(pitch,yaw,fb,lr,rot,trigger):
 	request_data = send_turret(pitch,yaw,fb,lr,rot,1,trigger,True) #request the info
 	send_msg(request_data)
@@ -52,17 +46,3 @@ def read_uwb(pitch,yaw,fb,lr,rot,trigger):
 	isbuff = np.frombuffer(data[13:15],dtype=np.uint16)
 	winner = np.frombuffer(data[15],dtype=np.uint8)
 	return x,y,yaw,t_pitch,t_yaw,process,hp,isbuff,winner
-
-def get_output():
-	data = ser.read()
-	data = format(ord(data),'02x')
-	print(data)
-
-if __name__=='__main__':
-
-	for i in range(1):	
-		x,y,yaw = read_uwb()
-		print(x,y,yaw)
-
-	#for i in range(80):
-		#get_output()

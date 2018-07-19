@@ -17,7 +17,7 @@ class mySlam():
 		# self.data = data # to be modified 
 		self.update_moving_avg(data)
 		self.draw()
-		self.show()
+		# self.show()
 
 	def draw(self):
 		self.map = np.zeros([self.pix*2, self.pix*2],dtype=np.uint8)

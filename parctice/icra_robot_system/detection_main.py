@@ -5,7 +5,7 @@ import util
 import threading
 import robot_prop 
 
-class detection_class(threading.Thread):
+class detection_thread(threading.Thread):
 	def __init__(self):
 		# initialize all instances
 		self.pid = PID2d(2.28,0.000,-0.0000228)

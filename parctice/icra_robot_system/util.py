@@ -40,6 +40,8 @@ def normalize_uwb(w,h,ang):
 		ang += 40
 	return w+w_offset,h+h_offset,ang
 
+
+# encoder and decoder for communication between two robots
 def encode_whang(w,h,ang):
 	whang = np.int16([w,h,ang])
 	encoded = whang.tobytes()

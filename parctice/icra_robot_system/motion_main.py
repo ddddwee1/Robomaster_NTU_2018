@@ -1,17 +1,6 @@
 import mp_util.icramap as icramap
 from mp_util.control_template import get_order
-import control_test
-import util 
-from PID.PID import PID
 import robot_prop
-import time 
-
-rotation_PID = PID(1.,0.,0.)
-
-def get_whang(pitch,yaw,fb,lr,rot,trigger):
-	w,h,ang,t_pitch,t_yaw,process,hp,isbuff,winner = control_test.read_uwb(pitch,yaw,fb,lr,rot,trigger)
-	w,h,ang = util.normalize_uwb(w,h,ang)
-	return w,h,ang
 
 def get_next_point(start,dst):
 	return icramap.get_next_point(start,dst)
@@ -21,11 +10,8 @@ def move_to(dst=None,dst_ang=None,curr_pos=None):
 	rot_multiplier = 100
 
 	if curr_pos is None and not robot_prop.port_writing:
-		# test the time here, if
-		t1 = time.time()
-		w,h,ang = get_whang()
-		t2 = time.time()
-		print('Read time',t2-t1)
+		w,h,ang = robot_prop.get_whang()
+
 	else:
 		h,w,ang = curr_pos
 
@@ -46,7 +32,6 @@ def move_to(dst=None,dst_ang=None,curr_pos=None):
 	# get rot
 	if dst_ang==ang:
 		rot = 0
-		rotation_PID.eval(0.)
 	else:
 		if dst_ang>ang:
 			if dst_ang - ang < ang + 40 - dst_ang:
@@ -58,7 +43,7 @@ def move_to(dst=None,dst_ang=None,curr_pos=None):
 				rotation_err = ang - dst_ang
 			else:
 				rotation_err = ang - 40 - dst_ang
-		rot = rotation_PID.eval(rotation_err) * rot_multiplier
+		rot = rotation_err * rot_multiplier
 		
 	robot_prop.lr = lr 
 	robot_prop.fw = fw
