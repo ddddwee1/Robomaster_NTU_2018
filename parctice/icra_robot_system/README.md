@@ -129,12 +129,12 @@ I heard from other teams that their code are more than 5k lines. That still conf
 
 ### Acknowledgement
 
-Thanks to everyone in software team.
+Thanks to everyone in software team for labelling the training data.
 
-Thanks to Fang Meiyi for hardware and environment setup, PID adjustment, turret testing. 
+Thanks to Fang Meiyi for hardware and environment setup, PID adjustment, turret testing. She also did lots of labelling work.
 
 Thanks to Guo Tai for implementing Astar algorithm.
 
 Thanks to myself for writing other codes. 
 
-Thanks to e-team for wiring and building MCU. They write really reliable programs.
+Thanks to e-team for wiring and building MCU. They provided really reliable programs to us.
