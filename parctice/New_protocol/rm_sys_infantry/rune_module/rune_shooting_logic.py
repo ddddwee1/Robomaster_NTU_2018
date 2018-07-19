@@ -25,7 +25,7 @@ def draw_handwritten_digits(image,handwritten_coord,radius):
 	cv2.imshow('',image)
 	cv2.waitKey(1)
 
-def rune_shooting(image,saved_numbers_9boxes , saved_7seg_raw , scr_7seg_index , num_9boxes_index, whether_shooted,bigbuff=False ):
+def rune_shooting(image,saved_numbers_9boxes , saved_7seg_raw , scr_7seg_index , num_9boxes_index, whether_shooted,buf_activated,bigbuff=False ):
 
 	new_7seg = False
 
@@ -34,13 +34,10 @@ def rune_shooting(image,saved_numbers_9boxes , saved_7seg_raw , scr_7seg_index ,
 		#print scr_7seg_raw, handwritten_num, Flaming_digit
 	except:
 		time.sleep(0.1)
-		return [-1], saved_numbers_9boxes , saved_7seg_raw , scr_7seg_index , num_9boxes_index, whether_shooted 
+		return [-1] , saved_numbers_9boxes , saved_7seg_raw , scr_7seg_index , num_9boxes_index, whether_shooted ,buf_activated
 
-	if len(handwritten_num) == 1 and len(Flaming_digit) == 1 :
-		cv2.imshow('',image)
-		cv2.waitKey(1)
-		print ("Wrong number")
-		return [-1], saved_numbers_9boxes , saved_7seg_raw , scr_7seg_index , num_9boxes_index, whether_shooted 
+	if len(scr_7seg_raw)<5:
+		return  [-1] , saved_numbers_9boxes , saved_7seg_raw , scr_7seg_index , num_9boxes_index, whether_shooted ,buf_activated
 
 	if len(handwritten_num) != 1 and len(Flaming_digit) == 1 :
 		num_9boxes = handwritten_num
@@ -52,7 +49,7 @@ def rune_shooting(image,saved_numbers_9boxes , saved_7seg_raw , scr_7seg_index ,
 
 	#drawing for debugging
 	radius = (coord[0][3]) //4
-	draw_handwritten_digits(image, handwritten_coord, radius)
+#	draw_handwritten_digits(image, handwritten_coord, radius)
 
 	# shooting logic
 	for raw_7seg in scr_7seg_raw:
@@ -62,13 +59,25 @@ def rune_shooting(image,saved_numbers_9boxes , saved_7seg_raw , scr_7seg_index ,
 		else: 
 			checked_7seg_raw = True
 
-	numbers_7seg = scr_7seg_raw[0]*10000 + scr_7seg_raw[1] * 1000+scr_7seg_raw[2] * 100 + scr_7seg_raw[3]*10+scr_7seg_raw[4]
 
+	numbers_7seg = scr_7seg_raw[0]*10000+ scr_7seg_raw[1] *1000+scr_7seg_raw[2] * 100 + scr_7seg_raw[3]*10+scr_7seg_raw[4]
+
+
+	if len(handwritten_num) == 1 and len(Flaming_digit) == 1:
+		if numbers_7seg >= 111110:
+			buf_activated +=1
+		else:
+			buf_activated = 0
+
+		return [-1] , saved_numbers_9boxes , saved_7seg_raw , scr_7seg_index , num_9boxes_index, whether_shooted ,buf_activated
+
+	if len(handwritten_num) != 1 or len(Flaming_digit) != 1 or numbers_7seg <= 111110:
+			buf_activated = 0
 
 	if checked_7seg_raw == False:
-		return [-1], saved_numbers_9boxes , saved_7seg_raw , scr_7seg_index , num_9boxes_index, whether_shooted 
+		return  [-1] , saved_numbers_9boxes , saved_7seg_raw , scr_7seg_index , num_9boxes_index, whether_shooted ,buf_activated
 
-	print saved_7seg_raw
+	#print saved_7seg_raw
 
 	if saved_7seg_raw != numbers_7seg and checked_7seg_raw == True:
 		saved_7seg_raw = numbers_7seg 
@@ -113,4 +122,4 @@ def rune_shooting(image,saved_numbers_9boxes , saved_7seg_raw , scr_7seg_index ,
 		scr_7seg_index = 0
 		saved_numbers_9boxes = -1
 
-	return handwritten_coord , saved_numbers_9boxes , saved_7seg_raw , scr_7seg_index , num_9boxes_index, whether_shooted 
+	return handwritten_coord , saved_numbers_9boxes , saved_7seg_raw , scr_7seg_index , num_9boxes_index, whether_shooted ,buf_activated
