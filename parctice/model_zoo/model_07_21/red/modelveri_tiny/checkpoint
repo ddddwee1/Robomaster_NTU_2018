@@ -1,0 +1,2 @@
+model_checkpoint_path: "armour_plate.ckpt"
+all_model_checkpoint_paths: "armour_plate.ckpt"
