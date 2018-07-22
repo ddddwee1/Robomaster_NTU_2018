@@ -5,10 +5,6 @@ import time
 
 def build_model(inp_holder):
 	with tf.variable_scope('MSRPN_v3'):
-		inp_holder = tf.image.random_saturation(inp_holder,lower=0.5,upper=1.5)
-		inp_holder = tf.image.random_contrast(inp_holder,lower=0.5,upper=2.)
-		# inp_holder = tf.image.random_saturation(inp_holder,lower=0.5,upper=1.5)
-		inp_holder = tf.image.random_brightness(inp_holder,50)
 		mod = M.Model(inp_holder)
 		mod.dwconvLayer(7,4,stride=2,activation=M.PARAM_LRELU)
 		mod.convLayer(5,16,stride=2,activation=M.PARAM_LRELU) #480_ 2x2	
