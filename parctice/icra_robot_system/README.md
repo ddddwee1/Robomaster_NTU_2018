@@ -81,6 +81,8 @@ Build icramap and call astar algorithm for path planning.
 
 Simple Astar implementation. Don't need to explain, you can find tons of explanation on [Google](www.google.com) or [baidu](www.baidu.com) or [bing](www.bing.com).
 
+Here we provide simple python implementation. The speed can be further imrpoved using Cython.
+
 ### detection main
 
 Entry point for armour plate detection. The object will create a camera thread to continuously read images from camera, and then utilizes detection module and turret speed conversion.
