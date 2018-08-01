@@ -2,58 +2,109 @@
 
 This repo is created for Robomasters 2018. Software Team of MECATron, [Nanyang Technological University](http://www.ntu.edu.sg).
 
-## Plan for the Last Week
+## Robomaster robot system
 
-This is a plan for 07/07 - 12/07
+I think it's also necessary to write some description for this.
 
-### 07/07:
+### Write something before
 
-- [x] Test the armour plate detection
+This code is NOT the final version which we used in Robomasters 2018. We made some minor modifications and I could not find the files.
 
-- [x] Test the combined file (armour plate)
+This repo is an extension for ICRA robot system.
 
-- [x] Test the combined file (rune (big/small))
+Now the code can be finished in one day.
 
-- [x] Modify the rune detection (stabiliy test and speed test)
+We used python2.7 and tensorflow 1.7.0 for testing.
 
-- [x] Take new video
+### Code structure
 
-### 08/07:
+The code is structured as following:
 
-- [x] Label the new video (with both big plate and small plate)
+```
+main
+|- data retriever
+|  |- control mod (control_test.py)
+|
+|- camera module
+|
+|- armour plate mod
+|  |- detection mod
+|  |  |- net
+|  |  |  |- modelveri_tiny (for big images)
+|  |  |  |- modelveri_tiny_s (for small images/ only for sentry)
+|
+|- rune mod
+|  |- digit detection
+|  |  |- conv_deploy
+|  |
+|  |- rune_shooting_logic
+|
+|- robot prop
+|
+|- util
 
-- [x] Finish code for hero
+```
 
-- [x] Train the new video
+### Main
 
-### 09/07:
+As name suggests, the main.py is the entry point of this program. It creates a data_reader object to continuously communicate with MCU and a camera thread to read images from camera.
 
-- [x] Finish training on both colors
+### Data retriever
 
-- [x] Test the armour plate detection on infantry 'A' (gw)
+Read properties from MCU and update robot_prop.
 
-- [x] Set up and test the whole system for infantry 'B' (hansel)
+### camera module
 
-### 10/07
+See the code, simple. Create camera object on creation, read images after run.
 
-- [x] Test the NUC performance on **infantry**
+### armor_plate_mod
 
-- [x] Test sentry (Sentry is now passed to e-team, should be ready for testing by tomorrow)
+Call detection_mod and do auto-shooting.
 
-- [x] Setup autostart for all robots
+### detection_mod
 
-### 11/07
+Detection module for armour plate. 
 
-- [x] Test the NUC performance on hero
+Pipeline:
 
-- [x] Test the whole system infantry 'C'
+Multi-scale region proposal network -> crop top-n from each scale -> verificate proposals -> non-max supression.
 
-### To-be-done in Shenzhen
+### rune_mod
 
-- [x] Test full system for infantry (full-auto shooting for 2 modes)
+Call rune_module to detect the different runes.
 
-- [x] Test sentry shooting, find bugs
+### rune_module
 
-- [x] Sentry debugging
+Contains model for 7-segment, handwritten and flaming digits. The codes are quite long but very easy to understand.
 
-#### Just pretend we finish all things
+### Robot_prop
+
+Robot properties. Stores some variables like turret speed, robot coordinates, robot angle, etc.
+
+### util
+
+Utilities. Basically some converting functions will be put here.
+
+### Write after
+
+If someone is really reading this message here, I would tell you that the recognition and auto-shooting is useful only when you have very strong hardware and MCU fondamentals.
+
+Otherwise.
+
+If you have anything to discuss with me, can Email me: chengyu996@gmail.com
+
+### Acknowledgement
+
+Thanks to everyone in software team for labelling the training data.
+
+Thanks to Guowei and Hansel for testing testing and testing. 
+
+Thanks to Guowei for coding the rune module.
+
+Thanks to Hansel for auto-shoot.
+
+Thanks to Vinsens for writing the rune board simulator and first version of board detection.
+
+Thanks to Fang Meiyi for hardware and environment setup.
+
+Thanks to myself for writing other codes. 

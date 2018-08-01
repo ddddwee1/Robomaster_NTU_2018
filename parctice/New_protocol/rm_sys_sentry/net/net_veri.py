@@ -20,5 +20,4 @@ inputholder = tf.placeholder(tf.float32,[None,32,32,3])
 labelholder = tf.placeholder(tf.int32,[None])
 
 output = build_model(inputholder)
-accuracy = M.accuracy(output,labelholder)
-loss,ts = build_loss(output,labelholder)
+output = tf.nn.softmax(output,-1)

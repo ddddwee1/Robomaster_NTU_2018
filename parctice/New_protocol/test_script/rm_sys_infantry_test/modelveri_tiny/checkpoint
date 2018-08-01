@@ -1,6 +1,0 @@
-model_checkpoint_path: "99000.ckpt"
-all_model_checkpoint_paths: "87000.ckpt"
-all_model_checkpoint_paths: "90000.ckpt"
-all_model_checkpoint_paths: "93000.ckpt"
-all_model_checkpoint_paths: "96000.ckpt"
-all_model_checkpoint_paths: "99000.ckpt"
